@@ -41,7 +41,7 @@ CASA casas_inicial = {
                         {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO }
                      };*/
 
-CASA *casas_inicial(CASA tabi[8][8])
+void casas_inicial(CASA tabi[8][8])
 {
     int i, j;
     for(i=0; i<8; i++)
@@ -58,19 +58,15 @@ CASA *casas_inicial(CASA tabi[8][8])
             }       
         }
     }  
-    return *tabi;
+ //   return *tabi;
 }
 
 
 
 ESTADO estado_Inicial()
 {
-  //  int n_Jogadas = 0;
-   // int jogador_inicial=0;
-    JOGADAS m[32] ;
-    CASA tabi[8][8];
     ESTADO estado;
-    casas_inicial( tabi);
+    casas_inicial( estado.tab);
    // estado.jogadas = NULL;
     estado.num_jogadas = 0;
     estado.jogador_atual = 0;
