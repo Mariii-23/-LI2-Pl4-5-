@@ -24,13 +24,13 @@ void casas_inicial(CASA tabi[8][8])
 }
 
 //ESTADO INICIAL
-ESTADO estado_Inicial()
+ESTADO *inicializador_estado()
 {
-    ESTADO estado;
-    casas_inicial( estado.tab);
+    ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
+    casas_inicial( estado->tab);
    // estado.jogadas = NULL;
-    estado.num_jogadas = 0;
-    estado.jogador_atual = 0;
+    estado->num_jogadas = 0;
+    estado->jogador_atual = 1;
 
     return estado;
 }
@@ -59,7 +59,7 @@ void desenha_Linha(CASA tabi[8][8], int linha)
 }
 
 //DESENHA ESTADO DO JOGO
-void desenha_estado(ESTADO estado1)
+void mostrar_tabuleiro(ESTADO estado1)
 {
     int i=0;
 
@@ -114,7 +114,7 @@ int verifica_jogada(ESTADO estado, COORDENADA pos_final)
 
 void jogar()
 {
-    ESTADO estado;
-    estado = estado_Inicial();
-    desenha_estado( estado );
+    ESTADO *estado;
+    estado = inicializador_estado();
+    mostrar_tabuleiro( *estado );
 }

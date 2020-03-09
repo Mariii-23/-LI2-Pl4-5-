@@ -5,10 +5,5 @@
 
 void jogar();
 
-ESTADO estado_Inicial();
-
-void desenha_Linha(CASA tabi[8][8], int linha);
-
-void desenha_estado(ESTADO estado);
 
 #endif
