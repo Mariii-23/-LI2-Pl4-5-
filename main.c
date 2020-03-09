@@ -7,6 +7,7 @@
 
 int main()
 {
-    desenha_estado( estado_Inicial());
+   // desenha_estado( estado_Inicial());
+    jogar();
     return 0;
 }

@@ -109,3 +109,12 @@ int verifica_jogada(ESTADO estado, COORDENADA pos_final)
     }
     return resul;
 }
+
+
+
+void jogar()
+{
+    ESTADO estado;
+    estado = estado_Inicial();
+    desenha_estado( estado );
+}
