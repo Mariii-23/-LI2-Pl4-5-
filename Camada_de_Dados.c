@@ -92,7 +92,7 @@ void mostrar_tabuleiro(ESTADO estado1)
 
 }
 
-//FUNCAO QUE DEVLOVE O ESTADO DE UMA PECA CONSOANTE AS COORDENADAS
+//FUNCAO QUE DEVLOVE O ESTADO DE UMA PECA CONSOANTE AS COORDENADAS DADAS
 CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 {
     int x = coordenada.linha;
@@ -117,40 +117,55 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final
 }
 
 //FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
+int verificar_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
+{
+    int x,y, x_, y_, resul=0;
+    x = coord_inicial.linha;
+    y = coord_inicial.coluna; 
+    x_ = coord_final.linha; 
+    y_ = coord_final.coluna; 
+    if ( (x==x_ && ( (y+1)==y_ || (y-1)==y_ )) || 
+          y==y_ && ( (x+1)==x_ || (x-1)==x_ ) )
+        resul=1;
+    return resul;
+}
 
 //faltam mais condicoes
-int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
+int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
 {
-    int resul = 1;
+    int resul = 0;
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
-    if (peca == BRANCA)
+
+    if (peca == VAZIO && verificar_vizinho(pos_inicial, pos_final ))
     {
-        resul = 0;
+        resul = 1;
     }
     return resul;
 }
 
 void jogar(ESTADO *estado, COORDENADA coord)
 {
-    int verificar;
-    verificar = verifica_jogada(estado, coord);
-
     COORDENADA coord_anterior;
     coord_anterior = encontra_peca_preta(*estado);
+
+    int verificar;
+    verificar = verifica_jogada(estado, coord_anterior, coord);
 
     if (verificar)
     {
         troca_posicoes(estado, coord_anterior, coord);
     }
-    
+    else
+    {
+        printf("/nJogada inválida.\n");
+    }
 }
 
 int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
-
 
     mostrar_tabuleiro( *estado );
 
