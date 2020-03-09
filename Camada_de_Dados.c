@@ -159,7 +159,7 @@ int interpretador(ESTADO *estado) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
-        COORDENADA coord = {*col - 'a', *lin - '0'};
+        COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(estado, coord);
         mostrar_tabuleiro(*estado);
     }
