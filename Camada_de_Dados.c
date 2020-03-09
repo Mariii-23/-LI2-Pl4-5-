@@ -3,44 +3,7 @@
 #include <string.h>
 #include "tipos.h"
 
-//#define BUF_SIZE 1024
-
-
-/*
-// Estruturas de dados (devem ser colocadas no módulo correto da camada dos dados
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
-
-typedef struct {
-int coluna;
-int linha;
-} COORDENADA;
-
-typedef struct {
-COORDENADA jogador1;
-COORDENADA jogador2;
-} JOGADA;
-
-typedef JOGADA JOGADAS[32];
-
-typedef struct {
-CASA tab[8][8];
-JOGADAS jogadas;
-int num_jogadas;
-int jogador_atual;
-} ESTADO;*/
-
-/*
-CASA casas_inicial = {
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO},
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, PRETA, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO },
-                        {VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO, VAZIO }
-                     };*/
-
+//DEFINE O ESTADO INICIAL
 void casas_inicial(CASA tabi[8][8])
 {
     int i, j;
@@ -58,11 +21,9 @@ void casas_inicial(CASA tabi[8][8])
             }       
         }
     }  
- //   return *tabi;
 }
 
-
-
+//ESTADO INICIAL
 ESTADO estado_Inicial()
 {
     ESTADO estado;
@@ -74,6 +35,7 @@ ESTADO estado_Inicial()
     return estado;
 }
 
+//DESENHA CADA CASA
 void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
 {
     switch (tabi[linha][coluna])
@@ -85,6 +47,7 @@ void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
     }
 }
 
+//DESENHA CADA LINHA
 void desenha_Linha(CASA tabi[8][8], int linha)
 {
     int i;
@@ -95,6 +58,7 @@ void desenha_Linha(CASA tabi[8][8], int linha)
     putchar('\n');
 }
 
+//DESENHA ESTADO DO JOGO
 void desenha_estado(ESTADO estado1)
 {
     int i=0;
