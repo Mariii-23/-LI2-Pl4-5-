@@ -71,3 +71,41 @@ void desenha_estado(ESTADO estado1)
     putchar('\n');
 
 }
+
+//FUNCAO QUE DEVLOVE O ESTADO DE UMA PECA CONSOANTE AS COORDENADAS
+CASA estado_casa(ESTADO estado, COORDENADA coordenada)
+{
+    int x = coordenada.linha;
+    int y = coordenada.coluna;
+    CASA peca = estado.tab[x][y];
+    return peca;
+}
+
+//FUNCAO QUE ALTERA O ESTADO DA PECA
+void altera_estado_peca(ESTADO estado, COORDENADA coordenada, CASA mudar)
+{
+    int x = coordenada.linha;
+    int y = coordenada.coluna;
+    estado.tab[x][y] = mudar;
+}
+
+//FUNCAO QUE ALTERA O ESTADO DAS CASAS DA POSICAO DE ONDE ESTAVA PARA O QUAL SE PRETENDIA MOVER
+void troca_posicoes(ESTADO estado, COORDENADA pos_inicial, COORDENADA pos_final)
+{
+    altera_estado_peca(estado, pos_inicial , BRANCA);
+    altera_estado_peca(estado, pos_final, PRETA);
+}
+
+//FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
+int verifica_jogada(ESTADO estado, COORDENADA pos_final)
+{
+    int resul = 1;
+    int x = pos_final.linha;
+    int y = pos_final.coluna;
+    CASA peca = estado.tab[x][y];
+    if (peca == BRANCA)
+    {
+        resul = 0;
+    }
+    return resul;
+}
