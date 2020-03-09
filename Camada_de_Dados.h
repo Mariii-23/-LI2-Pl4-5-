@@ -3,7 +3,7 @@
 
 #include "tipos.h"
 
-void jogar();
-
+ESTADO *inicializador_estado();
+int interpretador(ESTADO *estado);
 
 #endif

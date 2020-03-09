@@ -112,9 +112,34 @@ int verifica_jogada(ESTADO estado, COORDENADA pos_final)
 
 
 
-void jogar()
+void jogar(ESTADO estado, COORDENADA coord)
 {
-    ESTADO *estado;
-    estado = inicializador_estado();
+    int verificar;
+    verifica_jogada(estado, coord);
+
+    if (verificar)
+    {
+        altera_estado_peca(estado, coord, BRANCA);
+    }
+    
+}
+
+
+int interpretador(ESTADO *estado) {
+    char linha[BUF_SIZE];
+    char col[2], lin[2];
+
+
     mostrar_tabuleiro( *estado );
+
+    if(fgets(linha, BUF_SIZE, stdin) == NULL)
+        return 0;
+
+    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
+    {
+        COORDENADA coord = {*col - 'a', *lin - '1'};
+        jogar(*estado, coord);
+        mostrar_tabuleiro(*estado);
+    }
+    return 1;
 }

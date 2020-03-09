@@ -8,6 +8,9 @@
 int main()
 {
    // desenha_estado( estado_Inicial());
-    jogar();
+    ESTADO *estado;
+    estado = inicializador_estado();
+
+    interpretador(estado);
     return 0;
 }
