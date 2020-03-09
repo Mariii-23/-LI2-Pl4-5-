@@ -35,6 +35,26 @@ ESTADO *inicializador_estado()
     return estado;
 }
 
+//Procura onde se encotra a peca preta
+COORDENADA encontra_peca_preta(ESTADO estado)
+{
+    int i,j;
+    COORDENADA coord;
+
+    for (i=0; i<8 ; i++)
+    {
+        for (j=0; j<8; j++)
+        {
+            if (estado.tab[i][j])
+            {
+                coord.linha = i;
+                coord.coluna = j;
+            }
+        }
+    }
+    return coord;
+}
+
 //DESENHA CADA CASA
 void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
 {
@@ -97,6 +117,8 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final
 }
 
 //FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
+
+//faltam mais condicoes
 int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 {
     int resul = 1;
@@ -110,20 +132,20 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
     return resul;
 }
 
-
-
 void jogar(ESTADO *estado, COORDENADA coord)
 {
     int verificar;
     verificar = verifica_jogada(estado, coord);
 
+    COORDENADA coord_anterior;
+    coord_anterior = encontra_peca_preta(*estado);
+
     if (verificar)
     {
-        altera_estado_peca(estado, coord, BRANCA);
+        troca_posicoes(estado, coord_anterior, coord);
     }
     
 }
-
 
 int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
