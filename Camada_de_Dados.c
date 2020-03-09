@@ -82,27 +82,27 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 }
 
 //FUNCAO QUE ALTERA O ESTADO DA PECA
-void altera_estado_peca(ESTADO estado, COORDENADA coordenada, CASA mudar)
+void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 {
     int x = coordenada.linha;
     int y = coordenada.coluna;
-    estado.tab[x][y] = mudar;
+    estado->tab[x][y] = mudar;
 }
 
 //FUNCAO QUE ALTERA O ESTADO DAS CASAS DA POSICAO DE ONDE ESTAVA PARA O QUAL SE PRETENDIA MOVER
-void troca_posicoes(ESTADO estado, COORDENADA pos_inicial, COORDENADA pos_final)
+void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final)
 {
     altera_estado_peca(estado, pos_inicial , BRANCA);
     altera_estado_peca(estado, pos_final, PRETA);
 }
 
 //FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
-int verifica_jogada(ESTADO estado, COORDENADA pos_final)
+int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 {
     int resul = 1;
     int x = pos_final.linha;
     int y = pos_final.coluna;
-    CASA peca = estado.tab[x][y];
+    CASA peca = estado->tab[x][y];
     if (peca == BRANCA)
     {
         resul = 0;
@@ -112,10 +112,10 @@ int verifica_jogada(ESTADO estado, COORDENADA pos_final)
 
 
 
-void jogar(ESTADO estado, COORDENADA coord)
+void jogar(ESTADO *estado, COORDENADA coord)
 {
     int verificar;
-    verifica_jogada(estado, coord);
+    verificar = verifica_jogada(estado, coord);
 
     if (verificar)
     {
@@ -138,7 +138,7 @@ int interpretador(ESTADO *estado) {
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
         COORDENADA coord = {*col - 'a', *lin - '1'};
-        jogar(*estado, coord);
+        jogar(estado, coord);
         mostrar_tabuleiro(*estado);
     }
     return 1;
