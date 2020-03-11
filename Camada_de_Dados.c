@@ -58,12 +58,20 @@ COORDENADA encontra_peca_preta(ESTADO estado)
 //DESENHA CADA CASA
 void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
 {
-    switch (tabi[linha][coluna])
-    {
-        case VAZIO : printf("."); break;
-        case BRANCA : printf("#"); break;
-        case PRETA : printf("*"); break;
-        default: break;
+    if (linha==0 && coluna==7 )      printf("2"); 
+    else
+    {   
+        if (linha==7 && coluna==0 )  printf("1");
+        else
+        {
+            switch (tabi[linha][coluna])
+            {
+                case VAZIO : printf("."); break;
+                case BRANCA : printf("#"); break;
+                case PRETA : printf("*"); break;
+                default: break;
+            } 
+        } 
     }
 }
 
