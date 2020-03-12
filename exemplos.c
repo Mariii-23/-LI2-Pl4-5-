@@ -23,9 +23,6 @@ void casas_inicial(CASA tabi[8][8])
     }  
 }
 
-//ESTADO INICIAL
-ESTADO *inicializador_estado()
-{
     ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
     casas_inicial( estado->tab);
    // estado.jogadas = NULL;
