@@ -169,7 +169,7 @@ int jogar(ESTADO *estado, COORDENADA coord)
     }
     else
     {
-        printf("/nJogada inválida.\n");
+        printf("\nJogada inválida.\n");
     }
     return resul;
 }
