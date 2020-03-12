@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Logica_do_programa.h"
-#include "Interface.h"
-
+#include "Camada_de_Dados.h"
 
 //DEFINE O ESTADO INICIAL
 void casas_inicial(CASA tabi[8][8])

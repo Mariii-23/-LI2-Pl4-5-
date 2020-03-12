@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Camada_de_Dados.h"
 #include "Interface.h"
-#include "Logica_do:programa.h"
+#include "Logica_do_programa.h"
 
 
 int main()

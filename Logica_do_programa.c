@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Camada_de_Dados.h"
-#include "Interface.h"
 
 //FUNCAO QUE ALTERA O ESTADO DA PECA
 void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
