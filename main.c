@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Camada_de_Dados.h"
-#include "tipos.h"
+#include "Interface.h"
+#include "Logica_do:programa.h"
 
 
 int main()
