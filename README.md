@@ -8,8 +8,8 @@ Jéssica Macedo Fernandes - a93318
 Mariana Dinis Rodrigues - a93229
 Vasco Oliveira Matos - a93206
 
-Para o início do trabalho seguimos os passos do "Guião aula 5" disponiblizad pelos docentes de LI2.
-Assim, criamos os várias camadas, "camada de dados", "Interface" e "lógica do programa".
+Para o início do trabalho seguimos os passos do "Guião aula 5" disponiblizado pelos docentes de LI2.
+Assim, criamos os vários ficheiros .c, "camada de dados", "Interface" e "lógica do programa", e os seus respetivos .h. 
 Na parte da "camada de dados" está definida a estrutura de dados do programa, onde é definido o conceito
 de "CASA"(cada local do jogo onde as peças se podem movimetar), a "CORDENADA" (que serve para localizar
 cada peça na sua casa), entre outros dados essenciais.
@@ -20,6 +20,6 @@ Estas duas funções vão ser usadas na função "jogar" que aplica a jogada cas
 "Jogada Inválida" no caso de não ser.
 Na parte da "Interface" tempos presente uma função que desenha o estado do jogo "imprimindo" o tabuleiro
 por linha e por coluna(ao "imprimir" a linha, é "imprimido" cada elemento das colunas que intersetam essa linha).
-Na "main" do nosso programa é inicializado o jogo, e é chamada a funçao "interpertador" com o argumento "estado"
+Existe ainda o ficheiro "main" do nosso programa onde é inicializado o jogo, e é chamada a funçao "interpertador" com o argumento "estado"
 afim de a camada de "Interface" imprimir o tabuleiro e trabalhar com as restantes funções do programa produzindo
 o jogo Rastos, posteriormente funcional.
