@@ -8,7 +8,7 @@ Jéssica Macedo Fernandes - a93318
 Mariana Dinis Rodrigues - a93229
 Vasco Oliveira Matos - a93206
 
-link slack -
+link slack - https://join.slack.com/t/li2-pl4-jogo/shared_invite/zt-ctkwgtpy-HNZFL8LLhYM1mMupg~vxFQ
 
 Para o início do trabalho seguimos os passos do "Guião aula 5" disponiblizado pelos docentes de LI2.
 Assim, criamos os vários ficheiros .c, "camada de dados", "Interface" e "lógica do programa", e os seus respetivos .h. 
