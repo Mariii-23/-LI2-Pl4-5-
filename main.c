@@ -11,6 +11,6 @@ int main()
     ESTADO *estado;
     estado = inicializador_estado();
 
-    interpretador(estado);
+    while(interpretador(estado));
     return 0;
 }
