@@ -158,3 +158,17 @@ int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
     }
     return resul;
 }
+
+
+
+
+int verifica_vencedor(ESTADO estado) {
+    int r;
+    COORDENADA c = encontra_peca_preta(estado);
+    if ((c.linha = 7) && (c.coluna = 0)) || ((c.linha = 0) && (c.coluna = 7))
+        r = 1;
+    else 
+        r = 0;
+
+    return r;
+}
