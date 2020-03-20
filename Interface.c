@@ -75,3 +75,13 @@ void jogador_vencedor(ESTADO estado) {
 
     printf ("O Player %d é o vencedor! Parabéns!", j);
 }
+
+
+
+void prompt(ESTADO estado) {
+    printf("  abcdefgh");
+
+
+
+    printf("\n Player_%d Jogada_%d -> ", estado.jogador_atual, estado.num_jogadas);
+}
