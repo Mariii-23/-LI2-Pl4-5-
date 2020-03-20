@@ -82,6 +82,17 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     return resul;
 }
 
+//Funcao principal que verifica se é possivel executar a jogada
+int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
+{
+    int resul = 0;
+    int x = pos_final.linha;
+    int y = pos_final.coluna;
+    CASA peca = estado->tab[x][y];
+
+    return ( peca == VAZIO && verifica_se_e_vizinho(pos_inicial, pos_final )  );
+}
+
 //FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS AO REDOR DA PECA PRETA
 
 //Verificar casa a direita
@@ -140,6 +151,7 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
+//funcao principal
 int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
 {
     return ( verifica_casa_Direita(*estado, coord) &&  verifica_casa_Esquerda(*estado, coord) &&
@@ -156,19 +168,12 @@ int verifica_vencedor(ESTADO estado)
         r = 1;
     else 
         r = 0;
-
     return r;
 }
 
-//Funcao principal que verifica se é possivel executar a jogada
-int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
+//Funcao principal que verifica se existe vencedor
+int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
 {
-    int resul = 0;
-    int x = pos_final.linha;
-    int y = pos_final.coluna;
-    CASA peca = estado->tab[x][y];
     COORDENADA peca_preta = encontra_peca_preta(estado);
-
-    return ( peca == VAZIO && verifica_se_e_vizinho(pos_inicial, pos_final ) &&
-             !verifica_vencedor(estado) && verificar_casas_disponiveis(estado, peca_preta) );
+    return ( !verifica_vencedor(estado) && verificar_casas_disponiveis(estado, peca_preta) );
 }
