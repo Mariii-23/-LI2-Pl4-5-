@@ -67,27 +67,29 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 }
 
 //FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
-int verificar_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
+int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 {
     int x, y, x_, y_, resul=0;
+
     x = coord_inicial.linha;
     y = coord_inicial.coluna; 
     x_ = coord_final.linha; 
     y_ = coord_final.coluna; 
+
     if ( (x==x_ && ( (y+1)==y_ || (y-1)==y_ )) || 
           y==y_ && ( (x+1)==x_ || (x-1)==x_ ) )
         resul=1;
     return resul;
 }
 
-//FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS
+//FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS AO REDOR DA PECA PRETA
 
 //Verificar casa a direita
-int verifica_casa_Direita(ESTADO *estado, COORDENADA coord_inicial)
+int verifica_casa_Direita(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
-    x = coord_inicial.linha;
-    y = coord_inicial.coluna;  
+    x = coord.linha;
+    y = coord.coluna;  
 
     if (x!=7 && estado.tab[x-1][y] == VAZIA )
     {
@@ -97,11 +99,11 @@ int verifica_casa_Direita(ESTADO *estado, COORDENADA coord_inicial)
 }
 
 //Verificar casa a esquerda
-int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord_inicial)
+int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
-    x = coord_inicial.linha;
-    y = coord_inicial.coluna;  
+    x = coord.linha;
+    y = coord.coluna;  
 
     if (x!=0 && estado.tab[x+1][y] == VAZIA )
     {
@@ -111,11 +113,11 @@ int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord_inicial)
 }
 
 //Verificar casa a acima
-int verifica_casa_Acima(ESTADO *estado, COORDENADA coord_inicial)
+int verifica_casa_Acima(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
-    x = coord_inicial.linha;
-    y = coord_inicial.coluna;  
+    x = coord.linha;
+    y = coord.coluna;  
 
     if (y!=0 && estado.tab[x][y+1] == VAZIA )
     {
@@ -125,11 +127,11 @@ int verifica_casa_Acima(ESTADO *estado, COORDENADA coord_inicial)
 }
 
 //Verificar casa a baixa
-int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord_inicial)
+int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
-    x = coord_inicial.linha;
-    y = coord_inicial.coluna;  
+    x = coord.linha;
+    y = coord.coluna;  
 
     if (y!=7 && estado.tab[x][y-1] == VAZIA )
     {
@@ -138,37 +140,35 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord_inicial)
     return resul;
 }
 
-int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord_inicial)
+int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
 {
-    return ( verifica_casa_Direita(*estado, coord_inicial ) && verifica_casa_Esquerda(*estado, coord_inicial ) &&
-             verifica_casa_Baixo(*estado, coord_inicial ) && verifica_casa_Acima(*estado, coord_inicial )   );
+    return ( verifica_casa_Direita(*estado, coord) &&  verifica_casa_Esquerda(*estado, coord) &&
+             verifica_casa_Baixo(*estado, coord)   &&  verifica_casa_Acima(*estado, coord)   );
 }
 
-//faltam mais condicoes
+//Funcao que verifica se a peca prente se encontra na posicao 1 ou 2
+int verifica_vencedor(ESTADO estado) 
+{
+    int r;
+    COORDENADA coord = encontra_peca_preta(estado);
+    if  ( ( (coord.linha = 7) && (coord.coluna = 0) ) || 
+          ( (coord.linha = 0) && (coord.coluna = 7) )  )
+        r = 1;
+    else 
+        r = 0;
+
+    return r;
+}
+
+//Funcao principal que verifica se é possivel executar a jogada
 int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
 {
     int resul = 0;
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
+    COORDENADA peca_preta = encontra_peca_preta(estado);
 
-    if (peca == VAZIO && verificar_vizinho(pos_inicial, pos_final ))
-    {
-        resul = 1;
-    }
-    return resul;
-}
-
-
-
-
-int verifica_vencedor(ESTADO estado) {
-    int r;
-    COORDENADA c = encontra_peca_preta(estado);
-    if ((c.linha = 7) && (c.coluna = 0)) || ((c.linha = 0) && (c.coluna = 7))
-        r = 1;
-    else 
-        r = 0;
-
-    return r;
+    return ( peca == VAZIO && verifica_se_e_vizinho(pos_inicial, pos_final ) &&
+             !verifica_vencedor(estado) && verificar_casas_disponiveis(estado, peca_preta) );
 }
