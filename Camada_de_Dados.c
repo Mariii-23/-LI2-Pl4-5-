@@ -69,7 +69,7 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 //FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
 int verificar_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 {
-    int x,y, x_, y_, resul=0;
+    int x, y, x_, y_, resul=0;
     x = coord_inicial.linha;
     y = coord_inicial.coluna; 
     x_ = coord_final.linha; 
@@ -78,6 +78,70 @@ int verificar_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
           y==y_ && ( (x+1)==x_ || (x-1)==x_ ) )
         resul=1;
     return resul;
+}
+
+//FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS
+
+//Verificar casa a direita
+int verifica_casa_Direita(ESTADO *estado, COORDENADA coord_inicial)
+{
+    int x, y, resul=0;
+    x = coord_inicial.linha;
+    y = coord_inicial.coluna;  
+
+    if (x!=7 && estado.tab[x-1][y] == VAZIA )
+    {
+        resul = 1;
+    }
+    return resul;
+}
+
+//Verificar casa a esquerda
+int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord_inicial)
+{
+    int x, y, resul=0;
+    x = coord_inicial.linha;
+    y = coord_inicial.coluna;  
+
+    if (x!=0 && estado.tab[x+1][y] == VAZIA )
+    {
+        resul = 1;
+    }
+    return resul;
+}
+
+//Verificar casa a acima
+int verifica_casa_Acima(ESTADO *estado, COORDENADA coord_inicial)
+{
+    int x, y, resul=0;
+    x = coord_inicial.linha;
+    y = coord_inicial.coluna;  
+
+    if (y!=0 && estado.tab[x][y+1] == VAZIA )
+    {
+        resul = 1;
+    }
+    return resul;
+}
+
+//Verificar casa a baixa
+int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord_inicial)
+{
+    int x, y, resul=0;
+    x = coord_inicial.linha;
+    y = coord_inicial.coluna;  
+
+    if (y!=7 && estado.tab[x][y-1] == VAZIA )
+    {
+        resul = 1;
+    }
+    return resul;
+}
+
+int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord_inicial)
+{
+    return ( verifica_casa_Direita(*estado, coord_inicial ) && verifica_casa_Esquerda(*estado, coord_inicial ) &&
+             verifica_casa_Baixo(*estado, coord_inicial ) && verifica_casa_Acima(*estado, coord_inicial )   );
 }
 
 //faltam mais condicoes
