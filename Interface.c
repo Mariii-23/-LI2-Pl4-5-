@@ -67,3 +67,11 @@ int interpretador(ESTADO *estado) {
     }
     return 1;
 }
+
+void jogador_vencedor(ESTADO estado) {
+    int j, jog_atual = estado.jogador_atual;
+    if (jog_atual == 1) j = 2;
+    else j = 1;
+
+    printf ("O Player %d é o vencedor! Parabéns!", j);
+}
