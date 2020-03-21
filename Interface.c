@@ -68,6 +68,22 @@ int interpretador(ESTADO *estado) {
     return 1;
 }
 
+void comando_ler {
+    FILE *fp;
+    fp = fopen("c:\\jogo.txt", "a");
+    if (fp == NULL) {
+        printf("O ficheiro 'jogo.txt' não abriu.\n")
+    }
+    do {
+    a = fscanf(fp)
+    if (feof(fp)) {
+        break;
+    }
+    printf("%c",c)
+    } while (1)
+    fclose(fp);
+}
+
 void jogador_vencedor(ESTADO estado) {
     int j, jog_atual = estado.jogador_atual;
     if (jog_atual == 1) j = 2;
