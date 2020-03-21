@@ -87,10 +87,10 @@ void comando_ler(FILE fp) {
 
 void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE fp)
 {
-    if (linha==0 && coluna==7 )      printf("2"); 
+    if (linha==0 && coluna==7 )      fprintf(fp,"2"); 
     else
     {   
-        if (linha==7 && coluna==0 )  printf("1");
+        if (linha==7 && coluna==0 )  fprintf(fp,"1");
         else
         {
             switch (tabi[linha][coluna])
