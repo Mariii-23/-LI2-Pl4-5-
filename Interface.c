@@ -68,12 +68,12 @@ int interpretador(ESTADO *estado) {
     return 1;
 }
 
-void comando_ler() {
+void comando_ler(FILE fp) {
 	int a;
-    FILE *fp;
-    fp = fopen("jogo.txt", "r");
-    if (fp == NULL) {
-        printf("O ficheiro 'jogo.txt' não abriu.\n")
+//    FILE *fp;
+//    fp = fopen("jogo.txt", "r");
+//    if (fp == NULL) {
+//        printf("O ficheiro 'jogo.txt' não abriu.\n")
     }
     do {
     a = fscanf(fp)
@@ -126,13 +126,13 @@ void guarda_tabuleiro(ESTADO estado1, FILE fp)
     fprintf(fp, "\n");
 }
 
-void comando_gr(ESTADO estado) {
+void comando_gr(ESTADO estado, FILE fp) {
 	int a;
-    FILE *fp;
-    fp = fopen("jogo.txt", "w");
-    if (fp == NULL) {
-    printf("O ficheiro 'jogo.txt' não abriu.\n")
-    }
+//    FILE *fp;
+//    fp = fopen("jogo.txt", "w");
+//    if (fp == NULL) {
+//    printf("O ficheiro 'jogo.txt' não abriu.\n")
+//    }
     guarda_tabuleiro(*estado, fp)
     fclose(fp);
 }
