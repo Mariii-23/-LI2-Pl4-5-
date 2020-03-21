@@ -68,9 +68,10 @@ int interpretador(ESTADO *estado) {
     return 1;
 }
 
-void comando_ler {
+void comando_ler() {
+	int a;
     FILE *fp;
-    fp = fopen("c:\\jogo.txt", "a");
+    fp = fopen("jogo.txt", "r");
     if (fp == NULL) {
         printf("O ficheiro 'jogo.txt' não abriu.\n")
     }
@@ -81,6 +82,58 @@ void comando_ler {
     }
     printf("%c",c)
     } while (1)
+    fclose(fp);
+}
+
+void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE fp)
+{
+    if (linha==0 && coluna==7 )      printf("2"); 
+    else
+    {   
+        if (linha==7 && coluna==0 )  printf("1");
+        else
+        {
+            switch (tabi[linha][coluna])
+            {
+                case VAZIO : fprintf(fp, "."); break;
+                case BRANCA : fprintf(fp, "#"); break;
+                case PRETA : fprintf(fp, "*"); break;
+                default: break;
+            } 
+        } 
+    }
+}
+
+void guarda_Linha(CASA tabi[8][8], int linha, FILE fp)
+{
+    int i;
+    for(i=0; i<8; i++)
+    {
+        guarda_Casa( tabi, linha, i, fp);
+    }
+    fprintf(fp, "\n");
+}
+
+void guarda_tabuleiro(ESTADO estado1, FILE fp)
+{
+    int i=0;
+
+    putchar('\n');
+    for (i=0; i<8; i++)
+    {
+        guarda_Linha( estado1.tab, i, fp);
+    }
+    fprintf(fp, "\n");
+}
+
+void comando_gr(ESTADO estado) {
+	int a;
+    FILE *fp;
+    fp = fopen("jogo.txt", "w");
+    if (fp == NULL) {
+    printf("O ficheiro 'jogo.txt' não abriu.\n")
+    }
+    guarda_tabuleiro(*estado, fp)
     fclose(fp);
 }
 
