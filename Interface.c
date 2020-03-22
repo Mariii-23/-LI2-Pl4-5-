@@ -3,103 +3,31 @@
 #include <string.h>
 #include "Camada_de_Dados.h"
 #include "Logica_do_programa.h"
-
-
-/**
-\brief Função que imprime cada casa do tabuleiro.
-*/
-void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
-{
-    if (linha==0 && coluna==7 )      printf("2"); 
-    else
-    {   
-        if (linha==7 && coluna==0 )  printf("1");
-        else
-        {
-            switch (tabi[linha][coluna])
-            {
-                case VAZIO : printf("."); break;
-                case BRANCA : printf("#"); break;
-                case PRETA : printf("*"); break;
-                default: break;
-            } 
-        } 
-    }
-}
-
-/**
-\brief Função que imprime cada linha do tabuleiro.
-*/
-void desenha_Linha(CASA tabi[8][8], int linha)
-{
-    int i;
-    for(i=0; i<8; i++)
-    {
-        desenha_Casa( tabi, linha, i);
-    }
-    putchar('\n');
-}
-
-/**
-\brief Função que desenha o estado do jogo.
-*/
-void mostrar_tabuleiro(ESTADO estado1)
-{
-    int i=0;
-
-    putchar('\n');
-    for (i=0; i<8; i++)
-    {
-        desenha_Linha( estado1.tab, i);
-    }
-    putchar('\n');
-
-}
-
-
-/**
-\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
-*/
-void comando_ler(FILE fp) {
-	int a;
-    do {
-    a = fscanf(fp, const char);
-    if (feof(fp)) {
-        break;
-    }
-    printf("%c",c);
-    } while (1);
-}
+#include "dados.h"
 
 /**
 \brief Guarda no ficheiro cada casa do jogo.
 */
-void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE fp)
+void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE *fp)
 {
-    if (linha==0 && coluna==7 )      fprintf(fp,"2"); 
-    else
-    {   
-        if (linha==7 && coluna==0 )  fprintf(fp,"1");
-        else
-        {
-            switch (tabi[linha][coluna])
-            {
-                case VAZIO : fprintf(fp, "."); break;
-                case BRANCA : fprintf(fp, "#"); break;
-                case PRETA : fprintf(fp, "*"); break;
-                default: break;
-            } 
-        } 
-    }
-}
+    switch (tabi[linha][coluna])
+    {
+        case VAZIO : fprintf(fp, "."); break;
+        case BRANCA : fprintf(fp, "#"); break;
+        case PRETA : fprintf(fp, "*"); break;
+        case UM : fprintf(fp, "1"); break;
+        case DOIS : fprintf(fp, "2"); break;
+        default: break;
+    } 
+} 
 
 /**
 \brief Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa.
 */
-void guarda_Linha(CASA tabi[8][8], int linha, FILE fp)
+void guarda_Linha(CASA tabi[8][8], int linha, FILE *fp)
 {
     int i;
-    for(i=0; i<8; i++)
+    for(i=8; i>0; i--)
     {
         guarda_Casa( tabi, linha, i, fp);
     }
@@ -109,25 +37,43 @@ void guarda_Linha(CASA tabi[8][8], int linha, FILE fp)
 /**
 \brief Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha.
 */
-void guarda_tabuleiro(ESTADO estado1, FILE fp)
+void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 {
-    int i=0;
+    int i;
 
-    putchar('\n');
-    for (i=0; i<8; i++)
+    fprintf(fp,"\n abcdefgh");
+    for (i=8; i>0; i--)
     {
+        fprintf(fp,"%d ", i);
         guarda_Linha( estado1.tab, i, fp);
     }
     fprintf(fp, "\n");
 }
 
+/// COMANDOS ////
+
+/**
+\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
+*/
+void comando_ler(FILE *fp) {
+	char a;
+    do {
+    fscanf(fp, "%c", a);
+    if (feof(fp)) {
+        break;
+    }
+    printf("%c",a);
+    } while (1);
+}
+
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
-void comando_gr(ESTADO estado, FILE fp) {
-    guarda_tabuleiro(*estado, fp);
+void comando_gr(ESTADO estado, FILE *fp) {
+    guarda_tabuleiro(estado, fp);
 }
 
+/// INTERPRETADOR ///
 
 /**
 \brief Intrepretador do jogo.
@@ -136,36 +82,45 @@ int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
 
+/*Imprime o tabuleiro de acordo com o estado do jogo */
     mostrar_tabuleiro( *estado );
 
+/* Termina o jogo por algum motivo */
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
 
-    if(strlen(linha) == 1 && sscanf(linha, "%[Q]", Q) == 1){
+/* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
+    if(strlen(linha) == 1 && sscanf(linha, "%[Q]") == 1){
     	return 0;
     }
 
-    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]", l, e, r) == 3){
+/* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
+    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]") == 3){
     FILE *fp;
     fp = fopen("jogo.txt", "r");
     if (fp == NULL) {
         printf("O ficheiro 'jogo.txt' não abriu.\n");
     	}
-
+/* Lê o tabuleiro que está no ficheiro e imprime. */
     comando_ler(fp);
+/* Fecha o ficheiro */
     fclose(fp);
     }
 
-        if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]", g, r) == 2){
+/* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
+    if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]") == 2){
     FILE *fp;
     fp = fopen("jogo.txt", "w");
     if (fp == NULL) {
         printf("O ficheiro 'jogo.txt' não abriu.\n");
     	}
 
+/* Grava o tabuleiro no ficheiro. */
     comando_gr(*estado, fp);
+/* Fecha novamente o documento */
     fclose(fp);
     }
+
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
@@ -177,8 +132,7 @@ int interpretador(ESTADO *estado) {
 }
 
 
-
-
+/// FIM DO JOGO ///
 
 /**
 \brief Função que determina o vencedor do jogo.
@@ -190,6 +144,8 @@ void jogador_vencedor(ESTADO estado) {
 
     printf ("O Player %d é o vencedor! Parabéns!", j);
 }
+
+
 
 
 /**

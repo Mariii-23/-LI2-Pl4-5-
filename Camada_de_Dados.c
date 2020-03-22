@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Logica_do_programa.h"
 #include "Interface.h"
+#include "dados.h"
 
 
 /**
@@ -11,13 +12,21 @@
 void casas_inicial(CASA tabi[8][8])
 {
     int i, j;
-    for(i=0; i<8; i++)
+    for(i=8; i>0; i--)
     {
-        for(j=0; j<8; j++)
+        for(j=8; j>0; j--)
         {
-            if (i==3 && j==4)
+            if (i==4 && j==4)
             {
                 tabi[i][j] = PRETA;
+            }
+            if (i==0 && j==7)
+            {
+                tabi[i][j] = DOIS;
+            }
+            if(i==7 && j==0)
+            {
+                tabi[i][j] = UM;
             }
             else
             {
@@ -33,11 +42,12 @@ void casas_inicial(CASA tabi[8][8])
 ESTADO *inicializador_estado()
 {
     ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
-    casas_inicial( estado->tab);
-   // estado.jogadas = NULL;
+    casas_inicial(estado->tab);
     estado->num_jogadas = 0;
     estado->jogador_atual = 1;
-
+    estado->num_comando = 1;
+    estado->ultima_jogada = {4,4};  
+    estado->jogadas = NULL;
     return estado;
 }
 
@@ -116,7 +126,7 @@ int verifica_casa_Direita(ESTADO *estado, COORDENADA coord)
     x = coord.linha;
     y = coord.coluna;  
 
-    if (x!=7 && estado.tab[x-1][y] == VAZIA )
+    if (x!=7 && estado->tab[x-1][y] == VAZIO )
     {
         resul = 1;
     }
@@ -132,7 +142,7 @@ int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord)
     x = coord.linha;
     y = coord.coluna;  
 
-    if (x!=0 && estado.tab[x+1][y] == VAZIA )
+    if (x!=0 && estado->tab[x+1][y] == VAZIO )
     {
         resul = 1;
     }
@@ -148,7 +158,7 @@ int verifica_casa_Acima(ESTADO *estado, COORDENADA coord)
     x = coord.linha;
     y = coord.coluna;  
 
-    if (y!=0 && estado.tab[x][y+1] == VAZIA )
+    if (y!=0 && estado->tab[x][y+1] == VAZIO )
     {
         resul = 1;
     }
@@ -164,7 +174,7 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
     x = coord.linha;
     y = coord.coluna;  
 
-    if (y!=7 && estado.tab[x][y-1] == VAZIA )
+    if (y!=7 && estado->tab[x][y-1] == VAZIO )
     {
         resul = 1;
     }

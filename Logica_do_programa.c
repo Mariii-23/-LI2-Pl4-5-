@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Camada_de_Dados.h"
+#include "dados.h"
 
 /**
 \brief Função que altera o estado da peça.
@@ -21,6 +22,27 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final
     altera_estado_peca(estado, pos_inicial , BRANCA);
     altera_estado_peca(estado, pos_final, PRETA);
 }
+
+/**
+\brief Função que atualiza o estado a cada jogada.
+*/
+ESTADO atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
+{
+    int jogador_mudar;
+    if (estado.jogador_atual == 1)
+        jogador_mudar = 2;
+    else
+        jogador_mudar = 1;
+
+
+    troca_posicoes(estado, estado->ultima_jogada, coord_mudar);
+    estado->jogadas = jogadas
+    estado->num_jogadas = 
+
+    estado->jogador_atual = jogador_mudar;
+    estado->num_comando = (num_comando + 1);
+    estado->ultima_jogada = 
+
 
 /**
 \brief Função que altera o estado do jogo cosoante a jogada efetuada.
