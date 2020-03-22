@@ -46,8 +46,11 @@ ESTADO *inicializador_estado()
     estado->num_jogadas = 0;
     estado->jogador_atual = 1;
     estado->num_comando = 1;
-    estado->ultima_jogada = {4,4};  
-    estado->jogadas = NULL;
+
+    estado->ultima_jogada.coluna = 4;  
+    estado->ultima_jogada.linha = 4;  
+
+   // estado->jogadas = NULL;
     return estado;
 }
 
@@ -186,8 +189,8 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
 */
 int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
 {
-    return ( verifica_casa_Direita(*estado, coord) &&  verifica_casa_Esquerda(*estado, coord) &&
-             verifica_casa_Baixo(*estado, coord)   &&  verifica_casa_Acima(*estado, coord)   );
+    return ( verifica_casa_Direita(estado, coord) &&  verifica_casa_Esquerda(estado, coord) &&
+             verifica_casa_Baixo(estado, coord)   &&  verifica_casa_Acima(estado, coord)   );
 }
 
 /**
@@ -210,6 +213,6 @@ int verifica_vencedor(ESTADO estado)
 */
 int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
 {
-    COORDENADA peca_preta = encontra_peca_preta(estado);
-    return ( !verifica_vencedor(estado) && verificar_casas_disponiveis(estado, peca_preta) );
+    COORDENADA peca_preta = estado->ultima_jogada;
+    return ( !verifica_vencedor(*estado) && verificar_casas_disponiveis(estado, peca_preta) );
 }
