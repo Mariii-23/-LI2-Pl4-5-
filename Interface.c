@@ -56,52 +56,6 @@ void mostrar_tabuleiro(ESTADO estado1)
 
 }
 
-/**
-\brief Intrepretador do jogo.
-*/
-int interpretador(ESTADO *estado) {
-    char linha[BUF_SIZE];
-    char col[2], lin[2];
-
-    mostrar_tabuleiro( *estado );
-
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;
-
-    if(strlen(linha) == 1 && sscanf(linha, "%[Q]", Q) == 1){
-    	return 0;
-    }
-
-    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]", l, e, r) == 3){
-    FILE *fp;
-    fp = fopen("jogo.txt", "r");
-    if (fp == NULL) {
-        printf("O ficheiro 'jogo.txt' não abriu.\n")
-    	}
-
-    comando_ler(fp);
-    fclose(fp);
-    }
-
-        if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]", g, r) == 2){
-    FILE *fp;
-    fp = fopen("jogo.txt", "w");
-    if (fp == NULL) {
-        printf("O ficheiro 'jogo.txt' não abriu.\n")
-    	}
-
-    comando_gr(*estado, fp);
-    fclose(fp);
-    }
-
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-    {
-        COORDENADA coord = {*col - 'a', *lin - '1'};
-        jogar(estado, coord);
-        mostrar_tabuleiro(*estado);
-    }
-    return 1;
-}
 
 /**
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
@@ -109,12 +63,12 @@ int interpretador(ESTADO *estado) {
 void comando_ler(FILE fp) {
 	int a;
     do {
-    a = fscanf(fp)
+    a = fscanf(fp, const char);
     if (feof(fp)) {
         break;
     }
-    printf("%c",c)
-    } while (1)
+    printf("%c",c);
+    } while (1);
 }
 
 /**
@@ -171,8 +125,60 @@ void guarda_tabuleiro(ESTADO estado1, FILE fp)
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO estado, FILE fp) {
-    guarda_tabuleiro(*estado, fp)
+    guarda_tabuleiro(*estado, fp);
 }
+
+
+/**
+\brief Intrepretador do jogo.
+*/
+int interpretador(ESTADO *estado) {
+    char linha[BUF_SIZE];
+    char col[2], lin[2];
+
+    mostrar_tabuleiro( *estado );
+
+    if(fgets(linha, BUF_SIZE, stdin) == NULL)
+        return 0;
+
+    if(strlen(linha) == 1 && sscanf(linha, "%[Q]", Q) == 1){
+    	return 0;
+    }
+
+    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]", l, e, r) == 3){
+    FILE *fp;
+    fp = fopen("jogo.txt", "r");
+    if (fp == NULL) {
+        printf("O ficheiro 'jogo.txt' não abriu.\n");
+    	}
+
+    comando_ler(fp);
+    fclose(fp);
+    }
+
+        if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]", g, r) == 2){
+    FILE *fp;
+    fp = fopen("jogo.txt", "w");
+    if (fp == NULL) {
+        printf("O ficheiro 'jogo.txt' não abriu.\n");
+    	}
+
+    comando_gr(*estado, fp);
+    fclose(fp);
+    }
+
+    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
+    {
+        COORDENADA coord = {*col - 'a', *lin - '1'};
+        jogar(estado, coord);
+        mostrar_tabuleiro(*estado);
+    }
+    return 1;
+}
+
+
+
+
 
 /**
 \brief Função que determina o vencedor do jogo.
