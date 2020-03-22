@@ -59,6 +59,32 @@ int interpretador(ESTADO *estado) {
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
 
+    if(strlen(linha) == 1 && sscanf(linha, "%[Q]", Q) == 1){
+    	return 0;
+    }
+
+    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]", l, e, r) == 3){
+    FILE *fp;
+    fp = fopen("jogo.txt", "r");
+    if (fp == NULL) {
+        printf("O ficheiro 'jogo.txt' não abriu.\n")
+    	}
+
+    comando_ler(fp);
+
+    }
+
+        if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]", g, r) == 2){
+    FILE *fp;
+    fp = fopen("jogo.txt", "w");
+    if (fp == NULL) {
+        printf("O ficheiro 'jogo.txt' não abriu.\n")
+    	}
+
+    comando_gr(*estado, fp);
+
+    }
+
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
         COORDENADA coord = {*col - 'a', *lin - '1'};
