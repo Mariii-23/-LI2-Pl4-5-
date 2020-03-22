@@ -57,12 +57,13 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 */
 void comando_ler(FILE *fp) {
 	char a;
-    do {
-    fscanf(fp, "%c", a);
-    if (feof(fp)) {
-        break;
-    }
-    printf("%c",a);
+    do 
+    {
+        fscanf(fp, "%c", a);
+        if (feof(fp)) {
+            break;
+        }
+        printf("%c",a);
     } while (1);
 }
 
@@ -109,24 +110,24 @@ int interpretador(ESTADO *estado) {
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
     if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]") == 2){
-    FILE *fp;
-    fp = fopen("jogo.txt", "w");
-    if (fp == NULL) {
-        printf("O ficheiro 'jogo.txt' não abriu.\n");
-    	}
+        FILE *fp;
+        fp = fopen("jogo.txt", "w");
+        if (fp == NULL) 
+            {
+                printf("O ficheiro 'jogo.txt' não abriu.\n");
+    	    }
 
 /* Grava o tabuleiro no ficheiro. */
-    comando_gr(*estado, fp);
+        comando_gr(*estado, fp);
 /* Fecha novamente o documento */
-    fclose(fp);
+        fclose(fp);
     }
-
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(estado, coord);
-        mostrar_tabuleiro(*estado);
+        guarda_tabuleiro(estado, *fp);
     }
     return 1;
 }
@@ -146,15 +147,10 @@ void jogador_vencedor(ESTADO estado) {
 }
 
 
-
-
 /**
 \brief Prompt do jogo.
 */
-void prompt(ESTADO estado) {
-    printf("  abcdefgh");
-
-
-
-    printf("\n Player_%d Jogada_%d -> ", estado.jogador_atual, estado.num_jogadas);
+void prompt(ESTADO estado) {  
+    guarda_tabuleiro(estado, fp);
+    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
 }
