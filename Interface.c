@@ -5,7 +5,9 @@
 #include "Logica_do_programa.h"
 
 
-//DESENHA CADA CASA
+/**
+\brief Função que imprime cada casa do tabuleiro.
+*/
 void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
 {
     if (linha==0 && coluna==7 )      printf("2"); 
@@ -25,7 +27,9 @@ void desenha_Casa(CASA tabi[8][8], int linha, int coluna)
     }
 }
 
-//DESENHA CADA LINHA
+/**
+\brief Função que imprime cada linha do tabuleiro.
+*/
 void desenha_Linha(CASA tabi[8][8], int linha)
 {
     int i;
@@ -36,7 +40,9 @@ void desenha_Linha(CASA tabi[8][8], int linha)
     putchar('\n');
 }
 
-//DESENHA ESTADO DO JOGO
+/**
+\brief Função que desenha o estado do jogo.
+*/
 void mostrar_tabuleiro(ESTADO estado1)
 {
     int i=0;
@@ -50,6 +56,9 @@ void mostrar_tabuleiro(ESTADO estado1)
 
 }
 
+/**
+\brief Intrepretador do jogo.
+*/
 int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
@@ -165,6 +174,9 @@ void comando_gr(ESTADO estado, FILE fp) {
     guarda_tabuleiro(*estado, fp)
 }
 
+/**
+\brief Função que determina o vencedor do jogo.
+*/
 void jogador_vencedor(ESTADO estado) {
     int j, jog_atual = estado.jogador_atual;
     if (jog_atual == 1) j = 2;
@@ -174,7 +186,9 @@ void jogador_vencedor(ESTADO estado) {
 }
 
 
-
+/**
+\brief Prompt do jogo.
+*/
 void prompt(ESTADO estado) {
     printf("  abcdefgh");
 
