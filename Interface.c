@@ -96,10 +96,6 @@ int interpretador(ESTADO *estado) {
 
 void comando_ler(FILE fp) {
 	int a;
-//    FILE *fp;
-//    fp = fopen("jogo.txt", "r");
-//    if (fp == NULL) {
-//        printf("O ficheiro 'jogo.txt' não abriu.\n")
     }
     do {
     a = fscanf(fp)
@@ -153,12 +149,6 @@ void guarda_tabuleiro(ESTADO estado1, FILE fp)
 }
 
 void comando_gr(ESTADO estado, FILE fp) {
-	int a;
-//    FILE *fp;
-//    fp = fopen("jogo.txt", "w");
-//    if (fp == NULL) {
-//    printf("O ficheiro 'jogo.txt' não abriu.\n")
-//    }
     guarda_tabuleiro(*estado, fp)
     fclose(fp);
 }
