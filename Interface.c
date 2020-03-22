@@ -71,7 +71,7 @@ int interpretador(ESTADO *estado) {
     	}
 
     comando_ler(fp);
-
+    fclose(fp);
     }
 
         if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]", g, r) == 2){
@@ -82,7 +82,7 @@ int interpretador(ESTADO *estado) {
     	}
 
     comando_gr(*estado, fp);
-
+    fclose(fp);
     }
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
@@ -94,9 +94,11 @@ int interpretador(ESTADO *estado) {
     return 1;
 }
 
+/**
+\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
+*/
 void comando_ler(FILE fp) {
 	int a;
-    }
     do {
     a = fscanf(fp)
     if (feof(fp)) {
@@ -104,9 +106,11 @@ void comando_ler(FILE fp) {
     }
     printf("%c",c)
     } while (1)
-    fclose(fp);
 }
 
+/**
+\brief Guarda no ficheiro cada casa do jogo.
+*/
 void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE fp)
 {
     if (linha==0 && coluna==7 )      fprintf(fp,"2"); 
@@ -126,6 +130,9 @@ void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE fp)
     }
 }
 
+/**
+\brief Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa.
+*/
 void guarda_Linha(CASA tabi[8][8], int linha, FILE fp)
 {
     int i;
@@ -136,6 +143,9 @@ void guarda_Linha(CASA tabi[8][8], int linha, FILE fp)
     fprintf(fp, "\n");
 }
 
+/**
+\brief Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha.
+*/
 void guarda_tabuleiro(ESTADO estado1, FILE fp)
 {
     int i=0;
@@ -148,9 +158,11 @@ void guarda_tabuleiro(ESTADO estado1, FILE fp)
     fprintf(fp, "\n");
 }
 
+/**
+\brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
+*/
 void comando_gr(ESTADO estado, FILE fp) {
     guarda_tabuleiro(*estado, fp)
-    fclose(fp);
 }
 
 void jogador_vencedor(ESTADO estado) {
