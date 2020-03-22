@@ -74,6 +74,15 @@ void comando_gr(ESTADO estado, FILE *fp) {
     guarda_tabuleiro(estado, fp);
 }
 
+/**
+\brief Prompt do jogo.
+*/
+void prompt(ESTADO estado, FILE *fp) {  
+    guarda_tabuleiro(estado, fp);
+    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
+}
+
+
 /// INTERPRETADOR ///
 
 /**
@@ -125,11 +134,16 @@ int interpretador(ESTADO *estado) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
+        FILE *fp;
+        fp = fopen("jogo.txt", "w");
+
         COORDENADA coord = {*col - 'a', *lin - '1'};
-         if (jogar(estado, coord) )
-         {
-             prompt(estado);
-         }
+        if (jogar(estado, coord) )
+        {
+            atualiza_estado(estado, coord);
+            prompt(*estado, fp);
+        }
+        fclose(fp);
     }
     return 1;
 }
@@ -146,13 +160,4 @@ void jogador_vencedor(ESTADO estado) {
     else j = 1;
 
     printf ("O Player %d é o vencedor! Parabéns!", j);
-}
-
-
-/**
-\brief Prompt do jogo.
-*/
-void prompt(ESTADO estado) {  
-    guarda_tabuleiro(estado, fp);
-    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
 }
