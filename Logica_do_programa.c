@@ -3,7 +3,9 @@
 #include <string.h>
 #include "Camada_de_Dados.h"
 
-//FUNCAO QUE ALTERA O ESTADO DA PECA
+/**
+\brief Função que altera o estado da peça.
+*/
 void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 {
     int x = coordenada.linha;
@@ -11,13 +13,18 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
     estado->tab[x][y] = mudar;
 }
 
-//FUNCAO QUE ALTERA O ESTADO DAS CASAS DA POSICAO DE ONDE ESTAVA PARA O QUAL SE PRETENDIA MOVER
+/**
+\brief Função que altera o estado da casa onde estava, para a qual se pretendia mover.
+*/
 void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final)
 {
     altera_estado_peca(estado, pos_inicial , BRANCA);
     altera_estado_peca(estado, pos_final, PRETA);
 }
 
+/**
+\brief Função que altera o estado do jogo cosoante a jogada efetuada.
+*/
 int jogar(ESTADO *estado, COORDENADA coord)
 {
     int resul=0;

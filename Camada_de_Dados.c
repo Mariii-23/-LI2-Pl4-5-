@@ -5,7 +5,9 @@
 #include "Interface.h"
 
 
-//DEFINE O ESTADO INICIAL
+/**
+\brief Função que define cada casa do jogo quando este é iniciado.
+*/
 void casas_inicial(CASA tabi[8][8])
 {
     int i, j;
@@ -25,7 +27,9 @@ void casas_inicial(CASA tabi[8][8])
     }  
 }
 
-//ESTADO INICIAL
+/**
+\brief Função que define o estado inicial do jogo.
+*/
 ESTADO *inicializador_estado()
 {
     ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
@@ -37,7 +41,9 @@ ESTADO *inicializador_estado()
     return estado;
 }
 
-//Procura onde se encotra a peca preta
+/**
+\brief Função que retorna a posição da peça preta no tabuleiro.
+*/
 COORDENADA encontra_peca_preta(ESTADO estado)
 {
     int i,j;
@@ -57,7 +63,9 @@ COORDENADA encontra_peca_preta(ESTADO estado)
     return coord;
 }
 
-//FUNCAO QUE DEVLOVE O ESTADO DE UMA PECA CONSOANTE AS COORDENADAS DADAS
+/**
+\brief Função que devolve o estado de cada peça consoante as coordenadas dadas.
+*/
 CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 {
     int x = coordenada.linha;
@@ -66,7 +74,9 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
     return peca;
 }
 
-//FUNCAO QUE VERIFICA SE A JOGADA É POSSIVEL
+/**
+\brief Função que verifica se a jogada é possível.
+*/
 int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 {
     int x, y, x_, y_, resul=0;
@@ -82,7 +92,9 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     return resul;
 }
 
-//Funcao principal que verifica se é possivel executar a jogada
+/**
+\brief Função principal que verifica se é possível executar a jogada.
+*/
 int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
 {
     int resul = 0;
@@ -95,7 +107,9 @@ int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
 
 //FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS AO REDOR DA PECA PRETA
 
-//Verificar casa a direita
+/**
+\brief Função que verifica se a casa da direita está disponível para se mover para lá.
+*/
 int verifica_casa_Direita(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
@@ -109,7 +123,9 @@ int verifica_casa_Direita(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-//Verificar casa a esquerda
+/**
+\brief Função que verifica se a casa da esquerda está disponível para se mover para lá.
+*/
 int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
@@ -123,7 +139,9 @@ int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-//Verificar casa a acima
+/**
+\brief Função que verifica se a casa acima está disponível para se mover para lá.
+*/
 int verifica_casa_Acima(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
@@ -137,7 +155,9 @@ int verifica_casa_Acima(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-//Verificar casa a baixa
+/**
+\brief Função que verifica se a casa abaixo está disponível para se mover para lá.
+*/
 int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul=0;
@@ -151,14 +171,18 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-//funcao principal
+/**
+\brief Função princilap que verifica se a casa pretendida está disponível para se mover para lá.
+*/
 int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
 {
     return ( verifica_casa_Direita(*estado, coord) &&  verifica_casa_Esquerda(*estado, coord) &&
              verifica_casa_Baixo(*estado, coord)   &&  verifica_casa_Acima(*estado, coord)   );
 }
 
-//Funcao que verifica se a peca prente se encontra na posicao 1 ou 2
+/**
+\brief Função que verifica se a peça preta se encontra na casa 1 ou 2.
+*/
 int verifica_vencedor(ESTADO estado) 
 {
     int r;
@@ -171,7 +195,9 @@ int verifica_vencedor(ESTADO estado)
     return r;
 }
 
-//Funcao principal que verifica se existe vencedor
+/**
+\brief Função principal que verifica se existe vencedor.
+*/
 int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
 {
     COORDENADA peca_preta = encontra_peca_preta(estado);
