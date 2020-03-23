@@ -69,14 +69,14 @@ void comando_ler(FILE *fp) {
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
-    guarda_tabuleiro(estado, fp);
+    guarda_tabuleiro(*estado, fp);
 }
 
 /**
 \brief Prompt do jogo.
 */
-void prompt(ESTADO estado, FILE *fp) {  
-    guarda_tabuleiro(estado, fp);
+void prompt(ESTADO *estado, FILE *fp) {  
+    guarda_tabuleiro(*estado, fp);
     fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
 }
 
@@ -91,8 +91,6 @@ int interpretador(ESTADO *estado) {
     char filename[BUF_SIZE];
     char col[2], lin[2];
 
-/*Imprime o tabuleiro de acordo com o estado do jogo */
-    mostrar_tabuleiro( *estado );
 
 /* Termina o jogo por algum motivo */
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
