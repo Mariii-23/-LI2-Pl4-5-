@@ -37,15 +37,13 @@ void guarda_Linha(CASA tabi[8][8], int linha, FILE *fp)
 /**
 \brief Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha.
 */
-void guarda_tabuleiro(ESTADO estado1, FILE *fp)
+void guarda_tabuleiro(ESTADO *estado1, FILE *fp)
 {
     int i;
 
-    fprintf(fp,"\n abcdefgh");
     for (i=8; i>0; i--)
     {
-        fprintf(fp,"%d ", i);
-        guarda_Linha( estado1.tab, i, fp);
+        guarda_Linha( estado1->tab, i, fp);
     }
     fprintf(fp, "\n");
 }
@@ -70,7 +68,7 @@ void comando_ler(FILE *fp) {
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
-void comando_gr(ESTADO estado, FILE *fp) {
+void comando_gr(ESTADO *estado, FILE *fp) {
     guarda_tabuleiro(estado, fp);
 }
 
@@ -90,6 +88,7 @@ void prompt(ESTADO estado, FILE *fp) {
 */
 int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
+    char filename[BUF_SIZE];
     char col[2], lin[2];
 
 /*Imprime o tabuleiro de acordo com o estado do jogo */
@@ -100,16 +99,16 @@ int interpretador(ESTADO *estado) {
         return 0;
 
 /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-    if(strlen(linha) == 1 && sscanf(linha, "%[Q]") == 1){
+    if(strlen(linha) == 1 && sscanf(linha, "Q") == 1){
     	return 0;
     }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
-    if(strlen(linha) == 3 && sscanf(linha, "%[l]%[e]%[r]") == 3){
+    if(sscanf(linha, "ler %s",filename) == 1){
     FILE *fp;
-    fp = fopen("jogo.txt", "r");
+    fp = fopen(filename, "r");
     if (fp == NULL) {
-        printf("O ficheiro 'jogo.txt' não abriu.\n");
+        printf("O ficheiro não abriu.\n");
     	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
     comando_ler(fp);
@@ -118,16 +117,16 @@ int interpretador(ESTADO *estado) {
     }
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
-    if(strlen(linha) == 2 && sscanf(linha, "%[g]%[r]") == 2){
+    if(sscanf(linha, "gr %s",filename) == 1){
         FILE *fp;
-        fp = fopen("jogo.txt", "w");
+        fp = fopen(filename, "w");
         if (fp == NULL) 
             {
-                printf("O ficheiro 'jogo.txt' não abriu.\n");
+                printf("O ficheiro não abriu.\n");
     	    }
 
 /* Grava o tabuleiro no ficheiro. */
-        comando_gr(*estado, fp);
+        comando_gr(estado, fp);
 /* Fecha novamente o documento */
         fclose(fp);
     }

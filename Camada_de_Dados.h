@@ -1,8 +1,7 @@
-
 #ifndef ___CAMADA_DE_DADOS___
 #define ___CAMADA_DE_DADOS___
 #define BUF_SIZE 1024
-
+#include "dados.h"
 
 ESTADO *inicializador_estado();
 COORDENADA encontra_peca_preta(ESTADO estado);
