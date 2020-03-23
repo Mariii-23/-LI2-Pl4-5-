@@ -8,7 +8,6 @@ Jéssica Macedo Fernandes - a93318
 Mariana Dinis Rodrigues - a93229
 Vasco Oliveira Matos - a93206
 
-link slack - https://join.slack.com/t/li2-pl4-jogo/shared_invite/zt-ctkwgtpy-HNZFL8LLhYM1mMupg~vxFQ
 
 Para o início do trabalho seguimos os passos do "Guião aula 5" disponiblizado pelos docentes de LI2.
 Assim, criamos os vários ficheiros .c, "camada de dados", "Interface" e "lógica do programa", e os seus respetivos .h. 
@@ -25,3 +24,6 @@ por linha e por coluna(ao "imprimir" a linha, é "imprimido" cada elemento das c
 Existe ainda o ficheiro "main" do nosso programa onde é inicializado o jogo, e é chamada a funçao "interpertador" com o argumento "estado"
 afim de a camada de "Interface" imprimir o tabuleiro e trabalhar com as restantes funções do programa produzindo
 o jogo Rastos, posteriormente funcional.
+
+Consoante o guião desta semana, o guião 6, foi necessário acrescentar ao nosso jogo as funções para verificar o jogador vencedor, que procura se a peça preta está na casa 1 ou 2, ou então, caso não seja possível esta movimentar-se, determina o vencedor. Implementamos também a função Q que consoante a decisão do jogador termina o jogo. O comado ler e gr recebem como argumento o ficheiro “jogo.txt” onde vão ler o tabuleiro e grava-lo, respectivamente. Criamos também o prompt com o objetivo de gravar o tabuleiro e as jogadas efetuadas, e o jogador que as efetuou.
+Todo o jogo foi documentado com o Doxygen seguindo o exemplo dado pelos docentes, e corrido o comando doxigen para gerar a documentação.

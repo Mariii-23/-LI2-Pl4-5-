@@ -56,14 +56,14 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
 void comando_ler(FILE *fp) {
-	char a;
+	char *a;
     do 
     {
         fscanf(fp, "%c", a);
         if (feof(fp)) {
             break;
         }
-        printf("%c",a);
+        printf("%c",a[0]);
     } while (1);
 }
 
