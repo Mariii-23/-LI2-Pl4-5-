@@ -6,17 +6,63 @@
 #include "dados.h"
 
 /**
-\brief Guarda no ficheiro cada casa do jogo.
+\brief Imprime cada casa do jogo.
 */
-void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE *fp)
+void imprime_Casa(CASA tabi[8][8], int linha, int coluna)
 {
     switch (tabi[linha][coluna])
     {
-        case VAZIO : fprintf(fp, "."); break;
-        case BRANCA : fprintf(fp, "#"); break;
-        case PRETA : fprintf(fp, "*"); break;
-        case UM : fprintf(fp, "1"); break;
-        case DOIS : fprintf(fp, "2"); break;
+        case '.' : printf("."); break;
+        case '#' : printf("#"); break;
+        case '*' : printf("*"); break;
+        case '1' : printf("1"); break;
+        case '2' : printf("2"); break;
+        default: break;
+    } 
+} 
+
+/**
+\brief Imprime cada linha do jogo, recorrendo à função imprime_casa.
+*/
+void imprime_Linha(CASA tabi[8][8], int linha)
+{
+    int i;
+    for(i=0; i<=7; i++)
+    {
+        imprime_Casa( tabi, linha, i);
+    }
+    printf("\n");
+}
+
+/**
+\brief Imprime o tabuleiro do jogo, recorrendo à função guarda_linha.
+*/
+void imprime_tabuleiro(ESTADO *estado)
+{
+    int i, linha=8;
+    printf("\n  abcdefgh\n");
+    for (i=7; i>=0; i--,linha--)
+    {
+        printf("%d ",linha);
+        imprime_Linha( estado->tab, i);
+    }
+    printf("\n");
+    printf("# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
+
+}
+
+/**
+\brief Guarda no ficheiro cada casa do jogo.
+*/
+void guarda_Casa(CASA tabi[8][8],int linha, int coluna, FILE *fp)
+{
+    switch (tabi[linha][coluna])
+    {
+        case '.' : fprintf(fp, "."); break;
+        case '#' : fprintf(fp, "#"); break;
+        case '*' : fprintf(fp, "*"); break;
+        case '1' : fprintf(fp, "1"); break;
+        case '2' : fprintf(fp, "2"); break;
         default: break;
     } 
 } 
@@ -24,10 +70,10 @@ void guarda_Casa(CASA tabi[8][8], int linha, int coluna, FILE *fp)
 /**
 \brief Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa.
 */
-void guarda_Linha(CASA tabi[8][8], int linha, FILE *fp)
+void guarda_Linha(CASA tabi[8][8],int linha, FILE *fp)
 {
     int i;
-    for(i=8; i>0; i--)
+    for(i=0; i<=7; i++)
     {
         guarda_Casa( tabi, linha, i, fp);
     }
@@ -37,13 +83,13 @@ void guarda_Linha(CASA tabi[8][8], int linha, FILE *fp)
 /**
 \brief Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha.
 */
-void guarda_tabuleiro(ESTADO *estado1, FILE *fp)
+void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 {
     int i;
 
-    for (i=8; i>0; i--)
+    for (i=7; i>=0; i--)
     {
-        guarda_Linha( estado1->tab, i, fp);
+        guarda_Linha( estado1.tab, i, fp);
     }
     fprintf(fp, "\n");
 }
@@ -75,8 +121,9 @@ void comando_gr(ESTADO *estado, FILE *fp) {
 /**
 \brief Prompt do jogo.
 */
-void prompt(ESTADO *estado, FILE *fp) {  
-    guarda_tabuleiro(*estado, fp);
+void prompt(ESTADO estado, FILE *fp) {  
+    //imprime_tabuleiro(estado);
+    guarda_tabuleiro(estado, fp);
     fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
 }
 
@@ -91,6 +138,7 @@ int interpretador(ESTADO *estado) {
     char filename[BUF_SIZE];
     char col[2], lin[2];
 
+    imprime_tabuleiro(estado);
 
 /* Termina o jogo por algum motivo */
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
@@ -125,6 +173,9 @@ int interpretador(ESTADO *estado) {
 
 /* Grava o tabuleiro no ficheiro. */
         comando_gr(estado, fp);
+   //     !!!!!!!!!!!!!!!!!!!!
+        imprime_tabuleiro(estado); //////!!!!!apagar depois
+   // !!!!!!!!!!!!!!!1
 /* Fecha novamente o documento */
         fclose(fp);
     }
@@ -137,7 +188,7 @@ int interpretador(ESTADO *estado) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         if (jogar(estado, coord) )
         {
-            atualiza_estado(estado, coord);
+            atualiza_estado(*estado, coord);
             prompt(*estado, fp);
         }
         fclose(fp);

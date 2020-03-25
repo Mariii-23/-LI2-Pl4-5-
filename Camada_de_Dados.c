@@ -18,19 +18,19 @@ void casas_inicial(CASA tabi[8][8])
         {
             if (i==4 && j==4)
             {
-                tabi[i][j] = PRETA;
+                tabi[i][j] = '#';
             }
             if (i==0 && j==7)
             {
-                tabi[i][j] = DOIS;
+                tabi[i][j] = '2';
             }
             if(i==7 && j==0)
             {
-                tabi[i][j] = UM;
+                tabi[i][j] = '1';
             }
             else
             {
-                tabi[i][j] = VAZIO;
+                tabi[i][j] = '.';
             }       
         }
     }  

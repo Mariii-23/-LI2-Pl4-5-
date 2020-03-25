@@ -19,8 +19,8 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 */
 void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final)
 {
-    altera_estado_peca(estado, pos_inicial , BRANCA);
-    altera_estado_peca(estado, pos_final, PRETA);
+    altera_estado_peca(estado, pos_inicial , '*');
+    altera_estado_peca(estado, pos_final, '#');
 }
 
 /**
@@ -52,8 +52,9 @@ ESTADO atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     troca_posicoes(estado, estado->ultima_jogada, coord_mudar);
     atualiza_JOGADAS(estado, coord_mudar);
     estado->jogador_atual = jogador_mudar;
-    estado->num_comando = (estado->num_comando + 1);
+    estado->num_comando = (estado->num_comando) +1 ;
     estado->ultima_jogada = coord_mudar;
+
 }
 
 /**
