@@ -41,7 +41,7 @@ void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
 /**
 \brief Função que atualiza o estado a cada jogada.
 */
-ESTADO atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
+void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
 {
     int jogador_mudar;
     if (estado->jogador_atual == 1)
@@ -54,7 +54,7 @@ ESTADO atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     estado->jogador_atual = jogador_mudar;
     estado->num_comando = (estado->num_comando) +1 ;
     estado->ultima_jogada = coord_mudar;
-
+  //  return *estado;
 }
 
 /**
