@@ -188,7 +188,7 @@ int interpretador(ESTADO *estado) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         if (jogar(estado, coord) )
         {
-            atualiza_estado(*estado, coord);
+            atualiza_estado(estado, coord);
             prompt(*estado, fp);
         }
         fclose(fp);

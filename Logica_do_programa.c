@@ -34,7 +34,7 @@ void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
     }
     else
     {
-        estado->jogadas[ (estado->num_jogadas + 1) ].jogador2 = coord; 
+        estado->jogadas[ (estado->num_jogadas ) + 1 ].jogador2 = coord; 
     }
 }
 
@@ -52,7 +52,7 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     troca_posicoes(estado, estado->ultima_jogada, coord_mudar);
     atualiza_JOGADAS(estado, coord_mudar);
     estado->jogador_atual = jogador_mudar;
-    estado->num_comando = (estado->num_comando) +1 ;
+    estado->num_comando = (estado->num_comando) + 1 ;
     estado->ultima_jogada = coord_mudar;
   //  return *estado;
 }
