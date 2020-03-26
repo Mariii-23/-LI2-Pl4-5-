@@ -41,13 +41,14 @@ void imprime_tabuleiro(ESTADO *estado)
 {
     int i, linha=8;
     printf("\n  abcdefgh\n");
-    for (i=0; i<=7; i++,linha--)
+    for (i=7; i>=0; i--,linha--)
     {
         printf("%d ",linha);
         imprime_Linha( estado->tab, i);
     }
     printf("\n");
     printf("# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
+    printf("\n%d  %d\n", estado->ultima_jogada.linha, estado->ultima_jogada.coluna);
 
 }
 
@@ -87,7 +88,7 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 {
     int i;
 
-    for (i=0; i<=7; i++)
+    for (i=7; i>=0; i++)
     {
         guarda_Linha( estado1.tab, i, fp);
     }

@@ -22,13 +22,13 @@ void casas_inicial(CASA tabi[8][8])
             }
             else 
             {
-                if (i==0 && j==7)
+                if (i==7 && j==7)
                 {
                     tabi[i][j] = '2';
                 } 
                 else
                 {
-                    if(i==7 && j==0)
+                    if(i==0 && j==0)
                     {
                         tabi[i][j] = '1';
                     }
