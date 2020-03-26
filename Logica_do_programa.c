@@ -54,6 +54,7 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     estado->jogador_atual = jogador_mudar;
     estado->num_comando = (estado->num_comando) + 1 ;
     estado->ultima_jogada = coord_mudar;
+    estado->num_jogadas +=1;
   //  return *estado;
 }
 

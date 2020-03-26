@@ -12,26 +12,32 @@
 void casas_inicial(CASA tabi[8][8])
 {
     int i, j;
-    for(i=8; i>0; i--)
+    for(i=7; i>=0; i--)
     {
-        for(j=8; j>0; j--)
+        for(j=0; j<=7; j++)
         {
             if (i==4 && j==4)
             {
                 tabi[i][j] = '#';
             }
-            if (i==0 && j==7)
+            else 
             {
-                tabi[i][j] = '2';
-            }
-            if(i==7 && j==0)
-            {
-                tabi[i][j] = '1';
-            }
-            else
-            {
-                tabi[i][j] = '.';
-            }       
+                if (i==0 && j==7)
+                {
+                    tabi[i][j] = '2';
+                } 
+                else
+                {
+                    if(i==7 && j==0)
+                    {
+                        tabi[i][j] = '1';
+                    }
+                    else
+                    {
+                        tabi[i][j] = '.';
+                    } 
+                }   
+            }         
         }
     }  
 }

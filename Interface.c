@@ -41,7 +41,7 @@ void imprime_tabuleiro(ESTADO *estado)
 {
     int i, linha=8;
     printf("\n  abcdefgh\n");
-    for (i=7; i>=0; i--,linha--)
+    for (i=0; i<=7; i++,linha--)
     {
         printf("%d ",linha);
         imprime_Linha( estado->tab, i);
@@ -87,7 +87,7 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 {
     int i;
 
-    for (i=7; i>=0; i--)
+    for (i=0; i<=7; i++)
     {
         guarda_Linha( estado1.tab, i, fp);
     }
@@ -116,6 +116,7 @@ void comando_ler(FILE *fp) {
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
     guarda_tabuleiro(*estado, fp);
+   //prompt(estado, fp);
 }
 
 /**
@@ -151,15 +152,15 @@ int interpretador(ESTADO *estado) {
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
     if(sscanf(linha, "ler %s",filename) == 1){
-    FILE *fp;
-    fp = fopen(filename, "r");
-    if (fp == NULL) {
-        printf("O ficheiro não abriu.\n");
+        FILE *fp;
+        fp = fopen(filename, "r");
+        if (fp == NULL) {
+            printf("O ficheiro não abriu.\n");
     	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-    comando_ler(fp);
+        comando_ler(fp);
 /* Fecha o ficheiro */
-    fclose(fp);
+        fclose(fp);
     }
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
@@ -186,10 +187,11 @@ int interpretador(ESTADO *estado) {
         fp = fopen("jogo.txt", "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
+
         if (jogar(estado, coord) )
         {
-            atualiza_estado(estado, coord);
-            prompt(*estado, fp);
+            comando_gr(estado, fp);
+            //prompt(*estado, fp);
         }
         fclose(fp);
     }
