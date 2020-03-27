@@ -135,7 +135,7 @@ void comando_ler(FILE *fp) {
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
-    prompt(estado, *fp);
+    prompt(*estado, fp);
 }
 
 
@@ -148,6 +148,8 @@ int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
     char filename[BUF_SIZE];
     char col[2], lin[2];
+
+    imprime_tabuleiro(estado);
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
     if(sscanf(linha, "gr %s",filename) == 1){
@@ -182,17 +184,18 @@ int interpretador(ESTADO *estado) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
-        //FILE *fp;
-        //fp = fopen("jogo.txt", "w");
+    //   FILE *fp;
+     //   fp = fopen("jogo.txt", "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        /*if */ (jogar(estado, coord));
-        /*{
+        jogar(estado, coord);
+        /*if   (jogar(estado, coord));
+        {
             comando_gr(estado, fp);
             //prompt(*estado, fp);
         }*/
-        //fclose(fp);
+     //   fclose(fp);
     }
 
 
