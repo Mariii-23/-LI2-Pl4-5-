@@ -217,6 +217,8 @@ int verifica_vencedor(ESTADO estado)
 /**
 \brief Função principal que verifica se existe vencedor.
 */
+
+//ta mal
 int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
 {
     COORDENADA peca_preta = estado->ultima_jogada;

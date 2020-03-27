@@ -6,6 +6,17 @@
 #include "dados.h"
 
 /**
+\brief Função que determina o vencedor do jogo.
+*/
+void jogador_vencedor(ESTADO *estado) {
+    int j, jog_atual = estado->jogador_atual;
+    if (jog_atual == 1) j = 2;
+    else j = 1;
+
+    printf ("O Player %d é o vencedor! Parabéns!", j);
+}
+
+/**
 \brief Imprime cada casa do jogo.
 */
 void imprime_Casa(CASA tabi[8][8], int linha, int coluna)
@@ -48,7 +59,7 @@ void imprime_tabuleiro(ESTADO *estado)
     }
     printf("\n");
     printf("# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
-    printf("\n%d  %d\n", estado->ultima_jogada.linha, estado->ultima_jogada.coluna);
+ //   printf("\n%d  %d\n", estado->ultima_jogada.linha, estado->ultima_jogada.coluna);
 
 }
 
@@ -202,13 +213,3 @@ int interpretador(ESTADO *estado) {
 
 /// FIM DO JOGO ///
 
-/**
-\brief Função que determina o vencedor do jogo.
-*/
-void jogador_vencedor(ESTADO estado) {
-    int j, jog_atual = estado.jogador_atual;
-    if (jog_atual == 1) j = 2;
-    else j = 1;
-
-    printf ("O Player %d é o vencedor! Parabéns!", j);
-}
