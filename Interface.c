@@ -100,12 +100,7 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 /**
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
-void comando_ler(char filename[]) {
-    FILE *fp;
-    fp = fopen(filename, "r");
-    if (fp == NULL) {
-        printf("O ficheiro não abriu.\n");
-    }
+void comando_ler(FILE *fp) {
 	char *a = NULL;
     do 
     {
@@ -115,22 +110,14 @@ void comando_ler(char filename[]) {
         }
         printf("%c",a[0]);
     } while (1);
-/* Fecha o ficheiro */
-    fclose(fp);
 }
 
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
-void comando_gr(ESTADO *estado, char filename[]) {
-	FILE *fp;
-    fp = fopen(filename, "w");
-    if (fp == NULL) {
-        printf("O ficheiro não abriu.\n");
-    }
+void comando_gr(ESTADO *estado, FILE *fp) {
     guarda_tabuleiro(*estado, fp);
-/* Fecha o ficheiro */
-    fclose(fp);
+   //prompt(estado, fp);
 }
 
 /**
@@ -166,17 +153,32 @@ int interpretador(ESTADO *estado) {
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
     if(sscanf(linha, "ler %s",filename) == 1){
+        FILE *fp;
+        fp = fopen(filename, "r");
+        if (fp == NULL) {
+            printf("O ficheiro não abriu.\n");
+    	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-        comando_ler(filename);
+        comando_ler(fp);
+/* Fecha o ficheiro */
+        fclose(fp);
     }
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
     if(sscanf(linha, "gr %s",filename) == 1){
+        FILE *fp;
+        fp = fopen(filename, "w");
+        if (fp == NULL) {
+                printf("O ficheiro não abriu.\n");
+    	    }
+
 /* Grava o tabuleiro no ficheiro. */
-        comando_gr(estado, filename);
+        comando_gr(estado, fp);
    //     !!!!!!!!!!!!!!!!!!!!
- //       imprime_tabuleiro(estado); //////!!!!!apagar depois
+//        imprime_tabuleiro(estado); //////!!!!!apagar depois
    // !!!!!!!!!!!!!!!1
+/* Fecha novamente o documento */
+        fclose(fp);
     }
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
@@ -188,7 +190,7 @@ int interpretador(ESTADO *estado) {
 
         if (jogar(estado, coord) )
         {
- //           comando_gr(estado, fp);
+            comando_gr(estado, fp);
             //prompt(*estado, fp);
         }
         fclose(fp);
