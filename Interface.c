@@ -112,7 +112,7 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
 void comando_ler(FILE *fp) {
-	char *a;
+	char *a = NULL;
     do 
     {
         fscanf(fp, "%c", a);
@@ -179,15 +179,14 @@ int interpretador(ESTADO *estado) {
     if(sscanf(linha, "gr %s",filename) == 1){
         FILE *fp;
         fp = fopen(filename, "w");
-        if (fp == NULL) 
-            {
+        if (fp == NULL) {
                 printf("O ficheiro não abriu.\n");
     	    }
 
 /* Grava o tabuleiro no ficheiro. */
         comando_gr(estado, fp);
    //     !!!!!!!!!!!!!!!!!!!!
-        imprime_tabuleiro(estado); //////!!!!!apagar depois
+//        imprime_tabuleiro(estado); //////!!!!!apagar depois
    // !!!!!!!!!!!!!!!1
 /* Fecha novamente o documento */
         fclose(fp);
@@ -200,7 +199,7 @@ int interpretador(ESTADO *estado) {
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        if (jogar(estado, coord) )
+        if (jogar(estado, coord))
         {
             comando_gr(estado, fp);
             //prompt(*estado, fp);
@@ -212,4 +211,3 @@ int interpretador(ESTADO *estado) {
 
 
 /// FIM DO JOGO ///
-
