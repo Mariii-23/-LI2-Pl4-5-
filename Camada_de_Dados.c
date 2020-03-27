@@ -106,7 +106,7 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     y_ = coord_final.coluna; 
 
     if ( (x==x_ && ( (y+1)==y_ || (y-1)==y_ )) || 
-          y==y_ && ( (x+1)==x_ || (x-1)==x_ ) )
+          (y==y_ && ( (x+1)==x_ || (x-1)==x_ )) )
         resul=1;
     return resul;
 }
@@ -116,7 +116,6 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 */
 int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
 {
-    int resul = 0;
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
@@ -217,7 +216,7 @@ int verifica_vencedor(ESTADO estado)
 /**
 \brief Função principal que verifica se existe vencedor.
 */
-int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
+int verifica_Vitoria(ESTADO *estado)
 {
     COORDENADA peca_preta = estado->ultima_jogada;
     return ( !verifica_vencedor(*estado) && verificar_casas_disponiveis(estado, peca_preta) );
