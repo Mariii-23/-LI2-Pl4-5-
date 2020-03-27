@@ -107,8 +107,16 @@ void guarda_tabuleiro(ESTADO estado1, FILE *fp)
 }
 
 /// COMANDOS ////
-
 /**
+\brief Prompt do jogo.
+*/
+void prompt(ESTADO estado, FILE *fp) {  
+    guarda_tabuleiro(estado, fp);
+    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
+}
+/**
+
+
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
 void comando_ler(FILE *fp) {
@@ -127,17 +135,7 @@ void comando_ler(FILE *fp) {
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
-    guarda_tabuleiro(*estado, fp);
-   //prompt(estado, fp);
-}
-
-/**
-\brief Prompt do jogo.
-*/
-void prompt(ESTADO estado, FILE *fp) {  
-    //imprime_tabuleiro(estado);
-    guarda_tabuleiro(estado, fp);
-    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
+    prompt(estado, *fp);
 }
 
 
@@ -151,15 +149,21 @@ int interpretador(ESTADO *estado) {
     char filename[BUF_SIZE];
     char col[2], lin[2];
 
-    imprime_tabuleiro(estado);
+/* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
+    if(sscanf(linha, "gr %s",filename) == 1){
+        FILE *fp;
+        fp = fopen(filename, "w");
+        if (fp == NULL) {
+                printf("O ficheiro não abriu.\n");
+    	    }
 
-/* Termina o jogo por algum motivo */
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;
+/* Grava o tabuleiro no ficheiro. */
+        comando_gr(estado, fp);
+   //     !!!!!!!!!!!!!!!!!!!!
 
-/* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-    if(strlen(linha) == 1 && sscanf(linha, "Q") == 1){
-    	return 0;
+
+/* Fecha novamente o documento */
+        fclose(fp);
     }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
@@ -175,37 +179,32 @@ int interpretador(ESTADO *estado) {
         fclose(fp);
     }
 
-/* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
-    if(sscanf(linha, "gr %s",filename) == 1){
-        FILE *fp;
-        fp = fopen(filename, "w");
-        if (fp == NULL) {
-                printf("O ficheiro não abriu.\n");
-    	    }
-
-/* Grava o tabuleiro no ficheiro. */
-        comando_gr(estado, fp);
-   //     !!!!!!!!!!!!!!!!!!!!
-//        imprime_tabuleiro(estado); //////!!!!!apagar depois
-   // !!!!!!!!!!!!!!!1
-/* Fecha novamente o documento */
-        fclose(fp);
-    }
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
-        FILE *fp;
-        fp = fopen("jogo.txt", "w");
+        //FILE *fp;
+        //fp = fopen("jogo.txt", "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        if (jogar(estado, coord))
-        {
+        /*if */ (jogar(estado, coord));
+        /*{
             comando_gr(estado, fp);
             //prompt(*estado, fp);
-        }
-        fclose(fp);
+        }*/
+        //fclose(fp);
     }
+
+
+/* Termina o jogo por algum motivo */
+    if(fgets(linha, BUF_SIZE, stdin) == NULL)
+        return 0;
+
+/* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
+    if(strlen(linha) == 1 && sscanf(linha, "Q") == 1){
+    	return 0;
+    }
+
     return 1;
 }
 
