@@ -119,8 +119,8 @@ int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
-
-    return ( peca == VAZIO && verifica_se_e_vizinho(pos_inicial, pos_final )  );
+    int vaziaa = peca == '.' ;
+    return ( vaziaa  && verifica_se_e_vizinho(pos_inicial, pos_final )  );
 }
 
 //FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS AO REDOR DA PECA PRETA

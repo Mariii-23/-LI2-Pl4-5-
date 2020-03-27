@@ -162,6 +162,7 @@ int interpretador(ESTADO *estado) {
 /* Grava o tabuleiro no ficheiro. */
         comando_gr(estado, fp);
    //     !!!!!!!!!!!!!!!!!!!!
+        //imprime_tabuleiro(estado);
 
 
 /* Fecha novamente o documento */
@@ -184,18 +185,19 @@ int interpretador(ESTADO *estado) {
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
-    //   FILE *fp;
-     //   fp = fopen("jogo.txt", "w");
+      //  FILE *fp;
+    //    fp = fopen("jogo.txt", "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        jogar(estado, coord);
-        /*if   (jogar(estado, coord));
-        {
-            comando_gr(estado, fp);
+      //  jogar(estado, coord);
+        if   (jogar(estado, coord));
+       // {
+       //     comando_gr(estado, fp);
             //prompt(*estado, fp);
-        }*/
+     //   }
      //   fclose(fp);
+
     }
 
 

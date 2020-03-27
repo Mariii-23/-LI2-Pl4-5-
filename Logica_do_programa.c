@@ -67,6 +67,7 @@ int jogar(ESTADO *estado, COORDENADA coord)
     COORDENADA coord_anterior;
     coord_anterior = estado->ultima_jogada;  //encontra_peca_preta(*estado);
    // coord_anterior = encontra_peca_preta(*estado);
+    
 
     int verificar;
     verificar = verifica_jogada(estado, coord_anterior, coord);
