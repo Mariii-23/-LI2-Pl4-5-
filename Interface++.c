@@ -13,7 +13,7 @@ void jogador_vencedor(ESTADO *estado) {
     if (jog_atual == 1) j = 2;
     else j = 1;
 
-    printf ("O Player %d é o vencedor! Parabéns!", j);
+    printf ("\nO Player %d é o vencedor! Parabéns!\n", j);
 }
 
 /**
@@ -150,57 +150,69 @@ int interpretador(ESTADO *estado) {
     char col[2], lin[2];
   //  filename = "jogo.txt";
 
+    int ganhou = verifica_Vitoria( estado, estado->ultima_jogada);
+
+    if (ganhou)
+    {
+        imprime_tabuleiro(estado);
+        jogador_vencedor(estado);
+        return 0;
+    }
+
     imprime_tabuleiro(estado);
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
 
-  //  if(sscanf(linha, "gr %s",filename) == 1){
-    FILE *fp;
+    if(sscanf(linha, "gr %s",filename) == 1){
+        FILE *fp;
 
-    fp = fopen(filename, "w");
-    if (fp == NULL) {
-            printf("O ficheiro não abriu.\n");
-        }
+        fp = fopen(filename, "w");
+        if (fp == NULL) {
+                printf("O ficheiro não abriu.\n");
+    	    }
 
 /* Grava o tabuleiro no ficheiro. */
-    comando_gr(estado, fp);
+        comando_gr(estado, fp);
    //     !!!!!!!!!!!!!!!!!!!!
         //imprime_tabuleiro(estado);
 
 
 /* Fecha novamente o documento */
-    fclose(fp);
-    
+        fclose(fp);
+    }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
-   // if(sscanf(linha, "ler %s",filename) == 1){
-      
-    fp = fopen(filename, "r");
-    if (fp == NULL) {
-        printf("O ficheiro não abriu.\n");
-	}
+    if(sscanf(linha, "ler %s",filename) == 1){
+        FILE *fp;
+        fp = fopen(filename, "r");
+        if (fp == NULL) {
+            printf("O ficheiro não abriu.\n");
+    	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-    comando_ler(fp);
+        comando_ler(fp);
 /* Fecha o ficheiro */
-    fclose(fp);
-    
+        fclose(fp);
+    }
 
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
-       // FILE *fp;
-      //  fp = fopen("jogo.txt", "w");
+     //   FILE *fp;
+       // fp = fopen("jogo.txt", "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 
-        jogar(estado, coord);
-      //  if   (jogar(estado, coord));
-       // {
-    //    comando_gr(estado, fp);
-            //prompt(*estado, fp);
-     //   }
-     //   fclose(fp);
+        if (!jogar(estado, coord))
+        {
+            return 0;
+        }
 
+       /* if   (jogar(estado, coord));
+        {
+          comando_gr(estado, fp);
+            //prompt(*estado, fp);
+        }*/
+       // fclose(fp);
     }
 
 

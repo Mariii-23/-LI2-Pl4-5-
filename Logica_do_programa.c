@@ -38,6 +38,15 @@ void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
     }
 }
 
+void atualiza_Num_Jogadas(ESTADO *estado)
+{
+    int jog = estado->jogador_atual;
+    if (jog == 2)
+    {
+        estado->num_jogadas += 1;
+    }
+}
+
 /**
 \brief Função que atualiza o estado a cada jogada.
 */
@@ -52,9 +61,10 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     troca_posicoes(estado, estado->ultima_jogada, coord_mudar);
     atualiza_JOGADAS(estado, coord_mudar);
     estado->jogador_atual = jogador_mudar;
-    estado->num_comando = (estado->num_comando) + 1 ;
+    estado->num_comando +=1 ;
     estado->ultima_jogada = coord_mudar;
-    estado->num_jogadas +=1;
+    atualiza_Num_Jogadas(estado);
+  //  estado->num_jogadas += 1;
   //  return *estado;
 }
 

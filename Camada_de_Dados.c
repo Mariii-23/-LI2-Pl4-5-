@@ -105,8 +105,10 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     x_ = coord_final.linha; 
     y_ = coord_final.coluna; 
 
-    if ( (x==x_ && ( (y+1)==y_ || (y-1)==y_ )) || 
-          (y==y_ && ( (x+1)==x_ || (x-1)==x_ )) )
+    if  (   (x == x_ && abs (y_ - y) == 1 ) || 
+            (y == y_ && abs (x_ - x) == 1 ) ||
+            ( abs(x_- x) == 1 && abs(y_ - y) == 1 ) 
+        )
         resul=1;
     return resul;
 }

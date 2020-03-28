@@ -139,6 +139,16 @@ void comando_gr(ESTADO *estado, FILE *fp) {
 }
 
 
+/// Comando movs ///
+/**
+\brief Executa o comando movs para gravar os movimentos.
+*/
+void comando_movs(ESTADO *estado, FILE *fp)
+{
+    //int n_
+}
+
+
 /// INTERPRETADOR ///
 
 /**
