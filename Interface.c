@@ -145,7 +145,27 @@ void comando_gr(ESTADO *estado, FILE *fp) {
 */
 void comando_movs(ESTADO *estado, FILE *fp)
 {
-    //int n_
+    int cont = 0; 
+    int n_jogadas = estado->num_jogadas;
+    int aux = n_jogadas / 2 ;
+    int n_comando = 0; 
+    COORDENADA coord1 = estado->jogadas[n_comando].jogador1;
+    COORDENADA coord2 = estado->jogadas[n_comando].jogador2;
+
+    while ( aux !=0 )
+    {
+        if (cont <10)
+        {
+            fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        }
+    }
+    if ( n_jogadas % 2 != 0)
+    {
+        if (cont <10)
+        {
+            fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        }
+    }
 }
 
 
