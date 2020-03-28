@@ -145,26 +145,48 @@ void comando_gr(ESTADO *estado, FILE *fp) {
 */
 void comando_movs(ESTADO *estado, FILE *fp)
 {
-    int cont = 0; 
-    int n_jogadas = estado->num_jogadas;
+    int cont ; 
+    int n_jogadas = estado->num_comando;
     int aux = n_jogadas / 2 ;
-    int n_comando = 0; 
-    COORDENADA coord1 = estado->jogadas[n_comando].jogador1;
-    COORDENADA coord2 = estado->jogadas[n_comando].jogador2;
+    int j = estado->jogador_atual;
+    COORDENADA coord1 = estado->jogadas[cont].jogador1;
+    COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
-    while ( aux !=0 )
+    for (cont = 1 ; cont <= aux ; cont++ )
     {
-        if (cont <10)
-        {
-            fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-        }
+        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        
+        else            fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
-    if ( n_jogadas % 2 != 0)
+    if (j == 1)
     {
-        if (cont <10)
-        {
-            fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
-        }
+        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        
+        else            fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+    }
+}
+
+// este aqui é melhor mas o num_jogadas nao esta a funcionar direito
+// logo este aqui PARA JA nao é viavel
+void comando_movs1(ESTADO *estado, FILE *fp)
+{
+    int cont;
+    int n_comandos = estado->num_jogadas;
+    int j = estado->jogador_atual;
+    COORDENADA coord1 = estado->jogadas[cont].jogador1;
+    COORDENADA coord2 = estado->jogadas[cont].jogador2;
+
+    for (cont = 1 ; cont <= n_comandos ; cont++ )
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        
+        else            fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+    }
+    if (j == 1)
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        
+        else            fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
     }
 }
 
