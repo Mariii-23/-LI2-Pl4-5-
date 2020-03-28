@@ -152,17 +152,18 @@ void comando_movs(ESTADO *estado, FILE *fp)
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
-    for (cont = 1 ; cont <= aux ; cont++ )
+    for (cont = 1 ; cont < aux ; cont++ )
     {
         if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
         
-        else            fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
+    cont++;
     if (j == 1)
     {
         if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
         
-        else            fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
     }
 }
 
@@ -176,17 +177,18 @@ void comando_movs1(ESTADO *estado, FILE *fp)
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
-    for (cont = 1 ; cont <= n_comandos ; cont++ )
+    for (cont = 1 ; cont < n_comandos ; cont++ )
     {
         if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
         
-        else            fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
+    cont++;
     if (j == 1)
     {
         if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
         
-        else            fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
     }
 }
 
