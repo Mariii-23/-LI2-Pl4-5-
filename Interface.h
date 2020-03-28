@@ -7,6 +7,7 @@ Definição do intrepretador do jogo.
 #define ___INTERFACE___
 #include "dados.h"
 
+void jogador_vencedor(ESTADO *estado);
 int interpretador(ESTADO *estado);
 
 #endif

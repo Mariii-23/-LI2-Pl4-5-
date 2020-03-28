@@ -66,14 +66,17 @@ int jogar(ESTADO *estado, COORDENADA coord)
     int resul=0;
     COORDENADA coord_anterior;
     coord_anterior = estado->ultima_jogada;  //encontra_peca_preta(*estado);
-   // coord_anterior = encontra_peca_preta(*estado);
-    
 
-    int verificar;
-    verificar = verifica_jogada(estado, coord_anterior, coord);
-    resul = verificar;
+   // int ganhou = verifica_Vitoria( estado, coord_anterior);
+    int pode_jogar = verifica_jogada(estado, coord_anterior, coord);
 
-    if (verificar)
+    //if (ganhou)
+    //{
+    //    jogador_vencedor(estado);
+   // }
+    //else
+    //{
+    if (pode_jogar)
     {
         atualiza_estado(estado, coord);
     }
@@ -81,5 +84,7 @@ int jogar(ESTADO *estado, COORDENADA coord)
     {
         printf("\nJogada inválida.\n");
     }
+    resul = 1;
+//    }
     return resul;
 }
