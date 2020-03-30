@@ -136,15 +136,6 @@ void comando_ler(FILE *fp,ESTADO *estado)
     }
 }
 
-/**
-\brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
-*/
-void comando_gr(ESTADO *estado, FILE *fp) {
-    guarda_tabuleiro(*estado, fp);
-    comando_movs(*estado, fp);
-}
-
-
 /// Comando movs ///
 /**
 \brief Executa o comando movs para gravar os movimentos.
@@ -177,6 +168,15 @@ void comando_movs(ESTADO *estado, FILE *fp)
         else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
 }
+
+/**
+\brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
+*/
+void comando_gr(ESTADO *estado, FILE *fp) {
+    guarda_tabuleiro(*estado, fp);
+    comando_movs(estado, fp);
+}
+
 
 
 /// INTERPRETADOR ///
@@ -230,7 +230,7 @@ int interpretador(ESTADO *estado) {
     	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
         //comando_ler(fp);
-        ler(fp , estado);
+        comando_ler(fp , estado);
 /* Fecha o ficheiro */
         fclose(fp);
     }
