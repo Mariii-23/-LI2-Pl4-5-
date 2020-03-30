@@ -49,7 +49,7 @@ ESTADO *inicializador_estado()
 {
     ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
     casas_inicial(estado->tab);
-    estado->num_jogadas = 0;
+    estado->num_jogadas = 1;
     estado->jogador_atual = 1;
     estado->num_comando = 1;
 

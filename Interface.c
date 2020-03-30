@@ -119,30 +119,20 @@ void prompt(ESTADO estado, FILE *fp) {
 
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
-void comando_ler(FILE *fp) {
-	char *a = NULL;
-    do 
-    {
-        fscanf(fp, "%c", a);
-        if (feof(fp)) {
-            break;
-        }
-        printf("%c",a[0]);
-    } while (1);
-}
-
 void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
 {
     estado->tab[ coord.linha ][ coord.coluna ] = valor;
 }
 
-void ler(FILE *fp,ESTADO *estado)
+void comando_ler(FILE *fp,ESTADO *estado)
 {
     char buffer[BUF_SIZE];
-    int l = 0;
+    int l ;
     while(fgets(buffer, BUF_SIZE, fp) != NULL) {
-        for(int c = 0; c < 8; c++) set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
-        l++;  
+        for( int l = 0; l < 8; l++)
+        {
+            for(int c = 0; c < 8; c++) set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
+        } 
     }
 }
 
@@ -150,7 +140,8 @@ void ler(FILE *fp,ESTADO *estado)
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
-    prompt(*estado, fp);
+    guarda_tabuleiro(*estado, fp);
+    comando_movs(*estado, fp);
 }
 
 
@@ -159,32 +150,6 @@ void comando_gr(ESTADO *estado, FILE *fp) {
 \brief Executa o comando movs para gravar os movimentos.
 */
 void comando_movs(ESTADO *estado, FILE *fp)
-{
-    int cont ; 
-    int n_jogadas = estado->num_comando;
-    int aux = n_jogadas / 2 ;
-    int j = estado->jogador_atual;
-    COORDENADA coord1 = estado->jogadas[cont].jogador1;
-    COORDENADA coord2 = estado->jogadas[cont].jogador2;
-
-    for (cont = 1 ; cont < aux ; cont++ )
-    {
-        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-        
-        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-    }
-    cont++;
-    if (j == 1)
-    {
-        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
-        
-        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
-    }
-}
-
-// este aqui é melhor mas o num_jogadas nao esta a funcionar direito
-// logo este aqui PARA JA nao é viavel
-void comando_movs1(ESTADO *estado, FILE *fp)
 {
     int cont;
     int n_comandos = estado->num_jogadas;
@@ -199,11 +164,17 @@ void comando_movs1(ESTADO *estado, FILE *fp)
         else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
     cont++;
-    if (j == 1)
+    if (j == 2)
     {
-        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna);
         
         else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+    }
+    else
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        
+        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
 }
 
@@ -291,9 +262,7 @@ int interpretador(ESTADO *estado) {
         return 0;
 
 /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-    if(strlen(linha) == 1 && sscanf(linha, "Q") == 1){
-    	return 0;
-    }
+    if(strcmp( linha, "Q\n" ) == 0 ) return 0;
 
     return 1;
 }

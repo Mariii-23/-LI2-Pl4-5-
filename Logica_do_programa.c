@@ -41,7 +41,7 @@ void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
 void atualiza_Num_Jogadas(ESTADO *estado)
 {
     int jog = estado->jogador_atual;
-    if (jog == 2)
+    if (jog == 1)
     {
         estado->num_jogadas += 1;
     }
