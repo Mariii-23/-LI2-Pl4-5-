@@ -239,7 +239,7 @@ int interpretador(ESTADO *estado) {
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
     {
      //   FILE *fp;
-       // fp = fopen("jogo.txt", "w");
+       // fp = fopen(filename, "w");
 
         COORDENADA coord = {*col - 'a', *lin - '1'};
 

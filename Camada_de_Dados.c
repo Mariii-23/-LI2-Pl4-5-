@@ -193,12 +193,20 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
 }
 
 /**
-\brief Função principal que verifica se a casa pretendida está disponível para se mover para lá.
+\brief Função que verifica se a casa abaixo está disponível para se mover para lá.
 */
-int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
+int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 {
-    return ( verifica_casa_Direita(estado, coord) &&  verifica_casa_Esquerda(estado, coord) &&
-             verifica_casa_Baixo(estado, coord)   &&  verifica_casa_Acima(estado, coord)   );
+    int x, y, resul = 0;
+    x = coord.linha;
+    y = coord.coluna;  
+
+    if (x>=0 && x<=7 && y>=0 && y<=7 )
+    {
+        if (estado->tab[x][y] == VAZIO) resul = 1;
+        else resul = 0;
+    }
+    return resul;
 }
 
 /**
@@ -206,9 +214,21 @@ int verificar_casas_disponiveis(ESTADO *estado, COORDENADA coord)
 */
 int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
 {
-    return ( !verifica_casa_Direita(estado, coord) &&  !verifica_casa_Esquerda(estado, coord) &&
-             !verifica_casa_Baixo(estado, coord)   &&  !verifica_casa_Acima(estado, coord)   );
+    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+
+    return ( verificar_casas_dispo( estado , coord1 ) || verificar_casas_dispo( estado , coord2 ) ||
+             verificar_casas_dispo( estado , coord3 ) || verificar_casas_dispo( estado , coord4 ) ||
+             verificar_casas_dispo( estado , coord5 ) || verificar_casas_dispo( estado , coord6 ) ||
+             verificar_casas_dispo( estado , coord7 ) || verificar_casas_dispo( estado , coord8 ) || );
 }
+
 
 /**
 \brief Função que verifica se a peça preta se encontra na casa 1 ou 2.
