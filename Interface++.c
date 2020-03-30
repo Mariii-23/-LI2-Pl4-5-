@@ -131,11 +131,80 @@ void comando_ler(FILE *fp) {
     } while (1);
 }
 
+void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
+{
+    estado->tab[ coord.linha ][ coord.coluna ] = valor;
+}
+
+void ler(FILE *fp,ESTADO *estado)
+{
+    char buffer[BUF_SIZE];
+    int l = 0;
+    while(fgets(buffer, BUF_SIZE, fp) != NULL) {
+        for(int c = 0; c < 8; c++) set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
+        l++;  
+    }
+}
+
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *fp) {
     prompt(*estado, fp);
+}
+
+
+/// Comando movs ///
+/**
+\brief Executa o comando movs para gravar os movimentos.
+*/
+void comando_movs(ESTADO *estado, FILE *fp)
+{
+    int cont ; 
+    int n_jogadas = estado->num_comando;
+    int aux = n_jogadas / 2 ;
+    int j = estado->jogador_atual;
+    COORDENADA coord1 = estado->jogadas[cont].jogador1;
+    COORDENADA coord2 = estado->jogadas[cont].jogador2;
+
+    for (cont = 1 ; cont < aux ; cont++ )
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        
+        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+    }
+    cont++;
+    if (j == 1)
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        
+        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+    }
+}
+
+// este aqui é melhor mas o num_jogadas nao esta a funcionar direito
+// logo este aqui PARA JA nao é viavel
+void comando_movs1(ESTADO *estado, FILE *fp)
+{
+    int cont;
+    int n_comandos = estado->num_jogadas;
+    int j = estado->jogador_atual;
+    COORDENADA coord1 = estado->jogadas[cont].jogador1;
+    COORDENADA coord2 = estado->jogadas[cont].jogador2;
+
+    for (cont = 1 ; cont < n_comandos ; cont++ )
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        
+        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+    }
+    cont++;
+    if (j == 1)
+    {
+        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna );
+        
+        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+    }
 }
 
 
@@ -189,7 +258,8 @@ int interpretador(ESTADO *estado) {
             printf("O ficheiro não abriu.\n");
     	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-        comando_ler(fp);
+        //comando_ler(fp);
+        ler(fp , estado);
 /* Fecha o ficheiro */
         fclose(fp);
     }

@@ -131,6 +131,21 @@ void comando_ler(FILE *fp) {
     } while (1);
 }
 
+void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
+{
+    estado->tab[ coord.linha ][ coord.coluna ] = valor;
+}
+
+void ler(FILE *fp,ESTADO *estado)
+{
+    char buffer[BUF_SIZE];
+    int l = 0;
+    while(fgets(buffer, BUF_SIZE, fp) != NULL) {
+        for(int c = 0; c < 8; c++) set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
+        l++;  
+    }
+}
+
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
@@ -243,7 +258,8 @@ int interpretador(ESTADO *estado) {
             printf("O ficheiro não abriu.\n");
     	}
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-        comando_ler(fp);
+        //comando_ler(fp);
+        ler(fp , estado);
 /* Fecha o ficheiro */
         fclose(fp);
     }
