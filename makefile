@@ -1,5 +1,5 @@
 jogo.exe : main.o Logica_do_programa.o Interface.o Camada_de_Dados.o
-	gcc -o jogo.exe main.o Logica_do_programa.o Interface.o Camada_de_Dados.o Camada_de_Dados.h Interface.h Logica_do_programa.h
+	gcc -Wall -o jogo.exe main.o Logica_do_programa.o Interface.o Camada_de_Dados.o 
 
 main.o : main.c Camada_de_Dados.h Interface.h Logica_do_programa.h dados.h
 	gcc -c main.c
@@ -15,4 +15,4 @@ Camada_de_Dados.o : Camada_de_Dados.c  Interface.h Logica_do_programa.h dados.h
 
 clean : 
 	rm *.o
-	remove jogo.exe
+	rm jogo.exe

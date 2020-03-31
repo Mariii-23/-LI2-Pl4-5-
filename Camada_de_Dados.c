@@ -5,7 +5,6 @@
 #include "Interface.h"
 #include "dados.h"
 
-
 /**
 \brief Função que define cada casa do jogo quando este é iniciado.
 */
@@ -42,6 +41,17 @@ void casas_inicial(CASA tabi[8][8])
     }  
 }
 
+void coordenadas_0(ESTADO *estado)
+{
+    int i=0; 
+    COORDENADA coord = { 0 , 0 };
+    for (i; i<32 ; i++)
+    {
+        estado->jogadas[i].jogador1 = coord;
+        estado->jogadas[i].jogador2 = coord;
+    }
+}
+
 /**
 \brief Função que define o estado inicial do jogo.
 */
@@ -55,31 +65,9 @@ ESTADO *inicializador_estado()
 
     estado->ultima_jogada.coluna = 4;  
     estado->ultima_jogada.linha = 4;  
-
+    coordenadas_0(estado);
    // estado->jogadas = NULL;
     return estado;
-}
-
-/**
-\brief Função que retorna a posição da peça preta no tabuleiro.
-*/
-COORDENADA encontra_peca_preta(ESTADO estado)
-{
-    int i,j;
-    COORDENADA coord;
-
-    for (i=0; i<8 ; i++)
-    {
-        for (j=0; j<8; j++)
-        {
-            if (estado.tab[i][j])
-            {
-                coord.linha = i;
-                coord.coluna = j;
-            }
-        }
-    }
-    return coord;
 }
 
 /**
@@ -116,80 +104,14 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 /**
 \brief Função principal que verifica se é possível executar a jogada.
 */
-int verifica_jogada(ESTADO *estado,COORDENADA pos_inicial, COORDENADA pos_final)
+int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 {
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
     int vaziaa = peca == '.' || peca == '2' || peca == '1' ;
     
-    return ( vaziaa  && verifica_se_e_vizinho(pos_inicial, pos_final )  );
-}
-
-//FUNCAO QUE VERIFICA SE HA CASAS DISPONIVEIS AO REDOR DA PECA PRETA
-
-/**
-\brief Função que verifica se a casa da direita está disponível para se mover para lá.
-*/
-int verifica_casa_Direita(ESTADO *estado, COORDENADA coord)
-{
-    int x, y, resul=0;
-    x = coord.linha;
-    y = coord.coluna;  
-
-    if (x!=7 && estado->tab[x+1][y] == VAZIO )
-    {
-        resul = 1;
-    }
-    return resul;
-}
-
-/**
-\brief Função que verifica se a casa da esquerda está disponível para se mover para lá.
-*/
-int verifica_casa_Esquerda(ESTADO *estado, COORDENADA coord)
-{
-    int x, y, resul=0;
-    x = coord.linha;
-    y = coord.coluna;  
-
-    if (y!=0 && estado->tab[x-1][y] == VAZIO )
-    {
-        resul = 1;
-    }
-    return resul;
-}
-
-/**
-\brief Função que verifica se a casa acima está disponível para se mover para lá.
-*/
-int verifica_casa_Acima(ESTADO *estado, COORDENADA coord)
-{
-    int x, y, resul=0;
-    x = coord.linha;
-    y = coord.coluna;  
-
-    if (x!=8 && estado->tab[x][y+1] == VAZIO )
-    {
-        resul = 1;
-    }
-    return resul;
-}
-
-/**
-\brief Função que verifica se a casa abaixo está disponível para se mover para lá.
-*/
-int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
-{
-    int x, y, resul=0;
-    x = coord.linha;
-    y = coord.coluna;  
-
-    if (x!=0 && estado->tab[x][y-1] == VAZIO )
-    {
-        resul = 1;
-    }
-    return resul;
+    return ( vaziaa  && verifica_se_e_vizinho(estado->ultima_jogada, pos_final )  );
 }
 
 /**
@@ -254,10 +176,7 @@ int verifica_vencedor(ESTADO estado)
 /**
 \brief Função principal que verifica se existe vencedor.
 */
-
-//ta mal
 int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
 {
-    COORDENADA peca = estado->ultima_jogada;
-    return ( verifica_vencedor(*estado) || verificar_casas_ocupadas(estado, peca ) );
+    return ( verifica_vencedor(*estado) || verificar_casas_ocupadas(estado, coord ) );
 }

@@ -17,9 +17,9 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 /**
 \brief Função que altera o estado da casa onde estava, para a qual se pretendia mover.
 */
-void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final)
+void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 {
-    altera_estado_peca(estado, pos_inicial , '#');
+    altera_estado_peca(estado, estado->ultima_jogada, '#');
     altera_estado_peca(estado, pos_final, '*');
 }
 
@@ -52,20 +52,13 @@ void atualiza_Num_Jogadas(ESTADO *estado)
 */
 void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
 {
-    int jogador_mudar;
-    if (estado->jogador_atual == 1)
-        jogador_mudar = 2;
-    else
-        jogador_mudar = 1;
-
-    troca_posicoes(estado, estado->ultima_jogada, coord_mudar);
-    atualiza_JOGADAS(estado, coord_mudar);
-    estado->jogador_atual = jogador_mudar;
-    estado->num_comando +=1 ;
+    troca_posicoes(estado, coord_mudar);
     estado->ultima_jogada = coord_mudar;
+    atualiza_JOGADAS(estado, coord_mudar);
+    if (estado->jogador_atual == 1)  estado->jogador_atual = 2;
+    else                             estado->jogador_atual = 1;
     atualiza_Num_Jogadas(estado);
-  //  estado->num_jogadas += 1;
-  //  return *estado;
+    estado->num_comando +=1 ;
 }
 
 /**
@@ -75,17 +68,10 @@ int jogar(ESTADO *estado, COORDENADA coord)
 {
     int resul=0;
     COORDENADA coord_anterior;
-    coord_anterior = estado->ultima_jogada;  //encontra_peca_preta(*estado);
+    coord_anterior = estado->ultima_jogada;  
 
-   // int ganhou = verifica_Vitoria( estado, coord_anterior);
-    int pode_jogar = verifica_jogada(estado, coord_anterior, coord);
+    int pode_jogar = verifica_jogada(estado, coord);
 
-    //if (ganhou)
-    //{
-    //    jogador_vencedor(estado);
-   // }
-    //else
-    //{
     if (pode_jogar)
     {
         atualiza_estado(estado, coord);
@@ -95,6 +81,6 @@ int jogar(ESTADO *estado, COORDENADA coord)
         printf("\nJogada inválida.\n");
     }
     resul = 1;
-//    }
+
     return resul;
 }
