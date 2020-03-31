@@ -8,75 +8,34 @@
 /**
 \brief Função que determina o vencedor do jogo.
 */
-void jogador_vencedor(ESTADO *estado) {
+void jogador_vencedor(ESTADO *estado, FILE *stream) {
     int j, jog_atual = estado->jogador_atual;
     if (jog_atual == 1) j = 2;
     else j = 1;
     if ( estado->ultima_jogada.linha == 0 && estado->ultima_jogada.coluna == 0) j = 1;
     if ( estado->ultima_jogada.linha == 7 && estado->ultima_jogada.coluna == 7) j = 2;
-
-    printf ("\nO Player %d é o vencedor! Parabéns!\n", j);
+    fprintf (stream, "\nO Player %d é o vencedor! Parabéns!\n", j);
 }
 
 /**
-\brief Imprime cada casa do jogo.
+\brief Prompt do jogo.
 */
-void imprime_Casa(CASA tabi[8][8], int linha, int coluna)
-{
-    switch (tabi[linha][coluna])
-    {
-        case '.' : printf("."); break;
-        case '#' : printf("#"); break;
-        case '*' : printf("*"); break;
-        case '1' : printf("1"); break;
-        case '2' : printf("2"); break;
-        default: break;
-    } 
-} 
-
-/**
-\brief Imprime cada linha do jogo, recorrendo à função imprime_casa.
-*/
-void imprime_Linha(CASA tabi[8][8], int linha)
-{
-    int i;
-    for(i=0; i<=7; i++)
-    {
-        imprime_Casa( tabi, linha, i);
-    }
-    printf("\n");
-}
-
-/**
-\brief Imprime o tabuleiro do jogo, recorrendo à função guarda_linha.
-*/
-void imprime_tabuleiro(ESTADO *estado)
-{
-    int i, linha=8;
-    printf("\n  abcdefgh\n");
-    for (i=7; i>=0; i--,linha--)
-    {
-        printf("%d ",linha);
-        imprime_Linha( estado->tab, i);
-    }
-    printf("\n");
-    printf("# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
- //   printf("\n%d  %d\n", estado->ultima_jogada.linha, estado->ultima_jogada.coluna);
-
+void prompt(ESTADO *estado, FILE *stream) {  
+    fprintf(stream, "# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
 }
 
 /**
 \brief Guarda no ficheiro cada casa do jogo.
 */
-void guarda_Casa(CASA tabi[8][8],int linha, int coluna, FILE *fp)
+void guarda_Casa(CASA tabi[8][8],int linha, int coluna, FILE *stream)
 {
     switch (tabi[linha][coluna])
     {
-        case '.' : fprintf(fp, "."); break;
-        case '#' : fprintf(fp, "#"); break;
-        case '*' : fprintf(fp, "*"); break;
-        case '1' : fprintf(fp, "1"); break;
-        case '2' : fprintf(fp, "2"); break;
+        case '.' : fprintf(stream, "."); break;
+        case '#' : fprintf(stream, "#"); break;
+        case '*' : fprintf(stream, "*"); break;
+        case '1' : fprintf(stream, "1"); break;
+        case '2' : fprintf(stream, "2"); break;
         default: break;
     } 
 } 
@@ -84,38 +43,34 @@ void guarda_Casa(CASA tabi[8][8],int linha, int coluna, FILE *fp)
 /**
 \brief Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa.
 */
-void guarda_Linha(CASA tabi[8][8],int linha, FILE *fp)
+void guarda_Linha(CASA tabi[8][8],int linha, FILE *stream)
 {
     int i;
     for(i=0; i<=7; i++)
     {
-        guarda_Casa( tabi, linha, i, fp);
+        guarda_Casa( tabi, linha, i, stream);
     }
-    fprintf(fp, "\n");
+   // fprintf(stream, "\n");
 }
 
 /**
 \brief Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha.
 */
-void guarda_tabuleiro(ESTADO estado1, FILE *fp)
+void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 {
     int i;
-
-    for (i=7; i>=0; i++)
+    if (stream == stdout) fprintf(stream,"\n  abcdefgh\n");
+    for (i=7; i>=0; i--)
     {
-        guarda_Linha( estado1.tab, i, fp);
+        if (stream == stdout) fprintf(stream, "%d ",i);
+        guarda_Linha( estado->tab, i, stream);
     }
-    fprintf(fp, "\n");
+    //printf("arroz");
+    if (stream == stdout ) prompt(estado, stream);
+    printf("arroz");
 }
 
 /// COMANDOS ////
-/**
-\brief Prompt do jogo.
-*/
-void prompt(ESTADO estado, FILE *fp) {  
-    guarda_tabuleiro(estado, fp);
-    fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
-}
 
 
 /**
@@ -129,15 +84,15 @@ void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
 /**
 \brief !!!!!!!!!!!!!!!!!1
 */
-void guarda_Jogadas(ESTADO *estado, char buffer[] , int  n_jogada,int  n_coord)
+void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
 {
-    COORDENADA coord = { buffer[0] - 'a', buffer[1] - '1'};
-    estado->jogadas[ n_jogada ].jogador1 = coord;
-    if (n_coord == 2) 
-    {
-        coord.linha = buffer[2] - 'a';   coord.coluna =  buffer[3] - '1';
-        estado->jogadas[ n_jogada ].jogador2 = coord ;
-    }
+    estado->jogadas[ n_jogada ].jogador1 = coord1;
+    estado->jogadas[ n_jogada ].jogador2 = coord2;
+}
+
+void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
+{
+    estado->jogadas[ n_jogada ].jogador1 = coord1;
 }
 
 /**
@@ -159,40 +114,62 @@ void ler_atualiza_estado_restante(ESTADO *estado)
         estado->num_comando++;
 }
 
+/*
+void ler_linha(ESTADO *estado, char *linha)
+{   
+    char casa;
+    for(int c = 0; c < 8; c++) 
+            { 
+                casa = linha[c];
+                fprintf(stdout, "%c", casa);
+                if ( casa == '#' ) estado->num_comando++;
+            }
+} */
+
 /**
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
 void comando_ler(FILE *fp,ESTADO *estado)
 {
-    char buffer[BUF_SIZE];
+    COORDENADA coord1, coord2;
+    char x1, x2, y1, y2;
+    char linha[BUF_SIZE];
     int l , n_jogadas;
     estado->num_comando = 0;
-    while(fgets(buffer, BUF_SIZE, fp) != NULL) {
-        for( int l = 0; l < 8; l++)
+
+    for( int l = 0; l < 8; l++)
         {
-            for(int c = 0; c < 8; c++) 
-            { 
-                set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
-                if ( c == BRANCA ) estado->num_comando++;
-            }
+            fscanf(fp, "%s", linha);
+        //    ler_linha(estado, linha);
         } 
-        n_jogadas = estado->num_comando / 2;
-        estado->num_jogadas = n_jogadas;
-        
-        for (  l = 0; l != n_jogadas && (fscanf( fp, "%s %s %s %s" , buffer , &buffer[2]) == 2) ; l++)
-        {
-            guarda_Jogadas(estado, buffer, l, 2);
-        }
-        if (fscanf( fp, "%s %s %s" , buffer ) == 1 ) guarda_Jogadas(estado, buffer, l, 1); 
-        ler_atualiza_estado_restante(estado);
+
+    n_jogadas = estado->num_comando / 2;
+    estado->num_jogadas = n_jogadas;
+
+    for (l = 0; l != n_jogadas && fscanf( fp, "%*s %c%c %c%c %*s", &x1, &y1, &x2, &y2) == 4 ; l++)
+    {
+        coord1.linha = x1 - 'a';
+        coord1.coluna = y1 - '1';
+        coord1.linha = x2 - 'a';
+        coord1.coluna = y2 - '1';
+        guarda_Jogadas_2(estado, coord1, coord2, l);
     }
+    if (fscanf( fp, "%*s %c%c %*s", &x1, &y1) == 2)  
+    {
+        coord1.linha = x1 - 'a';
+        coord1.coluna = y1 - '1';
+        guarda_Jogadas_1(estado, coord1, l);
+    }
+
+    ler_atualiza_estado_restante(estado);
+
 }
 
 /// Comando movs ///
 /**
 \brief Executa o comando movs para gravar os movimentos.
 */
-void comando_movs(ESTADO *estado, FILE *fp)
+void comando_movs(ESTADO *estado, FILE *stream)
 {
     int cont;
     int n_comandos = estado->num_jogadas;
@@ -202,33 +179,32 @@ void comando_movs(ESTADO *estado, FILE *fp)
 
     for (cont = 1 ; cont < n_comandos ; cont++ )
     {
-        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
         
-        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        else           fprintf(stream, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
     cont++;
     if (j == 2)
     {
-        if (cont <10)  fprintf(fp, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna);
+        if (cont <10)  fprintf(stream, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna);
         
-        else           fprintf(fp, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+        else           fprintf(stream, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
     }
     else
     {
-        if (cont <10)  fprintf(fp, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
         
-        else           fprintf(fp, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        else           fprintf(stream, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
 }
 
 /**
 \brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
 */
-void comando_gr(ESTADO *estado, FILE *fp) {
-    guarda_tabuleiro(*estado, fp);
-    comando_movs(estado, fp);
+void comando_gr(ESTADO *estado, FILE *stream) {
+    guarda_tabuleiro(estado, stream);
+    comando_movs(estado, stream);
 }
-
 
 
 /// INTERPRETADOR ///
@@ -241,81 +217,57 @@ int interpretador(ESTADO *estado) {
     char filename[BUF_SIZE] = "jogo.txt" ;
     char col[2], lin[2];
   //  filename = "jogo.txt";
+    int ganhou = 0;
 
-    int ganhou = verifica_Vitoria( estado, estado->ultima_jogada);
+    guarda_tabuleiro(estado, stdout);
 
-    if (ganhou)
+    while( ganhou != 1)
     {
-        imprime_tabuleiro(estado);
-        jogador_vencedor(estado);
-        return 0;
-    }
-
-    imprime_tabuleiro(estado);
-
-/* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
-
-    if(sscanf(linha, "gr %s",filename) == 1){
-        FILE *fp;
-
-        fp = fopen(filename, "w");
-        if (fp == NULL) {
-                printf("O ficheiro não abriu.\n");
-    	    }
-
-/* Grava o tabuleiro no ficheiro. */
-        comando_gr(estado, fp);
-   //     !!!!!!!!!!!!!!!!!!!!
-        //imprime_tabuleiro(estado);
-/* Fecha novamente o documento */
-        fclose(fp);
-    }
-
-/* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
-    if(sscanf(linha, "ler %s",filename) == 1){
-        FILE *fp;
-        fp = fopen(filename, "r");
-        if (fp == NULL) {
-            printf("O ficheiro não abriu.\n");
-    	}
-/* Lê o tabuleiro que está no ficheiro e imprime. */
-        //comando_ler(fp);
-        comando_ler(fp , estado);
-/* Fecha o ficheiro */
-        fclose(fp);
-    }
-
-
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-    {
-     //   FILE *fp;
-       // fp = fopen(filename, "w");
-
-        COORDENADA coord = {*col - 'a', *lin - '1'};
-
-        if (!jogar(estado, coord))
+        if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
         {
-            return 0;
+            COORDENADA coord = {*col - 'a', *lin - '1'};
+            jogar(estado, coord);
+            guarda_tabuleiro(estado, stdout);
         }
 
-       /* if   (jogar(estado, coord));
+        ganhou = verifica_Vitoria( estado, estado->ultima_jogada);
+
+        if ( ganhou ) 
         {
-          comando_gr(estado, fp);
-            //prompt(*estado, fp);
-        }*/
-       // fclose(fp);
+            guarda_tabuleiro( estado, stdout);
+            jogador_vencedor( estado, stdout);
+        }
+  
+
+    /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
+        if(strcmp( linha, "Q\n" ) == 0 ) return 0;
+
+    /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
+        if(sscanf(linha, "gr %s",filename) == 1){
+            FILE *fp;
+            fp = fopen(filename, "w");
+
+            if (fp == NULL) printf("O ficheiro não abriu.\n");
+    /* Grava o tabuleiro no ficheiro. */
+            comando_gr(estado, fp);
+    /* Fecha novamente o documento */
+            fclose(fp);
+        }
+
+    /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
+        if(sscanf(linha, "ler %s",filename) == 1){
+            FILE *fp;
+            fp = fopen(filename, "r");
+            if (fp == NULL) {
+                printf("O ficheiro não abriu.\n");
+            }
+        /* Lê o tabuleiro que está no ficheiro e imprime. */
+            //comando_ler(fp);
+            comando_ler(fp , estado);
+        /* Fecha o ficheiro */
+            fclose(fp);
+        }
     }
-
-
-/* Termina o jogo por algum motivo */
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;
-
-/* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-    if(strcmp( linha, "Q\n" ) == 0 ) return 0;
-
-    return 1;
 }
-
 
 /// FIM DO JOGO ///

@@ -236,8 +236,8 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
     printf("%d\n", verifica_casa_ocupada( estado , coord5 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord6 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord7 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord8 ));
-    return resul;*/
+    printf("%d\n", verifica_casa_ocupada( estado , coord8 ));*/
+    return resul;
 }
 
 /**
