@@ -19,8 +19,8 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 */
 void troca_posicoes(ESTADO *estado, COORDENADA pos_inicial, COORDENADA pos_final)
 {
-    altera_estado_peca(estado, pos_inicial , '*');
-    altera_estado_peca(estado, pos_final, '#');
+    altera_estado_peca(estado, pos_inicial , '#');
+    altera_estado_peca(estado, pos_final, '*');
 }
 
 /**

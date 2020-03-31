@@ -18,7 +18,7 @@ void casas_inicial(CASA tabi[8][8])
         {
             if (i==4 && j==4)
             {
-                tabi[i][j] = '#';
+                tabi[i][j] = '*';
             }
             else 
             {
@@ -197,15 +197,15 @@ int verifica_casa_Baixo(ESTADO *estado, COORDENADA coord)
 */
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 {
-    int x, y, resul = 0;
+    int x, y, resul = 1;
     x = coord.linha;
-    y = coord.coluna;  
+    y = coord.coluna; 
 
     if (x>=0 && x<=7 && y>=0 && y<=7 )
     {
-        if (estado->tab[x][y] == VAZIO) resul = 1;
-        else resul = 0;
+        if (estado->tab[x][y] == VAZIO ) resul = 0;
     }
+ //   printf("%d\n", resul);
     return resul;
 }
 
@@ -214,6 +214,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 */
 int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
 {
+    int resul;
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
@@ -222,13 +223,13 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
     COORDENADA coord6 = { coord.linha - 1, coord.coluna };
     COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
     COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-
-    return ( verificar_casas_dispo( estado , coord1 ) || verificar_casas_dispo( estado , coord2 ) ||
-             verificar_casas_dispo( estado , coord3 ) || verificar_casas_dispo( estado , coord4 ) ||
-             verificar_casas_dispo( estado , coord5 ) || verificar_casas_dispo( estado , coord6 ) ||
-             verificar_casas_dispo( estado , coord7 ) || verificar_casas_dispo( estado , coord8 ) || );
+    resul = ( verifica_casa_ocupada( estado , coord1 ) && verifica_casa_ocupada( estado , coord2 ) &&
+              verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
+              verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
+              verifica_casa_ocupada( estado , coord7 ) && verifica_casa_ocupada( estado , coord8 )   );
+    printf("%d\n", resul);
+    return resul;
 }
-
 
 /**
 \brief Função que verifica se a peça preta se encontra na casa 1 ou 2.
@@ -238,7 +239,6 @@ int verifica_vencedor(ESTADO estado)
     COORDENADA coord = estado.ultima_jogada;
     int r = ( coord.linha == 0  && coord.coluna == 0) ||
             ( coord.linha == 7 && coord.coluna == 7) ;
-
     return r;
 }
 

@@ -12,6 +12,8 @@ void jogador_vencedor(ESTADO *estado) {
     int j, jog_atual = estado->jogador_atual;
     if (jog_atual == 1) j = 2;
     else j = 1;
+    if ( estado->ultima_jogada.linha == 0 && estado->ultima_jogada.coluna == 0) j = 1;
+    if ( estado->ultima_jogada.linha == 7 && estado->ultima_jogada.coluna == 7) j = 2;
 
     printf ("\nO Player %d é o vencedor! Parabéns!\n", j);
 }
@@ -114,25 +116,75 @@ void prompt(ESTADO estado, FILE *fp) {
     guarda_tabuleiro(estado, fp);
     fprintf(fp, "# %d Player_%d Jogada_%d -> ", estado.num_comando, estado.jogador_atual, estado.num_jogadas);
 }
+
+
 /**
-
-
-\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
+\brief !!!!!!!!!!!!!!!!!1
 */
 void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
 {
     estado->tab[ coord.linha ][ coord.coluna ] = valor;
 }
 
+/**
+\brief !!!!!!!!!!!!!!!!!1
+*/
+void guarda_Jogadas(ESTADO *estado, char buffer[] , int  n_jogada,int  n_coord)
+{
+    COORDENADA coord = { buffer[0] - 'a', buffer[1] - '1'};
+    estado->jogadas[ n_jogada ].jogador1 = coord;
+    if (n_coord == 2) 
+    {
+        coord.linha = buffer[2] - 'a';   coord.coluna =  buffer[3] - '1';
+        estado->jogadas[ n_jogada ].jogador2 = coord ;
+    }
+}
+
+/**
+\brief Funcao auxilidar do comando ler, que atualiza a ultima coordenada e o jogador atual em funcao do resto.
+*/
+void ler_atualiza_estado_restante(ESTADO *estado)
+{
+    if ( estado->num_comando % 2 ) 
+        {
+            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador1;
+            estado->jogador_atual = 2;
+        }
+        else
+        {
+            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador2;
+            estado->jogador_atual = 1; 
+            estado->num_jogadas;
+        }
+        estado->num_comando++;
+}
+
+/**
+\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
+*/
 void comando_ler(FILE *fp,ESTADO *estado)
 {
     char buffer[BUF_SIZE];
-    int l ;
+    int l , n_jogadas;
+    estado->num_comando = 0;
     while(fgets(buffer, BUF_SIZE, fp) != NULL) {
         for( int l = 0; l < 8; l++)
         {
-            for(int c = 0; c < 8; c++) set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
+            for(int c = 0; c < 8; c++) 
+            { 
+                set_casa(estado, (COORDENADA) {l, c}, buffer[c]);
+                if ( c == BRANCA ) estado->num_comando++;
+            }
         } 
+        n_jogadas = estado->num_comando / 2;
+        estado->num_jogadas = n_jogadas;
+        
+        for (  l = 0; l != n_jogadas && (fscanf( fp, "%s %s %s %s" , buffer , &buffer[2]) == 2) ; l++)
+        {
+            guarda_Jogadas(estado, buffer, l, 2);
+        }
+        if (fscanf( fp, "%s %s %s" , buffer ) == 1 ) guarda_Jogadas(estado, buffer, l, 1); 
+        ler_atualiza_estado_restante(estado);
     }
 }
 
@@ -215,8 +267,6 @@ int interpretador(ESTADO *estado) {
         comando_gr(estado, fp);
    //     !!!!!!!!!!!!!!!!!!!!
         //imprime_tabuleiro(estado);
-
-
 /* Fecha novamente o documento */
         fclose(fp);
     }
