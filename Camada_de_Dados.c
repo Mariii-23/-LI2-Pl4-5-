@@ -203,7 +203,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 
     if (x>=0 && x<=7 && y>=0 && y<=7 )
     {
-        if (estado->tab[x][y] == VAZIO ) resul = 0;
+        if (estado->tab[x][y] == '.' ) resul = 0;
     }
  //   printf("%d\n", resul);
     return resul;
@@ -215,6 +215,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
 {
     int resul;
+  //  printf("%d %d", estado->ultima_jogada.linha ,estado->ultima_jogada.coluna);
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
@@ -223,12 +224,20 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
     COORDENADA coord6 = { coord.linha - 1, coord.coluna };
     COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
     COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-    resul = ( verifica_casa_ocupada( estado , coord1 ) && verifica_casa_ocupada( estado , coord2 ) &&
-              verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
-              verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
-              verifica_casa_ocupada( estado , coord7 ) && verifica_casa_ocupada( estado , coord8 )   );
-    printf("%d\n", resul);
-    return resul;
+    resul = ( verifica_casa_ocupada( estado , coord1 ) * verifica_casa_ocupada( estado , coord2 ) *
+              verifica_casa_ocupada( estado , coord3 ) * verifica_casa_ocupada( estado , coord4 ) *
+              verifica_casa_ocupada( estado , coord5 ) * verifica_casa_ocupada( estado , coord6 ) *
+              verifica_casa_ocupada( estado , coord7 ) * verifica_casa_ocupada( estado , coord8 )   );
+/*    printf("%d\n", resul);
+    printf("%d\n", verifica_casa_ocupada( estado , coord1 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord2 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord3 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord4 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord5 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord6 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord7 ));
+    printf("%d\n", verifica_casa_ocupada( estado , coord8 ));
+    return resul;*/
 }
 
 /**
