@@ -32,11 +32,11 @@ void prompt(ESTADO *estado, FILE *stream) {
 */
 void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
 {
-    int i;
+    int coluna;
     CASA casa;
-    for(i=0; i<=7; i++)
+    for(coluna=0; coluna<=7; coluna++)
     {
-        casa = estado->tab[linha][i];
+        casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
     fprintf(stream, "arroz");
@@ -47,17 +47,17 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
 */
 void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 {
-    int i;
+    int linha;
     if (stream == stdout) fprintf(stream,"\n  abcdefgh\n");
     printf("batata");
-    for (i=7; i>=0; i--)
+    for (linha=7; linha>=0; linha--)
     {
-        if (stream == stdout) fprintf(stream, "%d ",i);
-        guarda_Linha( estado, i, stream);
+        if (stream == stdout) fprintf(stream, "%d ",linha);
+        guarda_Linha( estado, linha, stream);
     }
    // printf("feijao");
     //fprintf(stream, "arroz");
-    if (stream == stdout ) prompt(estado, stream);
+   // if (stream == stdout ) prompt(estado, stream);
    // printf("arroz");
 }
 
@@ -99,24 +99,22 @@ void ler_atualiza_estado_restante(ESTADO *estado)
         }
         else
         {
-            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador2;
+            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 1 ].jogador2;
             estado->jogador_atual = 1; 
-            estado->num_jogadas;
         }
-        estado->num_comando++;
 }
 
-/*
+
 void ler_linha(ESTADO *estado, char *linha)
 {   
     char casa;
     for(int c = 0; c < 8; c++) 
-            { 
-                casa = linha[c];
-                fprintf(stdout, "%c", casa);
-                if ( casa == '#' ) estado->num_comando++;
-            }
-} */
+    { 
+        casa = linha[c];
+        fprintf(stdout, "%c", casa);
+        if ( casa == '#' ) estado->num_comando++;
+    }
+} 
 
 /**
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
@@ -132,7 +130,7 @@ void comando_ler(FILE *fp,ESTADO *estado)
     for( int l = 0; l < 8; l++)
         {
             fscanf(fp, "%s", linha);
-        //    ler_linha(estado, linha);
+            ler_linha(estado, linha);
         } 
 
     n_jogadas = estado->num_comando / 2;
@@ -154,7 +152,6 @@ void comando_ler(FILE *fp,ESTADO *estado)
     }
 
     ler_atualiza_estado_restante(estado);
-
 }
 
 /// Comando movs ///
@@ -182,12 +179,13 @@ void comando_movs(ESTADO *estado, FILE *stream)
         
         else           fprintf(stream, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
     }
+    /*
     else
     {
         if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
         
         else           fprintf(stream, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-    }
+    }*/
 }
 
 /// COMANDO GRAVAR ///
@@ -198,7 +196,6 @@ void comando_gr(ESTADO *estado, FILE *stream) {
     guarda_tabuleiro(estado, stream);
     comando_movs(estado, stream);
 }
-
 
 /// INTERPRETADOR ///
 
