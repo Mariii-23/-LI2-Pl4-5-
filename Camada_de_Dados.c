@@ -41,6 +41,7 @@ void casas_inicial(CASA tabi[8][8])
     }  
 }
 
+/*
 void coordenadas_0(ESTADO *estado)
 {
     int i=0; 
@@ -50,14 +51,14 @@ void coordenadas_0(ESTADO *estado)
         estado->jogadas[i].jogador1 = coord;
         estado->jogadas[i].jogador2 = coord;
     }
-}
+}*/
 
 /**
 \brief Função que define o estado inicial do jogo.
 */
 ESTADO *inicializador_estado()
 {
-    ESTADO *estado = (ESTADO *) malloc(sizeof(ESTADO));
+    ESTADO *estado = (ESTADO *) calloc(1, sizeof(ESTADO));
     casas_inicial(estado->tab);
     estado->num_jogadas = 1;
     estado->jogador_atual = 1;
@@ -65,7 +66,8 @@ ESTADO *inicializador_estado()
 
     estado->ultima_jogada.coluna = 4;  
     estado->ultima_jogada.linha = 4;  
-    coordenadas_0(estado);
+    //char str[BUF_SIZE] = {0};
+    //coordenadas_0(estado);
    // estado->jogadas = NULL;
     return estado;
 }
