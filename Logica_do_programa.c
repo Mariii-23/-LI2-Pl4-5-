@@ -19,8 +19,8 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 */
 void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 {
-    altera_estado_peca(estado, estado->ultima_jogada, '#');
-    altera_estado_peca(estado, pos_final, '*');
+    altera_estado_peca(estado, estado->ultima_jogada, BRANCA);
+    altera_estado_peca(estado, pos_final, PRETA);
 }
 
 /**
@@ -41,10 +41,7 @@ void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
 void atualiza_Num_Jogadas(ESTADO *estado)
 {
     int jog = estado->jogador_atual;
-    if (jog == 1)
-    {
-        estado->num_jogadas += 1;
-    }
+    if (jog == 1)  estado->num_jogadas += 1;
 }
 
 /**
@@ -67,8 +64,6 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
 int jogar(ESTADO *estado, COORDENADA coord)
 {
     int resul=0;
-    COORDENADA coord_anterior;
-    coord_anterior = estado->ultima_jogada;  
 
     int pode_jogar = verifica_jogada(estado, coord);
 

@@ -5,6 +5,7 @@
 #include "Interface.h"
 #include "dados.h"
 
+/// ESTADO INICIAL ///
 /**
 \brief Função que define cada casa do jogo quando este é iniciado.
 */
@@ -72,6 +73,7 @@ ESTADO *inicializador_estado()
     return estado;
 }
 
+/// FUNCOES AUXILIARES ///
 /**
 \brief Função que devolve o estado de cada peça consoante as coordenadas dadas.
 */
@@ -111,10 +113,12 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
-    int vaziaa = peca == '.' || peca == '2' || peca == '1' ;
+    int vaziaa = peca != '#'; //   peca == '.' || peca == '2' || peca == '1' ;
     
     return ( vaziaa  && verifica_se_e_vizinho(estado->ultima_jogada, pos_final )  );
 }
+
+/// VERIFICA SE ALGUEM GANHOU ///
 
 /**
 \brief Função que verifica se a casa abaixo está disponível para se mover para lá.
