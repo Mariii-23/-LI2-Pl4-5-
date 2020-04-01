@@ -28,14 +28,8 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 */
 void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
 {
-    if (estado->jogador_atual == 1)
-    {
-        estado->jogadas[ estado->num_jogadas ].jogador1 = coord; 
-    }
-    else
-    {
-        estado->jogadas[ (estado->num_jogadas ) + 1 ].jogador2 = coord; 
-    }
+    if (estado->jogador_atual == 1)   estado->jogadas[ estado->num_jogadas ].jogador1 = coord; 
+    else                              estado->jogadas[ (estado->num_jogadas ) + 1 ].jogador2 = coord; 
 }
 
 void atualiza_Num_Jogadas(ESTADO *estado)
@@ -64,9 +58,8 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
 int jogar(ESTADO *estado, COORDENADA coord)
 {
     int resul=0;
-
     int pode_jogar = verifica_jogada(estado, coord);
-
+    
     if (pode_jogar)
     {
         atualiza_estado(estado, coord);

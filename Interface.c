@@ -39,7 +39,7 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
         casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
-    fprintf(stream, "arroz");
+    fprintf(stream, "arroz"); //apagar depois
 }
 
 /**
@@ -57,29 +57,24 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
     }
    // printf("feijao");
     //fprintf(stream, "arroz");
+
    // if (stream == stdout ) prompt(estado, stream);
+
    // printf("arroz");
 }
 
-/// COMANDOS ////
+/// !!!____COMANDOS___!!! ////
 
 /// COMANDO LER ///
 
 /**
-\brief !!!!!!!!!!!!!!!!!1
-*/
-void set_casa(ESTADO *estado, COORDENADA coord, CASA valor)
-{
-    estado->tab[ coord.linha ][ coord.coluna ] = valor;
-}
-
-/**
-\brief !!!!!!!!!!!!!!!!!1
+\brief Guarda as jogadas
 */
 void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
 {
     estado->jogadas[ n_jogada ].jogador1 = coord1;
-    estado->jogadas[ n_jogada ].jogador2 = coord2;
+    if ( coord2.linha != -1 && coord2.coluna != -1  )
+        estado->jogadas[ n_jogada ].jogador2 = coord2;
 }
 
 void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
@@ -121,7 +116,7 @@ void ler_linha(ESTADO *estado, char *linha)
 */
 void comando_ler(FILE *fp,ESTADO *estado)
 {
-    COORDENADA coord1, coord2;
+    COORDENADA coord1 = {-1,-1}, coord2 = {-1,-1};
     char x1, x2, y1, y2;
     char linha[BUF_SIZE];
     int l , n_jogadas;
@@ -148,6 +143,8 @@ void comando_ler(FILE *fp,ESTADO *estado)
     {
         coord1.linha = x1 - 'a';
         coord1.coluna = y1 - '1';
+        // usar 2 funcoes...ou juntar?!
+        //guarda_Jogadas_2(estado, coord1, coord2, l);
         guarda_Jogadas_1(estado, coord1, l);
     }
 

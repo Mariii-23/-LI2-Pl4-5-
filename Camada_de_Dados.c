@@ -143,7 +143,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
 {
     int resul;
-  //  printf("%d %d", estado->ultima_jogada.linha ,estado->ultima_jogada.coluna);
+    //  printf("%d %d", estado->ultima_jogada.linha ,estado->ultima_jogada.coluna);
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
@@ -156,7 +156,7 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
               verifica_casa_ocupada( estado , coord3 ) * verifica_casa_ocupada( estado , coord4 ) *
               verifica_casa_ocupada( estado , coord5 ) * verifica_casa_ocupada( estado , coord6 ) *
               verifica_casa_ocupada( estado , coord7 ) * verifica_casa_ocupada( estado , coord8 )   );
-/*    printf("%d\n", resul);
+ /* printf("%d\n", resul);
     printf("%d\n", verifica_casa_ocupada( estado , coord1 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord2 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord3 ));
@@ -175,7 +175,7 @@ int verifica_vencedor(ESTADO estado)
 {
     COORDENADA coord = estado.ultima_jogada;
     int r = ( coord.linha == 0  && coord.coluna == 0) ||
-            ( coord.linha == 7 && coord.coluna == 7) ;
+            ( coord.linha == 7  && coord.coluna == 7) ;
     return r;
 }
 
