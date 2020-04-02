@@ -39,7 +39,7 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
         casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
-    fprintf(stream, "arroz"); //apagar depois
+    fprintf(stream, "\n"); //apagar depois
 }
 
 /**
@@ -49,17 +49,15 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 {
     int linha;
     if (stream == stdout) fprintf(stream,"\n  abcdefgh\n");
-    printf("batata");
+    //printf("batata");
     for (linha=7; linha>=0; linha--)
     {
         if (stream == stdout) fprintf(stream, "%d ",linha);
         guarda_Linha( estado, linha, stream);
     }
    // printf("feijao");
-    //fprintf(stream, "arroz");
-
-   // if (stream == stdout ) prompt(estado, stream);
-
+    fprintf(stream, "\n");
+    if (stream == stdout ) prompt(estado, stream);
    // printf("arroz");
 }
 
@@ -100,13 +98,14 @@ void ler_atualiza_estado_restante(ESTADO *estado)
 }
 
 
-void ler_linha(ESTADO *estado, char *linha)
+void ler_linha(ESTADO *estado, char linha[], int l)
 {   
     char casa;
     for(int c = 0; c < 8; c++) 
     { 
         casa = linha[c];
         fprintf(stdout, "%c", casa);
+        estado->tab[l][c]=casa;
         if ( casa == '#' ) estado->num_comando++;
     }
 } 
@@ -120,18 +119,24 @@ void comando_ler(FILE *fp,ESTADO *estado)
     char x1, x2, y1, y2;
     char linha[BUF_SIZE];
     int l , n_jogadas;
-    estado->num_comando = 0;
 
-    for( int l = 0; l < 8; l++)
+    // por o estado todo a zero
+    //estado = inicializador_estado();
+
+    estado->num_comando = 1;
+    estado->jogador_atual = 1;
+    for( int l = 7; l >= 0; l--)
         {
+            // ????  fscanf(fp, "%s", &linha);
             fscanf(fp, "%s", linha);
-            ler_linha(estado, linha);
+            ler_linha(estado, linha, l);
+            fprintf(stdout,"\n");
         } 
 
-    n_jogadas = estado->num_comando / 2;
+    n_jogadas = estado->num_comando / 2 + 1;
     estado->num_jogadas = n_jogadas;
 
-    for (l = 0; l != n_jogadas && fscanf( fp, "%*s %c%c %c%c %*s", &x1, &y1, &x2, &y2) == 4 ; l++)
+    for (l = 0; l != (n_jogadas-1) && fscanf( fp, "%*s %c%c %c%c %*s", &x1, &y1, &x2, &y2) == 4 ; l++)
     {
         coord1.linha = x1 - 'a';
         coord1.coluna = y1 - '1';
@@ -157,32 +162,34 @@ void comando_ler(FILE *fp,ESTADO *estado)
 */
 void comando_movs(ESTADO *estado, FILE *stream)
 {
-    int cont;
+    int cont=0, num;
     int n_comandos = estado->num_jogadas;
     int j = estado->jogador_atual;
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
-    for (cont = 1 ; cont < n_comandos ; cont++ )
+    for (num = 1 ; num < n_comandos ; num++ , cont++)
     {
-        if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-        
-        else           fprintf(stream, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        coord1 = estado->jogadas[cont].jogador1;
+        coord2 = estado->jogadas[cont].jogador2;
+        if (num <10)  fprintf(stream, "0%d: %d%d %d%d\n", num, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        else          fprintf(stream, "%d: %d%d %d%d\n", num, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
     }
-    cont++;
-    if (j == 2)
+    coord1 = estado->jogadas[cont].jogador1;
+    coord2 = estado->jogadas[cont].jogador2;
+    if (j == 2 )
     {
-        if (cont <10)  fprintf(stream, "0%d: %d%d\n", cont, coord1.linha, coord1.coluna);
-        
-        else           fprintf(stream, "%d: %d%d\n", cont, coord1.linha, coord1.coluna); 
+        if (num <10)  fprintf(stream, "0%d: %d%d\n", num, coord1.linha, coord1.coluna);
+        else          fprintf(stream, "%d: %d%d\n", num, coord1.linha, coord1.coluna); 
     }
-    /*
     else
     {
-        if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-        
-        else           fprintf(stream, "%d: %d%d %d%d\n", cont, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
-    }*/
+        if (n_comandos>1)
+        {
+            if (cont <10)  fprintf(stream, "0%d: %d%d %d%d\n", num, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+            else           fprintf(stream, "%d: %d%d %d%d\n", num, coord1.linha, coord1.coluna, coord2.linha, coord2.coluna );
+        }
+    }
 }
 
 /// COMANDO GRAVAR ///
@@ -209,7 +216,8 @@ int interpretador(ESTADO *estado) {
     guarda_tabuleiro(estado, stdout);
 
     while( ganhou != 1)
-    {
+    { 
+        //guarda_tabuleiro(estado, stdout);
         if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
         {
             COORDENADA coord = {*col - 'a', *lin - '1'};
@@ -217,7 +225,7 @@ int interpretador(ESTADO *estado) {
             guarda_tabuleiro(estado, stdout);
         }
 
-        ganhou = verifica_Vitoria( estado, estado->ultima_jogada);
+        ganhou = verifica_Vitoria( estado);
 
         if ( ganhou ) 
         {
@@ -239,21 +247,21 @@ int interpretador(ESTADO *estado) {
             comando_gr(estado, fp);
 /* Fecha novamente o documento */
             fclose(fp);
-            }
+        }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
         if(sscanf(linha, "ler %s",filename) == 1)
         {
             FILE *fp;
             fp = fopen(filename, "r");
-            if (fp == NULL) {
-                printf("O ficheiro não abriu.\n");
-            }
+            if (fp == NULL)  printf("O ficheiro não abriu.\n");
+            else 
+            {
 /* Lê o tabuleiro que está no ficheiro e imprime. */
-            //comando_ler(fp);
-            comando_ler(fp , estado);
+                comando_ler(fp, estado);
 /* Fecha o ficheiro */
-            fclose(fp);
+                fclose(fp);
+            }
         }
     }
     return ganhou;

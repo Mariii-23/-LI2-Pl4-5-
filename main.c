@@ -11,7 +11,7 @@ int main()
    // desenha_estado( estado_Inicial());
     ESTADO *estado;
     estado = inicializador_estado();
-
+    //guarda_tabuleiro(estado, stdout);
     interpretador(estado);
     return 0;
 }

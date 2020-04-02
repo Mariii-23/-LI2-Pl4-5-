@@ -9,7 +9,7 @@
 /**
 \brief Função que define cada casa do jogo quando este é iniciado.
 */
-void casas_inicial(CASA tabi[8][8])
+void casas_inicial(ESTADO *estado)
 {
     int i, j;
     for(i=7; i>=0; i--)
@@ -18,23 +18,23 @@ void casas_inicial(CASA tabi[8][8])
         {
             if (i==4 && j==4)
             {
-                tabi[i][j] = '*';
+                estado->tab[i][j] = '*';
             }
             else 
             {
                 if (i==7 && j==7)
                 {
-                    tabi[i][j] = '2';
+                    estado->tab[i][j] = '2';
                 } 
                 else
                 {
                     if(i==0 && j==0)
                     {
-                        tabi[i][j] = '1';
+                        estado->tab[i][j] = '1';
                     }
                     else
                     {
-                        tabi[i][j] = '.';
+                        estado->tab[i][j] = '.';
                     } 
                 }   
             }         
@@ -60,7 +60,7 @@ void coordenadas_0(ESTADO *estado)
 ESTADO *inicializador_estado()
 {
     ESTADO *estado = (ESTADO *) calloc(1, sizeof(ESTADO));
-    casas_inicial(estado->tab);
+    casas_inicial(estado);
     estado->num_jogadas = 1;
     estado->jogador_atual = 1;
     estado->num_comando = 1;
@@ -121,7 +121,7 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 /// VERIFICA SE ALGUEM GANHOU ///
 
 /**
-\brief Função que verifica se a casa abaixo está disponível para se mover para lá.
+\brief Função que verifica se a casa está disponível para se mover para lá.
 */
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 {
@@ -131,7 +131,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 
     if (x>=0 && x<=7 && y>=0 && y<=7 )
     {
-        if (estado->tab[x][y] == '.' ) resul = 0;
+        if (estado->tab[x][y] == VAZIO ) resul = 0;
     }
  //   printf("%d\n", resul);
     return resul;
@@ -140,8 +140,9 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 /**
 \brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
 */
-int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
+int verificar_casas_ocupadas(ESTADO *estado)
 {
+    COORDENADA coord = estado->ultima_jogada;
     int resul;
     //  printf("%d %d", estado->ultima_jogada.linha ,estado->ultima_jogada.coluna);
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
@@ -152,10 +153,10 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
     COORDENADA coord6 = { coord.linha - 1, coord.coluna };
     COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
     COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-    resul = ( verifica_casa_ocupada( estado , coord1 ) * verifica_casa_ocupada( estado , coord2 ) *
-              verifica_casa_ocupada( estado , coord3 ) * verifica_casa_ocupada( estado , coord4 ) *
-              verifica_casa_ocupada( estado , coord5 ) * verifica_casa_ocupada( estado , coord6 ) *
-              verifica_casa_ocupada( estado , coord7 ) * verifica_casa_ocupada( estado , coord8 )   );
+    resul = ( verifica_casa_ocupada( estado , coord1 ) && verifica_casa_ocupada( estado , coord2 ) &&
+              verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
+              verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
+              verifica_casa_ocupada( estado , coord7 ) && verifica_casa_ocupada( estado , coord8 )   );
  /* printf("%d\n", resul);
     printf("%d\n", verifica_casa_ocupada( estado , coord1 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord2 ));
@@ -171,9 +172,9 @@ int verificar_casas_ocupadas(ESTADO *estado, COORDENADA coord)
 /**
 \brief Função que verifica se a peça preta se encontra na casa 1 ou 2.
 */
-int verifica_vencedor(ESTADO estado) 
+int verifica_vencedor(ESTADO *estado) 
 {
-    COORDENADA coord = estado.ultima_jogada;
+    COORDENADA coord = estado->ultima_jogada;
     int r = ( coord.linha == 0  && coord.coluna == 0) ||
             ( coord.linha == 7  && coord.coluna == 7) ;
     return r;
@@ -182,7 +183,8 @@ int verifica_vencedor(ESTADO estado)
 /**
 \brief Função principal que verifica se existe vencedor.
 */
-int verifica_Vitoria(ESTADO *estado,COORDENADA coord)
+int verifica_Vitoria(ESTADO *estado)
 {
-    return ( verifica_vencedor(*estado) || verificar_casas_ocupadas(estado, coord ) );
+    // return ( verifica_vencedor(*estado));
+     return ( verifica_vencedor(estado) || verificar_casas_ocupadas(estado) );
 }

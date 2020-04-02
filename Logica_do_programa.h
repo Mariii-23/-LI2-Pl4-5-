@@ -7,7 +7,7 @@ Definição da função jogar responsável por alterar o estado do jogo.
 #define ___LOGICA_DO_PROGRAMA___
 #include "dados.h"
 
-int jogar(ESTADO *estado, COORDENADA coord);
 void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar);
+int jogar(ESTADO *estado, COORDENADA coord);
 
 #endif
