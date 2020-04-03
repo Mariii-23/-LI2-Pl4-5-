@@ -29,8 +29,8 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 void atualiza_JOGADAS(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
-    if (estado->jogador_atual == 1)   estado->jogadas[ estado->num_jogadas - 1 ].jogador1 = coord; 
-    else                              estado->jogadas[ estado->num_jogadas - 1 ].jogador2 = coord; 
+    if (estado->jogador_atual == 2)   estado->jogadas[ estado->num_jogadas - 1 ].jogador1 = coord; 
+    else                              estado->jogadas[ estado->num_jogadas -2 ].jogador2 = coord; 
 }
 
 void atualiza_Num_Jogadas(ESTADO *estado)
@@ -45,7 +45,7 @@ void atualiza_Num_Jogadas(ESTADO *estado)
 void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
 {
     troca_posicoes(estado, coord_mudar);
-    atualiza_JOGADAS(estado);
+    if ( estado->num_comando != 1 ) atualiza_JOGADAS(estado);
     if (estado->jogador_atual == 1)  estado->jogador_atual = 2;
     else                             estado->jogador_atual = 1;
     atualiza_Num_Jogadas(estado);

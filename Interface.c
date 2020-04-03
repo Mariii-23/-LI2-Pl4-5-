@@ -106,7 +106,7 @@ void ler_linha(ESTADO *estado, char linha[], int l)
         casa = linha[c];
         fprintf(stdout, "%c", casa);
         estado->tab[l][c]=casa;
-        if ( casa == '#' ) estado->num_comando++;
+        if ( casa == BRANCA ) estado->num_comando++;
     }
 } 
 
@@ -127,7 +127,6 @@ void comando_ler(FILE *fp,ESTADO *estado)
     estado->jogador_atual = 1;
     for( int l = 7; l >= 0; l--)
         {
-            // ????  fscanf(fp, "%s", &linha);
             fscanf(fp, "%s", linha);
             ler_linha(estado, linha, l);
             fprintf(stdout,"\n");
@@ -156,6 +155,7 @@ void comando_ler(FILE *fp,ESTADO *estado)
     ler_atualiza_estado_restante(estado);
 }
 
+/*
 void comando_pos(ESTADO *estado, int n_jogadas )
 {
     int i,l ;
@@ -164,18 +164,14 @@ void comando_pos(ESTADO *estado, int n_jogadas )
     {
         for(l=0; l<8; l++) tabi[i][l] = estado->tab[i][l];
     }
-    /** As jogadas */
     JOGADAS jogadas;
     for (i=0; i < estado->num_jogadas ; i++); 
     {
         jogadas[i].jogador1 = estado->jogadas[i].jogador1;
         jogadas[i].jogador2 = estado->jogadas[i].jogador2;
     }
-    /** O número das jogadas, usado no prompt */
     int num_jogadas = estado->num_jogadas;
-    /** O jogador atual */
     int jogador_atual = estado->jogador_atual;
-    /** O nº de comando, usado no prompt */
     int num_comando = estado->num_comando;
 
     estado = inicializador_estado();
@@ -187,7 +183,8 @@ void comando_pos(ESTADO *estado, int n_jogadas )
         coord = jogadas[i].jogador2;
         atualiza_estado(estado,coord);
     }
-}
+} 
+*/
 
 /// Comando movs ///
 /**
@@ -196,33 +193,31 @@ void comando_pos(ESTADO *estado, int n_jogadas )
 void comando_movs(ESTADO *estado, FILE *stream)
 {
     int cont=0, num;
-    int n_comandos = estado->num_jogadas;
+    int n_jogadas = estado->num_jogadas;
     int j = estado->jogador_atual;
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
-    //COORDENADA coord = {*col - 'a', *lin - '1'};
-    //char x1,x2;
 
-    for (num = 1 ; num < n_comandos-1 ; num++ , cont++)
+    for (num = 1 ; num < n_jogadas-1 ; num++ , cont++)
     {
         coord1 = estado->jogadas[cont].jogador1;
         coord2 = estado->jogadas[cont].jogador2;
-        if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha, coord2.coluna + 'a', coord2.linha );
-        else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha, coord2.coluna  + 'a', coord2.linha );
+        if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1 );
+        else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna  + 'a', coord2.linha + 1 );
     }
     coord1 = estado->jogadas[cont].jogador1;
     coord2 = estado->jogadas[cont].jogador2;
     if (j == 2 )
     {
-        if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha);
-        else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha); 
+        if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
+        else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
     }
     else
     {
-        if (estado->num_comando >1)
+        if (estado->num_jogadas >1)
         {
-            if (cont <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha, coord2.coluna + 'a', coord2.linha );
-            else           fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha, coord2.coluna + 'a', coord2.linha );
+            if (cont <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1);
+            else           fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1);
         }
     }
 }
@@ -300,6 +295,13 @@ int interpretador(ESTADO *estado) {
 /* Fecha o ficheiro */
                 fclose(fp);
             }
+        }
+
+        if(strcmp( linha, "movs\n" ) == 0)
+        {
+            comando_movs(estado,stdout);
+            guarda_tabuleiro(estado,stdout);
+        }
 
        /*
         if(sscanf(linha, "pos %d",&dados) == 1)
@@ -309,7 +311,6 @@ int interpretador(ESTADO *estado) {
             printf("arroz");
         } */
 
-        }
     }
     return ganhou;
 }
