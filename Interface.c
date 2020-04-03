@@ -155,6 +155,61 @@ void comando_ler(FILE *fp,ESTADO *estado)
     ler_atualiza_estado_restante(estado);
 }
 
+<<<<<<< HEAD
+
+void comando_teste_pos(ESTADO *estado, int n_jogadas ){
+    int i, j;
+    int tabuleiro[8][8];
+    int cont=0, num;
+    COORDENADA coord1 = estado->jogadas[cont].jogador1;
+    COORDENADA coord2 = estado->jogadas[cont].jogador2;
+    /*Cria um novo tabuleiro vazio. */
+    for(i=7; i>=0; i--){
+        for(j=0; j<=7; j++){
+            if (i==4 && j==4){
+                tabuleiro[i][j] = '*';
+            }
+            else {
+                if (i==7 && j==7){
+                    tabuleiro[i][j] = '2';
+                } 
+                else{
+                    if(i==0 && j==0){
+                        tabuleiro[i][j] = '1';
+                    }
+                    else{
+                        tabuleiro[i][j] = '.';
+                    } 
+                }
+            }
+        }
+    }
+    for (num = 1 ; num <= n_jogadas ; num++ , cont++)
+    {
+        coord1 = estado->jogadas[cont].jogador1;
+        coord2 = estado->jogadas[cont].jogador2;
+        tabuleiro[coord1.coluna][coord1.linha] = '#';
+        tabuleiro[coord2.coluna][coord2.linha] = '#';
+        tabuleiro[i][j] = '#';
+    }
+        coord2 = estado->jogadas[cont - 1].jogador2;
+        tabuleiro[coord2.coluna][coord2.linha] = '*';
+
+    /*Imprimir o novo tabuleiro. */
+    printf("abcdefgh");
+    for (i = 0; i < 8; i++)
+    {
+        printf("%d", i);
+        for (j = 0; j < 8; j++)
+        {
+            printf("%c", tabuleiro[i][j]);
+        }
+    }
+}
+
+
+=======
+>>>>>>> 29d18519d9a157ec61894e3463c4373845a12fed
 /*
 void comando_pos(ESTADO *estado, int n_jogadas )
 {
@@ -303,6 +358,14 @@ int interpretador(ESTADO *estado) {
             guarda_tabuleiro(estado,stdout);
         }
 
+<<<<<<< HEAD
+
+        if(sscanf(linha, "pos %d",&dados) == 1)
+        {
+            if (dados < estado->num_jogadas)   comando_teste_pos(estado, dados);
+            else printf("Erro! A posição não existe!");
+        }
+=======
        /*
         if(sscanf(linha, "pos %d",&dados) == 1)
         {
@@ -310,6 +373,7 @@ int interpretador(ESTADO *estado) {
             guarda_tabuleiro(estado, stdout);
             printf("arroz");
         } */
+>>>>>>> 29d18519d9a157ec61894e3463c4373845a12fed
 
     }
     return ganhou;
