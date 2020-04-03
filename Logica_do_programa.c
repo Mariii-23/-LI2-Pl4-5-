@@ -26,10 +26,11 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 /**
 \brief Função que altera o estado das JOGADAS, adicionando a ultima coordenada dada.
 */
-void atualiza_JOGADAS(ESTADO *estado, COORDENADA coord)
+void atualiza_JOGADAS(ESTADO *estado)
 {
-    if (estado->jogador_atual == 1)   estado->jogadas[ estado->num_jogadas ].jogador1 = coord; 
-    else                              estado->jogadas[ (estado->num_jogadas ) + 1 ].jogador2 = coord; 
+    COORDENADA coord = estado->ultima_jogada;
+    if (estado->jogador_atual == 1)   estado->jogadas[ estado->num_jogadas - 1 ].jogador1 = coord; 
+    else                              estado->jogadas[ estado->num_jogadas - 1 ].jogador2 = coord; 
 }
 
 void atualiza_Num_Jogadas(ESTADO *estado)
@@ -44,12 +45,12 @@ void atualiza_Num_Jogadas(ESTADO *estado)
 void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
 {
     troca_posicoes(estado, coord_mudar);
-    estado->ultima_jogada = coord_mudar;
-    atualiza_JOGADAS(estado, coord_mudar);
+    atualiza_JOGADAS(estado);
     if (estado->jogador_atual == 1)  estado->jogador_atual = 2;
     else                             estado->jogador_atual = 1;
     atualiza_Num_Jogadas(estado);
     estado->num_comando +=1 ;
+    estado->ultima_jogada = coord_mudar;
 }
 
 /**
