@@ -173,8 +173,6 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
     atualiza_tabuleiro_pos(estado,n_pos);
     //atualiza a ultima coord
     estado->ultima_jogada = estado->jogadas[ n_pos-1 ].jogador2;
-    //atualiza do num_comando
-    estado->num_comando = num_comando+1;
     //atualiza o num_jogadas
     estado->num_jogadas = n_pos+1;
 }
