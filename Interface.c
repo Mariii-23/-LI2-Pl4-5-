@@ -155,7 +155,6 @@ void comando_ler(FILE *fp,ESTADO *estado)
     ler_atualiza_estado_restante(estado);
 }
 
-<<<<<<< HEAD
 
 void comando_teste_pos(ESTADO *estado, int n_jogadas ){
     int i, j;
@@ -167,7 +166,7 @@ void comando_teste_pos(ESTADO *estado, int n_jogadas ){
     for(i=7; i>=0; i--){
         for(j=0; j<=7; j++){
             if (i==4 && j==4){
-                tabuleiro[i][j] = '*';
+                tabuleiro[i][j] = '#';
             }
             else {
                 if (i==7 && j==7){
@@ -192,7 +191,7 @@ void comando_teste_pos(ESTADO *estado, int n_jogadas ){
         tabuleiro[coord2.coluna][coord2.linha] = '#';
         tabuleiro[i][j] = '#';
     }
-        coord2 = estado->jogadas[cont - 1].jogador2;
+        coord2 = estado->jogadas[cont - 1].jogador2; // penso q isto seja desnecessario
         tabuleiro[coord2.coluna][coord2.linha] = '*';
 
     /*Imprimir o novo tabuleiro. */
@@ -208,8 +207,6 @@ void comando_teste_pos(ESTADO *estado, int n_jogadas ){
 }
 
 
-=======
->>>>>>> 29d18519d9a157ec61894e3463c4373845a12fed
 /*
 void comando_pos(ESTADO *estado, int n_jogadas )
 {
@@ -253,7 +250,7 @@ void comando_movs(ESTADO *estado, FILE *stream)
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
-    for (num = 1 ; num < n_jogadas-1 ; num++ , cont++)
+    for (num = 1 ; num < n_jogadas ; num++ , cont++)
     {
         coord1 = estado->jogadas[cont].jogador1;
         coord2 = estado->jogadas[cont].jogador2;
@@ -266,14 +263,6 @@ void comando_movs(ESTADO *estado, FILE *stream)
     {
         if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
         else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
-    }
-    else
-    {
-        if (estado->num_jogadas >1)
-        {
-            if (cont <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1);
-            else           fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1);
-        }
     }
 }
 
@@ -335,6 +324,7 @@ int interpretador(ESTADO *estado) {
             guarda_tabuleiro(estado, stdout);
 /* Fecha novamente o documento */
             fclose(fp);
+            estado->num_comando++;  // ??????????????????????????
         }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
@@ -355,25 +345,16 @@ int interpretador(ESTADO *estado) {
         if(strcmp( linha, "movs\n" ) == 0)
         {
             comando_movs(estado,stdout);
+            estado->num_comando++;
             guarda_tabuleiro(estado,stdout);
         }
 
-<<<<<<< HEAD
 
         if(sscanf(linha, "pos %d",&dados) == 1)
         {
             if (dados < estado->num_jogadas)   comando_teste_pos(estado, dados);
             else printf("Erro! A posição não existe!");
         }
-=======
-       /*
-        if(sscanf(linha, "pos %d",&dados) == 1)
-        {
-            if (dados < estado->num_jogadas)   // comando_pos(estado, dados);
-            guarda_tabuleiro(estado, stdout);
-            printf("arroz");
-        } */
->>>>>>> 29d18519d9a157ec61894e3463c4373845a12fed
 
     }
     return ganhou;
