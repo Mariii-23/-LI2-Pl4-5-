@@ -141,61 +141,22 @@ void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
     estado->jogadas[ n_jogada ].jogador1 = coord1;
 }
 
-/**
-\brief Funcao auxilidar do comando ler, que atualiza o tabuleiro
-*/
-/*
-void atualiza_tabuleiro_comando_ler (ESTADO *estado)
-{
-    int num=0, cont;
-    COORDENADA coord1 , coord2 ;
-
-    casas_inicial(estado);
-    estado->tab[4][4] = BRANCA;
-    for (cont=0 ; cont < (estado->num_comando / 2)-1 ; cont++ )
-    {
-        coord1 = estado->jogadas[ cont ].jogador1;
-        coord2 = estado->jogadas[ cont ].jogador2;
-        estado->tab[ coord1.linha ][ coord1.coluna ] = BRANCA;
-        estado->tab[ coord2.linha ][ coord2.coluna ] = BRANCA;
-    }
-    if ( estado->num_comando % 2 )
-    {
-        coord1 = estado->jogadas[ cont ].jogador1;
-        coord2 = estado->jogadas[ cont ].jogador2;
-        estado->tab[ coord1.linha ][ coord1.coluna ] = BRANCA;
-        estado->tab[ coord2.linha ][ coord2.coluna ] = PRETA;
-        
-        estado->ultima_jogada = coord2;
-    }
-    else
-    {
-        coord1 = estado->jogadas[ cont ].jogador1;  
-        estado->tab[ coord1.linha ][ coord1.coluna ] = PRETA;
-        estado->ultima_jogada = coord1;
-    } 
-}*/
-
-
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
-    // atualiza o tabuleiro e a ultima coordenada
-    //atualiza_tabuleiro_comando_ler(estado);
-    estado->num_jogadas = estado->num_comando / 2;
-
     if ( estado->num_comando % 2 )  
     {
         estado->jogador_atual = 2;
         estado->ultima_jogada = estado->jogadas[ estado->num_jogadas +1 ].jogador1;
+        estado->num_jogadas = (estado->num_comando / 2) + 1;
     }
     else                           
     {
         estado->jogador_atual = 1; 
         estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador2;
+        estado->num_jogadas = estado->num_comando / 2 ;
     }
     
     if (estado->jogador_atual == 1) estado->num_jogadas++; 
-    
 }
 
 /// ATUALIZA EM FUNCAO DO POS ///
