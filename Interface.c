@@ -164,7 +164,8 @@ void comando_teste_pos(ESTADO *estado, int n_jogadas ){
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
     /*Cria um novo tabuleiro vazio. */
     for(i=7; i>=0; i--){
-        for(j=0; j<=7; j++){
+        for(j=0; j<=7; j++)
+        {
             if (i==4 && j==4){
                 tabuleiro[i][j] = '#';
             }
@@ -187,22 +188,22 @@ void comando_teste_pos(ESTADO *estado, int n_jogadas ){
     {
         coord1 = estado->jogadas[cont].jogador1;
         coord2 = estado->jogadas[cont].jogador2;
-        tabuleiro[coord1.coluna][coord1.linha] = '#';
-        tabuleiro[coord2.coluna][coord2.linha] = '#';
-        tabuleiro[i][j] = '#';
+        tabuleiro[coord1.linha][coord1.coluna] = '#';
+        tabuleiro[coord2.linha][coord2.coluna] = '#';
     }
-        coord2 = estado->jogadas[cont - 1].jogador2; // penso q isto seja desnecessario
-        tabuleiro[coord2.coluna][coord2.linha] = '*';
+        coord2 = estado->jogadas[n_jogadas - 1].jogador2; // penso q isto seja desnecessario
+        tabuleiro[coord2.linha][coord2.coluna] = '*';
 
     /*Imprimir o novo tabuleiro. */
-    printf("abcdefgh");
-    for (i = 0; i < 8; i++)
+    printf("abcdefgh\n");
+    for (i = 7; i >= 0; i--)
     {
-        printf("%d", i);
+        printf("%d ", i+1);
         for (j = 0; j < 8; j++)
         {
             printf("%c", tabuleiro[i][j]);
         }
+        fprintf(stdout, "\n");
     }
 }
 
