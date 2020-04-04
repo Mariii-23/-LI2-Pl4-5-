@@ -3,6 +3,7 @@
 #define BUF_SIZE 1024
 #include "dados.h"
 
+void casas_inicial(ESTADO *estado);
 ESTADO *inicializador_estado();
 
 

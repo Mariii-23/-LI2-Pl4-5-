@@ -5,6 +5,26 @@
 #include "Logica_do_programa.h"
 #include "dados.h"
 
+/// Funcao que mostra um determinado tabuleiro //
+void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
+{
+    int linha, coluna;
+    CASA casa;
+    fprintf(stream, "  abcdefgh\n");
+    for (linha = 7; linha >= 0; linha--)
+    {
+        fprintf(stream, "%d ", linha+1);
+        for (coluna = 0; coluna < 8; coluna++)
+        {
+           // fprintf(stream,CASA,tab[i][j]);
+            casa = tab[linha][coluna];
+            fputc(casa, stream);
+        }
+        fprintf(stream, "\n");
+    }
+    fprintf(stream, "\n");
+}
+
 /// JOGADOR VENCEDOR ///
 /**
 \brief Função que determina o vencedor do jogo.
@@ -57,7 +77,7 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
     }
    // printf("feijao");
     fprintf(stream, "\n");
-    if (stream == stdout ) prompt(estado, stream);
+    //if (stream == stdout ) prompt(estado, stream);
    // printf("arroz");
 }
 
@@ -156,88 +176,12 @@ void comando_ler(FILE *fp,ESTADO *estado)
 }
 
 
-void comando_teste_pos(ESTADO *estado, int n_jogadas ){
-    int i, j;
-    int tabuleiro[8][8];
-    int cont=0, num;
-    COORDENADA coord1 = estado->jogadas[cont].jogador1;
-    COORDENADA coord2 = estado->jogadas[cont].jogador2;
-    /*Cria um novo tabuleiro vazio. */
-    for(i=7; i>=0; i--){
-        for(j=0; j<=7; j++)
-        {
-            if (i==4 && j==4){
-                tabuleiro[i][j] = '#';
-            }
-            else {
-                if (i==7 && j==7){
-                    tabuleiro[i][j] = '2';
-                } 
-                else{
-                    if(i==0 && j==0){
-                        tabuleiro[i][j] = '1';
-                    }
-                    else{
-                        tabuleiro[i][j] = '.';
-                    } 
-                }
-            }
-        }
-    }
-    for (num = 1 ; num <= n_jogadas ; num++ , cont++)
-    {
-        coord1 = estado->jogadas[cont].jogador1;
-        coord2 = estado->jogadas[cont].jogador2;
-        tabuleiro[coord1.linha][coord1.coluna] = '#';
-        tabuleiro[coord2.linha][coord2.coluna] = '#';
-    }
-        coord2 = estado->jogadas[n_jogadas - 1].jogador2; // penso q isto seja desnecessario
-        tabuleiro[coord2.linha][coord2.coluna] = '*';
-
-    /*Imprimir o novo tabuleiro. */
-    printf("abcdefgh\n");
-    for (i = 7; i >= 0; i--)
-    {
-        printf("%d ", i+1);
-        for (j = 0; j < 8; j++)
-        {
-            printf("%c", tabuleiro[i][j]);
-        }
-        fprintf(stdout, "\n");
-    }
+void comando_pos(ESTADO *estado, int n_jogadas ){
+    mostra_pos(estado,n_jogadas );
+    estado->num_comando++;
+    prompt(estado, stdout);
 }
 
-
-/*
-void comando_pos(ESTADO *estado, int n_jogadas )
-{
-    int i,l ;
-    CASA tabi[8][8];
-    for (i=0; i<8 ; i++)
-    {
-        for(l=0; l<8; l++) tabi[i][l] = estado->tab[i][l];
-    }
-    JOGADAS jogadas;
-    for (i=0; i < estado->num_jogadas ; i++); 
-    {
-        jogadas[i].jogador1 = estado->jogadas[i].jogador1;
-        jogadas[i].jogador2 = estado->jogadas[i].jogador2;
-    }
-    int num_jogadas = estado->num_jogadas;
-    int jogador_atual = estado->jogador_atual;
-    int num_comando = estado->num_comando;
-
-    estado = inicializador_estado();
-    COORDENADA coord;
-    for(i=0; i< n_jogadas ; i++)
-    {
-        coord = jogadas[i].jogador1;
-        atualiza_estado(estado, coord);
-        coord = jogadas[i].jogador2;
-        atualiza_estado(estado,coord);
-    }
-} 
-*/
 
 /// Comando movs ///
 /**
@@ -285,11 +229,12 @@ int interpretador(ESTADO *estado) {
     char linha[BUF_SIZE];
     char filename[BUF_SIZE] = "jogo.txt" ;
     char col[2], lin[2];
-    int dados=0;
+    int n_pos=0;
   //  filename = "jogo.txt";
     int ganhou = 0;
 
     guarda_tabuleiro(estado, stdout);
+    prompt(estado, stdout);
 
     while( ganhou != 1)
     { 
@@ -298,8 +243,15 @@ int interpretador(ESTADO *estado) {
         if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
         {
             COORDENADA coord = {*col - 'a', *lin - '1'};
+            if (n_pos>0) 
+            {
+                atualiza_estado_pos(estado,n_pos);
+                n_pos = 0;
+            }
+
             jogar(estado, coord);
             guarda_tabuleiro(estado, stdout);
+            prompt(estado, stdout);
         }
 
         ganhou = verifica_Vitoria( estado);
@@ -307,6 +259,7 @@ int interpretador(ESTADO *estado) {
         if ( ganhou ) 
         {
             guarda_tabuleiro( estado, stdout);
+            prompt(estado, stdout);
             jogador_vencedor( estado, stdout);
         }
   
@@ -322,7 +275,9 @@ int interpretador(ESTADO *estado) {
             if (fp == NULL) printf("O ficheiro não abriu.\n");
 /* Grava o tabuleiro no ficheiro. */
             comando_gr(estado, fp);
+            estado->num_comando++;
             guarda_tabuleiro(estado, stdout);
+            prompt(estado, stdout);
 /* Fecha novamente o documento */
             fclose(fp);
             estado->num_comando++;  // ??????????????????????????
@@ -338,6 +293,7 @@ int interpretador(ESTADO *estado) {
             {
 /* Lê o tabuleiro que está no ficheiro e imprime. */
                 comando_ler(fp, estado);
+              //  prompt(estado, stdout);
 /* Fecha o ficheiro */
                 fclose(fp);
             }
@@ -348,13 +304,20 @@ int interpretador(ESTADO *estado) {
             comando_movs(estado,stdout);
             estado->num_comando++;
             guarda_tabuleiro(estado,stdout);
+            prompt(estado, stdout);
         }
 
 
-        if(sscanf(linha, "pos %d",&dados) == 1)
+        if(sscanf(linha, "pos %d",&n_pos) == 1)
         {
-            if (dados < estado->num_jogadas)   comando_teste_pos(estado, dados);
-            else printf("Erro! A posição não existe!");
+            if (n_pos < estado->num_jogadas && n_pos>0 )   comando_pos(estado, n_pos);
+            else 
+            {
+                n_pos = 0;
+                fprintf(stdout, "Erro! A posição não existe!\n"); 
+                estado->num_comando++;
+                prompt(estado, stdout);
+            }
         }
 
     }
