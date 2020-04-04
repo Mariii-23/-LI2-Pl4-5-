@@ -64,12 +64,8 @@ ESTADO *inicializador_estado()
     estado->num_jogadas = 1;
     estado->jogador_atual = 1;
     estado->num_comando = 1;
-
     estado->ultima_jogada.coluna = 4;  
     estado->ultima_jogada.linha = 4;  
-    //char str[BUF_SIZE] = {0};
-    //coordenadas_0(estado);
-   // estado->jogadas = NULL;
     return estado;
 }
 
@@ -143,21 +139,21 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 int verificar_casas_ocupadas(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
+    //printf("%c%c\n",coord.coluna+'a', coord.linha+'1');
     int resul;
-    //  printf("%d %d", estado->ultima_jogada.linha ,estado->ultima_jogada.coluna);
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
-    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
     COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
     COORDENADA coord6 = { coord.linha - 1, coord.coluna };
     COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
     COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
     resul = ( verifica_casa_ocupada( estado , coord1 ) && verifica_casa_ocupada( estado , coord2 ) &&
               verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
               verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
               verifica_casa_ocupada( estado , coord7 ) && verifica_casa_ocupada( estado , coord8 )   );
- /* printf("%d\n", resul);
+    /*printf("r: %d\n", resul);
     printf("%d\n", verifica_casa_ocupada( estado , coord1 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord2 ));
     printf("%d\n", verifica_casa_ocupada( estado , coord3 ));

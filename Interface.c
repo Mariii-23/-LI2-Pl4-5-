@@ -269,8 +269,6 @@ int interpretador(ESTADO *estado) {
 
         if ( ganhou ) 
         {
-            guarda_tabuleiro( estado, stdout);
-            prompt(estado, stdout);
             jogador_vencedor( estado, stdout);
         }
   
