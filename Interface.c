@@ -69,63 +69,24 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 {
     int linha;
     if (stream == stdout) fprintf(stream,"\n  abcdefgh\n");
-    //printf("batata");
+    
     for (linha=7; linha>=0; linha--)
     {
         if (stream == stdout) fprintf(stream, "%d ",linha+1);
         guarda_Linha( estado, linha, stream);
     }
-   // printf("feijao");
     fprintf(stream, "\n");
-    //if (stream == stdout ) prompt(estado, stream);
-   // printf("arroz");
 }
 
 /// !!!____COMANDOS___!!! ////
 
-/// COMANDO LER ///
-
-/**
-\brief Guarda as jogadas
-*/
-void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
-{
-    estado->jogadas[ n_jogada ].jogador1 = coord1;
-    if ( coord2.linha != -1 && coord2.coluna != -1  )
-        estado->jogadas[ n_jogada ].jogador2 = coord2;
-}
-
-void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
-{
-    estado->jogadas[ n_jogada ].jogador1 = coord1;
-}
-
-/**
-\brief Funcao auxilidar do comando ler, que atualiza a ultima coordenada e o jogador atual em funcao do resto.
-*/
-void ler_atualiza_estado_restante(ESTADO *estado)
-{
-    if ( estado->num_comando % 2 ) 
-        {
-            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador1;
-            estado->jogador_atual = 2;
-        }
-        else
-        {
-            estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 1 ].jogador2;
-            estado->jogador_atual = 1; 
-        }
-}
-
-
 void ler_linha(ESTADO *estado, char linha[], int l)
 {   
     char casa;
-    for(int c = 0; c < 8; c++) 
+    for(int coluna = 0; coluna < 8; coluna++) 
     { 
-        casa = linha[c];
-        fprintf(stdout, "%c", casa);
-        estado->tab[l][c]=casa;
+        casa = linha[ coluna ];
+        estado->tab[ l ][ coluna ] = casa;
         if ( casa == BRANCA ) estado->num_comando++;
     }
 } 
@@ -139,21 +100,18 @@ void comando_ler(FILE *fp,ESTADO *estado)
     char x1, x2, y1, y2;
     char linha[BUF_SIZE];
     int l , n_jogadas;
-
-    // por o estado todo a zero
-    //estado = inicializador_estado();
+    int n_comando_inicial = estado->num_comando;
 
     estado->num_comando = 1;
-    estado->jogador_atual = 1;
-    for( int l = 7; l >= 0; l--)
-        {
-            fscanf(fp, "%s", linha);
-            ler_linha(estado, linha, l);
-            fprintf(stdout,"\n");
-        } 
 
-    n_jogadas = estado->num_comando / 2 + 1;
-    estado->num_jogadas = n_jogadas;
+    
+    for( int l = 7; l >= 0; l--)
+    {
+        fscanf(fp, "%s", linha);
+        ler_linha(estado, linha, l);
+    } 
+
+    n_jogadas = (estado->num_comando ) / 2 ;
 
     for (l = 0; l != (n_jogadas-1) && fscanf( fp, "%*s %c%c %c%c %*s", &x1, &y1, &x2, &y2) == 4 ; l++)
     {
@@ -167,12 +125,11 @@ void comando_ler(FILE *fp,ESTADO *estado)
     {
         coord1.linha = x1 - 'a';
         coord1.coluna = y1 - '1';
-        // usar 2 funcoes...ou juntar?!
-        //guarda_Jogadas_2(estado, coord1, coord2, l);
         guarda_Jogadas_1(estado, coord1, l);
     }
+    atualiza_estado_comando_ler(estado);
+    estado->num_comando = n_comando_inicial+1;
 
-    ler_atualiza_estado_restante(estado);
 }
 
 
@@ -293,6 +250,9 @@ int interpretador(ESTADO *estado) {
             {
 /* Lê o tabuleiro que está no ficheiro e imprime. */
                 comando_ler(fp, estado);
+
+                guarda_tabuleiro(estado,stdout);
+                prompt(estado, stdout);
               //  prompt(estado, stdout);
 /* Fecha o ficheiro */
                 fclose(fp);
