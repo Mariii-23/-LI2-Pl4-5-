@@ -13,12 +13,17 @@ typedef struct {
   COORDENADA last_coord;
 } ESTADO_simples;
 
-typedef COORDENADA COORDENADAS[8];
+typedef COORDENADA COORDENADAS[32];
 
 typedef struct {
   int valor;
   COORDENADAS lista;
 } Lista_coord;
+
+typedef struct {
+  int valor;
+  COORDENADA coord;
+} Melhor_jogada;
 
 
 int min(int a, int b)
@@ -235,6 +240,52 @@ int minimax(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int 
             betha = min(betha, valor);
             if (betha <= alpha) break;
             return minValor;
+        }  
+    }  
+}
+
+Melhor_jogada *minimax_(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int player_atual, Melhor_jogada *melhor_jogada)
+{
+    int i;
+    ///verifica se o jogo acabou //
+    int ganhou = avaliar_jogada(estado, player_atual);
+    if (ganhou !=0) 
+    {   
+        melhor_jogada->valor = ganhou;
+        return melhor_jogada;
+    }
+
+    Lista_coord *lista = cria_lista_coords_possiveis(estado);
+    int maxValor=NULL, valor=NULL, minValor=NULL;
+    Melhor_jogada *maxValor_, *valor_, *minValor_;
+
+    // se formos nos a jogar
+    if (player_atual)
+    {
+        for (i = 0; i < lista->valor; i++)
+        {
+            atualiza_estado_simples(estado, lista->lista[i] );
+            valor_ = minimax_(lista->lista[i], estado , alpha, betha, 0 ,melhor_jogada); //false
+            valor = valor_->valor;
+            maxValor = max(alpha, valor);
+            if (betha <= alpha) break;
+            melhor_jogada->valor = maxValor;
+            return melhor_jogada;
+        }
+    }
+    else
+    {
+        for (i = 0; i < lista->valor; i++)
+        {
+            atualiza_estado_simples(estado, lista->lista[i] );
+            valor_ = minimax_(lista->lista[i], estado, alpha, betha, 1 , melhor_jogada); ///true
+            valor = valor_->valor;
+            minValor_ = min(minValor, valor);
+            minValor = minValor_->valor; 
+            betha = min(betha, valor);
+            if (betha <= alpha) break;
+            melhor_jogada->valor = minValor;
+            return melhor_jogada;
         }  
     }  
 }
