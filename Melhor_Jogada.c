@@ -13,6 +13,72 @@ typedef struct {
   COORDENADA last_coord;
 } ESTADO_simples;
 
+typedef COORDENADA COORDENADAS[8];
+
+typedef struct {
+  int valor;
+  COORDENADAS lista;
+} Lista_coord;
+
+
+int min(int a, int b)
+{
+    int resul = a;
+    if (a>b) resul = b;
+    return resul;
+}
+int max(int a, int b)
+{
+    int resul = a;
+    if (a<b) resul = b;
+    return resul;
+}
+
+
+
+////////////////////////////////////
+//// Cria lista das jogadas ////////
+/////////////////////////////////////
+
+void adiciona_lista(Lista_coord *lista, ESTADO_simples estado, COORDENADA coord)
+{
+    if (estado.matriz[ coord.linha ][ coord.coluna ] == BRANCA ) 
+    {
+        lista->lista[ lista->valor ] = coord;
+        lista->valor++;
+    }  
+}
+
+
+Lista_coord *cria_lista_coords_possiveis(ESTADO_simples estado)
+{
+    Lista_coord *lista = (Lista_coord *) calloc(1, sizeof(Lista_coord));
+    COORDENADA coord = estado.last_coord;
+
+    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    adiciona_lista(lista, estado, coord1);
+    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    adiciona_lista(lista, estado, coord2);
+    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    adiciona_lista(lista, estado, coord3);
+    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    adiciona_lista(lista, estado, coord5);
+    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    adiciona_lista(lista, estado, coord6);
+    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    adiciona_lista(lista, estado, coord7);
+    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    adiciona_lista(lista, estado, coord8);
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    adiciona_lista(lista, estado, coord4);
+    return lista;
+}
+
+
+
+///////////////////////////////////////
+//// ATRIBUIR VALOR A UMA JOGADA //////
+///////////////////////////////////////
 
 int verificar_casa_ocupada(ESTADO_simples estado, COORDENADA coord)
 {
@@ -99,4 +165,44 @@ int avaliar_jogada(ESTADO_simples estado,int player)
     int resul = ganhou_encurralado(estado, player);
     if (resul == 0) resul = ganhou_em_casa(estado, player);
     return resul;
+}
+
+
+
+/////////////////////////////////////////////////////
+//////  ALGORITMO QUE AVALIA A MELJOR JOGADA ////////
+////////////////////////////////////////////////////
+
+int minimax(COORDENADA coord, ESTADO_simples estado, int alpha, int betha, int player_atual)
+{
+    int i;
+    ///verifica se o jogo acabou //
+    int ganhou = avaliar_jogada(estado, player_atual);
+    if (ganhou !=0) return ganhou;
+
+    Lista_coord *lista = cria_lista_coords_possiveis(estado);
+    int maxValor=NULL, valor=NULL, minValor=NULL;
+
+    // se formos nos a jogar
+    if (player_atual)
+    {
+        for (i = 0; i < lista->valor; i++)
+        {
+            valor = minimax(lista->lista[i], **atualkizar estado***, alpha, betha, false );
+            maxValor = max(alpha, valor);
+            if betha <= alpha break;
+            return maxValor;
+        }
+    }
+    else
+    {
+        for (i = 0; i < lista->valor; i++)
+        {
+            valor = minimax(lista->lista[i], **atualkizar estado***, alpha, betha, true );
+            minValor = min(minValor, valor);
+            betha = min(betha, valor);
+            if (betha <= alpha) break;
+            return minValor;
+        }  
+    }  
 }
