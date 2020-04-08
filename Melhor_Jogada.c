@@ -5,6 +5,7 @@
 #include "Logica_do_programa.h"
 #include "Interface.h"
 #include "dados.h"
+#include "listas.h"
 
 typedef struct {
   /** O tabuleiro */
@@ -244,6 +245,10 @@ int minimax(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int 
     }  
 }
 
+
+/*
+    criar uma lista que contivesse o valor atribuido a jogada e a lista das coordenadas por onde ele passou
+*/
 Melhor_jogada *minimax_(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int player_atual, Melhor_jogada *melhor_jogada)
 {
     int i;
@@ -289,3 +294,4 @@ Melhor_jogada *minimax_(COORDENADA coord, ESTADO_simples *estado, int alpha, int
         }  
     }  
 }
+
