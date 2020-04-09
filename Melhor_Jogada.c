@@ -11,6 +11,7 @@ typedef struct {
   /** O tabuleiro */
   CASA matriz[8][8];
   int player_atual;
+  int nosso_player;
   COORDENADA last_coord;
 } ESTADO_simples;
 
@@ -38,6 +39,24 @@ int max(int a, int b)
     int resul = a;
     if (a<b) resul = b;
     return resul;
+}
+
+
+////////////////////////////////////
+//// Estado para estado simples ////////
+/////////////////////////////////////
+
+ESTADO_simples *troca_estado_estado_simples(ESTADO *estado)
+{
+    ESTADO_simples *e = (ESTADO_simples *)malloc(sizeof(ESTADO_simples));
+    e->last_coord = estado->ultima_jogada;
+    for(int i=0; i<=7; i++)
+    {
+        for (int j=0; j<=7; j++)  e->matriz[i][j] = estado->tab[i][j];
+    }
+    e->nosso_player = estado->jogador_atual;
+    e->player_atual = estado->jogador_atual;
+    return e;
 }
 
 
@@ -131,18 +150,18 @@ int verificar_casa_ocupada(ESTADO_simples *estado, COORDENADA coord)
 /**
 \brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
 */
-int verificar_casas_ocupadas(ESTADO_simples *estado)
+int verificar_casas_ocupadas_(ESTADO_simples *estado)
 {
     COORDENADA coord = estado->last_coord;
     int resul;
-    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
-    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
-    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
-    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
-    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
-    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
-    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
+    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
+    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
+    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
+    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
+    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
+    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
+    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
     resul = ( verificar_casa_ocupada( estado , coord1 ) && verificar_casa_ocupada( estado , coord2 ) &&
               verificar_casa_ocupada( estado , coord3 ) && verificar_casa_ocupada( estado , coord4 ) &&
               verificar_casa_ocupada( estado , coord5 ) && verificar_casa_ocupada( estado , coord6 ) &&
@@ -153,13 +172,18 @@ int verificar_casas_ocupadas(ESTADO_simples *estado)
 /// funcao q verifica se ganhou em casa, atribuindo pontos ///
 int ganhou_em_casa(ESTADO_simples *estado,int player)
 {
-    int resul;
+    int resul=0;
     int x = estado->last_coord.linha;
     int y = estado->last_coord.coluna;
-    int ganhou = ( (x == 0 && y == 0) || (x == 7 && y == 7));
-
-    if (ganhou && !player) ganhou = -1;
-    else resul = ganhou;
+    if (estado->player_atual==1 && x == 0 && y == 0) resul = 1;
+    else
+    {
+        if (estado->player_atual==2 && x == 7 && y == 7) resul = 1;
+        else 
+        {
+            if ((x == 0 && y == 0) || (x == 7 && y == 7)) resul = -1;
+        }
+    }
     return resul; 
 }
 
@@ -177,7 +201,7 @@ int encurralado_casa(ESTADO_simples *estado, int player)
 int encurralado_jogo(ESTADO_simples *estado, int player)
 {
     int resul = 0;
-    int valor = verificar_casas_ocupadas(estado);
+    int valor = verificar_casas_ocupadas_(estado);
     if (player) resul = 3 * valor;
     else resul = -3 * valor;
     return resul;
@@ -295,3 +319,38 @@ Melhor_jogada *minimax_(COORDENADA coord, ESTADO_simples *estado, int alpha, int
     }  
 }
 
+int verifica_valor_maior(LISTA *lista)
+{
+    void *max = devolve_cabeca(lista);
+    int i , resul = 0;
+
+    for (lista,i ; lista_esta_vazia(lista); lista  =  remove_cabeca(lista), i++)
+    {
+        if (max < devolve_cabeca(lista)) 
+        {
+            max = devolve_cabeca(lista);
+            resul = i;
+        }
+    }
+    return resul;
+}
+
+COORDENADA comando_jog(ESTADO *estado)
+{
+    ESTADO_simples *estado_simples = troca_estado_estado_simples(estado);
+    Lista_coord *lista_coords = cria_lista_coords_possiveis(estado_simples);
+    int i ;
+    int valor;
+    LISTA *lista = criar_lista();
+    
+    for (i = lista_coords->valor - 1 ; i>=0 ; i--)
+    {
+        estado_simples = troca_estado_estado_simples(estado);
+        atualiza_estado_simples(estado_simples, lista_coords->lista[i]);
+        valor = minimax(estado_simples->last_coord, estado_simples, 0,0, 0 );
+        insere_cabeca(lista, valor);
+    }
+
+    i = verifica_valor_maior(lista);
+    return  lista_coords->lista[i];
+}

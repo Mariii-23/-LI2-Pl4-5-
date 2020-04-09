@@ -3,6 +3,7 @@
 #include <string.h>
 #include "Camada_de_Dados.h"
 #include "Logica_do_programa.h"
+#include "Melhor_Jogada.h"
 #include "dados.h"
 
 /// Funcao que mostra um determinado tabuleiro //
@@ -330,6 +331,26 @@ int interpretador(ESTADO *estado) {
                 estado->num_comando++;
                 prompt(estado, stdout);
             }
+        }
+
+        if(strcmp( linha, "jog\n" ) == 0)
+        {
+          //  int coord_comamdo_jog;
+            COORDENADA coord_comamdo_jog = comando_jog(estado);
+
+            fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
+
+            jogar(estado, coord_comamdo_jog);
+            guarda_tabuleiro(estado, stdout);
+            prompt(estado, stdout);
+
+            ganhou = verifica_Vitoria( estado);
+
+            if ( ganhou ) 
+            {
+                jogador_vencedor( estado, stdout);
+            }
+
         }
 
     }
