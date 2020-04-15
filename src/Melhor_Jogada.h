@@ -9,6 +9,8 @@
 #include "listas.h"
 
 COORDENADA jogada_boot(ESTADO *estado);
+ESTADO *cria_estado_copia(ESTADO *estado);
+int verifica_coord(COORDENADA coord);
 
 
 #endif

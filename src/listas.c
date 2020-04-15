@@ -7,14 +7,20 @@
 #include "dados.h"
 #include "listas.h" // apagar depois
 
-// Cria uma lista vazia
+/// LISTAS ///
+
+/**
+\brief Função que cria uma lista vazia.
+*/
 LISTA criar_lista()
 {
     LISTA lista = (LISTA )malloc(sizeof(LISTA));
     return lista;
 }
 
-// Insere um valor na cabeça da lista
+/**
+\brief Função que insere um valor na cabeça da lista.
+*/
 LISTA insere_cabeca(LISTA L, void *valor)
 {
     LISTA aux = criar_lista();
@@ -30,17 +36,26 @@ LISTA insere_cabeca(LISTA L, void *valor)
     }
     return aux;
 }
-// Devolve a cabeça da lista
+
+/**
+\brief Função que devolve a cabeça de uma lista dada.
+*/
 void *devolve_cabeca(LISTA L)
 {
     return &(L->valor);
 }
-// Devolve a cauda da lista
+
+/**
+\brief Função que devolve a cauda de uma lista dada.
+*/
 LISTA proximo(LISTA L)
 {
     return (L->next);
 }
-// Remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda
+
+/**
+\brief Função que remove a cabeça de uma lista dad (libertando o espaço ocupado), devolvendo a sua cauda.
+*/
 LISTA remove_cabeca(LISTA L)
 {
     LISTA aux;
@@ -49,7 +64,10 @@ LISTA remove_cabeca(LISTA L)
     free (aux);
     return L;
 }
-// Devolve verdareiro se a lista é vazia
+
+/**
+\brief Função que devolve 1 se a lista dada estiver vazia.
+*/
 int lista_esta_vazia(LISTA L)
 {
     int resul = 0;

@@ -6,27 +6,8 @@
 #include "Melhor_Jogada.h"
 #include "dados.h"
 
-/// Funcao que mostra um determinado tabuleiro //
-void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
-{
-    int linha, coluna;
-    CASA casa;
-    fprintf(stream, "  abcdefgh\n");
-    for (linha = 7; linha >= 0; linha--)
-    {
-        fprintf(stream, "%d ", linha+1);
-        for (coluna = 0; coluna < 8; coluna++)
-        {
-           // fprintf(stream,CASA,tab[i][j]);
-            casa = tab[linha][coluna];
-            fputc(casa, stream);
-        }
-        fprintf(stream, "\n");
-    }
-    fprintf(stream, "\n");
-}
-
 /// JOGADOR VENCEDOR ///
+
 /**
 \brief Função que determina o vencedor do jogo.
 */
@@ -39,7 +20,30 @@ void jogador_vencedor(ESTADO *estado, FILE *stream) {
     fprintf (stream, "\nO Player %d é o vencedor! Parabéns!\n", j);
 }
 
+
 /// TABULEIRO : IMPRIME OU GUARDA ///
+
+/**
+\brief Função que que imprime apenas as pecas de um determinado tabuleiro .
+*/
+void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
+{
+    int linha, coluna;
+    CASA casa;
+    fprintf(stream, "  abcdefgh\n");
+    for (linha = 7; linha >= 0; linha--)
+    {
+        fprintf(stream, "%d ", linha+1);
+        for (coluna = 0; coluna < 8; coluna++)
+        {
+            casa = tab[linha][coluna];
+            fputc(casa, stream);
+        }
+        fprintf(stream, "\n");
+    }
+    fprintf(stream, "\n");
+}
+
 
 /**
 \brief Prompt do jogo.
@@ -60,7 +64,7 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
         casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
-    fprintf(stream, "\n"); //apagar depois
+    fprintf(stream, "\n"); /*apagar depois*/
 }
 
 /**
@@ -81,7 +85,7 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 
 /// !!!____COMANDOS___!!! ////
 
-/// Comando pos ///
+/// COMANDO POS ///
 /**
 \brief Executa o comando pos para retroceder o jogo.
 */
@@ -129,6 +133,11 @@ void comando_gr(ESTADO *estado, FILE *stream) {
     comando_movs(estado, stream);
 }
 
+/// COAMANDO LER ///
+
+/**
+\brief Função que atualiza o tabuleiro de um estado atravé de um ficheiro.
+*/
 void ler_linha(ESTADO *estado, char linha[], int l)
 {   
     char casa;
@@ -140,7 +149,6 @@ void ler_linha(ESTADO *estado, char linha[], int l)
     }
 } 
 
-/// Comando ler /// 
 /**
 \brief Executa o comando ler, lendo o que está no ficheiro que recebe.
 */
@@ -237,12 +245,12 @@ void comando_ler(FILE *fp,ESTADO *estado)
 /**
 \brief Intrepretador do jogo.
 */
-int interpretador(ESTADO *estado) {
+int interpretador(ESTADO *estado) 
+{
     char linha[BUF_SIZE];
     char filename[BUF_SIZE] = "jogo.txt" ;
     char col[2], lin[2];
     int n_pos=0;
-  //  filename = "jogo.txt";
     int ganhou = 0;
 
     guarda_tabuleiro(estado, stdout);
@@ -290,7 +298,7 @@ int interpretador(ESTADO *estado) {
             prompt(estado, stdout);
 /* Fecha novamente o documento */
             fclose(fp);
-            estado->num_comando++;  // ??????????????????????????
+            estado->num_comando++;  /* ??????????????????????????*/
         }
 
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
@@ -306,7 +314,6 @@ int interpretador(ESTADO *estado) {
 
                 guarda_tabuleiro(estado,stdout);
                 prompt(estado, stdout);
-              //  prompt(estado, stdout);
 /* Fecha o ficheiro */
                 fclose(fp);
             }

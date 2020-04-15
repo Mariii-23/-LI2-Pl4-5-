@@ -7,6 +7,11 @@
 #include "dados.h"
 #include "listas.h"
 
+/// FUNCAO AUXILIARES ///
+
+/**
+\brief Função que cria uma cópia do ESTADO.
+*/
 ESTADO *cria_estado_copia(ESTADO *estado)
 {
     ESTADO *estado_copia = (ESTADO *) calloc(1, sizeof(ESTADO));
@@ -32,12 +37,19 @@ ESTADO *cria_estado_copia(ESTADO *estado)
 }
 
 
+/**
+\brief Função que devolve o menor valor de dois.
+*/
 int min(int a, int b)
 {
     int resul = a;
     if (a>b) resul = b;
     return resul;
 }
+
+/**
+\brief Função que devolve o maior alor de dois.
+*/
 int max(int a, int b)
 {
     int resul = a;
@@ -45,6 +57,9 @@ int max(int a, int b)
     return resul;
 }
 
+/**
+\brief Função que verifica se uma COORDENADA é válida.
+*/
 int verifica_coord(COORDENADA coord)
 {
     int x = coord.linha;
@@ -52,18 +67,22 @@ int verifica_coord(COORDENADA coord)
     return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
 }
 
-///// cria lista das coords atraves de LISTA
+/// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
 
+/**
+\brief Função auxiliar que insere a coordenada na lista se esta for uma possível coordenada a ser efetuada.
+*/
 void adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
-    if ( verifica_coord(coord) && estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ) 
+    if ( verifica_coord(coord)   &&    estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
     {
-        /// nao tenho a certeza se +é assim  q a coord é inserida
         insere_cabeca(lista, &coord);
     }  
 }
 
-
+/**
+\brief Função principal que returna uma LISTA de coordenadas possíveis a serem efetuadas.
+*/
 LISTA cria_lista_coords_possiveis(ESTADO *estado)
 {
     LISTA lista = criar_lista();
@@ -88,9 +107,10 @@ LISTA cria_lista_coords_possiveis(ESTADO *estado)
     return lista;
 }
 
-
-
-/// funcao q verifica se ganhou em casa, atribuindo pontos ///
+/// AVALIAR UMA JOGADA ///
+/**
+\brief Função que verifica se ganhou em casa, atribuindo os respetivos pontos.
+*/
 int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
 {
     int resul=0;
@@ -109,7 +129,9 @@ int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
     return resul; 
 }
 
-/// funcao que verifica se ganhou obrigando o outro a jogar para a casa do adversario ///
+/**
+\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario .
+*/
 int encurralado_casa(ESTADO *estado, int player, int nosso_player)
 {
     int resul = 0;
@@ -119,7 +141,9 @@ int encurralado_casa(ESTADO *estado, int player, int nosso_player)
     return resul;
 }
 
-/// funcao que verifica se ganhou encurralando o outro jogador ///
+/**
+\brief Função que verifica se alguém ganhou encurralando o outro jogador .
+*/
 int encurralado_jogo(ESTADO *estado, int player)
 {
     int resul = 0;
@@ -129,7 +153,9 @@ int encurralado_jogo(ESTADO *estado, int player)
     return resul;
 }
 
-/// funcao que verifica se ganhou encurralado, atribuindo pontos ///
+/**
+\brief Função que verifica se alguém ganhou encurralado, atribuindo pontos.
+*/
 int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
 {
     int resul = 0;
@@ -141,7 +167,10 @@ int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
 
 
 /// AVALIAR JOGADA ///
-// nos=player true  
+/**
+\brief Função PRINCIPAL que avalia uma jogada. 
+      (NOTA: quando o player == True ou seja 1, significa que player == nosso_player)
+*/
 int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
 {
     int resul = ganhou_encurralado(estado, player, nosso_player);
@@ -150,13 +179,18 @@ int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
 }
 
 
+/// ESTRATEGIA MINMAX ///
+
+/**
+\brief Função que executa o MinMax, retornando o valor de uma determinada jogada.
+*/
 int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
-    //atualiza estado copia
+    /* atualiza estado copia */
     atualiza_estado(estado_copia, *coord);
 
-    ///verifica se o jogo acabou //
+    /* verifica se o jogo acabou */
     int ganhou = avaliar_jogada(estado_copia, player_atual, nosso_jogador);
     if (ganhou !=0) return ganhou;
 
@@ -166,7 +200,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
 
     int maxValor, valor, minValor;
     
-    //se formos nos a jogar
+    /* se formos nos a jogar */
     if (player_atual)
     {   
         for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
@@ -191,24 +225,21 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
 }
 
 
-
+/**
+\brief Função que inicia o MinMax, retornando a melhor COORDENADA a ser efetuada.
+*/
 COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
-
-    //ESTADO_simples *estado_simples = troca_estado_estado_simples(estado);
-    //Lista_coord *lista_coords = cria_lista_coords_possiveis(estado_simples);
-
     ESTADO *estado_copia = cria_estado_copia(estado);
 
-   // LISTA *Moves = criar_lista();
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
 
-    // valor da melhor jogada possivel
+    /* valor da melhor jogada possivel */
     int best_Move ;
-    // coord melhor jogada possivel
+    /* coord melhor jogada possivel */
     COORDENADA *best_Coord = NULL;
 
-    // dados auxiliares
+    /* dados auxiliares */
     LISTA aux;
     int atual;
 
@@ -222,12 +253,14 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
         }
     }
 
-    // deveria se libertar a memoria do estado copia
+    /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
 
     return best_Coord ;
 }
 
-
+/**
+\brief Função que devolve a melhor coordenada a ser efetuada pelo boot ou uma coordenada inválida se a jogada for inválida.
+*/
 COORDENADA jogada_boot(ESTADO *estado)
 {
     COORDENADA *coord;

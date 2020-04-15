@@ -42,17 +42,6 @@ void casas_inicial(ESTADO *estado)
     }  
 }
 
-/*
-void coordenadas_0(ESTADO *estado)
-{
-    int i=0; 
-    COORDENADA coord = { 0 , 0 };
-    for (i; i<32 ; i++)
-    {
-        estado->jogadas[i].jogador1 = coord;
-        estado->jogadas[i].jogador2 = coord;
-    }
-}*/
 
 /**
 \brief Função que define o estado inicial do jogo.
@@ -109,7 +98,7 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
     int x = pos_final.linha;
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
-    int vaziaa = peca != '#'; //   peca == '.' || peca == '2' || peca == '1' ;
+    int vaziaa = peca != '#';  /* Exatamente igual: peca == '.' || peca == '2' || peca == '1'  */
     
     return ( vaziaa  && verifica_se_e_vizinho(estado->ultima_jogada, pos_final )  );
 }
@@ -129,7 +118,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
     {
         if (estado->tab[x][y] == VAZIO ) resul = 0;
     }
- //   printf("%d\n", resul);
+    /* printf("%d\n", resul); */
     return resul;
 }
 
@@ -139,7 +128,6 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 int verificar_casas_ocupadas(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
-    //printf("%c%c\n",coord.coluna+'a', coord.linha+'1');
     int resul;
     COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
     COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
@@ -181,6 +169,5 @@ int verifica_vencedor(ESTADO *estado)
 */
 int verifica_Vitoria(ESTADO *estado)
 {
-    // return ( verifica_vencedor(*estado));
      return ( verifica_vencedor(estado) || verificar_casas_ocupadas(estado) );
 }

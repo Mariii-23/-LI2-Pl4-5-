@@ -5,7 +5,7 @@
 #include "Interface.h"
 #include "dados.h"
 
-/// funcao que mostra o pos ///
+/// FUNÇÃO QUE MOSTRA O POS ///
 void mostra_pos(ESTADO *estado, int n_jogadas ){
     int i, j;
     CASA tabuleiro[8][8];
@@ -41,9 +41,8 @@ void mostra_pos(ESTADO *estado, int n_jogadas ){
         tabuleiro[coord1.linha][coord1.coluna] = '#';
         tabuleiro[coord2.linha][coord2.coluna] = '#';
     }
-        //coord2 = estado->jogadas[n_jogadas - 1].jogador2; // penso q isto seja desnecessario
         tabuleiro[coord2.linha][coord2.coluna] = '*';
-    /*Imprimir o novo tabuleiro. */
+    /* Imprimir o novo tabuleiro. */
     mostra_tabuleiro(tabuleiro,stdout);
 }
 
@@ -74,14 +73,13 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 */
 void atualiza_JOGADAS(ESTADO *estado,COORDENADA coord_mudar)
 {
-   /* COORDENADA coord = estado->ultima_jogada;
-    if (estado->jogador_atual == 2)   estado->jogadas[ estado->num_jogadas - 1 ].jogador1 = coord; 
-    else                              estado->jogadas[ estado->num_jogadas -2 ].jogador2 = coord;  */
-
     if (estado->jogador_atual == 2)   estado->jogadas[ estado->num_jogadas - 1].jogador2 = coord_mudar; 
     else                              estado->jogadas[ estado->num_jogadas - 1].jogador1 = coord_mudar;
 }
 
+/**
+\brief Função que atualiza o num_jogadas do estado.
+*/
 void atualiza_Num_Jogadas(ESTADO *estado)
 {
     int jog = estado->jogador_atual;
@@ -124,11 +122,11 @@ int jogar(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-/// ATUALIZA EM FUNCAO DO COMANDO LER ///
 /// COMANDO LER ///
+/// ATUALIZA EM FUNCAO DO COMANDO LER ///
 
 /**
-\brief Guarda as jogadas
+\brief Função que guarda as jogadas do estado.
 */
 void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
 {
@@ -136,11 +134,17 @@ void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int 
     estado->jogadas[ n_jogada ].jogador2 = coord2;
 }
 
+/**
+\brief Função que guarda as jogadas do estado.
+*/
 void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
 {
     estado->jogadas[ n_jogada ].jogador1 = coord1;
 }
 
+/**
+\brief Função que atualiza o estado lido através do comando ler.
+*/
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
     if ( estado->num_comando % 2 )  
@@ -159,7 +163,11 @@ void atualiza_estado_comando_ler(ESTADO *estado)
     if (estado->jogador_atual == 1) estado->num_jogadas++; 
 }
 
-/// ATUALIZA EM FUNCAO DO POS ///
+/// ATUALIZA ESTADO EM FUNCAO DO POS ///
+
+/**
+\brief Função que atualiza o tabuleiro do estado em função do comando pos dado.
+*/
 void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
 {
     int num;
@@ -175,7 +183,9 @@ void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
     estado->tab[ coord2.linha ][ coord2.coluna ] = PRETA;
 }
 
-
+/**
+\brief Função que atualiza o estado em função do comando pos dado.
+*/
 void atualiza_estado_pos(ESTADO *estado,int n_pos)
 {
     int linha;
@@ -189,23 +199,22 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
 
     int num_comando = estado->num_comando;
 
-    // inicializa o  estado a 0
-    //estado = inicializador_estado();
+    /* Inicializa o tabuleiro do estado */
     casas_inicial(estado);
-    //atualiza jogador
+    /* Atualiza o jogador_atual do estado */
     estado->jogador_atual = 1;
 
-    //atualiza a lista das jogadas
+    /* Atualiza a lista das jogadas do estado */
     for (linha=0; linha < n_pos; linha++)
     {
         estado->jogadas[linha].jogador1 = jogadas[linha].jogador1;
         estado->jogadas[linha].jogador2 = jogadas[linha].jogador2;
     }
     
-    //atualiza  o tabuleiro
+    /* Atualiza  o tabuleiro do estado */
     atualiza_tabuleiro_pos(estado,num_comando);
-    //atualiza a ultima coord
+    /* Atualiza a ultima coordenad do estado */
     estado->ultima_jogada = estado->jogadas[ n_pos-1 ].jogador2;
-    //atualiza o num_jogadas
+    /* Atualiza o num_jogadas do estado */
     estado->num_jogadas = n_pos+1;
 }
