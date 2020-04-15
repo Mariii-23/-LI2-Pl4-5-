@@ -14,24 +14,24 @@
 */
 LISTA criar_lista()
 {
-    LISTA lista = (LISTA )malloc(sizeof(LISTA));
+    LISTA lista = malloc(sizeof( struct lista ));
     return lista;
 }
 
 /**
 \brief Função que insere um valor na cabeça da lista.
 */
-LISTA insere_cabeca(LISTA L, void *valor)
+LISTA insere_cabeca(LISTA L, void *valor_dado)
 {
     LISTA aux = criar_lista();
     if (!L)
     {
-        aux->valor = valor;
+        aux->valor = valor_dado;
         aux->next = NULL;
     }
     else
     {
-        aux->valor = valor;
+        aux->valor = valor_dado;
         aux->next = L;
     }
     return aux;

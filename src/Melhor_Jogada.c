@@ -72,11 +72,11 @@ int verifica_coord(COORDENADA coord)
 /**
 \brief Função auxiliar que insere a coordenada na lista se esta for uma possível coordenada a ser efetuada.
 */
-void adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
+LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
     if ( verifica_coord(coord)   &&    estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
     {
-        insere_cabeca(lista, &coord);
+        lista = insere_cabeca(lista, &coord);
     }  
 }
 
@@ -85,25 +85,25 @@ void adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 */
 LISTA cria_lista_coords_possiveis(ESTADO *estado)
 {
-    LISTA lista = criar_lista();
+    LISTA lista = NULL;
     COORDENADA coord = estado->ultima_jogada;
 
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
-    adiciona_lista(lista, estado, coord1);
+    lista = adiciona_lista(lista, estado, coord1);
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
-    adiciona_lista(lista, estado, coord2);
+    lista = adiciona_lista(lista, estado, coord2);
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
-    adiciona_lista(lista, estado, coord3);
+    lista = adiciona_lista(lista, estado, coord3);
     COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
-    adiciona_lista(lista, estado, coord5);
+    lista = adiciona_lista(lista, estado, coord5);
     COORDENADA coord6 = { coord.linha - 1, coord.coluna };
-    adiciona_lista(lista, estado, coord6);
+    lista = adiciona_lista(lista, estado, coord6);
     COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
-    adiciona_lista(lista, estado, coord7);
+    lista = adiciona_lista(lista, estado, coord7);
     COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-    adiciona_lista(lista, estado, coord8);
+    lista = adiciona_lista(lista, estado, coord8);
     COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
-    adiciona_lista(lista, estado, coord4);
+    lista = adiciona_lista(lista, estado, coord4);
     return lista;
 }
 
