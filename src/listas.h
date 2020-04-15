@@ -1,5 +1,5 @@
-#ifndef ___MELHOR_JOGADA___
-#define ___MELHOR_JOGADA___
+#ifndef ___LISTAS___
+#define ___LISTAS___
 #define BUF_SIZE 1024
 
 #include "dados.h"

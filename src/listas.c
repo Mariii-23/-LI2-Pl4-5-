@@ -33,12 +33,12 @@ LISTA insere_cabeca(LISTA L, void *valor)
 // Devolve a cabeça da lista
 void *devolve_cabeca(LISTA L)
 {
-    return L->valor;
+    return &(L->valor);
 }
 // Devolve a cauda da lista
 LISTA proximo(LISTA L)
 {
-    return L->next;
+    return (L->next);
 }
 // Remove a cabeça da lista (libertando o espaço ocupado) e devolve a cauda
 LISTA remove_cabeca(LISTA L)

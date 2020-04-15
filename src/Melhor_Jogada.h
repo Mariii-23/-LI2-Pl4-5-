@@ -8,6 +8,7 @@
 #include "Interface.h"
 #include "listas.h"
 
-COORDENADA comando_jog(ESTADO *estado);
+COORDENADA jogada_boot(ESTADO *estado);
+
 
 #endif

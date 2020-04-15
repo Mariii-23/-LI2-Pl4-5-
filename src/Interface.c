@@ -333,10 +333,11 @@ int interpretador(ESTADO *estado) {
             }
         }
 
+        
         if(strcmp( linha, "jog\n" ) == 0)
         {
-          //  int coord_comamdo_jog;
-            COORDENADA coord_comamdo_jog = comando_jog(estado);
+          
+            COORDENADA coord_comamdo_jog = jogada_boot(estado);
 
             fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
 
@@ -350,9 +351,7 @@ int interpretador(ESTADO *estado) {
             {
                 jogador_vencedor( estado, stdout);
             }
-
         }
-
     }
     return ganhou;
 }

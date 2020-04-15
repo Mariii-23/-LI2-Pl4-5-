@@ -7,25 +7,29 @@
 #include "dados.h"
 #include "listas.h"
 
-typedef struct {
-  /** O tabuleiro */
-  CASA matriz[8][8];
-  int player_atual;
-  int nosso_player;
-  COORDENADA last_coord;
-} ESTADO_simples;
+ESTADO *cria_estado_copia(ESTADO *estado)
+{
+    ESTADO *estado_copia = (ESTADO *) calloc(1, sizeof(ESTADO));
+    int i,j;
+    for(i=0 ; i<8; i++)
+    {
+        for(j=0; j<8; j++) estado_copia->tab[i][j] = estado->tab[i][j];
+    }
+    estado_copia->num_jogadas = estado->num_jogadas;
+    estado_copia->jogador_atual = estado->jogador_atual;
+    estado_copia->num_comando = estado->num_comando;
+    estado_copia->ultima_jogada.coluna = estado->ultima_jogada.coluna;  
+    estado_copia->ultima_jogada.linha = estado->ultima_jogada.linha;
+    
+    for(i=0; i<estado->num_jogadas; i++)
+    {
+        estado_copia->jogadas[i].jogador1 = estado->jogadas[i].jogador1;
+        estado_copia->jogadas[i].jogador2 = estado->jogadas[i].jogador2;
+    }
+    if (estado->jogador_atual==2)  estado_copia->jogadas[i].jogador1 = estado->jogadas[i].jogador1;
 
-typedef COORDENADA COORDENADAS[32];
-
-typedef struct {
-  int valor;
-  COORDENADAS lista;
-} Lista_coord;
-
-typedef struct {
-  int valor;
-  COORDENADA coord;
-} Melhor_jogada;
+    return estado_copia;
+}
 
 
 int min(int a, int b)
@@ -41,44 +45,29 @@ int max(int a, int b)
     return resul;
 }
 
-
-////////////////////////////////////
-//// Estado para estado simples ////////
-/////////////////////////////////////
-
-ESTADO_simples *troca_estado_estado_simples(ESTADO *estado)
+int verifica_coord(COORDENADA coord)
 {
-    ESTADO_simples *e = (ESTADO_simples *)malloc(sizeof(ESTADO_simples));
-    e->last_coord = estado->ultima_jogada;
-    for(int i=0; i<=7; i++)
-    {
-        for (int j=0; j<=7; j++)  e->matriz[i][j] = estado->tab[i][j];
-    }
-    e->nosso_player = estado->jogador_atual;
-    e->player_atual = estado->jogador_atual;
-    return e;
+    int x = coord.linha;
+    int y = coord.coluna;
+    return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
 }
 
+///// cria lista das coords atraves de LISTA
 
-
-////////////////////////////////////
-//// Cria lista das jogadas ////////
-/////////////////////////////////////
-
-void adiciona_lista(Lista_coord *lista, ESTADO_simples *estado, COORDENADA coord)
+void adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
-    if (estado->matriz[ coord.linha ][ coord.coluna ] == BRANCA ) 
+    if ( verifica_coord(coord) && estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ) 
     {
-        lista->lista[ lista->valor ] = coord;
-        lista->valor++;
+        /// nao tenho a certeza se +é assim  q a coord é inserida
+        insere_cabeca(lista, &coord);
     }  
 }
 
 
-Lista_coord *cria_lista_coords_possiveis(ESTADO_simples *estado)
+LISTA cria_lista_coords_possiveis(ESTADO *estado)
 {
-    Lista_coord *lista = (Lista_coord *) calloc(1, sizeof(Lista_coord));
-    COORDENADA coord = estado->last_coord;
+    LISTA lista = criar_lista();
+    COORDENADA coord = estado->ultima_jogada;
 
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     adiciona_lista(lista, estado, coord1);
@@ -99,86 +88,19 @@ Lista_coord *cria_lista_coords_possiveis(ESTADO_simples *estado)
     return lista;
 }
 
-///////////////////////////////////////
-//// ATUALIZA ESATDO_SIMPLES /// //////
-///////////////////////////////////////
 
-/**
-\brief Função que altera o estado da peça.
-*/
-void alterar_estado_peca(ESTADO_simples *estado, COORDENADA coordenada, CASA mudar)
-{
-    int x = coordenada.linha;
-    int y = coordenada.coluna;
-    estado->matriz[x][y] = mudar;
-}
-
-/**
-\brief Função que altera o estado da casa onde estava, para a qual se pretendia mover.
-*/
-void trocar_posicoes(ESTADO_simples *estado, COORDENADA pos_final)
-{
-    alterar_estado_peca(estado, estado->last_coord, BRANCA);
-    alterar_estado_peca(estado, pos_final, PRETA);
-}
-
-void atualiza_estado_simples(ESTADO_simples *estado, COORDENADA coord)
-{
-    trocar_posicoes(estado, coord);
-    estado->last_coord = coord;
-    if (estado->player_atual == 1)  estado->player_atual = 2;
-    else                             estado->player_atual = 1;
-}
-
-
-///////////////////////////////////////
-//// ATRIBUIR VALOR A UMA JOGADA //////
-///////////////////////////////////////
-
-int verificar_casa_ocupada(ESTADO_simples *estado, COORDENADA coord)
-{
-    int x, y, resul = 1;
-    x = coord.linha;
-    y = coord.coluna; 
-    if (x>=0 && x<=7 && y>=0 && y<=7 )
-    {
-        if (estado->matriz[x][y] == VAZIO ) resul = 0;
-    }
-    return resul;
-}
-
-/**
-\brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
-*/
-int verificar_casas_ocupadas_(ESTADO_simples *estado)
-{
-    COORDENADA coord = estado->last_coord;
-    int resul;
-    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
-    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
-    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
-    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
-    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
-    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
-    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
-    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
-    resul = ( verificar_casa_ocupada( estado , coord1 ) && verificar_casa_ocupada( estado , coord2 ) &&
-              verificar_casa_ocupada( estado , coord3 ) && verificar_casa_ocupada( estado , coord4 ) &&
-              verificar_casa_ocupada( estado , coord5 ) && verificar_casa_ocupada( estado , coord6 ) &&
-              verificar_casa_ocupada( estado , coord7 ) && verificar_casa_ocupada( estado , coord8 )   );
-    return resul;
-}
 
 /// funcao q verifica se ganhou em casa, atribuindo pontos ///
-int ganhou_em_casa(ESTADO_simples *estado,int player)
+int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
 {
     int resul=0;
-    int x = estado->last_coord.linha;
-    int y = estado->last_coord.coluna;
-    if (estado->player_atual==1 && x == 0 && y == 0) resul = 1;
+    int x = estado->ultima_jogada.linha;
+    int y = estado->ultima_jogada.coluna;
+
+    if (estado->jogador_atual==1 && nosso_player==1 && x == 0 && y == 0) resul = 1;
     else
     {
-        if (estado->player_atual==2 && x == 7 && y == 7) resul = 1;
+        if (estado->jogador_atual==2 && nosso_player==2 && x == 7 && y == 7) resul = 1;
         else 
         {
             if ((x == 0 && y == 0) || (x == 7 && y == 7)) resul = -1;
@@ -188,68 +110,68 @@ int ganhou_em_casa(ESTADO_simples *estado,int player)
 }
 
 /// funcao que verifica se ganhou obrigando o outro a jogar para a casa do adversario ///
-int encurralado_casa(ESTADO_simples *estado, int player)
+int encurralado_casa(ESTADO *estado, int player, int nosso_player)
 {
     int resul = 0;
-    int ganhou_casa = ganhou_em_casa(estado,player);
+    int ganhou_casa = ganhou_em_casa(estado,player, nosso_player);
     int valor = verificar_casas_ocupadas(estado);
     if  (ganhou_em_casa!=0 && valor ) resul = 2 * ganhou_casa;
     return resul;
 }
 
 /// funcao que verifica se ganhou encurralando o outro jogador ///
-int encurralado_jogo(ESTADO_simples *estado, int player)
+int encurralado_jogo(ESTADO *estado, int player)
 {
     int resul = 0;
-    int valor = verificar_casas_ocupadas_(estado);
+    int valor = verificar_casas_ocupadas(estado);
     if (player) resul = 3 * valor;
     else resul = -3 * valor;
     return resul;
 }
 
 /// funcao que verifica se ganhou encurralado, atribuindo pontos ///
-int ganhou_encurralado(ESTADO_simples *estado,int player)
+int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
 {
     int resul = 0;
     int valor = encurralado_jogo(estado, player);
     if (valor != 0 ) resul = valor;
-    else resul = encurralado_casa(estado,player);
+    else resul = encurralado_casa(estado,player, nosso_player);
     return resul;
 }
 
 
 /// AVALIAR JOGADA ///
 // nos=player true  
-int avaliar_jogada(ESTADO_simples *estado,int player)
+int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
 {
-    int resul = ganhou_encurralado(estado, player);
-    if (resul == 0) resul = ganhou_em_casa(estado, player);
+    int resul = ganhou_encurralado(estado, player, nosso_player);
+    if (resul == 0) resul = ganhou_em_casa(estado, player, nosso_player);
     return resul;
 }
 
 
-
-/////////////////////////////////////////////////////
-//////  ALGORITMO QUE AVALIA A MELJOR JOGADA ////////
-////////////////////////////////////////////////////
-
-int minimax(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int player_atual)
+int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador)
 {
-    int i;
+    ESTADO *estado_copia = cria_estado_copia(estado);
+    //atualiza estado copia
+    atualiza_estado(estado_copia, *coord);
+
     ///verifica se o jogo acabou //
-    int ganhou = avaliar_jogada(estado, player_atual);
+    int ganhou = avaliar_jogada(estado_copia, player_atual, nosso_jogador);
     if (ganhou !=0) return ganhou;
 
-    Lista_coord *lista = cria_lista_coords_possiveis(estado);
-    int maxValor=NULL, valor=NULL, minValor=NULL;
+    LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
+    
+    LISTA aux;
 
-    // se formos nos a jogar
+    int maxValor, valor, minValor;
+    
+    //se formos nos a jogar
     if (player_atual)
-    {
-        for (i = 0; i < lista->valor; i++)
+    {   
+        for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
         {
-            atualiza_estado_simples(estado, lista->lista[i] );
-            valor = minimax(lista->lista[i], estado , alpha, betha, 0 ); //false
+            valor = MinMax(estado_copia, aux->valor, alpha, betha, 0, nosso_jogador);
             maxValor = max(alpha, valor);
             if (betha <= alpha) break;
             return maxValor;
@@ -257,100 +179,66 @@ int minimax(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int 
     }
     else
     {
-        for (i = 0; i < lista->valor; i++)
+        for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
         {
-            atualiza_estado_simples(estado, lista->lista[i] );
-            valor = minimax(lista->lista[i], estado, alpha, betha, 1 ); ///true
+            valor = MinMax(estado_copia ,aux->valor,alpha, betha, 1, nosso_jogador ); ///true
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
-            return minValor;
-        }  
-    }  
+            return minValor;  
+        }
+    } 
 }
 
 
-/*
-    criar uma lista que contivesse o valor atribuido a jogada e a lista das coordenadas por onde ele passou
-*/
-Melhor_jogada *minimax_(COORDENADA coord, ESTADO_simples *estado, int alpha, int betha, int player_atual, Melhor_jogada *melhor_jogada)
+
+COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
-    int i;
-    ///verifica se o jogo acabou //
-    int ganhou = avaliar_jogada(estado, player_atual);
-    if (ganhou !=0) 
-    {   
-        melhor_jogada->valor = ganhou;
-        return melhor_jogada;
-    }
 
-    Lista_coord *lista = cria_lista_coords_possiveis(estado);
-    int maxValor=NULL, valor=NULL, minValor=NULL;
-    Melhor_jogada *maxValor_, *valor_, *minValor_;
+    //ESTADO_simples *estado_simples = troca_estado_estado_simples(estado);
+    //Lista_coord *lista_coords = cria_lista_coords_possiveis(estado_simples);
 
-    // se formos nos a jogar
-    if (player_atual)
+    ESTADO *estado_copia = cria_estado_copia(estado);
+
+   // LISTA *Moves = criar_lista();
+    LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
+
+    // valor da melhor jogada possivel
+    int best_Move ;
+    // coord melhor jogada possivel
+    COORDENADA *best_Coord = NULL;
+
+    // dados auxiliares
+    LISTA aux;
+    int atual;
+
+    for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
     {
-        for (i = 0; i < lista->valor; i++)
+        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+        if (best_Coord == NULL || atual > best_Move)
         {
-            atualiza_estado_simples(estado, lista->lista[i] );
-            valor_ = minimax_(lista->lista[i], estado , alpha, betha, 0 ,melhor_jogada); //false
-            valor = valor_->valor;
-            maxValor = max(alpha, valor);
-            if (betha <= alpha) break;
-            melhor_jogada->valor = maxValor;
-            return melhor_jogada;
+            best_Move = atual;
+            best_Coord = devolve_cabeca(aux);
         }
     }
-    else
-    {
-        for (i = 0; i < lista->valor; i++)
-        {
-            atualiza_estado_simples(estado, lista->lista[i] );
-            valor_ = minimax_(lista->lista[i], estado, alpha, betha, 1 , melhor_jogada); ///true
-            valor = valor_->valor;
-            minValor_ = min(minValor, valor);
-            minValor = minValor_->valor; 
-            betha = min(betha, valor);
-            if (betha <= alpha) break;
-            melhor_jogada->valor = minValor;
-            return melhor_jogada;
-        }  
-    }  
+
+    // deveria se libertar a memoria do estado copia
+
+    return best_Coord ;
 }
 
-int verifica_valor_maior(LISTA *lista)
+
+COORDENADA jogada_boot(ESTADO *estado)
 {
-    void *max = devolve_cabeca(lista);
-    int i , resul = 0;
-
-    for (lista,i ; lista_esta_vazia(lista); lista  =  remove_cabeca(lista), i++)
+    COORDENADA *coord;
+    COORDENADA coord_resul = { -1 , -1 };
+    int ganhou = verifica_Vitoria(estado);
+    if (!ganhou) 
     {
-        if (max < devolve_cabeca(lista)) 
-        {
-            max = devolve_cabeca(lista);
-            resul = i;
-        }
+        coord = Iniciar_MinMax(estado);
+        if (verifica_jogada(estado, *coord)) coord_resul = *coord;
+        else fprintf(stdout, "A coordenada obtida é invalida\n");
     }
-    return resul;
-}
-
-COORDENADA comando_jog(ESTADO *estado)
-{
-    ESTADO_simples *estado_simples = troca_estado_estado_simples(estado);
-    Lista_coord *lista_coords = cria_lista_coords_possiveis(estado_simples);
-    int i ;
-    int valor;
-    LISTA *lista = criar_lista();
-    
-    for (i = lista_coords->valor - 1 ; i>=0 ; i--)
-    {
-        estado_simples = troca_estado_estado_simples(estado);
-        atualiza_estado_simples(estado_simples, lista_coords->lista[i]);
-        valor = minimax(estado_simples->last_coord, estado_simples, 0,0, 0 );
-        insere_cabeca(lista, valor);
-    }
-
-    i = verifica_valor_maior(lista);
-    return  lista_coords->lista[i];
+    else fprintf(stdout, "O jogo terminou\n");
+    return coord_resul;
 }
