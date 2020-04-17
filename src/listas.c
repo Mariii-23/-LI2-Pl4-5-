@@ -14,9 +14,9 @@
 */
 LISTA criar_lista()
 {
-    LISTA l = malloc(sizeof( struct lista ));
-    l->valor = NULL;
-    l->next = NULL;
+    LISTA l = malloc(sizeof( struct lista )); //LISTA l = malloc(sizeof( NLista));
+    //l->valor = NULL;
+    //l->next = NULL;
     return l;
 }
 
