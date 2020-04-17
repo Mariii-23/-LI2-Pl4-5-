@@ -165,32 +165,44 @@ void comando_ler(FILE *fp,ESTADO *estado)
     estado->num_comando = 0;
 
     
-    for( int l = 7; l >= 0; l--)
+    for( l = 7; l >= 0; l--)
     {
-        fscanf(fp, "%s", linha);
+        fgets(linha, BUF_SIZE, fp);  /// fgets(linha,20, fp);
         ler_linha(estado, linha, l);
     } 
 
     n_jogadas = estado->num_comando  ;
 
-    printf("%d\n",n_jogadas);
-    for (l = 0; l!=(n_jogadas/2) && fscanf( fp, "%*s %[a-h]%[1-8] %[a-h]%[1-8] %*s", col1, lin1, col2, lin2) == 4 ; l++)
-    {   
-        printf("l: %d\n",l/2);
-        coord1.linha = *lin1 - '1' ;
-        coord1.coluna = *col1 - 'a';
-        printf("   linha 1  %c\n",coord1.linha + '1');
-        printf("   coluna1  %c\n", coord1.coluna + 'a' );
-        coord2.linha = *lin2 - '1' ;
-        coord2.coluna = *col2 - 'a';
-        guarda_Jogadas_2(estado, coord1, coord2, l);
-    }
-    if (fscanf( fp, "%*s %[a-h]%[1-8] %*s", col1, lin1) == 1)  
+   // printf("%d\n",n_jogadas);
+
+    while ( fgets(linha,BUF_SIZE, fp) != NULL  )
     {
-        coord1.linha = *lin1 - '1' ;
-        coord1.coluna = *col1 - 'a';
-        guarda_Jogadas_1(estado, coord1, l);
+       if ( sscanf( linha , "%d: %[a-h]%[1-8] %[a-h]%[1-8]", &l, col1, lin1, col2, lin2) == 5)
+       {   
+       // printf("l: %d\n",l/2);
+            coord1.linha = *lin1 - '1' ;
+            coord1.coluna = *col1 - 'a';
+        // printf("   linha 1  %c\n",coord1.linha + '1');
+        //  printf("   coluna1  %c\n", coord1.coluna + 'a' );
+            coord2.linha = *lin2 - '1' ;
+            coord2.coluna = *col2 - 'a';
+            guarda_Jogadas_2(estado, coord1, coord2, l-1);
+        }
+        else
+        {
+            sscanf( linha, "%d: %[a-h]%[1-8]",&l, col1, lin1);
+            coord1.linha = *lin1 - '1' ;
+            coord1.coluna = *col1 - 'a';
+            guarda_Jogadas_1(estado, coord1, l-1);
+        }
     }
+
+    //for (l = 0; l!=(n_jogadas/2)     &&     ; l++)
+    /*
+    if (fscanf( fp, "%*s %[a-h]%[1-8] %*s", col1, lin1) == 2)  
+    {
+        
+    }*/
     
     /*
     for (l = 0; l != (n_jogadas) && fscanf( fp, "%*s %c%c %c%c %*s", &y1, &x1, &y2, &x2) == 4 ; l+=2)

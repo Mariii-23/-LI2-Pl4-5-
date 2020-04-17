@@ -181,6 +181,7 @@ void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
         estado->tab[ coord2.linha ][ coord2.coluna ] = BRANCA;
     }
     estado->tab[ coord2.linha ][ coord2.coluna ] = PRETA;
+    estado->tab[0][0] = UM;
 }
 
 /**
@@ -204,7 +205,7 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
     /* Atualiza o jogador_atual do estado */
     estado->jogador_atual = 1;
 
-    /* Atualiza a lista das jogadas do estado */
+    /* Atualiza a lista das jogadas do estado */  /*Provavelmente desnecesario*/
     for (linha=0; linha < n_pos; linha++)
     {
         estado->jogadas[linha].jogador1 = jogadas[linha].jogador1;
