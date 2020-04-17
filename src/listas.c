@@ -15,8 +15,8 @@
 LISTA criar_lista()
 {
     LISTA l = malloc(sizeof( struct lista )); //LISTA l = malloc(sizeof( NLista));
-    //l->valor = NULL;
-    //l->next = NULL;
+    l->valor = NULL;
+    l->next = NULL;
     return l;
 }
 
@@ -36,7 +36,7 @@ int lista_esta_vazia(LISTA L)
 LISTA insere_cabeca(LISTA L, void *valor_dado)
 {
     LISTA aux = criar_lista();
-    if (!(lista_esta_vazia(L) ) )
+    if ( !(L->valor) && !(lista_esta_vazia(L) ) )
     {
         aux->valor = valor_dado;
         aux->next = NULL;
