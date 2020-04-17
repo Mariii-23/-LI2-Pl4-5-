@@ -14,8 +14,20 @@
 */
 LISTA criar_lista()
 {
-    LISTA lista = malloc(sizeof( struct lista ));
-    return lista;
+    LISTA l = malloc(sizeof( struct lista ));
+    l->valor = NULL;
+    l->next = NULL;
+    return l;
+}
+
+/**
+\brief Função que devolve 1 se a lista dada estiver vazia.
+*/
+int lista_esta_vazia(LISTA L)
+{
+    int resul = 0;
+    if (L == NULL) resul = 1;
+    return resul;
 }
 
 /**
@@ -24,17 +36,19 @@ LISTA criar_lista()
 LISTA insere_cabeca(LISTA L, void *valor_dado)
 {
     LISTA aux = criar_lista();
-    if (!L)
+    if (!(lista_esta_vazia(L) ) )
     {
         aux->valor = valor_dado;
         aux->next = NULL;
+        L = aux;
     }
     else
     {
         aux->valor = valor_dado;
         aux->next = L;
+        L = aux;
     }
-    return aux;
+    return L;
 }
 
 /**
@@ -63,14 +77,4 @@ LISTA remove_cabeca(LISTA L)
     L = L->next;
     free (aux);
     return L;
-}
-
-/**
-\brief Função que devolve 1 se a lista dada estiver vazia.
-*/
-int lista_esta_vazia(LISTA L)
-{
-    int resul = 0;
-    if (L == NULL) resul = 1;
-    return resul;
 }

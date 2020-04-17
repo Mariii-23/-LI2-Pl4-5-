@@ -282,7 +282,7 @@ int interpretador(ESTADO *estado)
         }
   
 /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-        if(strcmp( linha, "Q\n" ) == 0 ) return 0;
+        if(strcmp( linha, "Q\n" ) == 0 || strcmp( linha, "q\n" ) == 0 ) return 0;
 
 /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
         if(sscanf(linha, "gr %s",filename) == 1)

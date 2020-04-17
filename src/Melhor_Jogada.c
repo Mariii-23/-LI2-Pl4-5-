@@ -243,13 +243,13 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     LISTA aux;
     int atual;
 
-    for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
+    for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
     {
         atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
         if (best_Coord == NULL || atual > best_Move)
         {
             best_Move = atual;
-            best_Coord = devolve_cabeca(aux);
+            best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
         }
     }
 
