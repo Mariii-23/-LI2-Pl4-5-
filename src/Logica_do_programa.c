@@ -147,6 +147,7 @@ void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
 */
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
+    /*
     if ( estado->num_comando % 2 )  
     {
         estado->jogador_atual = 2;
@@ -159,8 +160,21 @@ void atualiza_estado_comando_ler(ESTADO *estado)
         estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador2;
         estado->num_jogadas = estado->num_comando / 2 ;
     }
-    
-    if (estado->jogador_atual == 1) estado->num_jogadas++; 
+    if (estado->jogador_atual == 1) estado->num_jogadas++; */
+
+
+    if ( estado->num_comando % 2 )  
+    {
+        estado->jogador_atual = 2;
+        estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 1 ].jogador1;
+        //estado->num_jogadas = (estado->num_comando / 2) + 1;
+    }
+    else                           
+    {
+        estado->jogador_atual = 1; 
+        estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 2 ].jogador2;
+        //estado->num_jogadas = estado->num_comando / 2 ;
+    }
 }
 
 /// ATUALIZA ESTADO EM FUNCAO DO POS ///
@@ -213,7 +227,7 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
     }
     
     /* Atualiza  o tabuleiro do estado */
-    atualiza_tabuleiro_pos(estado,num_comando);
+    atualiza_tabuleiro_pos(estado,n_pos);
     /* Atualiza a ultima coordenad do estado */
     estado->ultima_jogada = estado->jogadas[ n_pos-1 ].jogador2;
     /* Atualiza o num_jogadas do estado */

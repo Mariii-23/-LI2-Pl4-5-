@@ -85,7 +85,7 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 */
 LISTA cria_lista_coords_possiveis(ESTADO *estado)
 {
-    LISTA lista = NULL;
+    LISTA lista = criar_lista();// mal
     COORDENADA coord = estado->ultima_jogada;
 
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };

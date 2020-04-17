@@ -140,13 +140,26 @@ void comando_gr(ESTADO *estado, FILE *stream) {
 */
 void ler_linha(ESTADO *estado, char linha[], int l)
 {   
+    char p1,p2,p3,p4,p5,p6,p7,p8;
     char casa;
+    /*
+    sscanf( linha , "%c%c%c%c%c%c%c%c", &p1, &p2,&p3,&p4,&p5,&p6,&p7,&p8);
+    estado->tab[ l ][ 0 ] = p1;
+    estado->tab[ l ][ 1 ] = p2;
+    estado->tab[ l ][ 2 ] = p3;
+    estado->tab[ l ][ 3 ] = p4;
+    estado->tab[ l ][ 4 ] = p5;
+    estado->tab[ l ][ 5 ] = p6;
+    estado->tab[ l ][ 6 ] = p7;
+    estado->tab[ l ][ 7 ] = p8; */
+
+
     for(int coluna = 0; coluna < 8; coluna++) 
     { 
         casa = linha[ coluna ];
         estado->tab[ l ][ coluna ] = casa;
         if ( casa == BRANCA ) estado->num_comando++;
-    }
+    } 
 } 
 
 /**
@@ -164,29 +177,28 @@ void comando_ler(FILE *fp,ESTADO *estado)
     char col2[2], lin2[2];
     estado->num_comando = 0;
 
-    
     for( l = 7; l >= 0; l--)
     {
-        fgets(linha, BUF_SIZE, fp);  /// fgets(linha,20, fp);
+        fgets(linha, BUF_SIZE, fp); 
         ler_linha(estado, linha, l);
     } 
 
     n_jogadas = estado->num_comando  ;
 
-   // printf("%d\n",n_jogadas);
+    fgets(linha,BUF_SIZE, fp);
 
     while ( fgets(linha,BUF_SIZE, fp) != NULL  )
     {
        if ( sscanf( linha , "%d: %[a-h]%[1-8] %[a-h]%[1-8]", &l, col1, lin1, col2, lin2) == 5)
        {   
-       // printf("l: %d\n",l/2);
+
             coord1.linha = *lin1 - '1' ;
             coord1.coluna = *col1 - 'a';
-        // printf("   linha 1  %c\n",coord1.linha + '1');
-        //  printf("   coluna1  %c\n", coord1.coluna + 'a' );
+
             coord2.linha = *lin2 - '1' ;
             coord2.coluna = *col2 - 'a';
             guarda_Jogadas_2(estado, coord1, coord2, l-1);
+            estado->num_comando = 2*l;
         }
         else
         {
@@ -194,59 +206,13 @@ void comando_ler(FILE *fp,ESTADO *estado)
             coord1.linha = *lin1 - '1' ;
             coord1.coluna = *col1 - 'a';
             guarda_Jogadas_1(estado, coord1, l-1);
+            estado->num_comando = 2*l - 1;
         }
     }
-
-    //for (l = 0; l!=(n_jogadas/2)     &&     ; l++)
-    /*
-    if (fscanf( fp, "%*s %[a-h]%[1-8] %*s", col1, lin1) == 2)  
-    {
-        
-    }*/
     
-    /*
-    for (l = 0; l != (n_jogadas) && fscanf( fp, "%*s %c%c %c%c %*s", &y1, &x1, &y2, &x2) == 4 ; l+=2)
-    {
-        printf("l: %d\n",l/2);
-        coord1.linha = x1 - '1';
-        coord1.coluna = y1 - 'a';
-        printf("   linha 1  %c\n",coord1.linha + '1');
-        coord2.linha = x2 - '1';
-        coord2.coluna = y2 - 'a';
-        printf("   coluna1  %c\n", coord1.coluna + 'a' );
-        guarda_Jogadas_2(estado, coord1, coord2, l/2);
-    }
-    if (fscanf( fp, "%*s %c%c %*s", &x1, &y1) == 2)  
-    {
-        printf("  %d\n",l/2);
-        coord1.linha = y1 - '1';
-        coord1.coluna = x1 - 'a';
-        guarda_Jogadas_1(estado, coord1, l);
-    }*/
+    estado->num_jogadas = l;
 
-    /*
-    for (l = 0; l != (n_jogadas) && fscanf( fp, "%*s %s %s %*s", coord1_, coord2_) == 2 ; l+=2)
-    {
-        printf("l: %d\n",l/2);
-        coord1.linha = coord1_[1] - '1';
-        coord1.coluna = coord1_[0] - 'a';
-        printf("   linha 1  %c\n",coord1.linha + '1');
-        coord2.linha = coord2_[1] - '1';
-        coord2.coluna = coord2_[0] - 'a';
-        printf("   coluna1  %c\n", coord1.coluna + 'a' );
-        guarda_Jogadas_2(estado, coord1, coord2, l/2);
-    }
-    if (fscanf( fp, "%*s %s %*s", coord1_) == 1)  
-    {
-        printf("  %d\n",l/2);
-        coord1.linha = coord1_[1] - '1';
-        coord1.coluna = coord1_[0] - 'a';
-        guarda_Jogadas_1(estado, coord1, l);
-    }*/
-    
     atualiza_estado_comando_ler(estado);
-
-    comando_movs(estado,stdout);
 
     estado->num_comando = n_comando_inicial+1;
 

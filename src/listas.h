@@ -15,6 +15,15 @@ typedef struct lista_melhor {
     struct lista *next;
 } Lista_melhor;
 
+/*
+typedef COORDENADAS COORDENADA[8] 
+
+typedef struct lista_coords {
+    int valor;  // vvai represenatr quantas coordenadas
+    COORDENADAS coord;
+} lista_coords;*/
+
+
 LISTA criar_lista();
 LISTA insere_cabeca(LISTA L, void *valor);
 void *devolve_cabeca(LISTA L);

@@ -1,0 +1,71 @@
+\hypertarget{Interface_8h}{}\section{Interface.\+h File Reference}
+\label{Interface_8h}\index{Interface.\+h@{Interface.\+h}}
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+Include dependency graph for Interface.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=143pt]{Interface_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{Interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{Interface_8h_a8d137184689f55d869b4fa543e76e70b}{mostra\+\_\+tabuleiro} (C\+A\+SA tab\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}, F\+I\+LE $\ast$stream)
+\begin{DoxyCompactList}\small\item\em T\+A\+B\+U\+L\+E\+I\+RO \+: I\+M\+P\+R\+I\+ME OU G\+U\+A\+R\+DA ///. \end{DoxyCompactList}\item 
+void \hyperlink{Interface_8h_a7d93f27be42746f9ca9c2292b55e6aec}{jogador\+\_\+vencedor} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, F\+I\+LE $\ast$stream)
+\begin{DoxyCompactList}\small\item\em J\+O\+G\+A\+D\+OR V\+E\+N\+C\+E\+D\+OR ///. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Interface_8h_a5da86839ee9a47cb34b275831d3cc1f9}\label{Interface_8h_a5da86839ee9a47cb34b275831d3cc1f9}} 
+void \hyperlink{Interface_8h_a5da86839ee9a47cb34b275831d3cc1f9}{guarda\+\_\+tabuleiro} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, F\+I\+LE $\ast$stream)
+\begin{DoxyCompactList}\small\item\em Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda\+\_\+linha. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Interface_8h_acc259ba457da7c00c734bb9d079fad17}\label{Interface_8h_acc259ba457da7c00c734bb9d079fad17}} 
+void \hyperlink{Interface_8h_acc259ba457da7c00c734bb9d079fad17}{prompt} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado, F\+I\+LE $\ast$stream)
+\begin{DoxyCompactList}\small\item\em Prompt do jogo. \end{DoxyCompactList}\item 
+int \hyperlink{Interface_8h_a0475a591894db72239ed040e576d32b5}{interpretador} (\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$estado)
+\begin{DoxyCompactList}\small\item\em I\+N\+T\+E\+R\+P\+R\+E\+T\+A\+D\+OR ///. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definição do intrepretador do jogo. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{Interface_8h_a0475a591894db72239ed040e576d32b5}\label{Interface_8h_a0475a591894db72239ed040e576d32b5}} 
+\index{Interface.\+h@{Interface.\+h}!interpretador@{interpretador}}
+\index{interpretador@{interpretador}!Interface.\+h@{Interface.\+h}}
+\subsubsection{\texorpdfstring{interpretador()}{interpretador()}}
+{\footnotesize\ttfamily int interpretador (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{estado }\end{DoxyParamCaption})}
+
+
+
+I\+N\+T\+E\+R\+P\+R\+E\+T\+A\+D\+OR ///. 
+
+Intrepretador do jogo. \mbox{\Hypertarget{Interface_8h_a7d93f27be42746f9ca9c2292b55e6aec}\label{Interface_8h_a7d93f27be42746f9ca9c2292b55e6aec}} 
+\index{Interface.\+h@{Interface.\+h}!jogador\+\_\+vencedor@{jogador\+\_\+vencedor}}
+\index{jogador\+\_\+vencedor@{jogador\+\_\+vencedor}!Interface.\+h@{Interface.\+h}}
+\subsubsection{\texorpdfstring{jogador\+\_\+vencedor()}{jogador\_vencedor()}}
+{\footnotesize\ttfamily void jogador\+\_\+vencedor (\begin{DoxyParamCaption}\item[{\hyperlink{structESTADO}{E\+S\+T\+A\+DO} $\ast$}]{estado,  }\item[{F\+I\+LE $\ast$}]{stream }\end{DoxyParamCaption})}
+
+
+
+J\+O\+G\+A\+D\+OR V\+E\+N\+C\+E\+D\+OR ///. 
+
+Função que determina o vencedor do jogo. \mbox{\Hypertarget{Interface_8h_a8d137184689f55d869b4fa543e76e70b}\label{Interface_8h_a8d137184689f55d869b4fa543e76e70b}} 
+\index{Interface.\+h@{Interface.\+h}!mostra\+\_\+tabuleiro@{mostra\+\_\+tabuleiro}}
+\index{mostra\+\_\+tabuleiro@{mostra\+\_\+tabuleiro}!Interface.\+h@{Interface.\+h}}
+\subsubsection{\texorpdfstring{mostra\+\_\+tabuleiro()}{mostra\_tabuleiro()}}
+{\footnotesize\ttfamily void mostra\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{C\+A\+SA}]{tab\mbox{[}8\mbox{]}\mbox{[}8\mbox{]},  }\item[{F\+I\+LE $\ast$}]{stream }\end{DoxyParamCaption})}
+
+
+
+T\+A\+B\+U\+L\+E\+I\+RO \+: I\+M\+P\+R\+I\+ME OU G\+U\+A\+R\+DA ///. 
+
+Função que que imprime apenas as pecas de um determinado tabuleiro . 
