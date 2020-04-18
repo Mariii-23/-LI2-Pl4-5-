@@ -30,5 +30,6 @@ void *devolve_cabeca(LISTA L);
 LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
+int length_lista(LISTA L);
 
 #endif

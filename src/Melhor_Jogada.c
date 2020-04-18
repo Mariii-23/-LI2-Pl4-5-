@@ -78,6 +78,7 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
     {
         lista = insere_cabeca(lista, &coord);
     }  
+    return lista;
 }
 
 /**
@@ -85,7 +86,8 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 */
 LISTA cria_lista_coords_possiveis(ESTADO *estado)
 {
-    LISTA lista = criar_lista();// mal
+    LISTA lista = criar_lista(); 
+
     COORDENADA coord = estado->ultima_jogada;
 
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
@@ -186,9 +188,23 @@ int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
 */
 int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador)
 {
+    printf("inicio minmax\n");
     ESTADO *estado_copia = cria_estado_copia(estado);
+
+    printf("estado copia\n");
+
     /* atualiza estado copia */
-    atualiza_estado(estado_copia, *coord);
+    printf("prob\n");
+    int x = (*coord).linha;
+    int y = (*coord).coluna;
+    COORDENADA coord_ = {x , y};
+
+    printf("coord ");
+    printf("    %d  %d\n", coord_.linha, coord_.coluna);
+
+    atualiza_estado(estado_copia, coord_);
+
+    printf("atualiza de estado\n");
 
     /* verifica se o jogo acabou */
     int ganhou = avaliar_jogada(estado_copia, player_atual, nosso_jogador);
@@ -200,6 +216,8 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
 
     int maxValor, valor, minValor;
     
+    printf("dentro do minmax");
+
     /* se formos nos a jogar */
     if (player_atual)
     {   
@@ -232,27 +250,47 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
 
+    printf("passei do estado copia\n");
+
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
 
+    printf("passei da lista\n");
+
+    //printf("arroz");
+
     /* valor da melhor jogada possivel */
-    int best_Move ;
+    int best_Move;
     /* coord melhor jogada possivel */
-    COORDENADA *best_Coord = NULL;
+    COORDENADA *best_Coord ;
+    printf("aqui estou 1\n");
 
-    /* dados auxiliares */
-    LISTA aux;
-    int atual;
-
-    for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
+   /* if ( length_lista(Lista_coords) == 1 ) 
     {
-        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
-        if (best_Coord == NULL || atual > best_Move)
-        {
-            best_Move = atual;
-            best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
-        }
+        printf("eita");
+        best_Coord = devolve_cabeca(Lista_coords);
     }
+    else
+    {*/
+        /* dados auxiliares */
+        LISTA aux = Lista_coords;
+        int atual;
 
+        printf("aqui estou2\n");
+
+        best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+        printf("bestmove alterada");
+        best_Coord = devolve_cabeca(aux);
+
+        for (aux ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
+        {
+            atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+            if (best_Coord == NULL || atual > best_Move)
+            {
+                best_Move = atual;
+                best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
+            }
+        }
+   // }
     /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
 
     return best_Coord ;
@@ -268,8 +306,18 @@ COORDENADA jogada_boot(ESTADO *estado)
     int ganhou = verifica_Vitoria(estado);
     if (!ganhou) 
     {
+        printf("\nestou aqui inicio\n");
+
         coord = Iniciar_MinMax(estado);
-        if (verifica_jogada(estado, *coord)) coord_resul = *coord;
+
+        printf("sai dali yupii \n");
+        int x = (*coord).linha;
+        int y = (*coord).coluna;
+        COORDENADA coord_test = {x,y};
+
+        printf("coord feita final\n");
+
+        if (verifica_jogada(estado, coord_test)) coord_resul = coord_test;
         else fprintf(stdout, "A coordenada obtida é invalida\n");
     }
     else fprintf(stdout, "O jogo terminou\n");

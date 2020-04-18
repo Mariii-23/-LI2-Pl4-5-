@@ -26,7 +26,7 @@ LISTA criar_lista()
 int lista_esta_vazia(LISTA L)
 {
     int resul = 0;
-    if (L == NULL) resul = 1;
+    if (L == NULL || L->next == NULL) resul = 1;
     return resul;
 }
 
@@ -77,4 +77,16 @@ LISTA remove_cabeca(LISTA L)
     L = L->next;
     free (aux);
     return L;
+}
+
+/**
+\brief Função que dá o número de elementos de uma lista.
+*/
+int length_lista(LISTA L)
+{
+   // printf("erro");
+    int i=0;
+    LISTA aux = L;
+    for( aux = L; !lista_esta_vazia(aux) ; aux->valor)  i++;
+    return i;
 }

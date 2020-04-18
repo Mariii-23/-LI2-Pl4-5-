@@ -324,6 +324,8 @@ int interpretador(ESTADO *estado)
           
             COORDENADA coord_comamdo_jog = jogada_boot(estado);
 
+            printf(" sai do jogada boot\n");
+
             fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
 
             jogar(estado, coord_comamdo_jog);
