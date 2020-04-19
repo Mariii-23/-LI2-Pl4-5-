@@ -330,6 +330,8 @@ COORDENADA jogada_boot(ESTADO *estado)
 }
 
 
+
+
 COORDENADA da_coordenada(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
