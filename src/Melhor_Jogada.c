@@ -228,6 +228,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
             valor = MinMax(estado_copia, aux->valor, alpha, betha, 0, nosso_jogador);
             maxValor = max(alpha, valor);
             if (betha <= alpha) break;
+            free(estado_copia);
             return maxValor;
         }
     }
@@ -239,6 +240,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
+            free(estado_copia);
             return minValor;  
         }
     } 
@@ -290,7 +292,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     }
    // }
     /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
-
+    free(estado_copia);
     return best_Coord ;
 }
 
