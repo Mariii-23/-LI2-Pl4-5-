@@ -263,7 +263,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     int best_Move;
     /* coord melhor jogada possivel */
     COORDENADA *best_Coord ;
-   /* if ( length_lista(Lista_coords) == 1 ) 
+    /* if ( length_lista(Lista_coords) == 1 ) 
     {
         printf("eita");
         best_Coord = devolve_cabeca(Lista_coords);
