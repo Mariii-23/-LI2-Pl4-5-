@@ -321,7 +321,7 @@ int interpretador(ESTADO *estado)
         
         if(strcmp( linha, "jog\n" ) == 0)
         {
-          
+          /*
             COORDENADA coord_comamdo_jog = jogada_boot(estado);
             int x = coord_comamdo_jog.linha,
                 y = coord_comamdo_jog.coluna;
@@ -349,8 +349,31 @@ int interpretador(ESTADO *estado)
                 estado->num_comando++;
                 guarda_tabuleiro(estado, stdout);
                 prompt(estado, stdout);
+            }*/
+
+            COORDENADA coord = da_coordenada(estado);
+            if( verifica_coord(coord) && verifica_jogada(estado, coord))
+            {
+                jogar(estado, coord);
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+
+                ganhou = verifica_Vitoria( estado);
+
+                if ( ganhou ) 
+                {
+                    jogador_vencedor( estado, stdout);
+                }
             }
-            
+            else
+            {
+                fprintf(stdout,"O comando jogar falhou.\n");
+                estado->num_comando++;
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+            }
+
+
         }
     }
     return ganhou;

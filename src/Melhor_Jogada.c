@@ -328,3 +328,29 @@ COORDENADA jogada_boot(ESTADO *estado)
     else fprintf(stdout, "O jogo terminou\n");
     return coord_resul;
 }
+
+
+COORDENADA da_coordenada(ESTADO *estado)
+{
+    COORDENADA coord = estado->ultima_jogada;
+
+    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    if (verifica_coord(coord1) && verifica_jogada(estado ,coord1)) return coord1;
+    
+    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    if (verifica_coord(coord2) && verifica_jogada(estado ,coord2)) return coord2;
+
+    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    if (verifica_coord(coord3) && verifica_jogada(estado ,coord3)) return coord3;
+    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    if (verifica_coord(coord5) && verifica_jogada(estado ,coord5)) return coord5;
+    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    if (verifica_coord(coord6) && verifica_jogada(estado ,coord6)) return coord6;
+    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    if (verifica_coord(coord7) && verifica_jogada(estado ,coord7)) return coord7;
+    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    if (verifica_coord(coord8) && verifica_jogada(estado ,coord8)) return coord8;
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    if (verifica_coord(coord4) && verifica_jogada(estado ,coord4)) return coord4;
+
+}
