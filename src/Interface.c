@@ -323,21 +323,34 @@ int interpretador(ESTADO *estado)
         {
           
             COORDENADA coord_comamdo_jog = jogada_boot(estado);
+            int x = coord_comamdo_jog.linha,
+                y = coord_comamdo_jog.coluna;
 
             printf(" sai do jogada boot\n");
 
-            fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
-
-            jogar(estado, coord_comamdo_jog);
-            guarda_tabuleiro(estado, stdout);
-            prompt(estado, stdout);
-
-            ganhou = verifica_Vitoria( estado);
-
-            if ( ganhou ) 
+            if( x>=0 && x<=7 &&  y>=0 && y<=7 && verifica_jogada(estado, coord_comamdo_jog))
             {
-                jogador_vencedor( estado, stdout);
+                fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
+
+                jogar(estado, coord_comamdo_jog);
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+
+                ganhou = verifica_Vitoria( estado);
+
+                if ( ganhou ) 
+                {
+                    jogador_vencedor( estado, stdout);
+                }
             }
+            else
+            {
+                fprintf(stdout,"O comando jogar falhou.\n");
+                estado->num_comando++;
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+            }
+            
         }
     }
     return ganhou;

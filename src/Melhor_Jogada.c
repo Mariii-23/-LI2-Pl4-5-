@@ -74,9 +74,13 @@ int verifica_coord(COORDENADA coord)
 */
 LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
+    COORDENADA *coord_ ;
+    coord_->linha = coord.linha;
+    coord_->coluna = coord.coluna;
+
     if ( verifica_coord(coord)   &&    estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
     {
-        lista = insere_cabeca(lista, &coord);
+        lista = insere_cabeca(lista, coord_);
     }  
     return lista;
 }
@@ -188,13 +192,11 @@ int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
 */
 int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador)
 {
-    printf("inicio minmax\n");
+    printf("\n\ninicio minmax\n");
     ESTADO *estado_copia = cria_estado_copia(estado);
 
-    printf("estado copia\n");
 
     /* atualiza estado copia */
-    printf("prob\n");
     int x = (*coord).linha;
     int y = (*coord).coluna;
     COORDENADA coord_ = {x , y};
@@ -250,11 +252,8 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
 
-    printf("passei do estado copia\n");
-
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
 
-    printf("passei da lista\n");
 
     //printf("arroz");
 
@@ -262,8 +261,6 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     int best_Move;
     /* coord melhor jogada possivel */
     COORDENADA *best_Coord ;
-    printf("aqui estou 1\n");
-
    /* if ( length_lista(Lista_coords) == 1 ) 
     {
         printf("eita");
@@ -271,25 +268,26 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     }
     else
     {*/
-        /* dados auxiliares */
-        LISTA aux = Lista_coords;
-        int atual;
+    /* dados auxiliares */
+    LISTA aux = Lista_coords;
+    int atual;
 
-        printf("aqui estou2\n");
+    best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+    printf("bestmove alterada\n");
 
-        best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
-        printf("bestmove alterada");
-        best_Coord = devolve_cabeca(aux);
+    printf("\n\nArroo\n\n");
+    best_Coord = devolve_cabeca(aux);
 
-        for (aux ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
+    for (aux=proximo(aux) ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
+    {
+        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+        printf("\n\n%d\n\n",atual);
+        if (best_Coord == NULL || atual > best_Move)
         {
-            atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
-            if (best_Coord == NULL || atual > best_Move)
-            {
-                best_Move = atual;
-                best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
-            }
+            best_Move = atual;
+            best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
         }
+    }
    // }
     /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
 
@@ -316,8 +314,13 @@ COORDENADA jogada_boot(ESTADO *estado)
         COORDENADA coord_test = {x,y};
 
         printf("coord feita final\n");
-
-        if (verifica_jogada(estado, coord_test)) coord_resul = coord_test;
+        printf("coord ");
+        printf("    %d  %d\n", coord_test.linha, coord_test.coluna);
+        
+        if ( x>=0 && x<=7 &&  y>=0 && y<=7 )
+        {
+            if (verifica_jogada(estado, coord_test)) coord_resul = coord_test;
+        }
         else fprintf(stdout, "A coordenada obtida é invalida\n");
     }
     else fprintf(stdout, "O jogo terminou\n");
