@@ -85,8 +85,7 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     if  (   (x == x_ && abs (y_ - y) == 1 ) || 
             (y == y_ && abs (x_ - x) == 1 ) ||
             ( abs(x_- x) == 1 && abs(y_ - y) == 1 ) 
-        )
-        resul=1;
+        )   resul=1;
     return resul;
 }
 

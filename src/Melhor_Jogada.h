@@ -16,6 +16,7 @@ COORDENADA jogada_boot(ESTADO *estado);
 ESTADO *cria_estado_copia(ESTADO *estado);
 int verifica_coord(COORDENADA coord);
 COORDENADA da_coordenada(ESTADO *estado);
+COORDENADA da_coordenada_distancia(ESTADO *estado);
 
 
 #endif

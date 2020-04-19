@@ -330,7 +330,7 @@ COORDENADA jogada_boot(ESTADO *estado)
 }
 
 
-
+/// da coordenada aleatoria ///
 
 COORDENADA da_coordenada(ESTADO *estado)
 {
@@ -355,4 +355,124 @@ COORDENADA da_coordenada(ESTADO *estado)
     COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
     if (verifica_coord(coord4) && verifica_jogada(estado ,coord4)) return coord4;
 
+}
+
+/// da coord atraves da distancia /// 
+
+float distancia_coord(COORDENADA coord, int player)
+{
+    COORDENADA coord_casa;
+    if (player==1) 
+    {
+        coord_casa.coluna = 0;
+        coord_casa.linha = 0;
+    }
+    else
+    {
+        coord_casa.coluna = 7;
+        coord_casa.linha = 7;
+    }
+    int x = abs( coord_casa.coluna - coord.coluna ),
+        y = abs( coord_casa.linha - coord.linha );
+   // float resul = sqrt( x*x + y*y );
+    float resul = x+y;
+    return ( resul );
+}
+
+COORDENADA da_coordenada_distancia(ESTADO *estado)
+{
+    COORDENADA coord = estado->ultima_jogada;
+    COORDENADA coord_result = coord;
+    int dist_best = -1;
+    //distancia_coord(coord, estado->jogador_atual);
+    float i;
+
+    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    if (verifica_coord(coord1) && estado->tab[ coord1.linha ][ coord1.coluna ] != BRANCA) 
+    {
+        i = distancia_coord( coord1, estado->jogador_atual);
+        if( /*(coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord1;
+        }
+    }
+    
+    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    if (verifica_coord(coord2) && estado->tab[ coord2.linha ][ coord2.coluna ] != BRANCA)
+    {
+        i = distancia_coord( coord2, estado->jogador_atual);
+        if(/* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord2;
+        }
+    }
+
+    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    if (verifica_coord(coord3) && estado->tab[ coord3.linha ][ coord3.coluna ] != BRANCA) 
+    {
+        i = distancia_coord( coord3, estado->jogador_atual);
+        if(/* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord3;
+        }
+    }
+
+    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    if (verifica_coord(coord5) && estado->tab[ coord5.linha ][ coord5.coluna ] != BRANCA)
+    {
+        i = distancia_coord( coord5, estado->jogador_atual);
+        if( /*(coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord5;
+        }
+    }
+
+    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    if (verifica_coord(coord6) && estado->tab[ coord6.linha ][ coord6.coluna ] != BRANCA)
+    {
+        i = distancia_coord( coord6, estado->jogador_atual);
+        if( /*(coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord6;
+        }
+    }
+
+    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    if (verifica_coord(coord7) && estado->tab[ coord7.linha ][ coord7.coluna ] != BRANCA)
+    {
+        i = distancia_coord( coord7, estado->jogador_atual);
+        if(/* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord7;
+        }
+    }
+
+    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    if (verifica_coord(coord8) && estado->tab[ coord8.linha ][ coord8.coluna ] != BRANCA)
+    {
+        i = distancia_coord( coord8, estado->jogador_atual);
+        if(/* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) || */i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord8;
+        }
+    }
+
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    if (verifica_coord(coord4) && estado->tab[ coord4.linha ][ coord4.coluna ] != BRANCA ) 
+    {
+        i = distancia_coord( coord4, estado->jogador_atual);
+        if(/* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/ i>=dist_best ) 
+        {
+            dist_best = i;
+            coord_result = coord4;
+        }
+    }
+    return coord_result;
 }

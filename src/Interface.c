@@ -351,6 +351,7 @@ int interpretador(ESTADO *estado)
                 prompt(estado, stdout);
             }*/
 
+            //COORDENADA coord = da_coordenada_distancia(estado);
             COORDENADA coord = da_coordenada(estado);
             if( verifica_coord(coord) && verifica_jogada(estado, coord))
             {
