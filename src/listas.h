@@ -31,5 +31,6 @@ LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
 int length_lista(LISTA L);
+void limpa_lista(LISTA L);
 
 #endif

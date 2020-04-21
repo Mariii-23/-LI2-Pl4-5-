@@ -74,7 +74,7 @@ int verifica_coord(COORDENADA coord)
 */
 LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
-    COORDENADA *coord_ ;
+    COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
     coord_->linha = coord.linha;
     coord_->coluna = coord.coluna;
 
@@ -374,8 +374,8 @@ float distancia_coord(COORDENADA coord, int player)
     }
     int x = abs( coord_casa.coluna - coord.coluna ),
         y = abs( coord_casa.linha - coord.linha );
-   // float resul = sqrt( x*x + y*y );
-    float resul = x+y;
+    float resul = ( x*x + y*y );
+    //float resul = x+y;
     return ( resul );
 }
 
@@ -383,7 +383,7 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
     COORDENADA coord_result = coord;
-    int dist_best = 100;
+    int dist_best = 999999;
     //distancia_coord(coord, estado->jogador_atual);
     float i;
 

@@ -80,6 +80,14 @@ LISTA remove_cabeca(LISTA L)
 }
 
 /**
+\brief Função que liberta o espaco de memoria ocupado pela lista.
+*/
+void limpa_lista(LISTA L)
+{
+    while( !lista_esta_vazia(L) ) remove_cabeca(L);
+}
+
+/**
 \brief Função que dá o número de elementos de uma lista.
 */
 int length_lista(LISTA L)
