@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "string.h": "c"
+        "string.h": "c",
+        "logica_do_programa.h": "c"
     }
 }

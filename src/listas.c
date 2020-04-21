@@ -26,7 +26,7 @@ LISTA criar_lista()
 int lista_esta_vazia(LISTA L)
 {
     int resul = 0;
-    if (L == NULL || L->next == NULL) resul = 1;
+    if (L == NULL || L->valor == NULL) resul = 1;
     return resul;
 }
 
@@ -68,7 +68,7 @@ LISTA proximo(LISTA L)
 }
 
 /**
-\brief Função que remove a cabeça de uma lista dad (libertando o espaço ocupado), devolvendo a sua cauda.
+\brief Função que remove a cabeça de uma lista da lista (libertando o espaço ocupado), devolvendo a sua cauda.
 */
 LISTA remove_cabeca(LISTA L)
 {
@@ -92,7 +92,6 @@ void limpa_lista(LISTA L)
 */
 int length_lista(LISTA L)
 {
-   // printf("erro");
     int i=0;
     LISTA aux = L;
     for( aux = L; !lista_esta_vazia(aux) ; aux->valor)  i++;

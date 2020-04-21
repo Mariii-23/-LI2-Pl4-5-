@@ -13,6 +13,9 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final);
 int verifica_Vitoria(ESTADO *estado);
 int verificar_casas_ocupadas(ESTADO *estado);
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord);
+int verifica_coord(COORDENADA coord);
+int min(int a, int b);
+int max(int a, int b);
 
 
 #endif

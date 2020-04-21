@@ -170,3 +170,33 @@ int verifica_Vitoria(ESTADO *estado)
 {
      return ( verifica_vencedor(estado) || verificar_casas_ocupadas(estado) );
 }
+
+/**
+\brief Função que verifica se uma COORDENADA é válida.
+*/
+int verifica_coord(COORDENADA coord)
+{
+    int x = coord.linha;
+    int y = coord.coluna;
+    return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
+}
+
+/**
+\brief Função que devolve o menor valor de dois.
+*/
+int min(int a, int b)
+{
+    int resul = a;
+    if (a>b) resul = b;
+    return resul;
+}
+
+/**
+\brief Função que devolve o maior alor de dois.
+*/
+int max(int a, int b)
+{
+    int resul = a;
+    if (a<b) resul = b;
+    return resul;
+}

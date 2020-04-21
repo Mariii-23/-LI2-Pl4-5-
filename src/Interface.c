@@ -373,8 +373,6 @@ int interpretador(ESTADO *estado)
                 guarda_tabuleiro(estado, stdout);
                 prompt(estado, stdout);
             }
-
-
         }
     }
     return ganhou;
