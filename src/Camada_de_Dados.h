@@ -6,6 +6,7 @@
 void casas_inicial(ESTADO *estado);
 ESTADO *inicializador_estado();
 
+ESTADO *cria_estado_copia(ESTADO *estado);
 
 CASA estado_casa(ESTADO estado, COORDENADA coordenada);
 int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final);

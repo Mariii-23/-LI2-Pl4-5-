@@ -58,6 +58,34 @@ ESTADO *inicializador_estado()
     return estado;
 }
 
+/// ESTADO COPIA ///
+/**
+\brief Função que cria uma cópia do ESTADO.
+*/
+ESTADO *cria_estado_copia(ESTADO *estado)
+{
+    ESTADO *estado_copia = (ESTADO *) calloc(1, sizeof(ESTADO));
+    int i,j;
+    for(i=0 ; i<8; i++)
+    {
+        for(j=0; j<8; j++) estado_copia->tab[i][j] = estado->tab[i][j];
+    }
+    estado_copia->num_jogadas = estado->num_jogadas;
+    estado_copia->jogador_atual = estado->jogador_atual;
+    estado_copia->num_comando = estado->num_comando;
+    estado_copia->ultima_jogada.coluna = estado->ultima_jogada.coluna;  
+    estado_copia->ultima_jogada.linha = estado->ultima_jogada.linha;
+    
+    for(i=0; i<estado->num_jogadas; i++)
+    {
+        estado_copia->jogadas[i].jogador1 = estado->jogadas[i].jogador1;
+        estado_copia->jogadas[i].jogador2 = estado->jogadas[i].jogador2;
+    }
+    if (estado->jogador_atual==2)  estado_copia->jogadas[i].jogador1 = estado->jogadas[i].jogador1;
+
+    return estado_copia;
+}
+
 /// FUNCOES AUXILIARES ///
 /**
 \brief Função que devolve o estado de cada peça consoante as coordenadas dadas.

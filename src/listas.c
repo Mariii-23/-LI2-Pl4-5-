@@ -97,3 +97,50 @@ int length_lista(LISTA L)
     for( aux = L; !lista_esta_vazia(aux) ; aux->valor)  i++;
     return i;
 }
+
+
+/// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
+
+/**
+\brief Função auxiliar que insere a coordenada na lista se esta for uma possível coordenada a ser efetuada.
+*/
+LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
+{
+    COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
+    coord_->linha = coord.linha;
+    coord_->coluna = coord.coluna;
+
+    if ( verifica_coord(coord)   &&    estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
+    {
+        lista = insere_cabeca(lista, coord_);
+    }  
+    return lista;
+}
+
+/**
+\brief Função principal que returna uma LISTA de coordenadas possíveis a serem efetuadas.
+*/
+LISTA cria_lista_coords_possiveis(ESTADO *estado)
+{
+    LISTA lista = criar_lista(); 
+
+    COORDENADA coord = estado->ultima_jogada;
+
+    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    lista = adiciona_lista(lista, estado, coord1);
+    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    lista = adiciona_lista(lista, estado, coord2);
+    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    lista = adiciona_lista(lista, estado, coord3);
+    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    lista = adiciona_lista(lista, estado, coord5);
+    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    lista = adiciona_lista(lista, estado, coord6);
+    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    lista = adiciona_lista(lista, estado, coord7);
+    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    lista = adiciona_lista(lista, estado, coord8);
+    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    lista = adiciona_lista(lista, estado, coord4);
+    return lista;
+}

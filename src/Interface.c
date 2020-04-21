@@ -321,6 +321,12 @@ int interpretador(ESTADO *estado)
         
         if(strcmp( linha, "jog\n" ) == 0)
         {
+            /* Atualizar pos */
+            if (n_pos>0) 
+            {
+                atualiza_estado_pos(estado,n_pos);
+                n_pos = 0;
+            }
           /*
             COORDENADA coord_comamdo_jog = jogada_boot(estado);
             int x = coord_comamdo_jog.linha,
@@ -354,7 +360,7 @@ int interpretador(ESTADO *estado)
             COORDENADA coord = da_coordenada_distancia(estado);
             //COORDENADA coord = da_coordenada(estado);
             if( verifica_coord(coord) && verifica_jogada(estado, coord))
-            {
+            {            
                 jogar(estado, coord);
                 guarda_tabuleiro(estado, stdout);
                 prompt(estado, stdout);

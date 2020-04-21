@@ -32,5 +32,6 @@ LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
 int length_lista(LISTA L);
 void limpa_lista(LISTA L);
-
+LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord);
+LISTA cria_lista_coords_possiveis(ESTADO *estado);
 #endif
