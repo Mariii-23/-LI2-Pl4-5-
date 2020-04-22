@@ -209,6 +209,8 @@ int verifica_coord(COORDENADA coord)
     return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
 }
 
+/// FUNCOES AUXILIARES DO MINMAX ///
+
 /**
 \brief Função que devolve o menor valor de dois.
 */
@@ -226,5 +228,76 @@ int max(int a, int b)
 {
     int resul = a;
     if (a<b) resul = b;
+    return resul;
+}
+
+/// AVALIAR UMA JOGADA ///
+/**
+\brief Função que verifica se ganhou em casa, atribuindo os respetivos pontos.
+*/
+int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
+{
+    int resul=0;
+    int x = estado->ultima_jogada.linha;
+    int y = estado->ultima_jogada.coluna;
+
+    if (estado->jogador_atual==1 && nosso_player==1 && x == 0 && y == 0) resul = 1;
+    else
+    {
+        if (estado->jogador_atual==2 && nosso_player==2 && x == 7 && y == 7) resul = 1;
+        else 
+        {
+            if ((x == 0 && y == 0) || (x == 7 && y == 7)) resul = -1;
+        }
+    }
+    return resul; 
+}
+
+/**
+\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario .
+*/
+int encurralado_casa(ESTADO *estado, int player, int nosso_player)
+{
+    int resul = 0;
+    int ganhou_casa = ganhou_em_casa(estado,player, nosso_player);
+    int valor = verificar_casas_ocupadas(estado);
+    if  (ganhou_em_casa!=0 && valor ) resul = 2 * ganhou_casa;
+    return resul;
+}
+
+/**
+\brief Função que verifica se alguém ganhou encurralando o outro jogador .
+*/
+int encurralado_jogo(ESTADO *estado, int player)
+{
+    int resul = 0;
+    int valor = verificar_casas_ocupadas(estado);
+    if (player) resul = 3 * valor;
+    else resul = -3 * valor;
+    return resul;
+}
+
+/**
+\brief Função que verifica se alguém ganhou encurralado, atribuindo pontos.
+*/
+int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
+{
+    int resul = 0;
+    int valor = encurralado_jogo(estado, player);
+    if (valor != 0 ) resul = valor;
+    else resul = encurralado_casa(estado,player, nosso_player);
+    return resul;
+}
+
+
+/// AVALIAR JOGADA PRINCIPAL ///
+/**
+\brief Função PRINCIPAL que avalia uma jogada. 
+      (NOTA: quando o player == True ou seja 1, significa que player == nosso_player)
+*/
+int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
+{
+    int resul = ganhou_encurralado(estado, player, nosso_player);
+    if (resul == 0) resul = ganhou_em_casa(estado, player, nosso_player);
     return resul;
 }

@@ -15,8 +15,14 @@ int verifica_Vitoria(ESTADO *estado);
 int verificar_casas_ocupadas(ESTADO *estado);
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord);
 int verifica_coord(COORDENADA coord);
+
 int min(int a, int b);
 int max(int a, int b);
+int ganhou_em_casa(ESTADO *estado,int player, int nosso_player);
+int encurralado_casa(ESTADO *estado, int player, int nosso_player);
+int encurralado_jogo(ESTADO *estado, int player);
+int ganhou_encurralado(ESTADO *estado,int player, int nosso_player);
+int avaliar_jogada(ESTADO *estado,int player, int nosso_player);
 
 
 #endif
