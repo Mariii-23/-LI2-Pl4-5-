@@ -284,7 +284,12 @@ int interpretador(ESTADO *estado)
         {
             FILE *fp;
             fp = fopen(filename, "r");
-            if (fp == NULL)  printf("O ficheiro não abriu.\n");
+            if (fp == NULL)  
+            {
+                printf("O ficheiro não abriu.\n");
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+            }
             else 
             {
 /* Lê o tabuleiro que está no ficheiro e imprime. */

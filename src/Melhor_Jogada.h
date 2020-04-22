@@ -16,5 +16,4 @@ COORDENADA jogada_boot(ESTADO *estado);
 COORDENADA da_coordenada(ESTADO *estado);
 COORDENADA da_coordenada_distancia(ESTADO *estado);
 
-
 #endif

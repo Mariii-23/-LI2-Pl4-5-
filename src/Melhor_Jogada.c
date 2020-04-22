@@ -7,7 +7,6 @@
 #include "dados.h"
 #include "listas.h"
 
-
 /// ESTRATEGIA MINMAX ///
 
 /**
@@ -17,7 +16,6 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
 {
     printf("\n\ninicio minmax\n");
     ESTADO *estado_copia = cria_estado_copia(estado);
-
 
     /* atualiza estado copia */
     int x = (*coord).linha;
@@ -78,7 +76,6 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     ESTADO *estado_copia = cria_estado_copia(estado);
 
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
-
 
     //printf("arroz");
 
@@ -149,6 +146,10 @@ COORDENADA jogada_boot(ESTADO *estado)
         else fprintf(stdout, "A coordenada obtida é invalida\n");
     }
     else fprintf(stdout, "O jogo terminou\n");
+
+    /// caso a coordenada seja inválida posso chamar a funcao que da a coord em funcao da distancia
+    /// assim o codigo mesmo q falhe irá dar algum resultado
+
     return coord_resul;
 }
 
@@ -211,13 +212,13 @@ float distancia_coord(COORDENADA coord, int player)
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
 */
+// funcao horrivel !!!!!!!!!!!!!!!!!!!!!!!!//
 COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
     
     COORDENADA coord = estado->ultima_jogada;
     COORDENADA coord_result = coord;
-    int dist_best = 999999;
-    //distancia_coord(coord, estado->jogador_atual);
+    int dist_best = distancia_coord(coord, estado->jogador_atual);
     float i;
 
     COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
@@ -308,7 +309,7 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
         }
     }  
     
-     /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/
+    /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/
     
     /*
     LISTA lista_coords = cria_lista_coords_possiveis(estado);
