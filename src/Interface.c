@@ -122,6 +122,15 @@ void comando_movs(ESTADO *estado, FILE *stream)
         if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
         else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
     }
+    else
+    {
+        if(stream!=stdout)
+        {
+            if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1 );
+            else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna  + 'a', coord2.linha + 1 );
+        }
+    }
+    
 }
 
 /// COMANDO GRAVAR ///
@@ -364,6 +373,9 @@ int interpretador(ESTADO *estado)
 
             COORDENADA coord = da_coordenada_distancia(estado);
             //COORDENADA coord = da_coordenada(estado);
+
+            /*deveria dar este */
+            //COORDENADA coord = obtem_coord_atraves_da_distancia( estado );
             if( verifica_coord(coord) && verifica_jogada(estado, coord))
             {            
                 jogar(estado, coord);
@@ -371,19 +383,36 @@ int interpretador(ESTADO *estado)
                 prompt(estado, stdout);
 
                 ganhou = verifica_Vitoria( estado);
-
-                if ( ganhou ) 
-                {
-                    jogador_vencedor( estado, stdout);
-                }
+                if ( ganhou )  jogador_vencedor( estado, stdout);
             }
             else
+            {
+                coord = da_coordenada(estado);
+                
+                if( verifica_coord(coord) && verifica_jogada(estado, coord))
+                {            
+                    jogar(estado, coord);
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+
+                    ganhou = verifica_Vitoria( estado);
+                    if ( ganhou )  jogador_vencedor( estado, stdout);
+                }
+                else
+                {
+                    fprintf(stdout,"O comando jogar falhou.\n");
+                    estado->num_comando++;
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+                }  
+            }
+            /*
             {
                 fprintf(stdout,"O comando jogar falhou.\n");
                 estado->num_comando++;
                 guarda_tabuleiro(estado, stdout);
                 prompt(estado, stdout);
-            }
+            }*/
         }
     }
     return ganhou;

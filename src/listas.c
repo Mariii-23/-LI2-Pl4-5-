@@ -14,7 +14,7 @@
 */
 LISTA criar_lista()
 {
-    LISTA l = malloc(sizeof( struct lista )); //LISTA l = malloc(sizeof( NLista));
+    LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
     l->valor = NULL;
     l->next = NULL;
     return l;
@@ -48,6 +48,7 @@ LISTA insere_cabeca(LISTA L, void *valor_dado)
         aux->next = L;
         L = aux;
     }
+    free(aux); ////??????
     return L;
 }
 
@@ -56,7 +57,8 @@ LISTA insere_cabeca(LISTA L, void *valor_dado)
 */
 void *devolve_cabeca(LISTA L)
 {
-    return &(L->valor);
+    //return &(*(L->valor));
+    return (L->valor);
 }
 
 /**
@@ -72,17 +74,17 @@ LISTA proximo(LISTA L)
 */
 LISTA remove_cabeca(LISTA L)
 {
-    LISTA aux;
-    aux = L;
+    LISTA aux = L;
     L = L->next;
-    free (aux);
+    free( aux->valor );
+    free(aux);
     return L;
 }
 
 /**
 \brief Função que liberta o espaco de memoria ocupado pela lista.
 */
-void limpa_lista(LISTA L)
+void free_lista(LISTA L)
 {
     while( !lista_esta_vazia(L) ) remove_cabeca(L);
 }
@@ -110,7 +112,7 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
     coord_->linha = coord.linha;
     coord_->coluna = coord.coluna;
 
-    if ( verifica_coord(coord)   &&    estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
+    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
     {
         lista = insere_cabeca(lista, coord_);
     }  

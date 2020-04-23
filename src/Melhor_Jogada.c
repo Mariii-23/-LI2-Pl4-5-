@@ -165,10 +165,8 @@ COORDENADA da_coordenada(ESTADO *estado)
 
     COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
     if (verifica_coord(coord1) && verifica_jogada(estado ,coord1)) return coord1;
-    
     COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
     if (verifica_coord(coord2) && verifica_jogada(estado ,coord2)) return coord2;
-
     COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
     if (verifica_coord(coord3) && verifica_jogada(estado ,coord3)) return coord3;
     COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
@@ -205,7 +203,7 @@ float distancia_coord(COORDENADA coord, int player)
     int x = abs( coord_casa.coluna - coord.coluna ),
         y = abs( coord_casa.linha - coord.linha );
     float resul = ( x*x + y*y );
-    //float resul = x+y;
+    /*float resul = x+y;*/
     return ( resul );
 }
 
@@ -215,7 +213,6 @@ float distancia_coord(COORDENADA coord, int player)
 // funcao horrivel !!!!!!!!!!!!!!!!!!!!!!!!//
 COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
-    
     COORDENADA coord = estado->ultima_jogada;
     COORDENADA coord_result = coord;
     int dist_best = distancia_coord(coord, estado->jogador_atual);
@@ -333,5 +330,43 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
         lista_coords = remove_cabeca(lista_coords); 
     } */
 
+    return coord_result;
+}
+
+
+COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
+{
+    COORDENADA coord = estado->ultima_jogada,
+               coord_result = coord,
+               aux;
+               
+    COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
+    LISTA lista_coords = cria_lista_coords_possiveis(estado);
+
+    int dist_best = distancia_coord(coord, estado->jogador_atual);
+    float i; 
+    
+    /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/  
+    while ( !lista_esta_vazia(lista_coords) )
+    {
+        coord_ = devolve_cabeca(lista_coords);
+
+        aux.linha = ((*coord_).linha) ;
+        aux.coluna = ((*coord_).coluna);
+
+        if (verifica_coord(aux) && estado->tab[ aux.linha ][ aux.coluna ] != BRANCA ) 
+        {
+            i = distancia_coord( aux , estado->jogador_atual);
+            if( i <= dist_best ) 
+            {
+                dist_best = i;
+                coord_result = aux;
+            }
+        } 
+        lista_coords = remove_cabeca(lista_coords); 
+    } 
+    free( coord_ );
+    //free_lista ( lista_coords );
+    free( lista_coords );
     return coord_result;
 }

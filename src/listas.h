@@ -9,20 +9,12 @@ typedef struct lista {
   struct lista *next;
 } *LISTA, NLista;
 
+/*
 typedef struct lista_melhor {
     void *valor;
     void *coord;
     struct lista *next;
-} Lista_melhor;
-
-/*
-typedef COORDENADAS COORDENADA[8] 
-
-typedef struct lista_coords {
-    int valor;  // vvai represenatr quantas coordenadas
-    COORDENADAS coord;
-} lista_coords;*/
-
+} Lista_melhor;*/
 
 LISTA criar_lista();
 LISTA insere_cabeca(LISTA L, void *valor);
@@ -31,7 +23,7 @@ LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
 int length_lista(LISTA L);
-void limpa_lista(LISTA L);
+void free_lista(LISTA L);
 LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord);
 LISTA cria_lista_coords_possiveis(ESTADO *estado);
 #endif
