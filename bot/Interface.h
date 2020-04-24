@@ -16,5 +16,4 @@ int interpretador(ESTADO *estado);
 void movs(ESTADO *estado);
 void gr(ESTADO *estado, char *filename);
 void ler(ESTADO *estado, char *filename);
-
 #endif
