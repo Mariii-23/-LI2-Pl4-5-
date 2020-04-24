@@ -222,7 +222,7 @@ int min(int a, int b)
 }
 
 /**
-\brief Função que devolve o maior alor de dois.
+\brief Função que devolve o maior valor de dois.
 */
 int max(int a, int b)
 {
@@ -254,19 +254,19 @@ int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
 }
 
 /**
-\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario .
+\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario.
 */
 int encurralado_casa(ESTADO *estado, int player, int nosso_player)
 {
     int resul = 0;
     int ganhou_casa = ganhou_em_casa(estado,player, nosso_player);
     int valor = verificar_casas_ocupadas(estado);
-    if  (ganhou_em_casa!=0 && valor ) resul = 2 * ganhou_casa;
+    if  (&ganhou_em_casa && valor ) resul = 2 * ganhou_casa;
     return resul;
 }
 
 /**
-\brief Função que verifica se alguém ganhou encurralando o outro jogador .
+\brief Função que verifica se alguém ganhou encurralando o outro jogador.
 */
 int encurralado_jogo(ESTADO *estado, int player)
 {
