@@ -320,8 +320,7 @@ int interpretador(ESTADO *estado)
 /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
         if(sscanf(linha, "ler %s",filename) == 1)     ler(estado, filename);
 
-        if(strcmp( linha, "movs\n" ) == 0)
-            movs(estado);
+        if(strcmp( linha, "movs\n" ) == 0)           movs(estado);
 
 
         if(sscanf(linha, "pos %d",&n_pos) == 1)

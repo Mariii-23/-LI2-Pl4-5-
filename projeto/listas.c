@@ -8,6 +8,14 @@
 #include "listas.h" // apagar depois
 
 /// LISTAS ///
+/**
+\brief Função que liberta o espaco de memoria ocupado pela lista.
+*/
+void free_lista(LISTA L)
+{
+    while( !lista_esta_vazia(L) ) remove_cabeca(L);
+}
+
 
 /**
 \brief Função que cria uma lista vazia.
@@ -79,14 +87,6 @@ LISTA remove_cabeca(LISTA L)
     free( aux->valor );
     free(aux);
     return L;
-}
-
-/**
-\brief Função que liberta o espaco de memoria ocupado pela lista.
-*/
-void free_lista(LISTA L)
-{
-    while( !lista_esta_vazia(L) ) remove_cabeca(L);
 }
 
 /**

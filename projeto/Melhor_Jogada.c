@@ -329,6 +329,7 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
         } 
         lista_coords = remove_cabeca(lista_coords); 
     } */
+    
 
     return coord_result;
 }

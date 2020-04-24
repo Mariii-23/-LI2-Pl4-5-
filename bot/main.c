@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     atualiza_jogada_boot( estado );
 
     /*gravar ficheiro */
-     gr(estado, filename_jog2);
+    gr(estado, filename_jog2);
 
     return resul;
 }
