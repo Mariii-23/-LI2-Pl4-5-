@@ -28,7 +28,7 @@ void atualiza_jogada_boot(ESTADO *estado){
 }
 
 
-int main(char argc, char *argv[])
+int main(int argc, char *argv[])
 {    
     int resul = 0;
 
@@ -39,9 +39,10 @@ int main(char argc, char *argv[])
     char filename_jog2[BUF_SIZE] ;
 
     int i = 1, j=0;
+    /*
     if (argc == 2)
     {   
-        char linha[BUF_SIZE] = argv[1];
+        char linha[BUF_SIZE] = argv[argc];
         while ( (linha[i] != 'n') )
         {
             filename_jog1[ i-1 ] = linha[i];
@@ -54,14 +55,13 @@ int main(char argc, char *argv[])
             i++;
             j++;    
         }
-    }
+    }*/
 
-    /*
     if(argc == 3) 
     {
         char filename_jog1[BUF_SIZE] = argv[1];
-        char filename_jog2[BUF_SIZE] = (argv[2]);
-    }*/
+        char filename_jog2[BUF_SIZE] = argv[2];
+    }
 
     ler(estado, filename_jog1);
 
