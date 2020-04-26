@@ -113,9 +113,9 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
     coord_->coluna = coord.coluna;
 
     if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
-    {
-        lista = insere_cabeca(lista, coord_);
-    }  
+    {    
+        lista = insere_cabeca(lista, coord_); 
+    }
     return lista;
 }
 

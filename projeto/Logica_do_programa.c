@@ -39,9 +39,9 @@ void mostra_pos(ESTADO *estado, int n_jogadas ){
         coord1 = estado->jogadas[cont].jogador1;
         coord2 = estado->jogadas[cont].jogador2;
         tabuleiro[coord1.linha][coord1.coluna] = '#';
-        tabuleiro[coord2.linha][coord2.coluna] = '#';
+        if (num == n_jogadas)  tabuleiro[coord2.linha][coord2.coluna] = '*';
+        else                   tabuleiro[coord2.linha][coord2.coluna] = '#';
     }
-        tabuleiro[coord2.linha][coord2.coluna] = '*';
     /* Imprimir o novo tabuleiro. */
     mostra_tabuleiro(tabuleiro,stdout);
 }
@@ -108,10 +108,7 @@ int jogar(ESTADO *estado, COORDENADA coord)
     int resul=0;
     int pode_jogar = verifica_jogada(estado, coord);
     
-    if (pode_jogar)
-    {
-        atualiza_estado(estado, coord);
-    }
+    if (pode_jogar)    atualiza_estado(estado, coord);
     else
     {
         printf("\nJogada inválida.\n");
@@ -147,33 +144,15 @@ void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
 */
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
-    /*
-    if ( estado->num_comando % 2 )  
-    {
-        estado->jogador_atual = 2;
-        estado->ultima_jogada = estado->jogadas[ estado->num_jogadas +1 ].jogador1;
-        estado->num_jogadas = (estado->num_comando / 2) + 1;
-    }
-    else                           
-    {
-        estado->jogador_atual = 1; 
-        estado->ultima_jogada = estado->jogadas[ estado->num_jogadas ].jogador2;
-        estado->num_jogadas = estado->num_comando / 2 ;
-    }
-    if (estado->jogador_atual == 1) estado->num_jogadas++; */
-
-
     if ( estado->num_comando % 2 )  
     {
         estado->jogador_atual = 2;
         estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 1 ].jogador1;
-        //estado->num_jogadas = (estado->num_comando / 2) + 1;
     }
     else                           
     {
         estado->jogador_atual = 1; 
         estado->ultima_jogada = estado->jogadas[ estado->num_jogadas - 2 ].jogador2;
-        //estado->num_jogadas = estado->num_comando / 2 ;
     }
 }
 
@@ -192,9 +171,9 @@ void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
         coord1 = estado->jogadas[num].jogador1;
         coord2 = estado->jogadas[num].jogador2;
         estado->tab[ coord1.linha ][ coord1.coluna ] = BRANCA;
-        estado->tab[ coord2.linha ][ coord2.coluna ] = BRANCA;
+        if(num == n_jogadas-1)  estado->tab[ coord2.linha ][ coord2.coluna ] = PRETA;
+        else estado->tab[ coord2.linha ][ coord2.coluna ] = BRANCA;
     }
-    estado->tab[ coord2.linha ][ coord2.coluna ] = PRETA;
     estado->tab[0][0] = UM;
 }
 

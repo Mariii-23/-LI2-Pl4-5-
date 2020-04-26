@@ -137,14 +137,14 @@ int verificar_casas_ocupadas(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
     int resul;
-    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
-    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
-    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
-    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
-    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
-    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
-    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
-    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 },
+               coord2 = { coord.coluna + 1 , coord.linha },
+               coord3 = { coord.coluna + 1 , coord.linha - 1 },
+               coord5 = { coord.coluna - 1 , coord.linha - 1 },
+               coord6 = { coord.coluna - 1, coord.linha },
+               coord7 = { coord.coluna - 1 , coord.linha + 1 },
+               coord8 = { coord.coluna , coord.linha + 1 },
+               coord4 = { coord.coluna , coord.linha - 1 };
     resul = ( verifica_casa_ocupada( estado , coord1 ) && verifica_casa_ocupada( estado , coord2 ) &&
               verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
               verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
@@ -176,8 +176,8 @@ int verifica_Vitoria(ESTADO *estado)
 */
 int verifica_coord(COORDENADA coord)
 {
-    int x = coord.linha;
-    int y = coord.coluna;
+    int x = coord.linha,
+        y = coord.coluna;
     return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
 }
 
