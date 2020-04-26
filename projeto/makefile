@@ -1,7 +1,8 @@
 CFLAGS=-g
 jogo.exe : main.o Logica_do_programa.o Interface.o Camada_de_Dados.o Melhor_Jogada.o listas.o
 #	gcc -Wall -o jogo.exe main.o Logica_do_programa.o Interface.o Camada_de_Dados.o Melhor_Jogada.o listas.o
-	gcc -std=gnu11 -Wall -Wextra -pedantic-errors -O main.o Logica_do_programa.o Interface.o Camada_de_Dados.o Melhor_Jogada.o listas.o
+#	gcc -std=gnu11 -Wall -Wextra -pedantic-errors -O main.o Logica_do_programa.o Interface.o Camada_de_Dados.o Melhor_Jogada.o listas.o
+	gcc -std=gnu11 -Wall -Wextra -pedantic-errors -O *.c
 
 main.o : main.c Camada_de_Dados.h Interface.h Logica_do_programa.h dados.h
 

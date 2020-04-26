@@ -207,7 +207,7 @@ int max(int a, int b)
 /**
 \brief Função que verifica se ganhou em casa, atribuindo os respetivos pontos.
 */
-int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
+int ganhou_em_casa(ESTADO *estado, int nosso_player)
 {
     int resul=0;
     int x = estado->ultima_jogada.linha;
@@ -225,12 +225,12 @@ int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
 /**
 \brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario.
 */
-int encurralado_casa(ESTADO *estado, int player, int nosso_player)
+int encurralado_casa(ESTADO *estado, int nosso_player)
 {
     int resul = 0;
-    int ganhou_casa = ganhou_em_casa(estado,player, nosso_player);
+    int ganhou_casa = ganhou_em_casa(estado, nosso_player);
     int valor = verificar_casas_ocupadas(estado);
-    if  (ganhou_em_casa!=0 && valor ) resul = 2 * ganhou_casa;
+    if  (ganhou_em_casa && valor ) resul = 2 * ganhou_casa;
     /*if  (&ganhou_em_casa && valor ) resul = 2 * ganhou_casa;*/
     return resul;
 }
@@ -242,7 +242,7 @@ int encurralado_jogo(ESTADO *estado, int player)
 {
     int resul = 0;
     int valor = verificar_casas_ocupadas(estado);
-    if (player) resul = 3 * valor;
+    if (!player) resul = 3 * valor;
     else resul = -3 * valor;
     return resul;
 }
@@ -250,12 +250,12 @@ int encurralado_jogo(ESTADO *estado, int player)
 /**
 \brief Função que verifica se alguém ganhou encurralado, atribuindo pontos.
 */
-int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
+int ganhou_encurralado(ESTADO *estado, int nosso_player)
 {
     int resul = 0;
-    int valor = encurralado_jogo(estado, player);
+    int valor = encurralado_jogo(estado,nosso_player);
     if (valor != 0 ) resul = valor;
-    else resul = encurralado_casa(estado,player, nosso_player);
+    else resul = encurralado_casa(estado, nosso_player);
     return resul;
 }
 
@@ -265,9 +265,9 @@ int ganhou_encurralado(ESTADO *estado,int player, int nosso_player)
 \brief Função PRINCIPAL que avalia uma jogada. 
       (NOTA: quando o player == True ou seja 1, significa que player == nosso_player)
 */
-int avaliar_jogada(ESTADO *estado,int player, int nosso_player)
+int avaliar_jogada(ESTADO *estado, int nosso_player)
 {
-    int resul = ganhou_encurralado(estado, player, nosso_player);
-    if (resul == 0) resul = ganhou_em_casa(estado, player, nosso_player);
+    int resul = ganhou_encurralado(estado, nosso_player);
+    if (resul == 0) resul = ganhou_em_casa(estado, nosso_player);
     return resul;
 }

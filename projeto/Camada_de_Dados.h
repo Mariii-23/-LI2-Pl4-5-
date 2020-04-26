@@ -18,11 +18,11 @@ int verifica_coord(COORDENADA coord);
 
 int min(int a, int b);
 int max(int a, int b);
-int ganhou_em_casa(ESTADO *estado,int player, int nosso_player);
-int encurralado_casa(ESTADO *estado, int player, int nosso_player);
+int ganhou_em_casa(ESTADO *estado, int nosso_player);
+int encurralado_casa(ESTADO *estado, int nosso_player);
 int encurralado_jogo(ESTADO *estado, int player);
-int ganhou_encurralado(ESTADO *estado,int player, int nosso_player);
-int avaliar_jogada(ESTADO *estado,int player, int nosso_player);
+int ganhou_encurralado(ESTADO *estado, int nosso_player);
+int avaliar_jogada(ESTADO *estado, int nosso_player);
 
 
 #endif

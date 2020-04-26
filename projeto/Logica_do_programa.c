@@ -212,8 +212,6 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
         jogadas[linha].jogador2 = estado->jogadas[linha].jogador2;
     }
 
-    int num_comando = estado->num_comando;
-
     /* Inicializa o tabuleiro do estado */
     casas_inicial(estado);
     /* Atualiza o jogador_atual do estado */

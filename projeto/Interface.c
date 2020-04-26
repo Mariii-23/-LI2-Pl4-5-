@@ -188,9 +188,8 @@ void ler_linha(ESTADO *estado, char linha[], int l)
 void comando_ler(FILE *fp,ESTADO *estado)
 {
     COORDENADA coord1 = {-1,-1}, coord2 = {-1,-1};
-    char coord1_[2], coord2_[2];
     char linha[BUF_SIZE];
-    int l , n_jogadas;
+    int l ;
     int n_comando_inicial = estado->num_comando;
     char col1[2], lin1[2];
     char col2[2], lin2[2];
@@ -201,21 +200,14 @@ void comando_ler(FILE *fp,ESTADO *estado)
         fgets(linha, BUF_SIZE, fp); 
         ler_linha(estado, linha, l);
     } 
-
-    n_jogadas = estado->num_comando  ;
-
     fgets(linha,BUF_SIZE, fp);
 
     while ( fgets(linha,BUF_SIZE, fp) != NULL  )
     {
        if ( sscanf( linha , "%d: %[a-h]%[1-8] %[a-h]%[1-8]", &l, col1, lin1, col2, lin2) == 5)
        {   
-
-            coord1.linha = *lin1 - '1' ;
-            coord1.coluna = *col1 - 'a';
-
-            coord2.linha = *lin2 - '1' ;
-            coord2.coluna = *col2 - 'a';
+            coord1.linha = *lin1 - '1' ;      coord1.coluna = *col1 - 'a';
+            coord2.linha = *lin2 - '1' ;      coord2.coluna = *col2 - 'a';
             guarda_Jogadas_2(estado, coord1, coord2, l-1);
             estado->num_comando = 2*l;
         }
@@ -228,13 +220,9 @@ void comando_ler(FILE *fp,ESTADO *estado)
             estado->num_comando = 2*l - 1;
         }
     }
-    
     estado->num_jogadas = l;
-
     atualiza_estado_comando_ler(estado);
-
     estado->num_comando = n_comando_inicial+1;
-
 }
 
 void ler(ESTADO *estado, char *filename)

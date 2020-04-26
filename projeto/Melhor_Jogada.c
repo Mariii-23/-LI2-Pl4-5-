@@ -30,7 +30,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     printf("atualiza de estado\n");
 
     /* verifica se o jogo acabou */
-    int ganhou = avaliar_jogada(estado_copia, player_atual, nosso_jogador);
+    int ganhou = avaliar_jogada(estado_copia, nosso_jogador);
     if (ganhou !=0) return ganhou;
 
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
