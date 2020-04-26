@@ -173,20 +173,7 @@ void gr(ESTADO *estado, char *filename)
 */
 void ler_linha(ESTADO *estado, char linha[], int l)
 {   
-    char p1,p2,p3,p4,p5,p6,p7,p8;
     char casa;
-    /*
-    sscanf( linha , "%c%c%c%c%c%c%c%c", &p1, &p2,&p3,&p4,&p5,&p6,&p7,&p8);
-    estado->tab[ l ][ 0 ] = p1;
-    estado->tab[ l ][ 1 ] = p2;
-    estado->tab[ l ][ 2 ] = p3;
-    estado->tab[ l ][ 3 ] = p4;
-    estado->tab[ l ][ 4 ] = p5;
-    estado->tab[ l ][ 5 ] = p6;
-    estado->tab[ l ][ 6 ] = p7;
-    estado->tab[ l ][ 7 ] = p8; */
-
-
     for(int coluna = 0; coluna < 8; coluna++) 
     { 
         casa = linha[ coluna ];
@@ -201,7 +188,6 @@ void ler_linha(ESTADO *estado, char linha[], int l)
 void comando_ler(FILE *fp,ESTADO *estado)
 {
     COORDENADA coord1 = {-1,-1}, coord2 = {-1,-1};
-    char x1, x2, y1, y2;
     char coord1_[2], coord2_[2];
     char linha[BUF_SIZE];
     int l , n_jogadas;

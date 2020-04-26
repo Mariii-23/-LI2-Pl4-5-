@@ -35,41 +35,18 @@ int main(int argc, char *argv[])
     ESTADO *estado;
     estado = inicializador_estado();
 
-    char filename_jog1[BUF_SIZE] ;
-    char filename_jog2[BUF_SIZE] ;
-
-    int i = 1, j=0;
-    /*
-    if (argc == 2)
-    {   
-        char linha[BUF_SIZE] = argv[argc];
-        while ( (linha[i] != 'n') )
-        {
-            filename_jog1[ i-1 ] = linha[i];
-            i++;
-        }
-
-        while ( linha[i] != '\0' )
-        {
-            filename_jog2[ j ] = linha[i];
-            i++;
-            j++;    
-        }
-    }*/
-
     if(argc == 3) 
     {
-        char filename_jog1[BUF_SIZE] = argv[1];
-        char filename_jog2[BUF_SIZE] = argv[2];
+    
+        /* le o ficheiro */
+        ler(estado, argv[1]);
+
+        /* jogada boot */
+        atualiza_jogada_boot( estado );
+
+        /*gravar ficheiro */
+        gr(estado, argv[2]);
     }
-
-    ler(estado, filename_jog1);
-
-    /* jogada boot */
-    atualiza_jogada_boot( estado );
-
-    /*gravar ficheiro */
-    gr(estado, filename_jog2);
 
     return resul;
 }

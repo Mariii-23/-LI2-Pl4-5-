@@ -48,7 +48,6 @@ typedef JOGADA JOGADAS[32];
 /**
 \brief Tipo de dados para o estado
 */
-
 typedef struct {
   /** O tabuleiro */
   CASA tab[8][8];
@@ -63,27 +62,5 @@ typedef struct {
   /** A coordenada da última jogada */
   COORDENADA ultima_jogada;
 } ESTADO;
-
-/**
-\brief Muda o valor de uma casa
-@param e Apontador para o estado
-@param c A coordenada
-@param V O novo valor para a casa
-*/
-//void set_casa(ESTADO *e, COORDENADA c, CASA V);
-/**
-\brief Devolve o valor de uma casa
-@param e Apontador para o estado
-@param c A coordenada
-@returns O valor da casa
-*/
-//CASA get_casa(ESTADO *e, COORDENADA c);
-
-/**
-\brief Inicializa o valor do estado
-Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocado na posição inicial e todos os campos do estado estarem com o valor por omissão.
-@returns O novo estado
-*/
-//ESTADO *inicializar_estado();
 
 #endif

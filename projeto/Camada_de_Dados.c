@@ -16,32 +16,19 @@ void casas_inicial(ESTADO *estado)
     {
         for(j=0; j<=7; j++)
         {
-            if (i==4 && j==4)
-            {
-                estado->tab[i][j] = '*';
-            }
+            if (i==4 && j==4)       estado->tab[i][j] = '*';
             else 
             {
-                if (i==7 && j==7)
-                {
-                    estado->tab[i][j] = '2';
-                } 
+                if (i==7 && j==7)    estado->tab[i][j] = '2';
                 else
                 {
-                    if(i==0 && j==0)
-                    {
-                        estado->tab[i][j] = '1';
-                    }
-                    else
-                    {
-                        estado->tab[i][j] = '.';
-                    } 
+                    if(i==0 && j==0)  estado->tab[i][j] = '1';
+                    else    estado->tab[i][j] = '.';
                 }   
             }         
         }
     }  
 }
-
 
 /**
 \brief Função que define o estado inicial do jogo.
@@ -104,7 +91,6 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 {
     int x, y, x_, y_, resul=0;
-
     x = coord_inicial.linha;
     y = coord_inicial.coluna; 
     x_ = coord_final.linha; 
@@ -126,7 +112,6 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
     int y = pos_final.coluna;
     CASA peca = estado->tab[x][y];
     int vaziaa = peca != '#';  /* Exatamente igual: peca == '.' || peca == '2' || peca == '1'  */
-    
     return ( vaziaa  && verifica_se_e_vizinho(estado->ultima_jogada, pos_final )  );
 }
 
@@ -141,11 +126,7 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
     x = coord.linha;
     y = coord.coluna; 
 
-    if (x>=0 && x<=7 && y>=0 && y<=7 )
-    {
-        if (estado->tab[x][y] == VAZIO ) resul = 0;
-    }
-    /* printf("%d\n", resul); */
+    if (x>=0 && x<=7 && y>=0 && y<=7 )    if (estado->tab[x][y] == VAZIO ) resul = 0;
     return resul;
 }
 
@@ -168,15 +149,6 @@ int verificar_casas_ocupadas(ESTADO *estado)
               verifica_casa_ocupada( estado , coord3 ) && verifica_casa_ocupada( estado , coord4 ) &&
               verifica_casa_ocupada( estado , coord5 ) && verifica_casa_ocupada( estado , coord6 ) &&
               verifica_casa_ocupada( estado , coord7 ) && verifica_casa_ocupada( estado , coord8 )   );
-    /*printf("r: %d\n", resul);
-    printf("%d\n", verifica_casa_ocupada( estado , coord1 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord2 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord3 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord4 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord5 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord6 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord7 ));
-    printf("%d\n", verifica_casa_ocupada( estado , coord8 ));*/
     return resul;
 }
 
@@ -245,10 +217,7 @@ int ganhou_em_casa(ESTADO *estado,int player, int nosso_player)
     else
     {
         if (estado->jogador_atual==2 && nosso_player==2 && x == 7 && y == 7) resul = 1;
-        else 
-        {
-            if ((x == 0 && y == 0) || (x == 7 && y == 7)) resul = -1;
-        }
+        else     if ((x == 0 && y == 0) || (x == 7 && y == 7)) resul = -1;
     }
     return resul; 
 }
