@@ -309,8 +309,37 @@ int interpretador(ESTADO *estado)
             }
         }
 
+        if(strcmp( linha, "jog2\n" ) == 0)
+        {
+            COORDENADA coord;
+            /* Atualizar pos */
+            if (n_pos>0) 
+            {
+                atualiza_estado_pos(estado,n_pos);
+                n_pos = 0;
+            }
+
+             coord = da_coordenada(estado);
+                
+            if( verifica_coord(coord) && verifica_jogada(estado, coord))
+            {            
+                jogar(estado, coord);
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+
+                ganhou = verifica_Vitoria( estado);
+                if ( ganhou )  jogador_vencedor( estado, stdout);
+            }
+            else
+            {
+                fprintf(stdout,"O comando jogar falhou.\n");
+                estado->num_comando++;
+                guarda_tabuleiro(estado, stdout);
+                prompt(estado, stdout);
+            }
+        }
         
-        if(strcmp( linha, "jog\n" ) == 0)
+        if(strcmp( linha, "jog1\n" ) == 0)
         {
             /* Atualizar pos */
             if (n_pos>0) 

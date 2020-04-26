@@ -179,6 +179,7 @@ COORDENADA da_coordenada(ESTADO *estado)
     if (verifica_coord(coord8) && verifica_jogada(estado ,coord8)) return coord8;
     COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
     if (verifica_coord(coord4) && verifica_jogada(estado ,coord4)) return coord4;
+    return coord;
 
 }
 
