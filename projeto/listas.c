@@ -11,11 +11,16 @@
 /**
 \brief Função que liberta o espaco de memoria ocupado pela lista.
 */
-void free_lista(LISTA L)
+void free_lista (LInt lista) 
 {
-    while( !lista_esta_vazia(L) ) remove_cabeca(L);
+    LInt aux;
+    while (lista != NULL)
+    {
+        aux = lista;
+        lista = lista->prox;
+        free(aux);
+    }  
 }
-
 
 /**
 \brief Função que cria uma lista vazia.
@@ -92,14 +97,13 @@ LISTA remove_cabeca(LISTA L)
 /**
 \brief Função que dá o número de elementos de uma lista.
 */
-int length_lista(LISTA L)
+int length_lista (LInt lista)
 {
-    int i=0;
-    LISTA aux = L;
-    for( aux = L; !lista_esta_vazia(aux) ; aux->valor)  i++;
+    LInt l = lista;
+    int i;
+    for (i=0; l != NULL ; l = l->prox, i++);
     return i;
 }
-
 
 /// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
 
