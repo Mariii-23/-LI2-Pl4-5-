@@ -66,6 +66,127 @@ typedef struct {
   COORDENADA ultima_jogada;
 } ESTADO;
 
+typedef struct lista {
+  void *valor;
+  struct lista *next;
+} *LISTA, NLista;
+
+/**
+\brief Função que verifica se uma COORDENADA é válida.
+*/
+int verifica_coord(COORDENADA coord)
+{
+    int x = coord.linha;
+    int y = coord.coluna;
+    return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
+}
+
+/// FUNCOES LISTAS ///
+/// LISTAS ///
+/**
+\brief Função que liberta o espaco de memoria ocupado pela lista.
+*/
+void free_lista (LISTA lista) 
+{
+    LISTA aux;
+    while (lista != NULL)
+    {
+        aux = lista;
+        lista = lista->next;
+        free(aux);
+    }  
+}
+
+/**
+\brief Função que cria uma lista vazia.
+*/
+LISTA criar_lista()
+{
+   // LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
+   // l->valor = NULL;
+    //l->next = NULL;
+    return NULL;
+}
+
+/**
+\brief Função que devolve 1 se a lista dada estiver vazia.
+*/
+int lista_esta_vazia(LISTA L)
+{
+    return L == NULL;
+}
+
+/**
+\brief Função que insere um valor na cabeça da lista.
+*/
+LISTA insere_cabeca(LISTA L, void *valor_dado)
+{
+    //LISTA aux = criar_lista();
+    LISTA aux = malloc(sizeof( NLista ));
+    aux->valor = valor_dado;
+    aux->next = L;
+    L = aux;
+    return L;
+}
+
+/**
+\brief Função que devolve a cabeça de uma lista dada.
+*/
+void *devolve_cabeca(LISTA L)
+{
+    //return &(*(L->valor));
+    return (L->valor);
+}
+
+/**
+\brief Função que devolve a cauda de uma lista dada.
+*/
+LISTA proximo(LISTA L)
+{
+    return (L->next);
+}
+
+/**
+\brief Função que remove a cabeça de uma lista da lista (libertando o espaço ocupado), devolvendo a sua cauda.
+*/
+LISTA remove_cabeca(LISTA L)
+{
+    //LISTA aux = L;
+    L = L->next;
+    //free(aux);
+    return L;
+}
+
+/**
+\brief Função que dá o número de elementos de uma lista.
+*/
+int length_lista (LISTA lista)
+{
+    LISTA l = lista;
+    int i;
+    for (i=0; l != NULL ; l = l->next, i++);
+    return i;
+}
+
+/// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
+
+/**
+\brief Função auxiliar que insere a coordenada na lista se esta for uma possível coordenada a ser efetuada.
+*/
+LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
+{
+    COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
+    coord_->linha = coord.linha;
+    coord_->coluna = coord.coluna;
+
+    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA )
+    {    
+        lista = insere_cabeca(lista, coord_); 
+    }
+    return lista;
+}
+
+
 /// ESTADO INICIAL ///
 
 /// ESTADO INICIAL ///
@@ -116,7 +237,9 @@ ESTADO *inicializador_estado()
 */
 void comando_movs(ESTADO *estado, FILE *stream)
 {
-    int cont=0, num,    n_jogadas = estado->num_jogadas,    j = estado->jogador_atual;
+    int cont=0, num;
+    int n_jogadas = estado->num_jogadas;
+    int j = estado->jogador_atual;
     COORDENADA coord1 = estado->jogadas[cont].jogador1;
     COORDENADA coord2 = estado->jogadas[cont].jogador2;
 
@@ -133,15 +256,7 @@ void comando_movs(ESTADO *estado, FILE *stream)
     {
         if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
         else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
-    }
-    else
-    {
-        if(stream!=stdout)
-        {
-            if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1 );
-            else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna  + 'a', coord2.linha + 1 );
-        }
-    }
+    }  
 }
 
 /**
@@ -350,16 +465,6 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     estado->ultima_jogada = coord_mudar;
 }
 
-/**
-\brief Função que verifica se uma COORDENADA é válida.
-*/
-int verifica_coord(COORDENADA coord)
-{
-    int x = coord.linha;
-    int y = coord.coluna;
-    return ( x>=0 && x<=7 &&  y>=0 && y<=7 );
-}
-
 
 /**
 \brief Função que verifica se a jogada é possível.
@@ -393,27 +498,56 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 }
 
 /**
+\brief Função principal que returna uma LISTA de coordenadas possíveis a serem efetuadas.
+*/
+LISTA cria_lista_coords_possiveis(ESTADO *estado)
+{
+    LISTA lista = criar_lista(); 
+
+    COORDENADA coord = estado->ultima_jogada;
+
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
+    lista = adiciona_lista(lista, estado, coord1);
+    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
+    lista = adiciona_lista(lista, estado, coord2);
+    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
+    lista = adiciona_lista(lista, estado, coord3);
+    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
+    lista = adiciona_lista(lista, estado, coord5);
+    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
+    lista = adiciona_lista(lista, estado, coord6);
+    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
+    lista = adiciona_lista(lista, estado, coord7);
+    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
+    lista = adiciona_lista(lista, estado, coord8);
+    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
+    lista = adiciona_lista(lista, estado, coord4);
+    return lista;
+}
+
+/**
 \brief Função que devolve uma coordenada aleatória possível a ser jogada.
 */
 COORDENADA da_coordenada(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
-    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
-    if (verifica_coord(coord1) && verifica_jogada(estado ,coord1)) return coord1;
-    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
-    if (verifica_coord(coord2) && verifica_jogada(estado ,coord2)) return coord2;
-    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
-    if (verifica_coord(coord3) && verifica_jogada(estado ,coord3)) return coord3;
-    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
-    if (verifica_coord(coord5) && verifica_jogada(estado ,coord5)) return coord5;
-    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
-    if (verifica_coord(coord6) && verifica_jogada(estado ,coord6)) return coord6;
-    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
-    if (verifica_coord(coord7) && verifica_jogada(estado ,coord7)) return coord7;
-    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
-    if (verifica_coord(coord8) && verifica_jogada(estado ,coord8)) return coord8;
-    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
-    if (verifica_coord(coord4) && verifica_jogada(estado ,coord4)) return coord4;
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
+    if (verifica_coord(coord1) && verifica_jogada(estado ,coord1) &&  estado->tab[ coord1.linha ][ coord1.coluna ] != BRANCA) return coord1;
+    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
+    if (verifica_coord(coord2) && verifica_jogada(estado ,coord2) &&  estado->tab[ coord2.linha ][ coord2.coluna ] != BRANCA ) return coord2;
+    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
+    if (verifica_coord(coord3) && verifica_jogada(estado ,coord3) &&  estado->tab[ coord3.linha ][ coord3.coluna ] != BRANCA) return coord3;
+    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
+    if (verifica_coord(coord5) && verifica_jogada(estado ,coord5) &&  estado->tab[ coord5.linha ][ coord5.coluna ] != BRANCA) return coord5;
+    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
+    if (verifica_coord(coord6) && verifica_jogada(estado ,coord6) &&  estado->tab[ coord6.linha ][ coord6.coluna ] != BRANCA) return coord6;
+    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
+    if (verifica_coord(coord7) && verifica_jogada(estado ,coord7) &&  estado->tab[ coord7.linha ][ coord7.coluna ] != BRANCA) return coord7;
+    COORDENADA coord8 = { coord.coluna, coord.linha + 1 };
+    if (verifica_coord(coord8) && verifica_jogada(estado ,coord8) &&  estado->tab[ coord8.linha ][ coord8.coluna ] != BRANCA) return coord8;
+    COORDENADA coord4 = { coord.coluna , coord.linha- 1 };
+    if (verifica_coord(coord4) && verifica_jogada(estado ,coord4) &&  estado->tab[ coord4.linha ][ coord4.coluna ] != BRANCA) return coord4;
+    return coord;
 }
 
 /**
@@ -441,101 +575,37 @@ float distancia_coord(COORDENADA coord, int player)
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
 */
-// funcao horrivel !!!!!!!!!!!!!!!!!!!!!!!!//
-COORDENADA da_coordenada_distancia(ESTADO *estado)
+
+COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
 {
-    COORDENADA coord = estado->ultima_jogada;
-    COORDENADA coord_result = coord;
-    int dist_best = distancia_coord(coord, estado->jogador_atual);
-    float i;
+    COORDENADA coord_result = estado->ultima_jogada,
+               aux;
+               
+    COORDENADA *coord_ ;
+    LISTA lista_coords = cria_lista_coords_possiveis(estado);
 
-    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
-    if (verifica_coord(coord1) && estado->tab[ coord1.linha ][ coord1.coluna ] != BRANCA) 
-    {
-        i = distancia_coord( coord1, estado->jogador_atual);
-        if(  i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord1;
-        }
-    }
+    int dist_best = 1000; //distancia_coord(coord, estado->jogador_atual);
+    float i; 
     
-    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
-    if (verifica_coord(coord2) && estado->tab[ coord2.linha ][ coord2.coluna ] != BRANCA)
+    /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/  
+    while ( !lista_esta_vazia(lista_coords) )
     {
-        i = distancia_coord( coord2, estado->jogador_atual);
-        if( i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord2;
-        }
-    }
+        coord_ = devolve_cabeca(lista_coords);
 
-    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
-    if (verifica_coord(coord3) && estado->tab[ coord3.linha ][ coord3.coluna ] != BRANCA) 
-    {
-        i = distancia_coord( coord3, estado->jogador_atual);
-        if( i<=dist_best ) 
+        aux.linha = ((*coord_).linha) ;
+        aux.coluna = ((*coord_).coluna);
+        //free(coord_);
+        if (verifica_coord(aux) && estado->tab[ aux.linha ][ aux.coluna ] != BRANCA ) 
         {
-            dist_best = i;
-            coord_result = coord3;
-        }
-    }
-
-    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
-    if (verifica_coord(coord5) && estado->tab[ coord5.linha ][ coord5.coluna ] != BRANCA)
-    {
-        i = distancia_coord( coord5, estado->jogador_atual);
-        if(  i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord5;
-        }
-    }
-
-    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
-    if (verifica_coord(coord6) && estado->tab[ coord6.linha ][ coord6.coluna ] != BRANCA)
-    {
-        i = distancia_coord( coord6, estado->jogador_atual);
-        if(  i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord6;
-        }
+            i = distancia_coord( aux , estado->jogador_atual);
+            if( i <= dist_best ) 
+            {
+                dist_best = i;
+                coord_result = aux;
+            }
+        } 
+        lista_coords = remove_cabeca(lista_coords); 
     } 
-
-    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
-    if (verifica_coord(coord7) && estado->tab[ coord7.linha ][ coord7.coluna ] != BRANCA)
-    {
-        i = distancia_coord( coord7, estado->jogador_atual);
-        if( i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord7;
-        }
-    } 
-
-    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
-    if (verifica_coord(coord8) && estado->tab[ coord8.linha ][ coord8.coluna ] != BRANCA)
-    {
-        i = distancia_coord( coord8, estado->jogador_atual);
-        if(i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord8;
-        }
-    }
-
-    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
-    if (verifica_coord(coord4) && estado->tab[ coord4.linha ][ coord4.coluna ] != BRANCA ) 
-    {
-        i = distancia_coord( coord4, estado->jogador_atual);
-        if( i<=dist_best ) 
-        {
-            dist_best = i;
-            coord_result = coord4;
-        }
-    }   
     return coord_result;
 }
 
@@ -559,7 +629,7 @@ int jogar(ESTADO *estado, COORDENADA coord)
 
 
 void atualiza_jogada_boot(ESTADO *estado){
-    COORDENADA coord = da_coordenada_distancia(estado);
+    COORDENADA coord = obtem_coord_atraves_da_distancia(estado);
         //COORDENADA coord = da_coordenada(estado);
 
         /*deveria dar este */

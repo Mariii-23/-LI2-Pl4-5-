@@ -230,7 +230,7 @@ int encurralado_casa(ESTADO *estado, int nosso_player)
     int resul = 0;
     int ganhou_casa = ganhou_em_casa(estado, nosso_player);
     int valor = verificar_casas_ocupadas(estado);
-    if  (ganhou_em_casa && valor ) resul = 2 * ganhou_casa;
+    if  (ganhou_casa && valor ) resul = 2 * ganhou_casa;
     /*if  (&ganhou_em_casa && valor ) resul = 2 * ganhou_casa;*/
     return resul;
 }

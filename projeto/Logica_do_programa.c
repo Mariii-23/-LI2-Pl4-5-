@@ -67,7 +67,6 @@ void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
     altera_estado_peca(estado, estado->ultima_jogada, BRANCA);
     altera_estado_peca(estado, pos_final, PRETA);
 }
-
 /**
 \brief Função que altera o estado das JOGADAS, adicionando a ultima coordenada dada.
 */

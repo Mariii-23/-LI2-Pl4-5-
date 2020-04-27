@@ -11,13 +11,13 @@
 /**
 \brief Função que liberta o espaco de memoria ocupado pela lista.
 */
-void free_lista (LInt lista) 
+void free_lista (LISTA lista) 
 {
-    LInt aux;
+    LISTA aux;
     while (lista != NULL)
     {
         aux = lista;
-        lista = lista->prox;
+        lista = lista->next;
         free(aux);
     }  
 }
@@ -27,10 +27,10 @@ void free_lista (LInt lista)
 */
 LISTA criar_lista()
 {
-    LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
-    l->valor = NULL;
-    l->next = NULL;
-    return l;
+   // LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
+   // l->valor = NULL;
+    //l->next = NULL;
+    return NULL;
 }
 
 /**
@@ -38,9 +38,7 @@ LISTA criar_lista()
 */
 int lista_esta_vazia(LISTA L)
 {
-    int resul = 0;
-    if (L == NULL || L->valor == NULL) resul = 1;
-    return resul;
+    return L == NULL;
 }
 
 /**
@@ -48,20 +46,11 @@ int lista_esta_vazia(LISTA L)
 */
 LISTA insere_cabeca(LISTA L, void *valor_dado)
 {
-    LISTA aux = criar_lista();
-    if ( !(L->valor) && !(lista_esta_vazia(L) ) )
-    {
-        aux->valor = valor_dado;
-        aux->next = NULL;
-        L = aux;
-    }
-    else
-    {
-        aux->valor = valor_dado;
-        aux->next = L;
-        L = aux;
-    }
-    free(aux); ////??????
+    //LISTA aux = criar_lista();
+    LISTA aux = malloc(sizeof( NLista ));
+    aux->valor = valor_dado;
+    aux->next = L;
+    L = aux;
     return L;
 }
 
@@ -87,21 +76,20 @@ LISTA proximo(LISTA L)
 */
 LISTA remove_cabeca(LISTA L)
 {
-    LISTA aux = L;
+    //LISTA aux = L;
     L = L->next;
-    free( aux->valor );
-    free(aux);
+    //free(aux);
     return L;
 }
 
 /**
 \brief Função que dá o número de elementos de uma lista.
 */
-int length_lista (LInt lista)
+int length_lista (LISTA lista)
 {
-    LInt l = lista;
+    LISTA l = lista;
     int i;
-    for (i=0; l != NULL ; l = l->prox, i++);
+    for (i=0; l != NULL ; l = l->next, i++);
     return i;
 }
 
@@ -116,7 +104,7 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
     coord_->linha = coord.linha;
     coord_->coluna = coord.coluna;
 
-    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ); 
+    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA )
     {    
         lista = insere_cabeca(lista, coord_); 
     }
@@ -145,21 +133,21 @@ LISTA cria_lista_coords_possiveis(ESTADO *estado)
 
     COORDENADA coord = estado->ultima_jogada;
 
-    COORDENADA coord1 = { coord.linha + 1 , coord.coluna + 1 };
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
     lista = adiciona_lista(lista, estado, coord1);
-    COORDENADA coord2 = { coord.linha + 1 , coord.coluna };
+    COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
     lista = adiciona_lista(lista, estado, coord2);
-    COORDENADA coord3 = { coord.linha + 1 , coord.coluna - 1 };
+    COORDENADA coord3 = { coord.coluna + 1 , coord.linha - 1 };
     lista = adiciona_lista(lista, estado, coord3);
-    COORDENADA coord5 = { coord.linha - 1 , coord.coluna - 1 };
+    COORDENADA coord5 = { coord.coluna - 1 , coord.linha - 1 };
     lista = adiciona_lista(lista, estado, coord5);
-    COORDENADA coord6 = { coord.linha - 1, coord.coluna };
+    COORDENADA coord6 = { coord.coluna - 1, coord.linha };
     lista = adiciona_lista(lista, estado, coord6);
-    COORDENADA coord7 = { coord.linha - 1 , coord.coluna + 1 };
+    COORDENADA coord7 = { coord.coluna - 1 , coord.linha + 1 };
     lista = adiciona_lista(lista, estado, coord7);
-    COORDENADA coord8 = { coord.linha , coord.coluna + 1 };
+    COORDENADA coord8 = { coord.coluna , coord.linha + 1 };
     lista = adiciona_lista(lista, estado, coord8);
-    COORDENADA coord4 = { coord.linha , coord.coluna - 1 };
+    COORDENADA coord4 = { coord.coluna , coord.linha - 1 };
     lista = adiciona_lista(lista, estado, coord4);
     return lista;
 }

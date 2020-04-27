@@ -122,6 +122,7 @@ void comando_movs(ESTADO *estado, FILE *stream)
         if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
         else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
     }
+    /*
     else
     {
         if(stream!=stdout)
@@ -129,8 +130,7 @@ void comando_movs(ESTADO *estado, FILE *stream)
             if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1 );
             else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna  + 'a', coord2.linha + 1 );
         }
-    }
-    
+    }   */
 }
 
 void movs(ESTADO *estado)
@@ -319,7 +319,7 @@ int interpretador(ESTADO *estado)
                 n_pos = 0;
             }
 
-             coord = da_coordenada(estado);
+            coord = da_coordenada(estado);
                 
             if( verifica_coord(coord) && verifica_jogada(estado, coord))
             {            
@@ -347,41 +347,10 @@ int interpretador(ESTADO *estado)
                 atualiza_estado_pos(estado,n_pos);
                 n_pos = 0;
             }
-          /*
-            COORDENADA coord_comamdo_jog = jogada_boot(estado);
-            int x = coord_comamdo_jog.linha,
-                y = coord_comamdo_jog.coluna;
 
-            printf(" sai do jogada boot\n");
+            //COORDENADA coord = da_coordenada_distancia(estado);
+            COORDENADA coord = obtem_coord_atraves_da_distancia(estado);// da_coordenada(estado);
 
-            if( x>=0 && x<=7 &&  y>=0 && y<=7 && verifica_jogada(estado, coord_comamdo_jog))
-            {
-                fprintf(stdout, "A melhor coordenada a ser efetuada será %c %c.\n", coord_comamdo_jog.coluna + 'a', coord_comamdo_jog.linha + '1' );
-
-                jogar(estado, coord_comamdo_jog);
-                guarda_tabuleiro(estado, stdout);
-                prompt(estado, stdout);
-
-                ganhou = verifica_Vitoria( estado);
-
-                if ( ganhou ) 
-                {
-                    jogador_vencedor( estado, stdout);
-                }
-            }
-            else
-            {
-                fprintf(stdout,"O comando jogar falhou.\n");
-                estado->num_comando++;
-                guarda_tabuleiro(estado, stdout);
-                prompt(estado, stdout);
-            }*/
-
-            COORDENADA coord = da_coordenada_distancia(estado);
-            //COORDENADA coord = da_coordenada(estado);
-
-            /*deveria dar este */
-            //COORDENADA coord = obtem_coord_atraves_da_distancia( estado );
             if( verifica_coord(coord) && verifica_jogada(estado, coord))
             {            
                 jogar(estado, coord);
