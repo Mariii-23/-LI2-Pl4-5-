@@ -37,7 +37,10 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     
     LISTA aux;
 
-    int maxValor, valor, minValor;
+    int maxValor, minValor;
+    int valor;
+
+    //int max_min;
     
     printf("dentro do minmax");
 
@@ -48,8 +51,9 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
         {
             valor = MinMax(estado_copia, aux->valor, alpha, betha, 0, nosso_jogador);
             maxValor = max(alpha, valor);
+            alpha = max(alpha, valor);
             if (betha <= alpha) break;
-            free(estado_copia);
+            //free(estado_copia);
             return maxValor;
         }
     }
@@ -61,10 +65,11 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
-            free(estado_copia);
+            //free(estado_copia);
             return minValor;  
         }
     } 
+    return 0;
 }
 
 
@@ -76,8 +81,6 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     ESTADO *estado_copia = cria_estado_copia(estado);
 
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
-
-    //printf("arroz");
 
     /* valor da melhor jogada possivel */
     int best_Move;
@@ -100,19 +103,19 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     printf("\n\nArroo\n\n");
     best_Coord = devolve_cabeca(aux);
 
-    for (aux=proximo(aux) ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )     //aux = aux->next )
+    for (aux=proximo(aux) ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )
     {
         atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
         printf("\n\n%d\n\n",atual);
         if (best_Coord == NULL || atual > best_Move)
         {
             best_Move = atual;
-            best_Coord = devolve_cabeca(aux); //ou nao.... aqui esta o erro.. como o aux passa para aux->next..o endereco dacoor é mexido
+            best_Coord = devolve_cabeca(aux);
         }
     }
    // }
     /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
-    free(estado_copia);
+    //free(estado_copia);
     return best_Coord ;
 }
 
@@ -162,7 +165,10 @@ COORDENADA jogada_boot(ESTADO *estado)
 COORDENADA da_coordenada(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
-
+    //COORDENADA *coord_;  
+    //coord_->linha = -1;  coord_->coluna  = -1;
+    //LISTA lista_coords = cria_lista_coords_possiveis(estado);
+    
     COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
     if (verifica_coord(coord1) && verifica_jogada(estado ,coord1) &&  estado->tab[ coord1.linha ][ coord1.coluna ] != BRANCA) return coord1;
     COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
@@ -305,32 +311,6 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
             coord_result = coord4;
         }
     }  
-    
-    /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/
-    
-    /*
-    LISTA lista_coords = cria_lista_coords_possiveis(estado);
-    COORDENADA *coord_;
-    COORDENADA aux;
-    while (!lista_esta_vazia(lista_coords))
-    {
-        coord_ = devolve_cabeca(lista_coords);
-        aux.linha = ((*coord_).linha) ;
-        aux.coluna = ((*coord_).coluna);
-
-        if (verifica_coord(aux) && estado->tab[ aux.linha ][ aux.coluna ] != BRANCA ) 
-        {
-            i = distancia_coord( aux , estado->jogador_atual);
-            if( i<=dist_best ) 
-            {
-                dist_best = i;
-                coord_result = aux;
-            }
-        } 
-        lista_coords = remove_cabeca(lista_coords); 
-    } */
-    
-
     return coord_result;
 }
 

@@ -179,7 +179,7 @@ LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
     coord_->linha = coord.linha;
     coord_->coluna = coord.coluna;
 
-    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA )
+    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] != BRANCA )
     {    
         lista = insere_cabeca(lista, coord_); 
     }
@@ -530,7 +530,7 @@ LISTA cria_lista_coords_possiveis(ESTADO *estado)
 */
 COORDENADA da_coordenada(ESTADO *estado)
 {
-    COORDENADA coord = estado->ultima_jogada;
+    COORDENADA coord = estado->ultima_jogada; 
     COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 };
     if (verifica_coord(coord1) && verifica_jogada(estado ,coord1) &&  estado->tab[ coord1.linha ][ coord1.coluna ] != BRANCA) return coord1;
     COORDENADA coord2 = { coord.coluna + 1 , coord.linha };
@@ -630,19 +630,16 @@ int jogar(ESTADO *estado, COORDENADA coord)
 
 void atualiza_jogada_boot(ESTADO *estado){
     COORDENADA coord = obtem_coord_atraves_da_distancia(estado);
-        //COORDENADA coord = da_coordenada(estado);
 
-        /*deveria dar este */
-        //COORDENADA coord = obtem_coord_atraves_da_distancia( estado );
-        if( verifica_coord(coord) && verifica_jogada(estado, coord))         
-            jogar(estado, coord);
-        else
-        {
-            coord = da_coordenada(estado);
-            if( verifica_coord(coord) && verifica_jogada(estado, coord))
-                  jogar(estado, coord);
-            else  fprintf(stdout,"O comando jogar falhou.\n");
-        }
+    if( verifica_coord(coord) && verifica_jogada(estado, coord))         
+        jogar(estado, coord);
+    else
+    {
+        coord = da_coordenada(estado);
+        if( verifica_coord(coord) && verifica_jogada(estado, coord))
+                jogar(estado, coord);
+        else  fprintf(stdout,"O comando jogar falhou.\n");
+    }
 }
 
 

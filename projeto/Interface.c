@@ -197,32 +197,35 @@ void comando_ler(FILE *fp,ESTADO *estado)
 
     for( l = 7; l >= 0; l--)
     {
-        fgets(linha, BUF_SIZE, fp); 
-        ler_linha(estado, linha, l);
+        if (fgets(linha, BUF_SIZE, fp)) 
+            ler_linha(estado, linha, l);
     } 
-    fgets(linha,BUF_SIZE, fp);
 
-    while ( fgets(linha,BUF_SIZE, fp) != NULL  )
+    if (fgets(linha,BUF_SIZE, fp))
     {
-       if ( sscanf( linha , "%d: %[a-h]%[1-8] %[a-h]%[1-8]", &l, col1, lin1, col2, lin2) == 5)
-       {   
-            coord1.linha = *lin1 - '1' ;      coord1.coluna = *col1 - 'a';
-            coord2.linha = *lin2 - '1' ;      coord2.coluna = *col2 - 'a';
-            guarda_Jogadas_2(estado, coord1, coord2, l-1);
-            estado->num_comando = 2*l;
-        }
-        else
+        while ( fgets(linha,BUF_SIZE, fp) != NULL  )
         {
-            sscanf( linha, "%d: %[a-h]%[1-8]",&l, col1, lin1);
-            coord1.linha = *lin1 - '1' ;
-            coord1.coluna = *col1 - 'a';
-            guarda_Jogadas_1(estado, coord1, l-1);
-            estado->num_comando = 2*l - 1;
+            if ( sscanf( linha , "%d: %[a-h]%[1-8] %[a-h]%[1-8]", &l, col1, lin1, col2, lin2) == 5)
+            {   
+                coord1.linha = *lin1 - '1' ;      coord1.coluna = *col1 - 'a';
+                coord2.linha = *lin2 - '1' ;      coord2.coluna = *col2 - 'a';
+                guarda_Jogadas_2(estado, coord1, coord2, l-1);
+                estado->num_comando = 2*l;
+            }
+            else
+            {
+                sscanf( linha, "%d: %[a-h]%[1-8]",&l, col1, lin1);
+                coord1.linha = *lin1 - '1' ;
+                coord1.coluna = *col1 - 'a';
+                guarda_Jogadas_1(estado, coord1, l-1);
+                estado->num_comando = 2*l - 1;
+            }
         }
+        estado->num_jogadas = l;
+        atualiza_estado_comando_ler(estado);
+        estado->num_comando = n_comando_inicial+1;
     }
-    estado->num_jogadas = l;
-    atualiza_estado_comando_ler(estado);
-    estado->num_comando = n_comando_inicial+1;
+    else fprintf(stdout, "O coamndo ler falhou");
 }
 
 void ler(ESTADO *estado, char *filename)
@@ -265,105 +268,63 @@ int interpretador(ESTADO *estado)
 
     while( ganhou != 1)
     { 
-        fgets(linha,BUF_SIZE,stdin);
+        if ( fgets(linha,BUF_SIZE,stdin))
+        {  
 
-        if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
-        {
-            COORDENADA coord = {*col - 'a', *lin - '1'};
-            if (n_pos>0) 
+            if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) 
             {
-                atualiza_estado_pos(estado,n_pos);
-                n_pos = 0;
-            }
+                COORDENADA coord = {*col - 'a', *lin - '1'};
+                if (n_pos>0) 
+                {
+                    atualiza_estado_pos(estado,n_pos);
+                    n_pos = 0;
+                }
 
-            jogar(estado, coord);
-            guarda_tabuleiro(estado, stdout);
-            prompt(estado, stdout);
-        }
-
-        ganhou = verifica_Vitoria( estado);
-
-        if ( ganhou )  jogador_vencedor( estado, stdout);
-  
-/* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
-        if(strcmp( linha, "Q\n" ) == 0 || strcmp( linha, "q\n" ) == 0 ) return 0;
-
-/* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
-        if(sscanf(linha, "gr %s",filename) == 1)      gr(estado, filename);
-
-/* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
-        if(sscanf(linha, "ler %s",filename) == 1)     ler(estado, filename);
-
-        if(strcmp( linha, "movs\n" ) == 0)           movs(estado);
-
-
-        if(sscanf(linha, "pos %d",&n_pos) == 1)
-        {
-            if (n_pos < estado->num_jogadas && n_pos>0 )   comando_pos(estado, n_pos);
-            else 
-            {
-                n_pos = 0;
-                fprintf(stdout, "Erro! A posição não existe!\n"); 
-                estado->num_comando++;
-                prompt(estado, stdout);
-            }
-        }
-
-        if(strcmp( linha, "jog2\n" ) == 0)
-        {
-            COORDENADA coord;
-            /* Atualizar pos */
-            if (n_pos>0) 
-            {
-                atualiza_estado_pos(estado,n_pos);
-                n_pos = 0;
-            }
-
-            coord = da_coordenada(estado);
-                
-            if( verifica_coord(coord) && verifica_jogada(estado, coord))
-            {            
                 jogar(estado, coord);
                 guarda_tabuleiro(estado, stdout);
                 prompt(estado, stdout);
-
-                ganhou = verifica_Vitoria( estado);
-                if ( ganhou )  jogador_vencedor( estado, stdout);
             }
-            else
+
+            ganhou = verifica_Vitoria( estado);
+
+            if ( ganhou )  jogador_vencedor( estado, stdout);
+
+        /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
+            if(strcmp( linha, "Q\n" ) == 0 || strcmp( linha, "q\n" ) == 0 ) return 0;
+
+        /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
+            if(sscanf(linha, "gr %s",filename) == 1)      gr(estado, filename);
+
+        /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
+            if(sscanf(linha, "ler %s",filename) == 1)     ler(estado, filename);
+
+            if(strcmp( linha, "movs\n" ) == 0)           movs(estado);
+
+
+            if(sscanf(linha, "pos %d",&n_pos) == 1)
             {
-                fprintf(stdout,"O comando jogar falhou.\n");
-                estado->num_comando++;
-                guarda_tabuleiro(estado, stdout);
-                prompt(estado, stdout);
+                if (n_pos < estado->num_jogadas && n_pos>0 )   comando_pos(estado, n_pos);
+                else 
+                {
+                    n_pos = 0;
+                    fprintf(stdout, "Erro! A posição não existe!\n"); 
+                    estado->num_comando++;
+                    prompt(estado, stdout);
+                }
             }
-        }
-        
-        if(strcmp( linha, "jog1\n" ) == 0)
-        {
-            /* Atualizar pos */
-            if (n_pos>0) 
+
+            if(strcmp( linha, "jog2\n" ) == 0)
             {
-                atualiza_estado_pos(estado,n_pos);
-                n_pos = 0;
-            }
+                COORDENADA coord;
+                /* Atualizar pos */
+                if (n_pos>0) 
+                {
+                    atualiza_estado_pos(estado,n_pos);
+                    n_pos = 0;
+                }
 
-            //COORDENADA coord = da_coordenada_distancia(estado);
-            COORDENADA coord = obtem_coord_atraves_da_distancia(estado);// da_coordenada(estado);
-
-            if( verifica_coord(coord) && verifica_jogada(estado, coord))
-            {            
-                jogar(estado, coord);
-                guarda_tabuleiro(estado, stdout);
-                prompt(estado, stdout);
-
-                ganhou = verifica_Vitoria( estado);
-                if ( ganhou )  jogador_vencedor( estado, stdout);
-            }
-            else
-            {
                 coord = da_coordenada(estado);
-                
+                    
                 if( verifica_coord(coord) && verifica_jogada(estado, coord))
                 {            
                     jogar(estado, coord);
@@ -379,14 +340,85 @@ int interpretador(ESTADO *estado)
                     estado->num_comando++;
                     guarda_tabuleiro(estado, stdout);
                     prompt(estado, stdout);
-                }  
+                }
+            }
+            
+            if(strcmp( linha, "jog1\n" ) == 0)
+            {
+                /* Atualizar pos */
+                if (n_pos>0) 
+                {
+                    atualiza_estado_pos(estado,n_pos);
+                    n_pos = 0;
+                }
+
+                //COORDENADA coord = da_coordenada_distancia(estado);
+                COORDENADA coord = obtem_coord_atraves_da_distancia(estado);
+
+                if( verifica_coord(coord) && verifica_jogada(estado, coord))
+                {            
+                    jogar(estado, coord);
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+
+                    ganhou = verifica_Vitoria( estado);
+                    if ( ganhou )  jogador_vencedor( estado, stdout);
+                }
+                else
+                {
+                    coord = da_coordenada(estado);
+                    
+                    if( verifica_coord(coord) && verifica_jogada(estado, coord))
+                    {            
+                        jogar(estado, coord);
+                        guarda_tabuleiro(estado, stdout);
+                        prompt(estado, stdout);
+
+                        ganhou = verifica_Vitoria( estado);
+                        if ( ganhou )  jogador_vencedor( estado, stdout);
+                    }
+                    else
+                    {
+                        fprintf(stdout,"O comando jogar falhou.\n");
+                        estado->num_comando++;
+                        guarda_tabuleiro(estado, stdout);
+                        prompt(estado, stdout);
+                    }  
+                }
+                /*
+                {
+                    fprintf(stdout,"O comando jogar falhou.\n");
+                    estado->num_comando++;
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+                }*/
             }
             /*
+            if(strcmp( linha, "bot\n" ) == 0)
             {
-                fprintf(stdout,"O comando jogar falhou.\n");
-                estado->num_comando++;
-                guarda_tabuleiro(estado, stdout);
-                prompt(estado, stdout);
+                
+                if (n_pos>0) 
+                {
+                    atualiza_estado_pos(estado,n_pos);
+                    n_pos = 0;
+                }
+
+                COORDENADA coord = jogada_boot(estado);
+                if( verifica_coord(coord) && verifica_jogada(estado, coord))
+                {            
+                    jogar(estado, coord);
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+
+                    ganhou = verifica_Vitoria( estado);
+                    if ( ganhou )  jogador_vencedor( estado, stdout);
+                }
+                else
+                {
+                    printf("nao funiona\n");
+                    guarda_tabuleiro(estado, stdout);
+                    prompt(estado, stdout);
+                }
             }*/
         }
     }

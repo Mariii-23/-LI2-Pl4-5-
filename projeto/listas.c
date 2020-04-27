@@ -84,14 +84,14 @@ LISTA remove_cabeca(LISTA L)
 
 /**
 \brief Função que dá o número de elementos de uma lista.
-*/
+*//*
 int length_lista (LISTA lista)
 {
     LISTA l = lista;
     int i;
     for (i=0; l != NULL ; l = l->next, i++);
     return i;
-}
+}*/
 
 /// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
 
@@ -101,28 +101,16 @@ int length_lista (LISTA lista)
 LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord)
 {
     COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
+
     coord_->linha = coord.linha;
     coord_->coluna = coord.coluna;
 
-    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA )
+    if ( verifica_coord( coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] != BRANCA )
     {    
         lista = insere_cabeca(lista, coord_); 
     }
     return lista;
 }
-
-/*
-LISTA adiciona_lista(LISTA lista, ESTADO *estado, COORDENADA coord){
-    COORDENADA *coord_ = (COORDENADA*)malloc(sizeof (COORDENADA)) ;
-    coord_->linha = coord.linha;
-    coord_->coluna = coord.coluna;
-
-    if ( verifica_coord(coord)   &&  estado->tab[ coord.linha ][ coord.coluna ] == BRANCA ){
-      lista = insere_cabeca(lista, from_coordenada(coord_));
-    printf("Funcionou adiciona_lista\n");
-  }
-    return lista;
-  }*/
 
 /**
 \brief Função principal que returna uma LISTA de coordenadas possíveis a serem efetuadas.
