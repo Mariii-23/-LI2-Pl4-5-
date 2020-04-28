@@ -7,12 +7,19 @@
 #include "dados.h"
 #include "listas.h"
 
+int muda_jogador(int player)
+{
+    if (player ==1 ) player = 2 ;
+    else player = 1;
+    return player;
+}
+
 /// ESTRATEGIA MINMAX ///
 
 /**
 \brief Função que executa o MinMax, retornando o valor de uma determinada jogada.
 */
-int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador)
+int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador, int n_avaliar)
 {
     printf("\n\ninicio minmax\n");
     ESTADO *estado_copia = cria_estado_copia(estado);
@@ -33,6 +40,9 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     int ganhou = avaliar_jogada(estado_copia, nosso_jogador);
     if (ganhou !=0) return ganhou;
 
+    /* verifica se a rodada acaba */
+    if ( n_avaliar <= 0 ) return avaliar_estado_jogo(estado, nosso_jogador);
+
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
     
     LISTA aux;
@@ -45,11 +55,11 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     printf("dentro do minmax");
 
     /* se formos nos a jogar */
-    if (player_atual)
+    if (player_atual == estado->jogador_atual)
     {   
         for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
         {
-            valor = MinMax(estado_copia, aux->valor, alpha, betha, 0, nosso_jogador);
+            valor = MinMax(estado_copia, aux->valor, alpha, betha, muda_jogador( estado->jogador_atual ) , nosso_jogador, n_avaliar-1);
             maxValor = max(alpha, valor);
             alpha = max(alpha, valor);
             if (betha <= alpha) break;
@@ -61,7 +71,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     {
         for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
         {
-            valor = MinMax(estado_copia ,aux->valor,alpha, betha, 1, nosso_jogador ); ///true
+            valor = MinMax(estado_copia ,aux->valor,alpha, betha, muda_jogador( estado->jogador_atual ) , nosso_jogador , n_avaliar-1 ); ///true
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
@@ -97,7 +107,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     LISTA aux = Lista_coords;
     int atual;
 
-    best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+    best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual, 5);
     printf("bestmove alterada\n");
 
     printf("\n\nArroo\n\n");
@@ -105,8 +115,9 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
 
     for (aux=proximo(aux) ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )
     {
-        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual);
+        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual, 5);
         printf("\n\n%d\n\n",atual);
+
         if (best_Coord == NULL || atual > best_Move)
         {
             best_Move = atual;
@@ -189,29 +200,6 @@ COORDENADA da_coordenada(ESTADO *estado)
 }
 
 /// COORDENADA ATRAVÉS DA MENOR DISTÃNCIA /// 
-
-/**
-\brief Função que devolve uma coordenada aleatória possível a ser jogada.
-*/
-float distancia_coord(COORDENADA coord, int player)
-{
-    COORDENADA coord_casa;
-    if (player==1) 
-    {
-        coord_casa.coluna = 0;
-        coord_casa.linha = 0;
-    }
-    else
-    {
-        coord_casa.coluna = 7;
-        coord_casa.linha = 7;
-    }
-    int x = abs( coord_casa.coluna - coord.coluna ),
-        y = abs( coord_casa.linha - coord.linha );
-    float resul = ( x*x + y*y );
-    /*float resul = x+y;*/
-    return ( resul );
-}
 
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.

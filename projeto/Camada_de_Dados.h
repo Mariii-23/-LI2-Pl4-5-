@@ -23,6 +23,8 @@ int encurralado_casa(ESTADO *estado, int nosso_player);
 int encurralado_jogo(ESTADO *estado, int player);
 int ganhou_encurralado(ESTADO *estado, int nosso_player);
 int avaliar_jogada(ESTADO *estado, int nosso_player);
+float distancia_coord(COORDENADA coord, int player);
+int avaliar_estado_jogo(ESTADO *estado, int nosso_player );
 
 
 #endif

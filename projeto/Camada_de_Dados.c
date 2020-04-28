@@ -4,6 +4,10 @@
 #include "Logica_do_programa.h"
 #include "Interface.h"
 #include "dados.h"
+#define n_casas_ocupadas 15
+#define n_vitoria_casa 80
+#define n_vitoria_encurralado 120
+#define n_vitoria_casaEencurralado 150
 
 /// ESTADO INICIAL ///
 /**
@@ -230,7 +234,7 @@ int encurralado_casa(ESTADO *estado, int nosso_player)
     int resul = 0;
     int ganhou_casa = ganhou_em_casa(estado, nosso_player);
     int valor = verificar_casas_ocupadas(estado);
-    if  (ganhou_casa && valor ) resul = 2 * ganhou_casa;
+    if  (ganhou_casa && valor ) resul = n_vitoria_casaEencurralado * ganhou_casa;
     /*if  (&ganhou_em_casa && valor ) resul = 2 * ganhou_casa;*/
     return resul;
 }
@@ -242,8 +246,8 @@ int encurralado_jogo(ESTADO *estado, int player)
 {
     int resul = 0;
     int valor = verificar_casas_ocupadas(estado);
-    if (!player) resul = 3 * valor;
-    else resul = -3 * valor;
+    if (!player) resul = n_vitoria_encurralado * valor;
+    else resul = - n_vitoria_encurralado * valor;
     return resul;
 }
 
@@ -270,4 +274,60 @@ int avaliar_jogada(ESTADO *estado, int nosso_player)
     int resul = ganhou_encurralado(estado, nosso_player);
     if (resul == 0) resul = ganhou_em_casa(estado, nosso_player);
     return resul;
+}
+
+/**
+\brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
+*/
+int contar_casas_ocupadas(ESTADO *estado)
+{
+    COORDENADA coord = estado->ultima_jogada;
+    int resul;
+    COORDENADA coord1 = { coord.coluna + 1 , coord.linha + 1 },
+               coord2 = { coord.coluna + 1 , coord.linha },
+               coord3 = { coord.coluna + 1 , coord.linha - 1 },
+               coord5 = { coord.coluna - 1 , coord.linha - 1 },
+               coord6 = { coord.coluna - 1, coord.linha },
+               coord7 = { coord.coluna - 1 , coord.linha + 1 },
+               coord8 = { coord.coluna , coord.linha + 1 },
+               coord4 = { coord.coluna , coord.linha - 1 };
+    resul = ( verifica_casa_ocupada( estado , coord1 ) + verifica_casa_ocupada( estado , coord2 ) +
+              verifica_casa_ocupada( estado , coord3 ) + verifica_casa_ocupada( estado , coord4 ) +
+              verifica_casa_ocupada( estado , coord5 ) + verifica_casa_ocupada( estado , coord6 ) +
+              verifica_casa_ocupada( estado , coord7 ) + verifica_casa_ocupada( estado , coord8 )   );
+    return resul;
+}
+
+/**
+\brief Função que devolve uma coordenada aleatória possível a ser jogada.
+*/
+float distancia_coord(COORDENADA coord, int player)
+{
+    COORDENADA coord_casa;
+    if (player==1) 
+    {
+        coord_casa.coluna = 0;
+        coord_casa.linha = 0;
+    }
+    else
+    {
+        coord_casa.coluna = 7;
+        coord_casa.linha = 7;
+    }
+    int x = abs( coord_casa.coluna - coord.coluna ),
+        y = abs( coord_casa.linha - coord.linha );
+    float resul = ( x*x + y*y );
+    /*float resul = x+y;*/
+    return ( resul );
+}
+
+///avalia estado jogo ///
+int avaliar_estado_jogo(ESTADO *estado , int nosso_player)
+{
+    int result = 0;
+    result = n_casas_ocupadas * contar_casas_ocupadas(estado) -
+             distancia_coord(estado->ultima_jogada, nosso_player);
+
+    if (nosso_player != estado->jogador_atual) result = -result;
+    return result;
 }
