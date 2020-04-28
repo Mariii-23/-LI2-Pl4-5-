@@ -393,7 +393,7 @@ int interpretador(ESTADO *estado)
                     prompt(estado, stdout);
                 }*/
             }
-            /*
+            
             if(strcmp( linha, "bot\n" ) == 0)
             {
                 
@@ -419,7 +419,7 @@ int interpretador(ESTADO *estado)
                     guarda_tabuleiro(estado, stdout);
                     prompt(estado, stdout);
                 }
-            }*/
+            }
         }
     }
     return ganhou;

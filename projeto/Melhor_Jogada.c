@@ -19,9 +19,8 @@ int muda_jogador(int player)
 /**
 \brief Função que executa o MinMax, retornando o valor de uma determinada jogada.
 */
-int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_atual, int nosso_jogador, int n_avaliar)
+int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jogador, int n_avaliar)
 {
-    printf("\n\ninicio minmax\n");
     ESTADO *estado_copia = cria_estado_copia(estado);
 
     /* atualiza estado copia */
@@ -34,8 +33,6 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
 
     atualiza_estado(estado_copia, coord_);
 
-    printf("atualiza de estado\n");
-
     /* verifica se o jogo acabou */
     int ganhou = avaliar_jogada(estado_copia, nosso_jogador);
     if (ganhou !=0) return ganhou;
@@ -44,38 +41,32 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int player_at
     if ( n_avaliar <= 0 ) return avaliar_estado_jogo(estado, nosso_jogador);
 
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
-    
-    LISTA aux;
 
     int maxValor, minValor;
     int valor;
 
-    //int max_min;
-    
-    printf("dentro do minmax");
-
     /* se formos nos a jogar */
-    if (player_atual == estado->jogador_atual)
+    if (nosso_jogador == estado->jogador_atual)
     {   
-        for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
+        for (Lista_coords ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo( Lista_coords ))
         {
-            valor = MinMax(estado_copia, aux->valor, alpha, betha, muda_jogador( estado->jogador_atual ) , nosso_jogador, n_avaliar-1);
+            valor = MinMax(estado_copia, Lista_coords->valor, alpha, betha, nosso_jogador, n_avaliar-1);
             maxValor = max(alpha, valor);
             alpha = max(alpha, valor);
             if (betha <= alpha) break;
-            //free(estado_copia);
+            free(estado_copia);
             return maxValor;
         }
     }
     else
     {
-        for (aux = Lista_coords; !(lista_esta_vazia(aux ) ) ; aux = aux->next )
+        for ( Lista_coords; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo(Lista_coords) )
         {
-            valor = MinMax(estado_copia ,aux->valor,alpha, betha, muda_jogador( estado->jogador_atual ) , nosso_jogador , n_avaliar-1 ); ///true
+            valor = MinMax(estado_copia ,Lista_coords->valor,alpha, betha, nosso_jogador , n_avaliar-1 ); ///true
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
-            //free(estado_copia);
+            free(estado_copia);
             return minValor;  
         }
     } 
@@ -94,34 +85,27 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
 
     /* valor da melhor jogada possivel */
     int best_Move;
+
     /* coord melhor jogada possivel */
-    COORDENADA *best_Coord ;
-    /* if ( length_lista(Lista_coords) == 1 ) 
-    {
-        printf("eita");
-        best_Coord = devolve_cabeca(Lista_coords);
-    }
-    else
-    {*/
+    COORDENADA *best_Coord = devolve_cabeca( Lista_coords );
+    
     /* dados auxiliares */
-    LISTA aux = Lista_coords;
+    
     int atual;
 
-    best_Move = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual, 5);
-    printf("bestmove alterada\n");
+    best_Move = MinMax( estado_copia, devolve_cabeca( Lista_coords ), -99999 , 99999  , estado->jogador_atual, 10);
 
-    printf("\n\nArroo\n\n");
-    best_Coord = devolve_cabeca(aux);
+    best_Coord = devolve_cabeca( Lista_coords );
 
-    for (aux=proximo(aux) ; !(lista_esta_vazia(aux ) ) ; aux = proximo(aux) )
+    for ( Lista_coords = proximo( Lista_coords ) ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo( Lista_coords ) )
     {
-        atual = MinMax(estado_copia, aux->valor, -9999, 9999  , 0, estado->jogador_atual, 5);
-        printf("\n\n%d\n\n",atual);
+        atual = MinMax( estado_copia , devolve_cabeca( Lista_coords ), -99999, 99999  , estado->jogador_atual , 10);
+        printf("\n\n%d\n\n", atual);
 
-        if (best_Coord == NULL || atual > best_Move)
+        if ( atual > best_Move )
         {
             best_Move = atual;
-            best_Coord = devolve_cabeca(aux);
+            best_Coord = devolve_cabeca( Lista_coords );
         }
     }
    // }
@@ -144,7 +128,6 @@ COORDENADA jogada_boot(ESTADO *estado)
 
         coord = Iniciar_MinMax(estado);
 
-        printf("sai dali yupii \n");
         int x = (*coord).linha;
         int y = (*coord).coluna;
         COORDENADA coord_test = {x,y};
