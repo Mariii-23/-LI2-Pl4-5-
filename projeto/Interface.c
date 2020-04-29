@@ -225,7 +225,7 @@ void comando_ler(FILE *fp,ESTADO *estado)
         atualiza_estado_comando_ler(estado);
         estado->num_comando = n_comando_inicial+1;
     }
-    else fprintf(stdout, "O coamndo ler falhou");
+    else fprintf(stdout, "O comando ler falhou");
 }
 
 void ler(ESTADO *estado, char *filename)

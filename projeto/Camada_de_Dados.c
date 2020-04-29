@@ -4,10 +4,10 @@
 #include "Logica_do_programa.h"
 #include "Interface.h"
 #include "dados.h"
-#define n_casas_ocupadas 30 //15
-#define n_vitoria_casa 100 //80
-#define n_vitoria_encurralado 200 //120
-#define n_vitoria_casaEencurralado 250 //150
+#define n_casas_ocupadas 15 //  30
+#define n_vitoria_casa 80     // 100
+#define n_vitoria_encurralado 120  // 200
+#define n_vitoria_casaEencurralado 150 //    250
 
 /// ESTADO INICIAL ///
 /**
@@ -325,7 +325,7 @@ float distancia_coord(COORDENADA coord, int player)
 int avaliar_estado_jogo(ESTADO *estado , int nosso_player)
 {
     int result = 0;
-    result = n_casas_ocupadas * contar_casas_ocupadas(estado) + ///acho q é -// n ta bem // ver valores
+    result = n_casas_ocupadas * contar_casas_ocupadas(estado) - ///acho q é -// n ta bem // ver valores
              distancia_coord(estado->ultima_jogada, nosso_player);
 
     if (nosso_player != estado->jogador_atual) result = -result;

@@ -42,31 +42,31 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jog
 
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
 
-    int maxValor, minValor;
+    int maxValor = -9999 , minValor = 9999;
     int valor;
 
     /* se formos nos a jogar */
     if (nosso_jogador == estado->jogador_atual)
     {   
-        for (Lista_coords ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo( Lista_coords ))
+        for ( ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo( Lista_coords ))  // aquele ou este?? Lista_coords = remove_cabeca( Lista_coords ))?
         {
-            valor = MinMax(estado_copia, Lista_coords->valor, alpha, betha, nosso_jogador, n_avaliar-1);
-            maxValor = max(alpha, valor);
+            valor = MinMax(estado_copia, devolve_cabeca(Lista_coords ) , alpha, betha, nosso_jogador, n_avaliar-1);
+            maxValor = max(maxValor, valor);
             alpha = max(alpha, valor);
             if (betha <= alpha) break;
-            free(estado_copia);
+            //free(estado_copia);
             return maxValor;
         }
     }
     else
     {
-        for ( Lista_coords; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo(Lista_coords) )
+        for ( ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo(Lista_coords) )
         {
-            valor = MinMax(estado_copia ,Lista_coords->valor,alpha, betha, nosso_jogador , n_avaliar-1 ); ///true
+            valor = MinMax(estado_copia , devolve_cabeca( Lista_coords ) ,alpha, betha, nosso_jogador , n_avaliar-1 ); ///true
             minValor = min(minValor, valor);
             betha = min(betha, valor);
             if (betha <= alpha) break;
-            free(estado_copia);
+            //free(estado_copia);
             return minValor;  
         }
     } 
