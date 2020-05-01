@@ -24,7 +24,7 @@ void jogador_vencedor(ESTADO *estado, FILE *stream) {
 /// TABULEIRO : IMPRIME OU GUARDA ///
 
 /**
-\brief Função que que imprime apenas as pecas de um determinado tabuleiro .
+\brief Função que que "imprime" no ecrã ou num ficheiro as peças de um determinado tabuleiro.
 */
 void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
 {
@@ -133,6 +133,9 @@ void comando_movs(ESTADO *estado, FILE *stream)
     }   */
 }
 
+/**
+\brief Função principal que imprime os movimentos dos jogadores.
+*/
 void movs(ESTADO *estado)
 {
     comando_movs(estado,stdout);
@@ -150,6 +153,9 @@ void comando_gr(ESTADO *estado, FILE *stream) {
     comando_movs(estado, stream);
 }
 
+/**
+\brief Função principal que guarda o tabuleiro de jogo e os movimentos dos jogadores.
+*/
 void gr(ESTADO *estado, char *filename)
 {
     FILE *fp;

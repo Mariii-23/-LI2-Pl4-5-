@@ -227,7 +227,7 @@ int ganhou_em_casa(ESTADO *estado, int nosso_player)
 }
 
 /**
-\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversario.
+\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversário.
 */
 int encurralado_casa(ESTADO *estado, int nosso_player)
 {
@@ -266,7 +266,7 @@ int ganhou_encurralado(ESTADO *estado, int nosso_player)
 
 /// AVALIAR JOGADA PRINCIPAL ///
 /**
-\brief Função PRINCIPAL que avalia uma jogada. 
+\brief Função principal que avalia uma jogada. 
       (NOTA: quando o player == True ou seja 1, significa que player == nosso_player)
 */
 int avaliar_jogada(ESTADO *estado, int nosso_player)
@@ -321,7 +321,10 @@ float distancia_coord(COORDENADA coord, int player)
     return ( resul );
 }
 
-///avalia estado jogo ///
+
+/**
+\brief Função que avalia o estado do jogo consoante os pontos.
+*/
 int avaliar_estado_jogo(ESTADO *estado , int nosso_player)
 {
     int result = 0;

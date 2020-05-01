@@ -1,3 +1,8 @@
+/**
+@file Interface.h
+Definição do módulo com funções para determinar a melhor jogada a ser executada.
+*/
+
 #ifndef ___MELHOR_JOGADA___
 #define ___MELHOR_JOGADA___
 #define BUF_SIZE 1024

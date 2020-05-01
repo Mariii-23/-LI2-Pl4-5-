@@ -69,7 +69,7 @@ LISTA proximo(LISTA L)
 }
 
 /**
-\brief Função que remove a cabeça de uma lista da lista (libertando o espaço ocupado), devolvendo a sua cauda.
+\brief Função que remove a cabeça de uma lista da lista, devolvendo a sua cauda.
 */
 LISTA remove_cabeca(LISTA L)
 {

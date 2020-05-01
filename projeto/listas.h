@@ -1,11 +1,21 @@
+/**
+@file Interface.h
+Definição do módulo com operações sobre listas.
+*/
+
 #ifndef ___LISTAS___
 #define ___LISTAS___
 #define BUF_SIZE 1024
 
 #include "dados.h"
 
+/**
+\brief Tipo de dados para listas.
+*/
 typedef struct lista {
+  /** Valor do elemento da lista. */
   void *valor;
+  /** Apontador para o próximo elemento da lista. */
   struct lista *next;
 } *LISTA, NLista;
 

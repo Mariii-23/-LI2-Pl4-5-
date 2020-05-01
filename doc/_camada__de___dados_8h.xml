@@ -1,0 +1,497 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_camada__de___dados_8h" kind="file" language="C++">
+    <compoundname>Camada_de_Dados.h</compoundname>
+    <includes refid="dados_8h" local="yes">dados.h</includes>
+    <includedby refid="_logica__do__programa_8h" local="yes">Logica_do_programa.h</includedby>
+    <includedby refid="_interface_8c" local="yes">Interface.c</includedby>
+    <includedby refid="_melhor___jogada_8h" local="yes">Melhor_Jogada.h</includedby>
+    <includedby refid="listas_8c" local="yes">listas.c</includedby>
+    <includedby refid="_logica__do__programa_8c" local="yes">Logica_do_programa.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="_melhor___jogada_8c" local="yes">Melhor_Jogada.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>dados.h</label>
+        <link refid="dados_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Camada_de_Dados.h</label>
+        <link refid="_camada__de___dados_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>Logica_do_programa.h</label>
+        <link refid="_logica__do__programa_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Camada_de_Dados.h</label>
+        <link refid="_camada__de___dados_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Melhor_Jogada.h</label>
+        <link refid="_melhor___jogada_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="_camada__de___dados_8h_1a6821bafc3c88dfb2e433a095df9940c6" prot="public" static="no">
+        <name>BUF_SIZE</name>
+        <initializer>1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="8" column="17" bodyfile="Camada_de_Dados.h" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_camada__de___dados_8h_1ab16da8a852771b04507d6c51d3f50345" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void casas_inicial</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>casas_inicial</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> INICIAL ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que define cada casa do jogo quando este é iniciado. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="11" column="6" bodyfile="Camada_de_Dados.c" bodystart="16" bodyend="35" declfile="Camada_de_Dados.h" declline="11" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1ae6ae1e5e8b2c49805a2936dec942cf09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+        <definition>ESTADO* inicializador_estado</definition>
+        <argsstring>()</argsstring>
+        <name>inicializador_estado</name>
+        <briefdescription>
+<para>Função que define o estado inicial do jogo. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="12" column="8" bodyfile="Camada_de_Dados.c" bodystart="40" bodyend="50" declfile="Camada_de_Dados.h" declline="12" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a8406a0453d99f415308d63d0a43395f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+        <definition>ESTADO* cria_estado_copia</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>cria_estado_copia</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> COPIA ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que cria uma cópia do <ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="14" column="8" bodyfile="Camada_de_Dados.c" bodystart="56" bodyend="78" declfile="Camada_de_Dados.h" declline="14" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1aed1c6cfe4018952fe1790f2e1075b020" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>CASA</type>
+        <definition>CASA estado_casa</definition>
+        <argsstring>(ESTADO estado, COORDENADA coordenada)</argsstring>
+        <name>estado_casa</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref></type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coordenada</declname>
+        </param>
+        <briefdescription>
+<para>FUNCOES AUXILIARES ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que devolve o estado de cada peça consoante as coordenadas dadas. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="16" column="6" bodyfile="Camada_de_Dados.c" bodystart="84" bodyend="90" declfile="Camada_de_Dados.h" declline="16" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a32dc3c23098a0e632df9fbb7ac3e5e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verifica_se_e_vizinho</definition>
+        <argsstring>(COORDENADA coord_inicial, COORDENADA coord_final)</argsstring>
+        <name>verifica_se_e_vizinho</name>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord_inicial</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord_final</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se a jogada é possível. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="17" column="5" bodyfile="Camada_de_Dados.c" bodystart="95" bodyend="108" declfile="Camada_de_Dados.h" declline="17" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1af58710a64521083d080535f5c5183d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verifica_jogada</definition>
+        <argsstring>(ESTADO *estado, COORDENADA pos_final)</argsstring>
+        <name>verifica_jogada</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>pos_final</declname>
+        </param>
+        <briefdescription>
+<para>Função principal que verifica se é possível executar a jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="18" column="5" bodyfile="Camada_de_Dados.c" bodystart="113" bodyend="120" declfile="Camada_de_Dados.h" declline="18" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1acbcadb43174049ac438fca71ffffd51f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verifica_Vitoria</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>verifica_Vitoria</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Função principal que verifica se existe vencedor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="19" column="5" bodyfile="Camada_de_Dados.c" bodystart="173" bodyend="176" declfile="Camada_de_Dados.h" declline="19" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a51b89b80354561c2b53fe18594f5f274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verificar_casas_ocupadas</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>verificar_casas_ocupadas</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Função principal que verifica se todas as casas vizinhas se encontram ocupadas. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="20" column="5" bodyfile="Camada_de_Dados.c" bodystart="140" bodyend="157" declfile="Camada_de_Dados.h" declline="20" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verifica_casa_ocupada</definition>
+        <argsstring>(ESTADO *estado, COORDENADA coord)</argsstring>
+        <name>verifica_casa_ocupada</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord</declname>
+        </param>
+        <briefdescription>
+<para>VERIFICA SE ALGUEM GANHOU ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que verifica se a casa está disponível para se mover para lá. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="21" column="5" bodyfile="Camada_de_Dados.c" bodystart="127" bodyend="135" declfile="Camada_de_Dados.h" declline="21" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1ad0af6fd6b4e4d48754316b231ee1b1ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verifica_coord</definition>
+        <argsstring>(COORDENADA coord)</argsstring>
+        <name>verifica_coord</name>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se uma <ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> é válida. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="22" column="5" bodyfile="Camada_de_Dados.c" bodystart="181" bodyend="186" declfile="Camada_de_Dados.h" declline="22" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1abd8bbcfabb3ddef2ccaafb9928a37b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int min</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>min</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>FUNCOES AUXILIARES DO MINMAX ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que devolve o menor valor de dois. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="24" column="5" bodyfile="Camada_de_Dados.c" bodystart="193" bodyend="198" declfile="Camada_de_Dados.h" declline="24" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1af082905f7eac6d03e92015146bbc1925" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int max</definition>
+        <argsstring>(int a, int b)</argsstring>
+        <name>max</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve o maior valor de dois. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="25" column="5" bodyfile="Camada_de_Dados.c" bodystart="203" bodyend="208" declfile="Camada_de_Dados.h" declline="25" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a6e245ab54bfd100b242ef802d61e9e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ganhou_em_casa</definition>
+        <argsstring>(ESTADO *estado, int nosso_player)</argsstring>
+        <name>ganhou_em_casa</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_player</declname>
+        </param>
+        <briefdescription>
+<para>AVALIAR UMA <ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref> ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que verifica se ganhou em casa, atribuindo os respetivos pontos. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="26" column="5" bodyfile="Camada_de_Dados.c" bodystart="214" bodyend="227" declfile="Camada_de_Dados.h" declline="26" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1ad9bea692b24a13ef6c8e6f27ae746c5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int encurralado_casa</definition>
+        <argsstring>(ESTADO *estado, int nosso_player)</argsstring>
+        <name>encurralado_casa</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_player</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversário. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="27" column="5" bodyfile="Camada_de_Dados.c" bodystart="232" bodyend="240" declfile="Camada_de_Dados.h" declline="27" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1a64f1fdf8dc5989c8ca484872f993ee78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int encurralado_jogo</definition>
+        <argsstring>(ESTADO *estado, int player)</argsstring>
+        <name>encurralado_jogo</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se alguém ganhou encurralando o outro jogador. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="28" column="5" bodyfile="Camada_de_Dados.c" bodystart="245" bodyend="252" declfile="Camada_de_Dados.h" declline="28" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1afc4b1bbb945b9cf47fa68a368f63f04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ganhou_encurralado</definition>
+        <argsstring>(ESTADO *estado, int nosso_player)</argsstring>
+        <name>ganhou_encurralado</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_player</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se alguém ganhou encurralado, atribuindo pontos. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="29" column="5" bodyfile="Camada_de_Dados.c" bodystart="257" bodyend="264" declfile="Camada_de_Dados.h" declline="29" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1abaedf09169c3a491cebb9926c5e63735" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int avaliar_jogada</definition>
+        <argsstring>(ESTADO *estado, int nosso_player)</argsstring>
+        <name>avaliar_jogada</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_player</declname>
+        </param>
+        <briefdescription>
+<para>AVALIAR <ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref> PRINCIPAL ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função principal que avalia uma jogada. (NOTA: quando o player == True ou seja 1, significa que player == nosso_player) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="30" column="5" bodyfile="Camada_de_Dados.c" bodystart="272" bodyend="277" declfile="Camada_de_Dados.h" declline="30" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1ad3c28ce832f3d328fda3bd96471925c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float distancia_coord</definition>
+        <argsstring>(COORDENADA coord, int player)</argsstring>
+        <name>distancia_coord</name>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Função que devolve uma coordenada aleatória possível a ser jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="31" column="7" bodyfile="Camada_de_Dados.c" bodystart="304" bodyend="322" declfile="Camada_de_Dados.h" declline="31" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="_camada__de___dados_8h_1aacf0bbd87220820077adabb5061765d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int avaliar_estado_jogo</definition>
+        <argsstring>(ESTADO *estado, int nosso_player)</argsstring>
+        <name>avaliar_estado_jogo</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_player</declname>
+        </param>
+        <briefdescription>
+<para>Função que avalia o estado do jogo consoante os pontos. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>acho q é -// n ta bem // ver valores</para>
+        </inbodydescription>
+        <location file="Camada_de_Dados.h" line="32" column="5" bodyfile="Camada_de_Dados.c" bodystart="328" bodyend="336" declfile="Camada_de_Dados.h" declline="32" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>___CAMADA_DE_DADOS___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>___CAMADA_DE_DADOS___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUF_SIZE<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>casas_inicial(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*inicializador_estado();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*cria_estado_copia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">CASA<sp/>estado_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coordenada);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_se_e_vizinho(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_inicial,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_final);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_jogada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>pos_final);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_Vitoria(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verificar_casas_ocupadas(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_casa_ocupada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_coord(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>min(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_em_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>encurralado_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>encurralado_jogo(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_encurralado(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>avaliar_jogada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distancia_coord(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>avaliar_estado_jogo(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player<sp/>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Camada_de_Dados.h"/>
+  </compounddef>
+</doxygen>

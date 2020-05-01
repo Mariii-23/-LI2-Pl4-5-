@@ -1,3 +1,8 @@
+/**
+@file Interface.h
+Definição da camada de dados do jogo.
+*/
+
 #ifndef ___CAMADA_DE_DADOS___
 #define ___CAMADA_DE_DADOS___
 #define BUF_SIZE 1024

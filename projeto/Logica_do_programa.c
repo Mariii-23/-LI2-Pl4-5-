@@ -6,6 +6,10 @@
 #include "dados.h"
 
 /// FUNÇÃO QUE MOSTRA O POS ///
+
+/**
+\brief Função que imprime o tabuleiro do jogo na posição pretendida.
+*/
 void mostra_pos(ESTADO *estado, int n_jogadas ){
     int i, j;
     CASA tabuleiro[8][8];

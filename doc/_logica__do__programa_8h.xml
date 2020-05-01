@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_logica__do__programa_8h" kind="file" language="C++">
+    <compoundname>Logica_do_programa.h</compoundname>
+    <includes refid="_camada__de___dados_8h" local="yes">Camada_de_Dados.h</includes>
+    <includes refid="_interface_8h" local="yes">Interface.h</includes>
+    <includes refid="dados_8h" local="yes">dados.h</includes>
+    <includedby refid="_camada__de___dados_8c" local="yes">Camada_de_Dados.c</includedby>
+    <includedby refid="_interface_8c" local="yes">Interface.c</includedby>
+    <includedby refid="_melhor___jogada_8h" local="yes">Melhor_Jogada.h</includedby>
+    <includedby refid="listas_8c" local="yes">listas.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="_melhor___jogada_8c" local="yes">Melhor_Jogada.c</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>dados.h</label>
+        <link refid="dados_8h_source"/>
+      </node>
+      <node id="1">
+        <label>Logica_do_programa.h</label>
+        <link refid="_logica__do__programa_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Camada_de_Dados.h</label>
+        <link refid="_camada__de___dados_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Interface.h</label>
+        <link refid="_interface_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>Logica_do_programa.h</label>
+        <link refid="_logica__do__programa_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Melhor_Jogada.h</label>
+        <link refid="_melhor___jogada_8h_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_logica__do__programa_8h_1acb9b7f916bd4759fb2de8b664f8bf447" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void guarda_Jogadas_2</definition>
+        <argsstring>(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int n_jogada)</argsstring>
+        <name>guarda_Jogadas_2</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord1</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_jogada</declname>
+        </param>
+        <briefdescription>
+<para>COMANDO LER ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>ATUALIZA EM FUNCAO DO COMANDO LER ///</para>
+<para>Função que guarda as jogadas do estado. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="13" column="6" bodyfile="Logica_do_programa.c" bodystart="131" bodyend="135" declfile="Logica_do_programa.h" declline="13" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1a922e98eb3acd7905b4adf8902d29283c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void guarda_Jogadas_1</definition>
+        <argsstring>(ESTADO *estado, COORDENADA coord1, int n_jogada)</argsstring>
+        <name>guarda_Jogadas_1</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_jogada</declname>
+        </param>
+        <briefdescription>
+<para>Função que guarda as jogadas do estado. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="14" column="6" bodyfile="Logica_do_programa.c" bodystart="140" bodyend="143" declfile="Logica_do_programa.h" declline="14" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1a47b3e031aec8f1c2122a509d0248d655" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void atualiza_estado_comando_ler</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>atualiza_estado_comando_ler</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza o estado lido através do comando ler. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="15" column="6" bodyfile="Logica_do_programa.c" bodystart="148" bodyend="160" declfile="Logica_do_programa.h" declline="15" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1ac9e0cf779056087992fbc75a05b93829" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mostra_pos</definition>
+        <argsstring>(ESTADO *estado, int n_jogadas)</argsstring>
+        <name>mostra_pos</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_jogadas</declname>
+        </param>
+        <briefdescription>
+<para>FUNÇÃO QUE MOSTRA O POS ///. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que imprime o tabuleiro do jogo na posição pretendida. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="16" column="6" bodyfile="Logica_do_programa.c" bodystart="13" bodyend="51" declfile="Logica_do_programa.h" declline="16" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1a793882e61a83db5efd6648dc25934546" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void atualiza_estado</definition>
+        <argsstring>(ESTADO *estado, COORDENADA coord_mudar)</argsstring>
+        <name>atualiza_estado</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord_mudar</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza o estado a cada jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="17" column="6" bodyfile="Logica_do_programa.c" bodystart="95" bodyend="104" declfile="Logica_do_programa.h" declline="17" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1aedac94896fa0c978db67ffa48463b731" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int jogar</definition>
+        <argsstring>(ESTADO *estado, COORDENADA coord)</argsstring>
+        <name>jogar</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>coord</declname>
+        </param>
+        <briefdescription>
+<para>Função que altera o estado do jogo cosoante a jogada efetuada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="18" column="5" bodyfile="Logica_do_programa.c" bodystart="109" bodyend="123" declfile="Logica_do_programa.h" declline="18" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_logica__do__programa_8h_1a609da5e3c10cd0dccf9beb9533db2217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void atualiza_estado_pos</definition>
+        <argsstring>(ESTADO *estado, int n_pos)</argsstring>
+        <name>atualiza_estado_pos</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_pos</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza o estado em função do comando pos dado. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Logica_do_programa.h" line="19" column="6" bodyfile="Logica_do_programa.c" bodystart="186" bodyend="215" declfile="Logica_do_programa.h" declline="19" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Definição da função jogar responsável por alterar o estado do jogo. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>___LOGICA_DO_PROGRAMA___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>___LOGICA_DO_PROGRAMA___</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Camada_de_Dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_interface_8h" kindref="compound">Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1acb9b7f916bd4759fb2de8b664f8bf447" kindref="member">guarda_Jogadas_2</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord2,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>n_jogada);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1a922e98eb3acd7905b4adf8902d29283c" kindref="member">guarda_Jogadas_1</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/>n_jogada);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1a47b3e031aec8f1c2122a509d0248d655" kindref="member">atualiza_estado_comando_ler</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1ac9e0cf779056087992fbc75a05b93829" kindref="member">mostra_pos</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_jogadas<sp/>);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1a793882e61a83db5efd6648dc25934546" kindref="member">atualiza_estado</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_mudar);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1aedac94896fa0c978db67ffa48463b731" kindref="member">jogar</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_logica__do__programa_8h_1a609da5e3c10cd0dccf9beb9533db2217" kindref="member">atualiza_estado_pos</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_pos);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Logica_do_programa.h"/>
+  </compounddef>
+</doxygen>
