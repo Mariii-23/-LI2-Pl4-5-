@@ -27,9 +27,6 @@ void free_lista (LISTA lista)
 */
 LISTA criar_lista()
 {
-   // LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
-   // l->valor = NULL;
-    //l->next = NULL;
     return NULL;
 }
 
@@ -81,17 +78,6 @@ LISTA remove_cabeca(LISTA L)
     //free(aux);
     return L;
 }
-
-/**
-\brief Função que dá o número de elementos de uma lista.
-*//*
-int length_lista (LISTA lista)
-{
-    LISTA l = lista;
-    int i;
-    for (i=0; l != NULL ; l = l->next, i++);
-    return i;
-}*/
 
 /// LISTA DE COORDENADAS POSSÍVEIS A SEREM EXECUTADAS ///
 

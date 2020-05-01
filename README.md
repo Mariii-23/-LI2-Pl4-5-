@@ -9,21 +9,3 @@ Mariana Dinis Rodrigues - a93229
 Vasco Oliveira Matos - a93206
 
 
-Para o início do trabalho seguimos os passos do "Guião aula 5" disponiblizado pelos docentes de LI2.
-Assim, criamos os vários ficheiros .c, "camada de dados", "Interface" e "lógica do programa", e os seus respetivos .h. 
-Na parte da "camada de dados" está definida a estrutura de dados do programa, onde é definido o conceito
-de "CASA"(cada local do jogo onde as peças se podem movimetar), a "CORDENADA" (que serve para localizar
-cada peça na sua casa), entre outros dados essenciais.
-Na parte "Lógica do programa" estão presentes as funções que vão efetuar altreções no estado do jogo,
-nomeadamente na troca do estado das peças, e alterar a casa da peça em que estava, colocando uma peça branca
-na nova localização e uma preta na localização anterior(usando como auxiliar a função altera_estado_peca).
-Estas duas funções vão ser usadas na função "jogar" que aplica a jogada caso esta seja válida, ou retorna 
-"Jogada Inválida" no caso de não ser.
-Na parte da "Interface" tempos presente uma função que desenha o estado do jogo "imprimindo" o tabuleiro
-por linha e por coluna(ao "imprimir" a linha, é "imprimido" cada elemento das colunas que intersetam essa linha).
-Existe ainda o ficheiro "main" do nosso programa onde é inicializado o jogo, e é chamada a funçao "interpertador" com o argumento "estado"
-afim de a camada de "Interface" imprimir o tabuleiro e trabalhar com as restantes funções do programa produzindo
-o jogo Rastos, posteriormente funcional.
-
-Consoante o guião desta semana, o guião 6, foi necessário acrescentar ao nosso jogo as funções para verificar o jogador vencedor, que procura se a peça preta está na casa 1 ou 2, ou então, caso não seja possível esta movimentar-se, determina o vencedor. Implementamos também a função Q que consoante a decisão do jogador termina o jogo. O comado ler e gr recebem como argumento um ficheiro denominado “jogo.txt”, aberto na função intrepretador, onde vão ler o tabuleiro e grava-lo, respectivamente. Criamos também o prompt com o objetivo de gravar o tabuleiro e as jogadas efetuadas, e o jogador que as efetuou.
-Todo o jogo foi documentado com o Doxygen seguindo o exemplo dado pelos docentes, e corrido o comando doxigen para gerar a documentação.

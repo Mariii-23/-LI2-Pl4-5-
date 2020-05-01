@@ -73,7 +73,7 @@ ESTADO *cria_estado_copia(ESTADO *estado)
         estado_copia->jogadas[i].jogador2 = estado->jogadas[i].jogador2;
     }
     if (estado->jogador_atual==2)  estado_copia->jogadas[i].jogador1 = estado->jogadas[i].jogador1;
-
+    
     return estado_copia;
 }
 

@@ -9,6 +9,9 @@
 #include "listas.h"
 #include "dados.h"
 
+/**
+\brief MAIN
+*/
 int main()
 {
     ESTADO *estado;

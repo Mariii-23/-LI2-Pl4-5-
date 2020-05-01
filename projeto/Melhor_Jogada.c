@@ -87,7 +87,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     int best_Move;
 
     /* coord melhor jogada possivel */
-    COORDENADA *best_Coord = devolve_cabeca( Lista_coords );
+    COORDENADA *best_Coord ;
     
     /* dados auxiliares */
     
@@ -111,6 +111,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
    // }
     /* deveria se libertar a memoria do estado copia !!!!!!!!!!!!!!!!!! */
     //free(estado_copia);
+    free_lista(Lista_coords);
     return best_Coord ;
 }
 
@@ -146,7 +147,6 @@ COORDENADA jogada_boot(ESTADO *estado)
 
     /// caso a coordenada seja inválida posso chamar a funcao que da a coord em funcao da distancia
     /// assim o codigo mesmo q falhe irá dar algum resultado
-
     return coord_resul;
 }
 
@@ -187,7 +187,6 @@ COORDENADA da_coordenada(ESTADO *estado)
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
 */
-// funcao horrivel !!!!!!!!!!!!!!!!!!!!!!!!//
 COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -285,7 +284,11 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
     return coord_result;
 }
 
+/// COORDENADA ATRAVÉS DA MENOR DISTÃNCIA /// 
 
+/**
+\brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
+*/
 COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
 {
     COORDENADA coord_result = estado->ultima_jogada,

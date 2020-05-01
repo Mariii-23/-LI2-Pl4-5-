@@ -64,7 +64,7 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
         casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
-    fprintf(stream, "\n"); /*apagar depois*/
+    fprintf(stream, "\n"); 
 }
 
 /**
@@ -228,6 +228,9 @@ void comando_ler(FILE *fp,ESTADO *estado)
     else fprintf(stdout, "O comando ler falhou");
 }
 
+/**
+\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
+*/
 void ler(ESTADO *estado, char *filename)
 {
     FILE *fp;
@@ -242,7 +245,6 @@ void ler(ESTADO *estado, char *filename)
     {
 /* Lê o tabuleiro que está no ficheiro e imprime. */
         comando_ler(fp, estado);
-
         guarda_tabuleiro(estado,stdout);
         prompt(estado, stdout);
 /* Fecha o ficheiro */
@@ -289,18 +291,19 @@ int interpretador(ESTADO *estado)
 
             if ( ganhou )  jogador_vencedor( estado, stdout);
 
-        /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
+            /* Lê o comando Q, que retorna 0, o que faz com que a main pare o ciclo e o jogo fecha. */
             if(strcmp( linha, "Q\n" ) == 0 || strcmp( linha, "q\n" ) == 0 ) return 0;
 
-        /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
+            /* Abre o ficheiro em modo writing(se o ficheiro não existir, cria-o), e guarda o tabuleiro */
             if(sscanf(linha, "gr %s",filename) == 1)      gr(estado, filename);
 
-        /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
+            /* Abre o ficheiro em modo reading caso exista, caso contrário apresenta o erro. */
             if(sscanf(linha, "ler %s",filename) == 1)     ler(estado, filename);
 
+            /* Executa o comando movs */
             if(strcmp( linha, "movs\n" ) == 0)           movs(estado);
 
-
+            /* Executa o comando pos */
             if(sscanf(linha, "pos %d",&n_pos) == 1)
             {
                 if (n_pos < estado->num_jogadas && n_pos>0 )   comando_pos(estado, n_pos);
@@ -313,6 +316,7 @@ int interpretador(ESTADO *estado)
                 }
             }
 
+            /* Executa uma jogada aleatótia */
             if(strcmp( linha, "jog2\n" ) == 0)
             {
                 COORDENADA coord;
@@ -343,6 +347,7 @@ int interpretador(ESTADO *estado)
                 }
             }
             
+            /* Executa uma jogada em função da menor distância */
             if(strcmp( linha, "jog1\n" ) == 0)
             {
                 /* Atualizar pos */
@@ -352,7 +357,6 @@ int interpretador(ESTADO *estado)
                     n_pos = 0;
                 }
 
-                //COORDENADA coord = da_coordenada_distancia(estado);
                 COORDENADA coord = obtem_coord_atraves_da_distancia(estado);
 
                 if( verifica_coord(coord) && verifica_jogada(estado, coord))
@@ -385,15 +389,9 @@ int interpretador(ESTADO *estado)
                         prompt(estado, stdout);
                     }  
                 }
-                /*
-                {
-                    fprintf(stdout,"O comando jogar falhou.\n");
-                    estado->num_comando++;
-                    guarda_tabuleiro(estado, stdout);
-                    prompt(estado, stdout);
-                }*/
             }
             
+            /* Seria a jogada com o minmax
             if(strcmp( linha, "bot\n" ) == 0)
             {
                 
@@ -419,7 +417,7 @@ int interpretador(ESTADO *estado)
                     guarda_tabuleiro(estado, stdout);
                     prompt(estado, stdout);
                 }
-            }
+            } */
         }
     }
     return ganhou;

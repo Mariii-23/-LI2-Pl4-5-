@@ -119,8 +119,8 @@ int jogar(ESTADO *estado, COORDENADA coord)
 }
 
 /// COMANDO LER ///
-/// ATUALIZA EM FUNCAO DO COMANDO LER ///
 
+/// ATUALIZA EM FUNCAO DO COMANDO LER ///
 /**
 \brief Função que guarda as jogadas do estado.
 */

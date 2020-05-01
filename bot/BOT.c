@@ -7,6 +7,7 @@
 #define n_vitoria_casa 80     // 100
 #define n_vitoria_encurralado 120  // 200
 #define n_vitoria_casaEencurralado 150 //    250
+
 /// DADOS ///
 /**
 \brief Tipo de dados para os erros
@@ -97,9 +98,6 @@ void free_lista (LISTA lista)
 */
 LISTA criar_lista()
 {
-   // LISTA l = malloc(sizeof( NLista )); //LISTA l = malloc(sizeof( NLista));
-   // l->valor = NULL;
-    //l->next = NULL;
     return NULL;
 }
 
@@ -116,7 +114,6 @@ int lista_esta_vazia(LISTA L)
 */
 LISTA insere_cabeca(LISTA L, void *valor_dado)
 {
-    //LISTA aux = criar_lista();
     LISTA aux = malloc(sizeof( NLista ));
     aux->valor = valor_dado;
     aux->next = L;
@@ -129,7 +126,6 @@ LISTA insere_cabeca(LISTA L, void *valor_dado)
 */
 void *devolve_cabeca(LISTA L)
 {
-    //return &(*(L->valor));
     return (L->valor);
 }
 
@@ -146,7 +142,6 @@ LISTA proximo(LISTA L)
 */
 LISTA remove_cabeca(LISTA L)
 {
-    //LISTA aux = L;
     L = L->next;
     //free(aux);
     return L;
@@ -639,20 +634,6 @@ void atualiza_estado_comando_ler(ESTADO *estado)
 
 /// INTERFACE ///
 
-/// JOGADOR VENCEDOR ///
-
-/**
-\brief Função que determina o vencedor do jogo.
-*/
-void jogador_vencedor(ESTADO *estado, FILE *stream) {
-    int j, jog_atual = estado->jogador_atual;
-    if (jog_atual == 1) j = 2;
-    else j = 1;
-    if ( estado->ultima_jogada.linha == 0 && estado->ultima_jogada.coluna == 0) j = 1;
-    if ( estado->ultima_jogada.linha == 7 && estado->ultima_jogada.coluna == 7) j = 2;
-    fprintf (stream, "\nO Player %d é o vencedor! Parabéns!\n", j);
-}
-
 
 /// TABULEIRO : IMPRIME OU GUARDA ///
 
@@ -697,7 +678,7 @@ void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
         casa = estado->tab[linha][coluna];
         fputc(casa, stream);
     }
-    fprintf(stream, "\n"); /*apagar depois*/
+    fprintf(stream, "\n"); 
 }
 
 /**
@@ -743,15 +724,6 @@ void comando_movs(ESTADO *estado, FILE *stream)
         if (num <10)  fprintf(stream, "0%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1);
         else          fprintf(stream, "%d: %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1); 
     }
-    /*
-    else
-    {
-        if(stream!=stdout)
-        {
-            if (num <10)  fprintf(stream, "0%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna + 'a', coord2.linha + 1 );
-            else          fprintf(stream, "%d: %c%d %c%d\n", num, coord1.coluna + 'a', coord1.linha + 1, coord2.coluna  + 'a', coord2.linha + 1 );
-        }
-    }   */
 }
 
 void movs(ESTADO *estado)
@@ -780,8 +752,6 @@ void gr(ESTADO *estado, char *filename)
 /* Grava o tabuleiro no ficheiro. */
     comando_gr(estado, fp);
     estado->num_comando++;
-   // guarda_tabuleiro(estado, stdout);
-   // prompt(estado, stdout);
 /* Fecha novamente o documento */
     fclose(fp);
     estado->num_comando++;  
@@ -818,8 +788,7 @@ void comando_ler(FILE *fp,ESTADO *estado)
 
     for( l = 7; l >= 0; l--)
     {
-        if (fgets(linha, BUF_SIZE, fp)) 
-            ler_linha(estado, linha, l);
+        if (fgets(linha, BUF_SIZE, fp))   ler_linha(estado, linha, l);
     } 
 
     if (fgets(linha,BUF_SIZE, fp))
@@ -853,25 +822,16 @@ void ler(ESTADO *estado, char *filename)
 {
     FILE *fp;
     fp = fopen(filename, "r");
-    if (fp == NULL)  
-    {
-        printf("O ficheiro não abriu.\n");
-        //guarda_tabuleiro(estado, stdout);
-       // prompt(estado, stdout);
-    }
+    if (fp == NULL)    printf("O ficheiro não abriu.\n");
     else 
     {
 /* Lê o tabuleiro que está no ficheiro e imprime. */
         comando_ler(fp, estado);
-
-       // guarda_tabuleiro(estado,stdout);
-       // prompt(estado, stdout);
 /* Fecha o ficheiro */
         fclose(fp);
     }
 }
 /// MELHOR JOGADA ///
-
 int muda_jogador(int player)
 {
     if (player ==1 ) player = 2 ;
@@ -893,8 +853,8 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jog
     int y = (*coord).coluna;
     COORDENADA coord_ = {x , y};
 
-    printf("coord ");
-    printf("    %d  %d\n", coord_.linha, coord_.coluna);
+    // printf("coord ");
+    // printf("    %d  %d\n", coord_.linha, coord_.coluna);
 
     atualiza_estado(estado_copia, coord_);
 
@@ -945,28 +905,22 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jog
 COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
-
     LISTA Lista_coords =  cria_lista_coords_possiveis(estado);
-
     /* valor da melhor jogada possivel */
     int best_Move;
-
     /* coord melhor jogada possivel */
     COORDENADA *best_Coord = devolve_cabeca( Lista_coords );
     
     /* dados auxiliares */
-    
     int atual;
 
     best_Move = MinMax( estado_copia, devolve_cabeca( Lista_coords ), -99999 , 99999  , estado->jogador_atual, 10);
-
     best_Coord = devolve_cabeca( Lista_coords );
 
     for ( Lista_coords = proximo( Lista_coords ) ; !(lista_esta_vazia( Lista_coords ) ) ; Lista_coords = proximo( Lista_coords ) )
     {
         atual = MinMax( estado_copia , devolve_cabeca( Lista_coords ), -99999, 99999  , estado->jogador_atual , 10);
-        printf("\n\n%d\n\n", atual);
-
+        //printf("\n\n%d\n\n", atual);
         if ( atual > best_Move )
         {
             best_Move = atual;
@@ -1016,7 +970,7 @@ COORDENADA jogada_boot(ESTADO *estado)
 }
 
 
-/// da coordenada aleatoria ///
+/// DA COORDENADA ALEATÓRIA ///
 
 /**
 \brief Função que devolve uma coordenada aleatória possível a ser jogada.
@@ -1052,7 +1006,6 @@ COORDENADA da_coordenada(ESTADO *estado)
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
 */
-// funcao horrivel !!!!!!!!!!!!!!!!!!!!!!!!//
 COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -1150,7 +1103,19 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
     return coord_result;
 }
 
+/**
+\brief Função que verifica se foi o nosso jogador a ganhar.
+*/
+int jogador_vencedor(ESTADO *estado, int nosso_player)
+{
+    if ( estado->ultima_jogada.linha == 0 && estado->ultima_jogada.coluna == 0  && nosso_player == 1 ) return 1;
+    if ( estado->ultima_jogada.linha == 7 && estado->ultima_jogada.coluna == 7  && nosso_player == 2 ) return 1;
+    return 0;
+}
 
+/**
+\brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
+*/
 COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
 {
     COORDENADA coord_result = estado->ultima_jogada,
@@ -1159,10 +1124,9 @@ COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
     COORDENADA *coord_ ;
     LISTA lista_coords = cria_lista_coords_possiveis(estado);
 
-    int dist_best = 1000; //distancia_coord(coord, estado->jogador_atual);
+    int dist_best = 1000; 
     float i; 
     
-    /* (coord_result.coluna == coord.coluna && coord_result.linha == coord.linha ) ||*/  
     while ( !lista_esta_vazia(lista_coords) )
     {
         coord_ = devolve_cabeca(lista_coords);
@@ -1171,12 +1135,24 @@ COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
         aux.coluna = ((*coord_).coluna);
         //free(coord_);
         if (verifica_coord(aux) && estado->tab[ aux.linha ][ aux.coluna ] != BRANCA ) 
-        {
+        {            
             i = distancia_coord( aux , estado->jogador_atual);
             if( i <= dist_best ) 
             {
-                dist_best = i;
-                coord_result = aux;
+                ESTADO *estado_copia = cria_estado_copia(estado);
+                atualiza_estado(estado_copia, aux);
+
+                if ( verifica_Vitoria( estado_copia ) && jogador_vencedor(estado_copia, estado->jogador_atual) )
+                {
+                    dist_best = i;
+                    coord_result = aux;
+                }
+
+                if ( !verifica_Vitoria( estado_copia ) )
+                {
+                    dist_best = i;
+                    coord_result = aux;
+                }
             }
         } 
         lista_coords = remove_cabeca(lista_coords); 
@@ -1185,6 +1161,9 @@ COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
 }
 
 /// main ///
+/**
+\brief Função que atualiza o estado do jogo através da coordenada obtida.
+*/
 void atualiza_jogada_boot(ESTADO *estado){
     COORDENADA coord = obtem_coord_atraves_da_distancia(estado);
 
@@ -1199,7 +1178,9 @@ void atualiza_jogada_boot(ESTADO *estado){
     }
 }
 
-
+/**
+\brief MAIN do boot.
+*/
 int main(int argc, char *argv[])
 {    
     int resul = 1;
