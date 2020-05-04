@@ -15,8 +15,7 @@ typedef struct lista {
   void *valor;
   /** Apontador para o próximo elemento da lista. */
   struct lista *next;
-  /** Definido *LISTA */
-} *LISTA, NLista; /** Definido NLISTA */
+} *LISTA, NLista; /**< Definido *LISTA */
 
 /**
 \brief Função que liberta o espaco de memoria ocupado pela lista.
