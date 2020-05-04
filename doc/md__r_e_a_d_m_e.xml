@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__r_e_a_d_m_e" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>LI2-JOGO</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Laboratórios de Informática || [MIEINF] Universidade do Minho Turno: PL4 Grupo: 5 Jéssica Macedo Fernandes - a93318 Mariana Dinis Rodrigues - a93229 Vasco Oliveira Matos - a93206 </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
