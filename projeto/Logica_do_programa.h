@@ -61,7 +61,6 @@ void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada);
 */
 void atualiza_estado_comando_ler(ESTADO *estado);
 
-
 /**
 \brief Função que atualiza o tabuleiro do estado em função do comando pos dado.
 */

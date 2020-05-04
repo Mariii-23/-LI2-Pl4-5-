@@ -52,7 +52,6 @@ void mostra_pos(ESTADO *estado, int n_jogadas ){
     mostra_tabuleiro(tabuleiro,stdout);
 }
 
-
 /// ATUALIZA O ESTADO ///
 
 void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
@@ -73,7 +72,6 @@ void atualiza_JOGADAS(ESTADO *estado,COORDENADA coord_mudar)
     if (estado->jogador_atual == 2)   estado->jogadas[ estado->num_jogadas - 1].jogador2 = coord_mudar; 
     else                              estado->jogadas[ estado->num_jogadas - 1].jogador1 = coord_mudar;
 }
-
 
 void atualiza_Num_Jogadas(ESTADO *estado)
 {
@@ -109,7 +107,6 @@ int jogar(ESTADO *estado, COORDENADA coord)
 }
 
 /// COMANDO LER ///
-
 /// ATUALIZA EM FUNCAO DO COMANDO LER ///
 
 void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
@@ -122,7 +119,6 @@ void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
 {
     estado->jogadas[ n_jogada ].jogador1 = coord1;
 }
-
 
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
@@ -178,7 +174,6 @@ void atualiza_estado_pos(ESTADO *estado,int n_pos)
         estado->jogadas[linha].jogador1 = jogadas[linha].jogador1;
         estado->jogadas[linha].jogador2 = jogadas[linha].jogador2;
     }
-    
     /* Atualiza  o tabuleiro do estado */
     atualiza_tabuleiro_pos(estado,n_pos);
     /* Atualiza a ultima coordenad do estado */

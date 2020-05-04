@@ -43,11 +43,9 @@ void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
     fprintf(stream, "\n");
 }
 
-
 void prompt(ESTADO *estado, FILE *stream) {  
     fprintf(stream, "# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
 }
-
 
 void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
 {
@@ -80,13 +78,11 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 /// !!!____COMANDOS___!!! ////
 
 /// COMANDO POS ///
-
 void comando_pos(ESTADO *estado, int n_jogadas ){
     mostra_pos(estado,n_jogadas );
     estado->num_comando++;
     prompt(estado, stdout);
 }
-
 
 /// Comando movs ///
 void comando_movs(ESTADO *estado, FILE *stream)

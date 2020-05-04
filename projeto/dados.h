@@ -36,7 +36,7 @@ Definição dos dados do jogo.
 typedef enum {
     /** Sem erro */
     OK, 
-    /** COORDENADA_INVALID  */
+    /** COORDENADA_INVALIDA  */
     COORDENADA_INVALIDA, 
     /** JOGADA INVALIDA */
     JOGADA_INVALIDA, 

@@ -56,7 +56,6 @@ LISTA proximo(LISTA L)
     return (L->next);
 }
 
-
 LISTA remove_cabeca(LISTA L)
 {
     //LISTA aux = L;

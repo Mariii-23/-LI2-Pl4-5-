@@ -103,7 +103,6 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 }
 
 /// VERIFICA SE ALGUEM GANHOU ///
-
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul = 1;
@@ -155,10 +154,6 @@ int verifica_coord(COORDENADA coord)
 }
 
 /// FUNCOES AUXILIARES DO MINMAX ///
-
-/**
-\brief Função que devolve o menor valor de dois.
-*/
 int min(int a, int b)
 {
     int resul = a;
@@ -175,7 +170,6 @@ int max(int a, int b)
 }
 
 /// AVALIAR UMA JOGADA ///
-
 int ganhou_em_casa(ESTADO *estado, int nosso_player)
 {
     int resul=0;
@@ -190,7 +184,6 @@ int ganhou_em_casa(ESTADO *estado, int nosso_player)
     }
     return resul; 
 }
-
 
 int encurralado_casa(ESTADO *estado, int nosso_player)
 {
@@ -219,7 +212,6 @@ int ganhou_encurralado(ESTADO *estado, int nosso_player)
     else resul = encurralado_casa(estado, nosso_player);
     return resul;
 }
-
 
 /// AVALIAR JOGADA PRINCIPAL ///
 int avaliar_jogada(ESTADO *estado, int nosso_player)
@@ -264,7 +256,7 @@ float distancia_coord(COORDENADA coord, int player)
     int x = abs( coord_casa.coluna - coord.coluna ),
         y = abs( coord_casa.linha - coord.linha );
     float resul = ( x*x + y*y );
-    /*float resul = x+y;*/
+    /* float resul = x+y; */
     return ( resul );
 }
 

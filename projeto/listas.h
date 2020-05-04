@@ -6,7 +6,6 @@ Definição do módulo com operações sobre listas.
 #ifndef ___LISTAS___
 #define ___LISTAS___
 
-
 /**
 \brief Tipo de dados para listas.
 */

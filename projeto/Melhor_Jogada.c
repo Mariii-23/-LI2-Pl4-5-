@@ -75,8 +75,6 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jog
     return 0;
 }
 
-
-
 COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
@@ -115,7 +113,6 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     return best_Coord ;
 }
 
-
 COORDENADA jogada_boot(ESTADO *estado)
 {
     COORDENADA *coord;
@@ -147,7 +144,6 @@ COORDENADA jogada_boot(ESTADO *estado)
     /// assim o codigo mesmo q falhe irá dar algum resultado
     return coord_resul;
 }
-
 
 /// da coordenada aleatoria ///
 

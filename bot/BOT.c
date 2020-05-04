@@ -94,7 +94,6 @@ typedef JOGADA JOGADAS[32];
 /**
 \brief Tipo de dados para o estado
 */
-
 typedef struct {
   /** O tabuleiro */
   CASA tab[8][8];
@@ -110,10 +109,15 @@ typedef struct {
   COORDENADA ultima_jogada;
 } ESTADO;
 
+/**
+\brief Tipo de dados para listas.
+*/
 typedef struct lista {
+  /** Valor do elemento da lista. */
   void *valor;
+  /** Apontador para o próximo elemento da lista. */
   struct lista *next;
-} *LISTA, NLista;
+} *LISTA, NLista; /**< Definido *LISTA */
 
 
 
@@ -242,7 +246,6 @@ LISTA cria_lista_coords_possiveis(ESTADO *estado)
     lista = adiciona_lista(lista, estado, coord4);
     return lista;
 }
-
 
 /// CAMADA DE DADOS ///
 /// ESTADO INICIAL ///
@@ -410,7 +413,6 @@ int verifica_Vitoria(ESTADO *estado)
 {
      return ( verifica_vencedor(estado) || verificar_casas_ocupadas(estado) );
 }
-
 
 /// FUNCOES AUXILIARES DO MINMAX ///
 
@@ -697,7 +699,6 @@ void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
     fprintf(stream, "\n");
 }
 
-
 /**
 \brief Prompt do jogo.
 */
@@ -765,6 +766,9 @@ void comando_movs(ESTADO *estado, FILE *stream)
     }
 }
 
+/**
+\brief Executa o comando movs que imprime a lista de jogadas.
+*/
 void movs(ESTADO *estado)
 {
     comando_movs(estado,stdout);
@@ -775,7 +779,7 @@ void movs(ESTADO *estado)
 
 /// COMANDO GRAVAR ///
 /**
-\brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
+\brief Executa o comando gr para guardar o tabuleiro do jogo no ficheiro.
 */
 void comando_gr(ESTADO *estado, FILE *stream) {
     guarda_tabuleiro(estado, stream);
@@ -796,7 +800,7 @@ void gr(ESTADO *estado, char *filename)
     estado->num_comando++;  
 }
 
-/// COAMANDO LER ///
+/// COMANDO LER ///
 
 /**
 \brief Função que atualiza o tabuleiro de um estado atravé de um ficheiro.
@@ -1040,7 +1044,7 @@ COORDENADA da_coordenada(ESTADO *estado)
     return coord;
 }
 
-/// COORDENADA ATRAVÉS DA MENOR DISTÃNCIA /// 
+/// COORDENADA ATRAVÉS DA MENOR DISTANCIA /// 
 
 /**
 \brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
