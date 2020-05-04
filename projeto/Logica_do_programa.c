@@ -7,9 +7,6 @@
 
 /// FUNÇÃO QUE MOSTRA O POS ///
 
-/**
-\brief Função que imprime o tabuleiro do jogo na posição pretendida.
-*/
 void mostra_pos(ESTADO *estado, int n_jogadas ){
     int i, j;
     CASA tabuleiro[8][8];
@@ -53,9 +50,6 @@ void mostra_pos(ESTADO *estado, int n_jogadas ){
 
 /// ATUALIZA O ESTADO ///
 
-/**
-\brief Função que altera o estado da peça.
-*/
 void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
 {
     int x = coordenada.linha;
@@ -63,35 +57,25 @@ void altera_estado_peca(ESTADO *estado, COORDENADA coordenada, CASA mudar)
     estado->tab[x][y] = mudar;
 }
 
-/**
-\brief Função que altera o estado da casa onde estava, para a qual se pretendia mover.
-*/
 void troca_posicoes(ESTADO *estado, COORDENADA pos_final)
 {
     altera_estado_peca(estado, estado->ultima_jogada, BRANCA);
     altera_estado_peca(estado, pos_final, PRETA);
 }
-/**
-\brief Função que altera o estado das JOGADAS, adicionando a ultima coordenada dada.
-*/
+
 void atualiza_JOGADAS(ESTADO *estado,COORDENADA coord_mudar)
 {
     if (estado->jogador_atual == 2)   estado->jogadas[ estado->num_jogadas - 1].jogador2 = coord_mudar; 
     else                              estado->jogadas[ estado->num_jogadas - 1].jogador1 = coord_mudar;
 }
 
-/**
-\brief Função que atualiza o num_jogadas do estado.
-*/
+
 void atualiza_Num_Jogadas(ESTADO *estado)
 {
     int jog = estado->jogador_atual;
     if (jog == 1)  estado->num_jogadas += 1;
 }
 
-/**
-\brief Função que atualiza o estado a cada jogada.
-*/
 void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar) 
 {
     troca_posicoes(estado, coord_mudar);
@@ -103,9 +87,6 @@ void atualiza_estado(ESTADO *estado, COORDENADA coord_mudar)
     estado->ultima_jogada = coord_mudar;
 }
 
-/**
-\brief Função que altera o estado do jogo cosoante a jogada efetuada.
-*/
 int jogar(ESTADO *estado, COORDENADA coord)
 {
     int resul=0;
@@ -125,26 +106,19 @@ int jogar(ESTADO *estado, COORDENADA coord)
 /// COMANDO LER ///
 
 /// ATUALIZA EM FUNCAO DO COMANDO LER ///
-/**
-\brief Função que guarda as jogadas do estado.
-*/
+
 void guarda_Jogadas_2(ESTADO *estado, COORDENADA coord1, COORDENADA coord2, int  n_jogada)
 {
     estado->jogadas[ n_jogada ].jogador1 = coord1;
     estado->jogadas[ n_jogada ].jogador2 = coord2;
 }
 
-/**
-\brief Função que guarda as jogadas do estado.
-*/
 void guarda_Jogadas_1(ESTADO *estado, COORDENADA coord1, int  n_jogada)
 {
     estado->jogadas[ n_jogada ].jogador1 = coord1;
 }
 
-/**
-\brief Função que atualiza o estado lido através do comando ler.
-*/
+
 void atualiza_estado_comando_ler(ESTADO *estado)
 {
     if ( estado->num_comando % 2 )  
@@ -161,9 +135,6 @@ void atualiza_estado_comando_ler(ESTADO *estado)
 
 /// ATUALIZA ESTADO EM FUNCAO DO POS ///
 
-/**
-\brief Função que atualiza o tabuleiro do estado em função do comando pos dado.
-*/
 void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
 {
     int num;
@@ -180,9 +151,6 @@ void atualiza_tabuleiro_pos(ESTADO *estado, int n_jogadas)
     estado->tab[0][0] = UM;
 }
 
-/**
-\brief Função que atualiza o estado em função do comando pos dado.
-*/
 void atualiza_estado_pos(ESTADO *estado,int n_pos)
 {
     int linha;

@@ -13,21 +13,31 @@
 \brief Tipo de dados para os erros
 */
 typedef enum {
-  OK, 
-  COORDENADA_INVALIDA, 
-  JOGADA_INVALIDA, 
-  ERRO_LER_TAB,
-  ERRO_ABRIR_FICHEIRO,
+    /** Sem erro */
+    OK, 
+    /** COORDENADA_INVALID  */
+    COORDENADA_INVALIDA, 
+    /** JOGADA INVALIDA */
+    JOGADA_INVALIDA, 
+    /** ERRO AO LER O TABULEIRO  */
+    ERRO_LER_TAB,
+    /** ERRO AO ABRIR FICHEIRO */
+    ERRO_ABRIR_FICHEIRO,
 } ERROS;
 
 /**
-\brief Tipo de dados para a casa
+\brief Tipo de dados para a casa.
 */
 typedef enum {
+  /** Casa jogador UM. */
   UM = '1',
+  /** Casa jogador DOIS. */
   DOIS = '2',
+  /** Casa disponível para jogar. */
   VAZIO = '.',
+  /** Casa indisponível para jogar. */
   BRANCA = '#',
+  /** Casa onde se encontra a peça PRETA. */
   PRETA = '*'
 } CASA;
 
@@ -35,7 +45,9 @@ typedef enum {
 \brief Tipo de dados para as coordenadas
 */
 typedef struct {
+    /** Coluna da coordenada */
     int coluna;
+    /** Linha da coordenada */
     int linha;
 } COORDENADA;
 
@@ -43,7 +55,9 @@ typedef struct {
 \brief Tipo de dados para a jogada
 */
 typedef struct {
+    /** Coordenada do jogador 1 */
     COORDENADA jogador1;
+    /** Coordenada do jogador 2 */
     COORDENADA jogador2;
 } JOGADA;
 

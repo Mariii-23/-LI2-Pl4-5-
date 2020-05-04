@@ -1,5 +1,5 @@
 /**
-@file Interface.h
+@file dados.h
 Definição dos dados do jogo.
 */
 
@@ -8,14 +8,19 @@ Definição dos dados do jogo.
 #define BUF_SIZE 1024
 
 /**
-\brief Tipo de dados para os erros.
+\brief Tipo de dados para os erros
 */
 typedef enum {
-  OK, 
-  COORDENADA_INVALIDA, 
-  JOGADA_INVALIDA, 
-  ERRO_LER_TAB,
-  ERRO_ABRIR_FICHEIRO,
+    /** Sem erro */
+    OK, 
+    /** COORDENADA_INVALID  */
+    COORDENADA_INVALIDA, 
+    /** JOGADA INVALIDA */
+    JOGADA_INVALIDA, 
+    /** ERRO AO LER O TABULEIRO  */
+    ERRO_LER_TAB,
+    /** ERRO AO ABRIR FICHEIRO */
+    ERRO_ABRIR_FICHEIRO,
 } ERROS;
 
 /**

@@ -16,9 +16,6 @@ int muda_jogador(int player)
 
 /// ESTRATEGIA MINMAX ///
 
-/**
-\brief Função que executa o MinMax, retornando o valor de uma determinada jogada.
-*/
 int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jogador, int n_avaliar)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
@@ -74,9 +71,7 @@ int MinMax(ESTADO *estado,COORDENADA *coord, int alpha, int betha, int nosso_jog
 }
 
 
-/**
-\brief Função que inicia o MinMax, retornando a melhor COORDENADA a ser efetuada.
-*/
+
 COORDENADA *Iniciar_MinMax(ESTADO *estado)
 {
     ESTADO *estado_copia = cria_estado_copia(estado);
@@ -115,9 +110,7 @@ COORDENADA *Iniciar_MinMax(ESTADO *estado)
     return best_Coord ;
 }
 
-/**
-\brief Função que devolve a melhor coordenada a ser efetuada pelo boot ou uma coordenada inválida se a jogada for inválida.
-*/
+
 COORDENADA jogada_boot(ESTADO *estado)
 {
     COORDENADA *coord;
@@ -153,9 +146,6 @@ COORDENADA jogada_boot(ESTADO *estado)
 
 /// da coordenada aleatoria ///
 
-/**
-\brief Função que devolve uma coordenada aleatória possível a ser jogada.
-*/
 COORDENADA da_coordenada(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -184,9 +174,6 @@ COORDENADA da_coordenada(ESTADO *estado)
 
 /// COORDENADA ATRAVÉS DA MENOR DISTÃNCIA /// 
 
-/**
-\brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
-*/
 COORDENADA da_coordenada_distancia(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -286,9 +273,6 @@ COORDENADA da_coordenada_distancia(ESTADO *estado)
 
 /// COORDENADA ATRAVÉS DA MENOR DISTÃNCIA /// 
 
-/**
-\brief Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador.
-*/
 COORDENADA obtem_coord_atraves_da_distancia(ESTADO *estado)
 {
     COORDENADA coord_result = estado->ultima_jogada,

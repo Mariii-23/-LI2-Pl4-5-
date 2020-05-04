@@ -10,9 +10,6 @@
 #define n_vitoria_casaEencurralado 150 //    250
 
 /// ESTADO INICIAL ///
-/**
-\brief Função que define cada casa do jogo quando este é iniciado.
-*/
 void casas_inicial(ESTADO *estado)
 {
     int i, j;
@@ -34,9 +31,6 @@ void casas_inicial(ESTADO *estado)
     }  
 }
 
-/**
-\brief Função que define o estado inicial do jogo.
-*/
 ESTADO *inicializador_estado()
 {
     ESTADO *estado = (ESTADO *) calloc(1, sizeof(ESTADO));
@@ -50,9 +44,6 @@ ESTADO *inicializador_estado()
 }
 
 /// ESTADO COPIA ///
-/**
-\brief Função que cria uma cópia do ESTADO.
-*/
 ESTADO *cria_estado_copia(ESTADO *estado)
 {
     ESTADO *estado_copia = (ESTADO *) calloc(1, sizeof(ESTADO));
@@ -78,9 +69,6 @@ ESTADO *cria_estado_copia(ESTADO *estado)
 }
 
 /// FUNCOES AUXILIARES ///
-/**
-\brief Função que devolve o estado de cada peça consoante as coordenadas dadas.
-*/
 CASA estado_casa(ESTADO estado, COORDENADA coordenada)
 {
     int x = coordenada.linha;
@@ -89,9 +77,6 @@ CASA estado_casa(ESTADO estado, COORDENADA coordenada)
     return peca;
 }
 
-/**
-\brief Função que verifica se a jogada é possível.
-*/
 int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
 {
     int x, y, x_, y_, resul=0;
@@ -107,9 +92,6 @@ int verifica_se_e_vizinho(COORDENADA coord_inicial, COORDENADA coord_final)
     return resul;
 }
 
-/**
-\brief Função principal que verifica se é possível executar a jogada.
-*/
 int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 {
     int x = pos_final.linha;
@@ -121,9 +103,6 @@ int verifica_jogada(ESTADO *estado, COORDENADA pos_final)
 
 /// VERIFICA SE ALGUEM GANHOU ///
 
-/**
-\brief Função que verifica se a casa está disponível para se mover para lá.
-*/
 int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
 {
     int x, y, resul = 1;
@@ -134,9 +113,6 @@ int verifica_casa_ocupada(ESTADO *estado, COORDENADA coord)
     return resul;
 }
 
-/**
-\brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
-*/
 int verificar_casas_ocupadas(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -156,9 +132,6 @@ int verificar_casas_ocupadas(ESTADO *estado)
     return resul;
 }
 
-/**
-\brief Função que verifica se a peça preta se encontra na casa 1 ou 2.
-*/
 int verifica_vencedor(ESTADO *estado) 
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -167,17 +140,12 @@ int verifica_vencedor(ESTADO *estado)
     return r;
 }
 
-/**
-\brief Função principal que verifica se existe vencedor.
-*/
 int verifica_Vitoria(ESTADO *estado)
 {
      return ( verifica_vencedor(estado) || verificar_casas_ocupadas(estado) );
 }
 
-/**
-\brief Função que verifica se uma COORDENADA é válida.
-*/
+
 int verifica_coord(COORDENADA coord)
 {
     int x = coord.linha,
@@ -197,9 +165,7 @@ int min(int a, int b)
     return resul;
 }
 
-/**
-\brief Função que devolve o maior valor de dois.
-*/
+
 int max(int a, int b)
 {
     int resul = a;
@@ -208,9 +174,7 @@ int max(int a, int b)
 }
 
 /// AVALIAR UMA JOGADA ///
-/**
-\brief Função que verifica se ganhou em casa, atribuindo os respetivos pontos.
-*/
+
 int ganhou_em_casa(ESTADO *estado, int nosso_player)
 {
     int resul=0;
@@ -226,9 +190,7 @@ int ganhou_em_casa(ESTADO *estado, int nosso_player)
     return resul; 
 }
 
-/**
-\brief Função que verifica se alguém ganhou, obrigando o outro jogador a jogar para a casa do adversário.
-*/
+
 int encurralado_casa(ESTADO *estado, int nosso_player)
 {
     int resul = 0;
@@ -239,9 +201,6 @@ int encurralado_casa(ESTADO *estado, int nosso_player)
     return resul;
 }
 
-/**
-\brief Função que verifica se alguém ganhou encurralando o outro jogador.
-*/
 int encurralado_jogo(ESTADO *estado, int player)
 {
     int resul = 0;
@@ -251,9 +210,6 @@ int encurralado_jogo(ESTADO *estado, int player)
     return resul;
 }
 
-/**
-\brief Função que verifica se alguém ganhou encurralado, atribuindo pontos.
-*/
 int ganhou_encurralado(ESTADO *estado, int nosso_player)
 {
     int resul = 0;
@@ -265,10 +221,6 @@ int ganhou_encurralado(ESTADO *estado, int nosso_player)
 
 
 /// AVALIAR JOGADA PRINCIPAL ///
-/**
-\brief Função principal que avalia uma jogada. 
-      (NOTA: quando o player == True ou seja 1, significa que player == nosso_player)
-*/
 int avaliar_jogada(ESTADO *estado, int nosso_player)
 {
     int resul = ganhou_encurralado(estado, nosso_player);
@@ -276,9 +228,6 @@ int avaliar_jogada(ESTADO *estado, int nosso_player)
     return resul;
 }
 
-/**
-\brief Função principal que verifica se todas as casas vizinhas se encontram ocupadas.
-*/
 int contar_casas_ocupadas(ESTADO *estado)
 {
     COORDENADA coord = estado->ultima_jogada;
@@ -298,9 +247,6 @@ int contar_casas_ocupadas(ESTADO *estado)
     return resul;
 }
 
-/**
-\brief Função que devolve uma coordenada aleatória possível a ser jogada.
-*/
 float distancia_coord(COORDENADA coord, int player)
 {
     COORDENADA coord_casa;
@@ -321,10 +267,6 @@ float distancia_coord(COORDENADA coord, int player)
     return ( resul );
 }
 
-
-/**
-\brief Função que avalia o estado do jogo consoante os pontos.
-*/
 int avaliar_estado_jogo(ESTADO *estado , int nosso_player)
 {
     int result = 0;

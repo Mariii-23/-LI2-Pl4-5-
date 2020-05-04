@@ -8,9 +8,6 @@
 
 /// JOGADOR VENCEDOR ///
 
-/**
-\brief Função que determina o vencedor do jogo.
-*/
 void jogador_vencedor(ESTADO *estado, FILE *stream) {
     int j, jog_atual = estado->jogador_atual;
     if (jog_atual == 1) j = 2;
@@ -23,9 +20,6 @@ void jogador_vencedor(ESTADO *estado, FILE *stream) {
 
 /// TABULEIRO : IMPRIME OU GUARDA ///
 
-/**
-\brief Função que que "imprime" no ecrã ou num ficheiro as peças de um determinado tabuleiro.
-*/
 void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
 {
     int linha, coluna;
@@ -45,16 +39,11 @@ void mostra_tabuleiro(CASA tab[8][8],FILE *stream)
 }
 
 
-/**
-\brief Prompt do jogo.
-*/
 void prompt(ESTADO *estado, FILE *stream) {  
     fprintf(stream, "# %d Player_%d Jogada_%d -> ", estado->num_comando, estado->jogador_atual, estado->num_jogadas);
 }
 
-/**
-\brief Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa.
-*/
+
 void guarda_Linha(ESTADO *estado, int linha, FILE *stream)
 {
     int coluna;
@@ -86,9 +75,7 @@ void guarda_tabuleiro(ESTADO *estado, FILE *stream)
 /// !!!____COMANDOS___!!! ////
 
 /// COMANDO POS ///
-/**
-\brief Executa o comando pos para retroceder o jogo.
-*/
+
 void comando_pos(ESTADO *estado, int n_jogadas ){
     mostra_pos(estado,n_jogadas );
     estado->num_comando++;
@@ -97,9 +84,6 @@ void comando_pos(ESTADO *estado, int n_jogadas ){
 
 
 /// Comando movs ///
-/**
-\brief Executa o comando movs para gravar os movimentos.
-*/
 void comando_movs(ESTADO *estado, FILE *stream)
 {
     int cont=0, num;
@@ -133,9 +117,7 @@ void comando_movs(ESTADO *estado, FILE *stream)
     }   */
 }
 
-/**
-\brief Função principal que imprime os movimentos dos jogadores.
-*/
+
 void movs(ESTADO *estado)
 {
     comando_movs(estado,stdout);
@@ -145,17 +127,12 @@ void movs(ESTADO *estado)
 }
 
 /// COMANDO GRAVAR ///
-/**
-\brief Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro.
-*/
+
 void comando_gr(ESTADO *estado, FILE *stream) {
     guarda_tabuleiro(estado, stream);
     comando_movs(estado, stream);
 }
 
-/**
-\brief Função principal que guarda o tabuleiro de jogo e os movimentos dos jogadores.
-*/
 void gr(ESTADO *estado, char *filename)
 {
     FILE *fp;
@@ -174,9 +151,6 @@ void gr(ESTADO *estado, char *filename)
 
 /// COAMANDO LER ///
 
-/**
-\brief Função que atualiza o tabuleiro de um estado atravé de um ficheiro.
-*/
 void ler_linha(ESTADO *estado, char linha[], int l)
 {   
     char casa;
@@ -188,9 +162,6 @@ void ler_linha(ESTADO *estado, char linha[], int l)
     } 
 } 
 
-/**
-\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
-*/
 void comando_ler(FILE *fp,ESTADO *estado)
 {
     COORDENADA coord1 = {-1,-1}, coord2 = {-1,-1};
@@ -234,9 +205,6 @@ void comando_ler(FILE *fp,ESTADO *estado)
     else fprintf(stdout, "O comando ler falhou");
 }
 
-/**
-\brief Executa o comando ler, lendo o que está no ficheiro que recebe.
-*/
 void ler(ESTADO *estado, char *filename)
 {
     FILE *fp;
@@ -260,9 +228,6 @@ void ler(ESTADO *estado, char *filename)
 
 /// INTERPRETADOR ///
 
-/**
-\brief Intrepretador do jogo.
-*/
 int interpretador(ESTADO *estado) 
 {
     char linha[BUF_SIZE];
