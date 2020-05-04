@@ -15,7 +15,7 @@
     <incdepgraph>
       <node id="7">
         <label>dados.h</label>
-        <link refid="dados_8h_source"/>
+        <link refid="dados_8h"/>
       </node>
       <node id="1">
         <label>main.c</label>
@@ -56,7 +56,7 @@
       </node>
       <node id="6">
         <label>Camada_de_Dados.h</label>
-        <link refid="_camada__de___dados_8h_source"/>
+        <link refid="_camada__de___dados_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
@@ -90,7 +90,7 @@
       </node>
       <node id="11">
         <label>listas.h</label>
-        <link refid="listas_8h_source"/>
+        <link refid="listas_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
@@ -129,17 +129,17 @@
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Camada_de_Dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_camada__de___dados_8h" kindref="compound">Camada_de_Dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_interface_8h" kindref="compound">Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_logica__do__programa_8h" kindref="compound">Logica_do_programa.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Melhor_Jogada.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;listas.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="listas_8h" kindref="compound">listas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dados_8h" kindref="compound">dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>main()</highlight></codeline>
 <codeline lineno="16"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>estado<sp/>=<sp/>inicializador_estado();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>estado<sp/>=<sp/><ref refid="_camada__de___dados_8h_1ae6ae1e5e8b2c49805a2936dec942cf09" kindref="member">inicializador_estado</ref>();</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_interface_8h_1a0475a591894db72239ed040e576d32b5" kindref="member">interpretador</ref>(estado);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal">}</highlight></codeline>

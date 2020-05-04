@@ -5,7 +5,7 @@
     <includes refid="dados_8h" local="no">dados.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" prot="public" static="no" mutable="no">
-        <type>CASA</type>
+        <type><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
         <definition>CASA ESTADO::tab[8][8]</definition>
         <argsstring>[8][8]</argsstring>
         <name>tab</name>
@@ -16,10 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="67" column="8" bodyfile="dados.h" bodystart="67" bodyend="-1"/>
+        <location file="dados.h" line="72" column="8" bodyfile="dados.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" prot="public" static="no" mutable="no">
-        <type>JOGADAS</type>
+        <type><ref refid="dados_8h_1a94c221d29a1760f008b7834093259b7d" kindref="member">JOGADAS</ref></type>
         <definition>JOGADAS ESTADO::jogadas</definition>
         <argsstring></argsstring>
         <name>jogadas</name>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="69" column="11" bodyfile="dados.h" bodystart="69" bodyend="-1"/>
+        <location file="dados.h" line="74" column="11" bodyfile="dados.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="71" column="7" bodyfile="dados.h" bodystart="71" bodyend="-1"/>
+        <location file="dados.h" line="76" column="7" bodyfile="dados.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="73" column="7" bodyfile="dados.h" bodystart="73" bodyend="-1"/>
+        <location file="dados.h" line="78" column="7" bodyfile="dados.h" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="75" column="7" bodyfile="dados.h" bodystart="75" bodyend="-1"/>
+        <location file="dados.h" line="80" column="7" bodyfile="dados.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" prot="public" static="no" mutable="no">
         <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="77" column="14" bodyfile="dados.h" bodystart="77" bodyend="-1"/>
+        <location file="dados.h" line="82" column="14" bodyfile="dados.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -118,7 +118,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="dados.h" line="65" column="15" bodyfile="dados.h" bodystart="65" bodyend="78"/>
+    <location file="dados.h" line="70" column="15" bodyfile="dados.h" bodystart="70" bodyend="83"/>
     <listofallmembers>
       <member refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" prot="public" virt="non-virtual"><scope>ESTADO</scope><name>jogadas</name></member>
       <member refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" prot="public" virt="non-virtual"><scope>ESTADO</scope><name>jogador_atual</name></member>

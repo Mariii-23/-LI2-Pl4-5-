@@ -16,7 +16,7 @@
     <incdepgraph>
       <node id="7">
         <label>dados.h</label>
-        <link refid="dados_8h_source"/>
+        <link refid="dados_8h"/>
       </node>
       <node id="3">
         <label>stdlib.h</label>
@@ -33,7 +33,7 @@
       </node>
       <node id="6">
         <label>Camada_de_Dados.h</label>
-        <link refid="_camada__de___dados_8h_source"/>
+        <link refid="_camada__de___dados_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
@@ -67,7 +67,7 @@
       </node>
       <node id="10">
         <label>listas.h</label>
-        <link refid="listas_8h_source"/>
+        <link refid="listas_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
@@ -95,6 +95,82 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
+      <memberdef kind="function" id="_melhor___jogada_8h_1a0ae6732901d1b3e527526e95432b566d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int muda_jogador</definition>
+        <argsstring>(int player)</argsstring>
+        <name>muda_jogador</name>
+        <param>
+          <type>int</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza o jogador. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Melhor_Jogada.h" line="23" column="5" bodyfile="Melhor_Jogada.c" bodystart="10" bodyend="15" declfile="Melhor_Jogada.h" declline="23" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_melhor___jogada_8h_1ad10cd0edb17808ec7486fb012df8f0e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int MinMax</definition>
+        <argsstring>(ESTADO *estado, COORDENADA *coord, int alpha, int betha, int nosso_jogador, int n_avaliar)</argsstring>
+        <name>MinMax</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> *</type>
+          <declname>coord</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>betha</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nosso_jogador</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_avaliar</declname>
+        </param>
+        <briefdescription>
+<para>Função que executa o MinMax, retornando o valor de uma determinada jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que executa o MinMax, retornando o valor de uma determinada jogada. </para>
+        </detaileddescription>
+        <inbodydescription>
+<para>true</para>
+        </inbodydescription>
+        <location file="Melhor_Jogada.h" line="28" column="5" bodyfile="Melhor_Jogada.c" bodystart="19" bodyend="71" declfile="Melhor_Jogada.h" declline="28" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="_melhor___jogada_8h_1a209ac9e87c3da0ad6a31692862157063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> *</type>
+        <definition>COORDENADA* Iniciar_MinMax</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>Iniciar_MinMax</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Função que inicia o MinMax, retornando a melhor <ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> a ser efetuada. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Melhor_Jogada.h" line="33" column="12" bodyfile="Melhor_Jogada.c" bodystart="75" bodyend="111" declfile="Melhor_Jogada.h" declline="33" declcolumn="12"/>
+      </memberdef>
       <memberdef kind="function" id="_melhor___jogada_8h_1a7743551ccd91d43bba162da870944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
         <definition>COORDENADA jogada_boot</definition>
@@ -112,7 +188,7 @@
         <inbodydescription>
 <para>caso a coordenada seja inválida posso chamar a funcao que da a coord em funcao da distancia assim o codigo mesmo q falhe irá dar algum resultado</para>
         </inbodydescription>
-        <location file="Melhor_Jogada.h" line="20" column="12" bodyfile="Melhor_Jogada.c" bodystart="121" bodyend="151" declfile="Melhor_Jogada.h" declline="20" declcolumn="12"/>
+        <location file="Melhor_Jogada.h" line="38" column="12" bodyfile="Melhor_Jogada.c" bodystart="114" bodyend="144" declfile="Melhor_Jogada.h" declline="38" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="_melhor___jogada_8h_1aba9e0873b6eb9e5612abf6fb2cbd88f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
@@ -124,14 +200,14 @@
           <declname>estado</declname>
         </param>
         <briefdescription>
-<para>da coordenada aleatoria /// </para>
+<para>Função que devolve uma coordenada aleatória possível a ser jogada. </para>
         </briefdescription>
         <detaileddescription>
 <para>Função que devolve uma coordenada aleatória possível a ser jogada. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Melhor_Jogada.h" line="21" column="12" bodyfile="Melhor_Jogada.c" bodystart="159" bodyend="183" declfile="Melhor_Jogada.h" declline="21" declcolumn="12"/>
+        <location file="Melhor_Jogada.h" line="43" column="12" bodyfile="Melhor_Jogada.c" bodystart="149" bodyend="173" declfile="Melhor_Jogada.h" declline="43" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="_melhor___jogada_8h_1a63c165d932fb6d2f0985e463e4b92199" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
@@ -143,14 +219,14 @@
           <declname>estado</declname>
         </param>
         <briefdescription>
-<para><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> ATRAVÉS DA MENOR DISTÃNCIA ///. </para>
+<para>Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador. </para>
         </briefdescription>
         <detaileddescription>
 <para>Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Melhor_Jogada.h" line="22" column="12" bodyfile="Melhor_Jogada.c" bodystart="190" bodyend="285" declfile="Melhor_Jogada.h" declline="22" declcolumn="12"/>
+        <location file="Melhor_Jogada.h" line="48" column="12" bodyfile="Melhor_Jogada.c" bodystart="177" bodyend="272" declfile="Melhor_Jogada.h" declline="48" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="_melhor___jogada_8h_1ab8de3902af26f42df92adbdef524e12c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
@@ -162,14 +238,14 @@
           <declname>estado</declname>
         </param>
         <briefdescription>
-<para><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref> ATRAVÉS DA MENOR DISTÃNCIA ///. </para>
+<para>Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador. </para>
         </briefdescription>
         <detaileddescription>
 <para>Função que devolve a coordenada, possível a ser jogada que se encontre a menor distância da casa do jogador. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Melhor_Jogada.h" line="23" column="12" bodyfile="Melhor_Jogada.c" bodystart="292" bodyend="323" declfile="Melhor_Jogada.h" declline="23" declcolumn="12"/>
+        <location file="Melhor_Jogada.h" line="53" column="12" bodyfile="Melhor_Jogada.c" bodystart="276" bodyend="307" declfile="Melhor_Jogada.h" declline="53" declcolumn="12"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -186,17 +262,27 @@
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;Camada_de_Dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_camada__de___dados_8h" kindref="compound">Camada_de_Dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_logica__do__programa_8h" kindref="compound">Logica_do_programa.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_interface_8h" kindref="compound">Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;listas.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dados_8h" kindref="compound">dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="listas_8h" kindref="compound">listas.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>jogada_boot(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>da_coordenada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>da_coordenada_distancia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>obtem_coord_atraves_da_distancia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="23"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>muda_jogador(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>MinMax(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>*coord,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alpha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>betha,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_jogador,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_avaliar);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>*Iniciar_MinMax(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>jogada_boot(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>da_coordenada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>da_coordenada_distancia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>obtem_coord_atraves_da_distancia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="Melhor_Jogada.h"/>
   </compounddef>

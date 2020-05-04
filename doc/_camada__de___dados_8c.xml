@@ -11,7 +11,7 @@
     <incdepgraph>
       <node id="7">
         <label>dados.h</label>
-        <link refid="dados_8h_source"/>
+        <link refid="dados_8h"/>
       </node>
       <node id="3">
         <label>stdlib.h</label>
@@ -44,7 +44,7 @@
       </node>
       <node id="6">
         <label>Camada_de_Dados.h</label>
-        <link refid="_camada__de___dados_8h_source"/>
+        <link refid="_camada__de___dados_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="16" column="6" bodyfile="Camada_de_Dados.c" bodystart="16" bodyend="35"/>
+        <location file="Camada_de_Dados.c" line="13" column="6" bodyfile="Camada_de_Dados.c" bodystart="13" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1ae6ae1e5e8b2c49805a2936dec942cf09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="40" column="8" bodyfile="Camada_de_Dados.c" bodystart="40" bodyend="50"/>
+        <location file="Camada_de_Dados.c" line="34" column="8" bodyfile="Camada_de_Dados.c" bodystart="34" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a8406a0453d99f415308d63d0a43395f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
@@ -158,10 +158,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="56" column="8" bodyfile="Camada_de_Dados.c" bodystart="56" bodyend="78"/>
+        <location file="Camada_de_Dados.c" line="47" column="8" bodyfile="Camada_de_Dados.c" bodystart="47" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1aed1c6cfe4018952fe1790f2e1075b020" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>CASA</type>
+        <type><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
         <definition>CASA estado_casa</definition>
         <argsstring>(ESTADO estado, COORDENADA coordenada)</argsstring>
         <name>estado_casa</name>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="84" column="6" bodyfile="Camada_de_Dados.c" bodystart="84" bodyend="90"/>
+        <location file="Camada_de_Dados.c" line="72" column="6" bodyfile="Camada_de_Dados.c" bodystart="72" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a32dc3c23098a0e632df9fbb7ac3e5e43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="95" column="5" bodyfile="Camada_de_Dados.c" bodystart="95" bodyend="108"/>
+        <location file="Camada_de_Dados.c" line="80" column="5" bodyfile="Camada_de_Dados.c" bodystart="80" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1af58710a64521083d080535f5c5183d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="113" column="5" bodyfile="Camada_de_Dados.c" bodystart="113" bodyend="120"/>
+        <location file="Camada_de_Dados.c" line="95" column="5" bodyfile="Camada_de_Dados.c" bodystart="95" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a8ff120d4a1b8884f7d6e881f18e64a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="127" column="5" bodyfile="Camada_de_Dados.c" bodystart="127" bodyend="135"/>
+        <location file="Camada_de_Dados.c" line="106" column="5" bodyfile="Camada_de_Dados.c" bodystart="106" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a51b89b80354561c2b53fe18594f5f274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="140" column="5" bodyfile="Camada_de_Dados.c" bodystart="140" bodyend="157"/>
+        <location file="Camada_de_Dados.c" line="116" column="5" bodyfile="Camada_de_Dados.c" bodystart="116" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1ac4b33d4410a7dfe0503e15e55009f975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="162" column="5" bodyfile="Camada_de_Dados.c" bodystart="162" bodyend="168"/>
+        <location file="Camada_de_Dados.c" line="135" column="5" bodyfile="Camada_de_Dados.c" bodystart="135" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1acbcadb43174049ac438fca71ffffd51f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -302,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="173" column="5" bodyfile="Camada_de_Dados.c" bodystart="173" bodyend="176"/>
+        <location file="Camada_de_Dados.c" line="143" column="5" bodyfile="Camada_de_Dados.c" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1ad0af6fd6b4e4d48754316b231ee1b1ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="181" column="5" bodyfile="Camada_de_Dados.c" bodystart="181" bodyend="186"/>
+        <location file="Camada_de_Dados.c" line="149" column="5" bodyfile="Camada_de_Dados.c" bodystart="149" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1abd8bbcfabb3ddef2ccaafb9928a37b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -343,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="193" column="5" bodyfile="Camada_de_Dados.c" bodystart="193" bodyend="198"/>
+        <location file="Camada_de_Dados.c" line="161" column="5" bodyfile="Camada_de_Dados.c" bodystart="161" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1af082905f7eac6d03e92015146bbc1925" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -365,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="203" column="5" bodyfile="Camada_de_Dados.c" bodystart="203" bodyend="208"/>
+        <location file="Camada_de_Dados.c" line="169" column="5" bodyfile="Camada_de_Dados.c" bodystart="169" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a6e245ab54bfd100b242ef802d61e9e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -388,7 +388,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="214" column="5" bodyfile="Camada_de_Dados.c" bodystart="214" bodyend="227"/>
+        <location file="Camada_de_Dados.c" line="178" column="5" bodyfile="Camada_de_Dados.c" bodystart="178" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1ad9bea692b24a13ef6c8e6f27ae746c5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -410,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="232" column="5" bodyfile="Camada_de_Dados.c" bodystart="232" bodyend="240"/>
+        <location file="Camada_de_Dados.c" line="194" column="5" bodyfile="Camada_de_Dados.c" bodystart="194" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a64f1fdf8dc5989c8ca484872f993ee78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="245" column="5" bodyfile="Camada_de_Dados.c" bodystart="245" bodyend="252"/>
+        <location file="Camada_de_Dados.c" line="204" column="5" bodyfile="Camada_de_Dados.c" bodystart="204" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1afc4b1bbb945b9cf47fa68a368f63f04b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -454,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="257" column="5" bodyfile="Camada_de_Dados.c" bodystart="257" bodyend="264"/>
+        <location file="Camada_de_Dados.c" line="213" column="5" bodyfile="Camada_de_Dados.c" bodystart="213" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1abaedf09169c3a491cebb9926c5e63735" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -477,7 +477,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="272" column="5" bodyfile="Camada_de_Dados.c" bodystart="272" bodyend="277"/>
+        <location file="Camada_de_Dados.c" line="224" column="5" bodyfile="Camada_de_Dados.c" bodystart="224" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1a10fbae144b7258250fad5614ee42b821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="282" column="5" bodyfile="Camada_de_Dados.c" bodystart="282" bodyend="299"/>
+        <location file="Camada_de_Dados.c" line="231" column="5" bodyfile="Camada_de_Dados.c" bodystart="231" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1ad3c28ce832f3d328fda3bd96471925c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
@@ -517,7 +517,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="304" column="7" bodyfile="Camada_de_Dados.c" bodystart="304" bodyend="322"/>
+        <location file="Camada_de_Dados.c" line="250" column="7" bodyfile="Camada_de_Dados.c" bodystart="250" bodyend="268"/>
       </memberdef>
       <memberdef kind="function" id="_camada__de___dados_8c_1aacf0bbd87220820077adabb5061765d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -540,7 +540,7 @@
         <inbodydescription>
 <para>acho q é -// n ta bem // ver valores</para>
         </inbodydescription>
-        <location file="Camada_de_Dados.c" line="328" column="5" bodyfile="Camada_de_Dados.c" bodystart="328" bodyend="336"/>
+        <location file="Camada_de_Dados.c" line="270" column="5" bodyfile="Camada_de_Dados.c" bodystart="270" bodyend="278"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -553,271 +553,269 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_logica__do__programa_8h" kindref="compound">Logica_do_programa.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_interface_8h" kindref="compound">Interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dados_8h" kindref="compound">dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>n_casas_ocupadas<sp/>15<sp/>//<sp/><sp/>30</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>n_vitoria_casa<sp/>80<sp/><sp/><sp/><sp/><sp/>//<sp/>100</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>n_vitoria_encurralado<sp/>120<sp/><sp/>//<sp/>200</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>n_vitoria_casaEencurralado<sp/>150<sp/>//<sp/><sp/><sp/><sp/>250</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"></codeline>
-<codeline lineno="16"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>casas_inicial(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
-<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=7;<sp/>i&gt;=0;<sp/>i--)</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;=7;<sp/>j++)</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i==4<sp/>&amp;&amp;<sp/>j==4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;*&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i==7<sp/>&amp;&amp;<sp/>j==7)<sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;2&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i==0<sp/>&amp;&amp;<sp/>j==0)<sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight></codeline>
-<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*inicializador_estado()</highlight></codeline>
-<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado<sp/>=<sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*)<sp/>calloc(1,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>));</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>casas_inicial(estado);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref><sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref><sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>4;<sp/><sp/></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>4;<sp/><sp/></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>estado;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"></codeline>
-<codeline lineno="56"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*cria_estado_copia(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado_copia<sp/>=<sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*)<sp/>calloc(1,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>));</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0<sp/>;<sp/>i&lt;8;<sp/>i++)</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;8;<sp/>j++)<sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j];</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref>;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/><sp/></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;<sp/>i++)</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador2<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador2;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==2)<sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>estado_copia;</highlight></codeline>
+<codeline lineno="13"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1ab16da8a852771b04507d6c51d3f50345" kindref="member">casas_inicial</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>j;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=7;<sp/>i&gt;=0;<sp/>i--)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;=7;<sp/>j++)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i==4<sp/>&amp;&amp;<sp/>j==4)<sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;*&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i==7<sp/>&amp;&amp;<sp/>j==7)<sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;2&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(i==0<sp/>&amp;&amp;<sp/>j==0)<sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*<ref refid="_camada__de___dados_8h_1ae6ae1e5e8b2c49805a2936dec942cf09" kindref="member">inicializador_estado</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado<sp/>=<sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*)<sp/>calloc(1,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1ab16da8a852771b04507d6c51d3f50345" kindref="member">casas_inicial</ref>(estado);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>4;<sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>4;<sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>estado;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*<ref refid="_camada__de___dados_8h_1a8406a0453d99f415308d63d0a43395f2" kindref="member">cria_estado_copia</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado_copia<sp/>=<sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*)<sp/>calloc(1,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>));</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0<sp/>;<sp/>i&lt;8;<sp/>i++)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j&lt;8;<sp/>j++)<sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j]<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[i][j];</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(i=0;<sp/>i&lt;estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;<sp/>i++)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador2<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador2;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==2)<sp/><sp/>estado_copia-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>[i].jogador1;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>estado_copia;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/><ref refid="_camada__de___dados_8h_1aed1c6cfe4018952fe1790f2e1075b020" kindref="member">estado_casa</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coordenada)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>coordenada.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>coordenada.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>peca<sp/>=<sp/>estado.<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y];</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>peca;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"></codeline>
-<codeline lineno="84"><highlight class="normal">CASA<sp/>estado_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coordenada)</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>coordenada.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>coordenada.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>CASA<sp/>peca<sp/>=<sp/>estado.<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y];</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>peca;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_se_e_vizinho(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_inicial,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_final)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a32dc3c23098a0e632df9fbb7ac3e5e43" kindref="member">verifica_se_e_vizinho</ref>(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_inicial,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_final)</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>x_,<sp/>y_,<sp/>resul=0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>coord_inicial.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord_inicial.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>x_<sp/>=<sp/>coord_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;<sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>y_<sp/>=<sp/>coord_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(<sp/><sp/><sp/>(x<sp/>==<sp/>x_<sp/>&amp;&amp;<sp/>abs<sp/>(y_<sp/>-<sp/>y)<sp/>==<sp/>1<sp/>)<sp/>||<sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y<sp/>==<sp/>y_<sp/>&amp;&amp;<sp/>abs<sp/>(x_<sp/>-<sp/>x)<sp/>==<sp/>1<sp/>)<sp/>||</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>abs(x_-<sp/>x)<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>abs(y_<sp/>-<sp/>y)<sp/>==<sp/>1<sp/>)<sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/><sp/><sp/>resul=1;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1af58710a64521083d080535f5c5183d6e" kindref="member">verifica_jogada</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>pos_final)</highlight></codeline>
 <codeline lineno="96"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>x_,<sp/>y_,<sp/>resul=0;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>coord_inicial.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord_inicial.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>x_<sp/>=<sp/>coord_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;<sp/></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>y_<sp/>=<sp/>coord_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(<sp/><sp/><sp/>(x<sp/>==<sp/>x_<sp/>&amp;&amp;<sp/>abs<sp/>(y_<sp/>-<sp/>y)<sp/>==<sp/>1<sp/>)<sp/>||<sp/></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(y<sp/>==<sp/>y_<sp/>&amp;&amp;<sp/>abs<sp/>(x_<sp/>-<sp/>x)<sp/>==<sp/>1<sp/>)<sp/>||</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>abs(x_-<sp/>x)<sp/>==<sp/>1<sp/>&amp;&amp;<sp/>abs(y_<sp/>-<sp/>y)<sp/>==<sp/>1<sp/>)<sp/></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/><sp/><sp/>resul=1;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_jogada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>pos_final)</highlight></codeline>
-<codeline lineno="114"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>pos_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>pos_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>CASA<sp/>peca<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y];</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>vaziaa<sp/>=<sp/>peca<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Exatamente<sp/>igual:<sp/>peca<sp/>==<sp/>&apos;.&apos;<sp/>||<sp/>peca<sp/>==<sp/>&apos;2&apos;<sp/>||<sp/>peca<sp/>==<sp/>&apos;1&apos;<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>vaziaa<sp/><sp/>&amp;&amp;<sp/>verifica_se_e_vizinho(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>,<sp/>pos_final<sp/>)<sp/><sp/>);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"></codeline>
-<codeline lineno="127"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_casa_ocupada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord)</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x&gt;=0<sp/>&amp;&amp;<sp/>x&lt;=7<sp/>&amp;&amp;<sp/>y&gt;=0<sp/>&amp;&amp;<sp/>y&lt;=7<sp/>)<sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y]<sp/>==<sp/>VAZIO<sp/>)<sp/>resul<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verificar_casas_ocupadas(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
-<codeline lineno="141"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord2<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord3<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord5<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord6<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord7<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord8<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord4<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>};</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>resul<sp/>=<sp/>(<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord1<sp/>)<sp/>&amp;&amp;<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord2<sp/>)<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord3<sp/>)<sp/>&amp;&amp;<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord4<sp/>)<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord5<sp/>)<sp/>&amp;&amp;<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord6<sp/>)<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord7<sp/>)<sp/>&amp;&amp;<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord8<sp/>)<sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_vencedor(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)<sp/></highlight></codeline>
-<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>(<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>==<sp/>0<sp/><sp/>&amp;&amp;<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>==<sp/>0)<sp/>||</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>==<sp/>7<sp/><sp/>&amp;&amp;<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>==<sp/>7)<sp/>;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_Vitoria(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
-<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>verifica_vencedor(estado)<sp/>||<sp/>verificar_casas_ocupadas(estado)<sp/>);</highlight></codeline>
-<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>pos_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>pos_final.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>peca<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y];</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>vaziaa<sp/>=<sp/>peca<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">/*<sp/>Exatamente<sp/>igual:<sp/>peca<sp/>==<sp/>&apos;.&apos;<sp/>||<sp/>peca<sp/>==<sp/>&apos;2&apos;<sp/>||<sp/>peca<sp/>==<sp/>&apos;1&apos;<sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>vaziaa<sp/><sp/>&amp;&amp;<sp/><ref refid="_camada__de___dados_8h_1a32dc3c23098a0e632df9fbb7ac3e5e43" kindref="member">verifica_se_e_vizinho</ref>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>,<sp/>pos_final<sp/>)<sp/><sp/>);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;<sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x&gt;=0<sp/>&amp;&amp;<sp/>x&lt;=7<sp/>&amp;&amp;<sp/>y&gt;=0<sp/>&amp;&amp;<sp/>y&lt;=7<sp/>)<sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" kindref="member">tab</ref>[x][y]<sp/>==<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kindref="member">VAZIO</ref><sp/>)<sp/>resul<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a51b89b80354561c2b53fe18594f5f274" kindref="member">verificar_casas_ocupadas</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord2<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord3<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord5<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord6<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord7<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord8<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord4<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>resul<sp/>=<sp/>(<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord1<sp/>)<sp/>&amp;&amp;<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord2<sp/>)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord3<sp/>)<sp/>&amp;&amp;<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord4<sp/>)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord5<sp/>)<sp/>&amp;&amp;<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord6<sp/>)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord7<sp/>)<sp/>&amp;&amp;<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord8<sp/>)<sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1ac4b33d4410a7dfe0503e15e55009f975" kindref="member">verifica_vencedor</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)<sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>(<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>==<sp/>0<sp/><sp/>&amp;&amp;<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>==<sp/>0)<sp/>||</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>==<sp/>7<sp/><sp/>&amp;&amp;<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>==<sp/>7)<sp/>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1acbcadb43174049ac438fca71ffffd51f" kindref="member">verifica_Vitoria</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/><ref refid="_camada__de___dados_8h_1ac4b33d4410a7dfe0503e15e55009f975" kindref="member">verifica_vencedor</ref>(estado)<sp/>||<sp/><ref refid="_camada__de___dados_8h_1a51b89b80354561c2b53fe18594f5f274" kindref="member">verificar_casas_ocupadas</ref>(estado)<sp/>);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1ad0af6fd6b4e4d48754316b231ee1b1ba" kindref="member">verifica_coord</ref>(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>x&gt;=0<sp/>&amp;&amp;<sp/>x&lt;=7<sp/>&amp;&amp;<sp/><sp/>y&gt;=0<sp/>&amp;&amp;<sp/>y&lt;=7<sp/>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"></codeline>
+<codeline lineno="161"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1abd8bbcfabb3ddef2ccaafb9928a37b95" kindref="member">min</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a&gt;b)<sp/>resul<sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1af082905f7eac6d03e92015146bbc1925" kindref="member">max</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>a;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a&lt;b)<sp/>resul<sp/>=<sp/>b;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>verifica_coord(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord)</highlight></codeline>
-<codeline lineno="182"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>,</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>x&gt;=0<sp/>&amp;&amp;<sp/>x&lt;=7<sp/>&amp;&amp;<sp/><sp/>y&gt;=0<sp/>&amp;&amp;<sp/>y&lt;=7<sp/>);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"></codeline>
-<codeline lineno="193"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>min(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
-<codeline lineno="194"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>a;</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a&gt;b)<sp/>resul<sp/>=<sp/>b;</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>max(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>a,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b)</highlight></codeline>
-<codeline lineno="204"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>a;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a&lt;b)<sp/>resul<sp/>=<sp/>b;</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight></codeline>
-<codeline lineno="211"></codeline>
-<codeline lineno="214"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_em_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
-<codeline lineno="215"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul=0;</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"></highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==1<sp/>&amp;&amp;<sp/>nosso_player==1<sp/>&amp;&amp;<sp/>x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>0)<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==2<sp/>&amp;&amp;<sp/>nosso_player==2<sp/>&amp;&amp;<sp/>x<sp/>==<sp/>7<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>7)<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>0)<sp/>||<sp/>(x<sp/>==<sp/>7<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>7))<sp/>resul<sp/>=<sp/>-1;</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;<sp/></highlight></codeline>
-<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>encurralado_casa(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
-<codeline lineno="233"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_casa<sp/>=<sp/>ganhou_em_casa(estado,<sp/>nosso_player);</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/>verificar_casas_ocupadas(estado);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(ganhou_casa<sp/>&amp;&amp;<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>)<sp/>resul<sp/>=<sp/>n_vitoria_casaEencurralado<sp/>*<sp/>ganhou_casa;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*if<sp/><sp/>(&amp;ganhou_em_casa<sp/>&amp;&amp;<sp/>valor<sp/>)<sp/>resul<sp/>=<sp/>2<sp/>*<sp/>ganhou_casa;*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="241"><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>encurralado_jogo(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player)</highlight></codeline>
-<codeline lineno="246"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/>verificar_casas_ocupadas(estado);</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!player)<sp/>resul<sp/>=<sp/>n_vitoria_encurralado<sp/>*<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>-<sp/>n_vitoria_encurralado<sp/>*<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="252"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_encurralado(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
-<codeline lineno="258"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/>encurralado_jogo(estado,nosso_player);</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>!=<sp/>0<sp/>)<sp/>resul<sp/>=<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>encurralado_casa(estado,<sp/>nosso_player);</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="264"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"></highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"></codeline>
-<codeline lineno="272"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>avaliar_jogada(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
-<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>ganhou_encurralado(estado,<sp/>nosso_player);</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resul<sp/>==<sp/>0)<sp/>resul<sp/>=<sp/>ganhou_em_casa(estado,<sp/>nosso_player);</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>contar_casas_ocupadas(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
-<codeline lineno="283"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord2<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord3<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord5<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord6<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord7<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord8<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord4<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>};</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>resul<sp/>=<sp/>(<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord1<sp/>)<sp/>+<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord2<sp/>)<sp/>+</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord3<sp/>)<sp/>+<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord4<sp/>)<sp/>+</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord5<sp/>)<sp/>+<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord6<sp/>)<sp/>+</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord7<sp/>)<sp/>+<sp/>verifica_casa_ocupada(<sp/>estado<sp/>,<sp/>coord8<sp/>)<sp/><sp/><sp/>);</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
-<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distancia_coord(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player)</highlight></codeline>
-<codeline lineno="305"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_casa;</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(player==1)<sp/></highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>7;</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>7;</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>abs(<sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>),</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>abs(<sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>);</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>(<sp/>x*x<sp/>+<sp/>y*y<sp/>);</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*float<sp/>resul<sp/>=<sp/>x+y;*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>resul<sp/>);</highlight></codeline>
-<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="323"><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>avaliar_estado_jogo(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado<sp/>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
-<codeline lineno="329"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/>n_casas_ocupadas<sp/>*<sp/>contar_casas_ocupadas(estado)<sp/>-<sp/></highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distancia_coord(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>,<sp/>nosso_player);</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nosso_player<sp/>!=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>)<sp/>result<sp/>=<sp/>-result;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
-<codeline lineno="336"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a6e245ab54bfd100b242ef802d61e9e60" kindref="member">ganhou_em_casa</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul=0;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==1<sp/>&amp;&amp;<sp/>nosso_player==1<sp/>&amp;&amp;<sp/>x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>0)<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>==2<sp/>&amp;&amp;<sp/>nosso_player==2<sp/>&amp;&amp;<sp/>x<sp/>==<sp/>7<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>7)<sp/>resul<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((x<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>0)<sp/>||<sp/>(x<sp/>==<sp/>7<sp/>&amp;&amp;<sp/>y<sp/>==<sp/>7))<sp/>resul<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;<sp/></highlight></codeline>
+<codeline lineno="191"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1ad9bea692b24a13ef6c8e6f27ae746c5d" kindref="member">encurralado_casa</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ganhou_casa<sp/>=<sp/><ref refid="_camada__de___dados_8h_1a6e245ab54bfd100b242ef802d61e9e60" kindref="member">ganhou_em_casa</ref>(estado,<sp/>nosso_player);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/><ref refid="_camada__de___dados_8h_1a51b89b80354561c2b53fe18594f5f274" kindref="member">verificar_casas_ocupadas</ref>(estado);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/><sp/>(ganhou_casa<sp/>&amp;&amp;<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>)<sp/>resul<sp/>=<sp/>n_vitoria_casaEencurralado<sp/>*<sp/>ganhou_casa;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*if<sp/><sp/>(&amp;ganhou_em_casa<sp/>&amp;&amp;<sp/>valor<sp/>)<sp/>resul<sp/>=<sp/>2<sp/>*<sp/>ganhou_casa;*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a64f1fdf8dc5989c8ca484872f993ee78" kindref="member">encurralado_jogo</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player)</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/><ref refid="_camada__de___dados_8h_1a51b89b80354561c2b53fe18594f5f274" kindref="member">verificar_casas_ocupadas</ref>(estado);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!player)<sp/>resul<sp/>=<sp/>n_vitoria_encurralado<sp/>*<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>-<sp/>n_vitoria_encurralado<sp/>*<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1afc4b1bbb945b9cf47fa68a368f63f04b" kindref="member">ganhou_encurralado</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/><ref refid="_camada__de___dados_8h_1a64f1fdf8dc5989c8ca484872f993ee78" kindref="member">encurralado_jogo</ref>(estado,nosso_player);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>!=<sp/>0<sp/>)<sp/>resul<sp/>=<sp/><ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/><ref refid="_camada__de___dados_8h_1ad9bea692b24a13ef6c8e6f27ae746c5d" kindref="member">encurralado_casa</ref>(estado,<sp/>nosso_player);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1abaedf09169c3a491cebb9926c5e63735" kindref="member">avaliar_jogada</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/><ref refid="_camada__de___dados_8h_1afc4b1bbb945b9cf47fa68a368f63f04b" kindref="member">ganhou_encurralado</ref>(estado,<sp/>nosso_player);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resul<sp/>==<sp/>0)<sp/>resul<sp/>=<sp/><ref refid="_camada__de___dados_8h_1a6e245ab54bfd100b242ef802d61e9e60" kindref="member">ganhou_em_casa</ref>(estado,<sp/>nosso_player);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1a10fbae144b7258250fad5614ee42b821" kindref="member">contar_casas_ocupadas</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado)</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord<sp/>=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord1<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord2<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord3<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>+<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord5<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord6<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>},</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord7<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>1<sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord8<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>+<sp/>1<sp/>},</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord4<sp/>=<sp/>{<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>,<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>1<sp/>};</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>resul<sp/>=<sp/>(<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord1<sp/>)<sp/>+<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord2<sp/>)<sp/>+</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord3<sp/>)<sp/>+<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord4<sp/>)<sp/>+</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord5<sp/>)<sp/>+<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord6<sp/>)<sp/>+</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord7<sp/>)<sp/>+<sp/><ref refid="_camada__de___dados_8h_1a8ff120d4a1b8884f7d6e881f18e64a32" kindref="member">verifica_casa_ocupada</ref>(<sp/>estado<sp/>,<sp/>coord8<sp/>)<sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resul;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1ad3c28ce832f3d328fda3bd96471925c4" kindref="member">distancia_coord</ref>(<ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player)</highlight></codeline>
+<codeline lineno="251"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>coord_casa;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(player==1)<sp/></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x<sp/>=<sp/>abs(<sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>-<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref><sp/>),</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>abs(<sp/>coord_casa.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>-<sp/>coord.<ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref><sp/>);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>resul<sp/>=<sp/>(<sp/>x*x<sp/>+<sp/>y*y<sp/>);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*float<sp/>resul<sp/>=<sp/>x+y;*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<sp/>resul<sp/>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_camada__de___dados_8h_1aacf0bbd87220820077adabb5061765d8" kindref="member">avaliar_estado_jogo</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado<sp/>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nosso_player)</highlight></codeline>
+<codeline lineno="271"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/>n_casas_ocupadas<sp/>*<sp/><ref refid="_camada__de___dados_8h_1a10fbae144b7258250fad5614ee42b821" kindref="member">contar_casas_ocupadas</ref>(estado)<sp/>-<sp/></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_camada__de___dados_8h_1ad3c28ce832f3d328fda3bd96471925c4" kindref="member">distancia_coord</ref>(estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>,<sp/>nosso_player);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nosso_player<sp/>!=<sp/>estado-&gt;<ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>)<sp/>result<sp/>=<sp/>-result;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="Camada_de_Dados.c"/>
   </compounddef>

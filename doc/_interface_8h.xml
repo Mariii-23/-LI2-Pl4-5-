@@ -13,7 +13,7 @@
     <incdepgraph>
       <node id="2">
         <label>dados.h</label>
-        <link refid="dados_8h_source"/>
+        <link refid="dados_8h"/>
       </node>
       <node id="1">
         <label>Interface.h</label>
@@ -43,30 +43,6 @@
       </node>
     </invincdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="_interface_8h_1a8d137184689f55d869b4fa543e76e70b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void mostra_tabuleiro</definition>
-        <argsstring>(CASA tab[8][8], FILE *stream)</argsstring>
-        <name>mostra_tabuleiro</name>
-        <param>
-          <type>CASA</type>
-          <declname>tab</declname>
-          <array>[8][8]</array>
-        </param>
-        <param>
-          <type>FILE *</type>
-          <declname>stream</declname>
-        </param>
-        <briefdescription>
-<para>TABULEIRO : IMPRIME OU GUARDA ///. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Função que que &quot;imprime&quot; no ecrã ou num ficheiro as peças de um determinado tabuleiro. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="Interface.h" line="10" column="6" bodyfile="Interface.c" bodystart="29" bodyend="45" declfile="Interface.h" declline="10" declcolumn="6"/>
-      </memberdef>
       <memberdef kind="function" id="_interface_8h_1a7d93f27be42746f9ca9c2292b55e6aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void jogador_vencedor</definition>
@@ -81,36 +57,38 @@
           <declname>stream</declname>
         </param>
         <briefdescription>
-<para>JOGADOR VENCEDOR ///. </para>
+<para>Função que determina o vencedor do jogo. </para>
         </briefdescription>
         <detaileddescription>
 <para>Função que determina o vencedor do jogo. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="11" column="6" bodyfile="Interface.c" bodystart="14" bodyend="21" declfile="Interface.h" declline="11" declcolumn="6"/>
+        <location file="Interface.h" line="13" column="6" bodyfile="Interface.c" bodystart="11" bodyend="18" declfile="Interface.h" declline="13" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="_interface_8h_1a5da86839ee9a47cb34b275831d3cc1f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_interface_8h_1a8d137184689f55d869b4fa543e76e70b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void guarda_tabuleiro</definition>
-        <argsstring>(ESTADO *estado, FILE *stream)</argsstring>
-        <name>guarda_tabuleiro</name>
+        <definition>void mostra_tabuleiro</definition>
+        <argsstring>(CASA tab[8][8], FILE *stream)</argsstring>
+        <name>mostra_tabuleiro</name>
         <param>
-          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
-          <declname>estado</declname>
+          <type><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref></type>
+          <declname>tab</declname>
+          <array>[8][8]</array>
         </param>
         <param>
           <type>FILE *</type>
           <declname>stream</declname>
         </param>
         <briefdescription>
-<para>Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha. </para>
+<para>Função que que &quot;imprime&quot; no ecrã ou num ficheiro as peças de um determinado tabuleiro. </para>
         </briefdescription>
         <detaileddescription>
+<para>Função que que &quot;imprime&quot; no ecrã ou num ficheiro as peças de um determinado tabuleiro. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="12" column="6" bodyfile="Interface.c" bodystart="73" bodyend="84" declfile="Interface.h" declline="12" declcolumn="6"/>
+        <location file="Interface.h" line="18" column="6" bodyfile="Interface.c" bodystart="23" bodyend="39" declfile="Interface.h" declline="18" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="_interface_8h_1acc259ba457da7c00c734bb9d079fad17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -132,26 +110,102 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="13" column="6" bodyfile="Interface.c" bodystart="51" bodyend="53" declfile="Interface.h" declline="13" declcolumn="6"/>
+        <location file="Interface.h" line="23" column="6" bodyfile="Interface.c" bodystart="42" bodyend="44" declfile="Interface.h" declline="23" declcolumn="6"/>
       </memberdef>
-      <memberdef kind="function" id="_interface_8h_1a0475a591894db72239ed040e576d32b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int interpretador</definition>
-        <argsstring>(ESTADO *estado)</argsstring>
-        <name>interpretador</name>
+      <memberdef kind="function" id="_interface_8h_1a20b132eb624976f654d8f6d557bf1c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void guarda_Linha</definition>
+        <argsstring>(ESTADO *estado, int linha, FILE *stream)</argsstring>
+        <name>guarda_Linha</name>
         <param>
           <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
           <declname>estado</declname>
         </param>
+        <param>
+          <type>int</type>
+          <declname>linha</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>stream</declname>
+        </param>
         <briefdescription>
-<para>INTERPRETADOR ///. </para>
+<para>Guarda no ficheiro cada linha do jogo, recorrendo à função guarda_casa. </para>
         </briefdescription>
         <detaileddescription>
-<para>Intrepretador do jogo. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="14" column="5" bodyfile="Interface.c" bodystart="266" bodyend="430" declfile="Interface.h" declline="14" declcolumn="5"/>
+        <location file="Interface.h" line="28" column="6" bodyfile="Interface.c" bodystart="47" bodyend="57" declfile="Interface.h" declline="28" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1a5da86839ee9a47cb34b275831d3cc1f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void guarda_tabuleiro</definition>
+        <argsstring>(ESTADO *estado, FILE *stream)</argsstring>
+        <name>guarda_tabuleiro</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Guarda no ficheiro o tabuleiro do jogo, recorrendo à função guarda_linha. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="33" column="6" bodyfile="Interface.c" bodystart="62" bodyend="73" declfile="Interface.h" declline="33" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1a00b974923c2cb540931e0819eb9a5cbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void comando_pos</definition>
+        <argsstring>(ESTADO *estado, int n_jogadas)</argsstring>
+        <name>comando_pos</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n_jogadas</declname>
+        </param>
+        <briefdescription>
+<para>Executa o comando pos para retroceder o jogo. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Executa o comando pos para retroceder o jogo.</para>
+<para>COMANDO POS /// </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="38" column="6" bodyfile="Interface.c" bodystart="79" bodyend="83" declfile="Interface.h" declline="38" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1ae1d88bc05a17d0f3910467ee7ba15630" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void comando_movs</definition>
+        <argsstring>(ESTADO *estado, FILE *stream)</argsstring>
+        <name>comando_movs</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Executa o comando movs para gravar os movimentos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Executa o comando movs para gravar os movimentos. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="43" column="6" bodyfile="Interface.c" bodystart="87" bodyend="118" declfile="Interface.h" declline="43" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="_interface_8h_1a4e054f36607c534b3680ef11fa600868" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -169,7 +223,30 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="16" column="6" bodyfile="Interface.c" bodystart="139" bodyend="145" declfile="Interface.h" declline="16" declcolumn="6"/>
+        <location file="Interface.h" line="48" column="6" bodyfile="Interface.c" bodystart="121" bodyend="127" declfile="Interface.h" declline="48" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1a37535d6e699b9127866ebd40bd7b2b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void comando_gr</definition>
+        <argsstring>(ESTADO *estado, FILE *stream)</argsstring>
+        <name>comando_gr</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>FILE *</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+<para>Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Executa o comendo gr para guardar o tabuleiro do jogo no ficheiro. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="53" column="6" bodyfile="Interface.c" bodystart="131" bodyend="134" declfile="Interface.h" declline="53" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="_interface_8h_1aefc2e456f264009e3a0c73bdf2ff9cc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -191,7 +268,57 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="17" column="6" bodyfile="Interface.c" bodystart="159" bodyend="173" declfile="Interface.h" declline="17" declcolumn="6"/>
+        <location file="Interface.h" line="58" column="6" bodyfile="Interface.c" bodystart="136" bodyend="150" declfile="Interface.h" declline="58" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1acbf3074c9170cc195a21883c62402f15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ler_linha</definition>
+        <argsstring>(ESTADO *estado, char linha[], int l)</argsstring>
+        <name>ler_linha</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>linha</declname>
+          <array>[]</array>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>l</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza o tabuleiro de um estado atravé de um ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Função que atualiza o tabuleiro de um estado atravé de um ficheiro. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="63" column="6" bodyfile="Interface.c" bodystart="154" bodyend="163" declfile="Interface.h" declline="63" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1a0016642e6a5f2575417f8c13afe5f58e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void comando_ler</definition>
+        <argsstring>(FILE *fp, ESTADO *estado)</argsstring>
+        <name>comando_ler</name>
+        <param>
+          <type>FILE *</type>
+          <declname>fp</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Executa o comando ler, lendo o que está no ficheiro que recebe. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="68" column="6" bodyfile="Interface.c" bodystart="165" bodyend="206" declfile="Interface.h" declline="68" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="_interface_8h_1a54ac3e369cd61de7c0f9b32e9747aa72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -213,35 +340,69 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="Interface.h" line="18" column="6" bodyfile="Interface.c" bodystart="240" bodyend="259" declfile="Interface.h" declline="18" declcolumn="6"/>
+        <location file="Interface.h" line="73" column="6" bodyfile="Interface.c" bodystart="208" bodyend="227" declfile="Interface.h" declline="73" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="_interface_8h_1a0475a591894db72239ed040e576d32b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int interpretador</definition>
+        <argsstring>(ESTADO *estado)</argsstring>
+        <name>interpretador</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>estado</declname>
+        </param>
+        <briefdescription>
+<para>Intrepretador do jogo. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Intrepretador do jogo. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Interface.h" line="78" column="5" bodyfile="Interface.c" bodystart="231" bodyend="395" declfile="Interface.h" declline="78" declcolumn="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Definição da camada de dados do jogo.</para>
-<para>Definição dos dados do jogo.</para>
 <para>Definição do intrepretador do jogo.</para>
-<para>Definição do módulo com operações sobre listas.</para>
 <para>Definição do módulo com funções para determinar a melhor jogada a ser executada. </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
 <codeline lineno="6"><highlight class="preprocessor">#ifndef<sp/>___INTERFACE___</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>___INTERFACE___</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;dados.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dados_8h" kindref="compound">dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a8d137184689f55d869b4fa543e76e70b" kindref="member">mostra_tabuleiro</ref>(CASA<sp/>tab[8][8],FILE<sp/>*stream);</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a7d93f27be42746f9ca9c2292b55e6aec" kindref="member">jogador_vencedor</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a5da86839ee9a47cb34b275831d3cc1f9" kindref="member">guarda_tabuleiro</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1acc259ba457da7c00c734bb9d079fad17" kindref="member">prompt</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a0475a591894db72239ed040e576d32b5" kindref="member">interpretador</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a4e054f36607c534b3680ef11fa600868" kindref="member">movs</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1aefc2e456f264009e3a0c73bdf2ff9cc9" kindref="member">gr</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a54ac3e369cd61de7c0f9b32e9747aa72" kindref="member">ler</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="13"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a7d93f27be42746f9ca9c2292b55e6aec" kindref="member">jogador_vencedor</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a8d137184689f55d869b4fa543e76e70b" kindref="member">mostra_tabuleiro</ref>(<ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>tab[8][8],FILE<sp/>*stream);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="23"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1acc259ba457da7c00c734bb9d079fad17" kindref="member">prompt</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a20b132eb624976f654d8f6d557bf1c23" kindref="member">guarda_Linha</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>linha,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a5da86839ee9a47cb34b275831d3cc1f9" kindref="member">guarda_tabuleiro</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a00b974923c2cb540931e0819eb9a5cbb" kindref="member">comando_pos</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n_jogadas<sp/>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1ae1d88bc05a17d0f3910467ee7ba15630" kindref="member">comando_movs</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a4e054f36607c534b3680ef11fa600868" kindref="member">movs</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a37535d6e699b9127866ebd40bd7b2b56" kindref="member">comando_gr</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/>FILE<sp/>*stream);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1aefc2e456f264009e3a0c73bdf2ff9cc9" kindref="member">gr</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1acbf3074c9170cc195a21883c62402f15" kindref="member">ler_linha</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>linha[],<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>l);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a0016642e6a5f2575417f8c13afe5f58e" kindref="member">comando_ler</ref>(FILE<sp/>*fp,<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a54ac3e369cd61de7c0f9b32e9747aa72" kindref="member">ler</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="_interface_8h_1a0475a591894db72239ed040e576d32b5" kindref="member">interpretador</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*estado);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="Interface.h"/>
   </compounddef>

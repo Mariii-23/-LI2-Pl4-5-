@@ -36,7 +36,7 @@
       </node>
       <node id="2">
         <label>Camada_de_Dados.h</label>
-        <link refid="_camada__de___dados_8h_source"/>
+        <link refid="_camada__de___dados_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -48,7 +48,7 @@
       </node>
       <node id="6">
         <label>listas.h</label>
-        <link refid="listas_8h_source"/>
+        <link refid="listas_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
@@ -86,6 +86,7 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
+<para>Sem erro </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda79ebb08f197afde2120c3a89f2528890" prot="public">
@@ -93,6 +94,8 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
+<para>COORDENADA_INVALID <linebreak/>
+ </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda402a7096ff471024cb93e6034b6008e2" prot="public">
@@ -100,6 +103,7 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
+<para><ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref> INVALIDA </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdaa11c2bf2a8de9395382caef85ccdeb59" prot="public">
@@ -107,6 +111,8 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
+<para>ERRO AO LER O TABULEIRO <linebreak/>
+ </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdac2135f62387f11d7f60a020e2f828e66" prot="public">
@@ -114,6 +120,7 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
+<para>ERRO AO ABRIR FICHEIRO </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -123,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="13" column="14" bodyfile="dados.h" bodystart="13" bodyend="19"/>
+        <location file="dados.h" line="13" column="14" bodyfile="dados.h" bodystart="13" bodyend="24"/>
       </memberdef>
       <memberdef kind="enum" id="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" prot="public" static="no" strong="no">
         <type></type>
@@ -180,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="24" column="14" bodyfile="dados.h" bodystart="24" bodyend="35"/>
+        <location file="dados.h" line="29" column="14" bodyfile="dados.h" bodystart="29" bodyend="40"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -196,12 +203,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="dados.h" line="60" column="16" bodyfile="dados.h" bodystart="60" bodyend="-1"/>
+        <location file="dados.h" line="65" column="16" bodyfile="dados.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
+<para>Definição dos dados do jogo. </para>
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
@@ -209,44 +217,44 @@
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/><sp/>___DADOS_H___</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>BUF_SIZE<sp/>1024</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/>OK,<sp/></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/>COORDENADA_INVALIDA,<sp/></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/>JOGADA_INVALIDA,<sp/></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/>ERRO_LER_TAB,</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/>ERRO_ABRIR_FICHEIRO,</highlight></codeline>
-<codeline lineno="19"><highlight class="normal">}<sp/>ERROS;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/>UM<sp/>=<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/>DOIS<sp/>=<sp/></highlight><highlight class="charliteral">&apos;2&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/>VAZIO<sp/>=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/>BRANCA<sp/>=<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">,</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>PRETA<sp/>=<sp/></highlight><highlight class="charliteral">&apos;*&apos;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal">}<sp/>CASA;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="struct_c_o_o_r_d_e_n_a_d_a" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42" refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
-<codeline lineno="44" refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">}<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref>;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="struct_j_o_g_a_d_a" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52" refid="struct_j_o_g_a_d_a_1a93d9306cb0c49b66b7d9a615bffe0149" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_j_o_g_a_d_a_1a93d9306cb0c49b66b7d9a615bffe0149" kindref="member">jogador1</ref>;</highlight></codeline>
-<codeline lineno="54" refid="struct_j_o_g_a_d_a_1ab46b16dfbdc7f2af9430c8dcdac0914b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_j_o_g_a_d_a_1ab46b16dfbdc7f2af9430c8dcdac0914b" kindref="member">jogador2</ref>;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">}<sp/><ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref>;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref><sp/>JOGADAS[32];</highlight></codeline>
+<codeline lineno="13" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fd" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="15" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda2bc49ec37d6a5715dd23e85f1ff5bb59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda2bc49ec37d6a5715dd23e85f1ff5bb59" kindref="member">OK</ref>,<sp/></highlight></codeline>
+<codeline lineno="17" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda79ebb08f197afde2120c3a89f2528890" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda79ebb08f197afde2120c3a89f2528890" kindref="member">COORDENADA_INVALIDA</ref>,<sp/></highlight></codeline>
+<codeline lineno="19" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda402a7096ff471024cb93e6034b6008e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fda402a7096ff471024cb93e6034b6008e2" kindref="member">JOGADA_INVALIDA</ref>,<sp/></highlight></codeline>
+<codeline lineno="21" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdaa11c2bf2a8de9395382caef85ccdeb59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdaa11c2bf2a8de9395382caef85ccdeb59" kindref="member">ERRO_LER_TAB</ref>,</highlight></codeline>
+<codeline lineno="23" refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdac2135f62387f11d7f60a020e2f828e66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fdac2135f62387f11d7f60a020e2f828e66" kindref="member">ERRO_ABRIR_FICHEIRO</ref>,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}<sp/><ref refid="dados_8h_1ab8d2e03f1be6ed043ab77a0ea6d0c3fd" kindref="member">ERROS</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ab620e38b0268bee43c7e9a88bd6e73fa" kindref="member">UM</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="33" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a2bf153109d0c8b96e61bc18d5be7c5da" kindref="member">DOIS</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;2&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="35" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039abc711f491a56ec7af7a688be508c5113" kindref="member">VAZIO</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;.&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="37" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039ad24485fddec75419fd4a0cc9edda0ca5" kindref="member">BRANCA</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="39" refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039a007278eb3827d19891b47cdd3ac8846d" kindref="member">PRETA</ref><sp/>=<sp/></highlight><highlight class="charliteral">&apos;*&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}<sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="struct_c_o_o_r_d_e_n_a_d_a" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47" refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a_1adfbc8d4856ce807139fdf62e00aed29a" kindref="member">coluna</ref>;</highlight></codeline>
+<codeline lineno="49" refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a_1aefe14bcc5a066ac3b21500cc3d28c06f" kindref="member">linha</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="struct_j_o_g_a_d_a" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="57" refid="struct_j_o_g_a_d_a_1a93d9306cb0c49b66b7d9a615bffe0149" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_j_o_g_a_d_a_1a93d9306cb0c49b66b7d9a615bffe0149" kindref="member">jogador1</ref>;</highlight></codeline>
+<codeline lineno="59" refid="struct_j_o_g_a_d_a_1ab46b16dfbdc7f2af9430c8dcdac0914b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_j_o_g_a_d_a_1ab46b16dfbdc7f2af9430c8dcdac0914b" kindref="member">jogador2</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}<sp/><ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref>;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="struct_e_s_t_a_d_o" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="67" refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" refkind="member"><highlight class="normal"><sp/><sp/>CASA<sp/>tab[8][8];</highlight></codeline>
-<codeline lineno="69" refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" refkind="member"><highlight class="normal"><sp/><sp/>JOGADAS<sp/><ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>;</highlight></codeline>
-<codeline lineno="71" refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;</highlight></codeline>
-<codeline lineno="73" refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>;</highlight></codeline>
-<codeline lineno="75" refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref>;</highlight></codeline>
-<codeline lineno="77" refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">}<sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="65" refid="dados_8h_1a94c221d29a1760f008b7834093259b7d" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="struct_j_o_g_a_d_a" kindref="compound">JOGADA</ref><sp/><ref refid="dados_8h_1a94c221d29a1760f008b7834093259b7d" kindref="member">JOGADAS</ref>[32];</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="struct_e_s_t_a_d_o" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72" refid="struct_e_s_t_a_d_o_1ab56f0f1be16954d3768b4174d14c087d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1aba91601f16d4c485b2d9b8c429f27039" kindref="member">CASA</ref><sp/>tab[8][8];</highlight></codeline>
+<codeline lineno="74" refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="dados_8h_1a94c221d29a1760f008b7834093259b7d" kindref="member">JOGADAS</ref><sp/><ref refid="struct_e_s_t_a_d_o_1afae43b87a488fad0f2b56a18bad31d18" kindref="member">jogadas</ref>;</highlight></codeline>
+<codeline lineno="76" refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1a261495728744647e618b4e623f5a4b7a" kindref="member">num_jogadas</ref>;</highlight></codeline>
+<codeline lineno="78" refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1a5dd28e2e68b7aef2b6b7ea88e02eff58" kindref="member">jogador_atual</ref>;</highlight></codeline>
+<codeline lineno="80" refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_e_s_t_a_d_o_1adf1064dfc09145b6995a7897249f1674" kindref="member">num_comando</ref>;</highlight></codeline>
+<codeline lineno="82" refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="struct_e_s_t_a_d_o_1a4896a5c5c1f40b43fb795623327e3f47" kindref="member">ultima_jogada</ref>;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}<sp/><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="dados.h"/>
   </compounddef>
