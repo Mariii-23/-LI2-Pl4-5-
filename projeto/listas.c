@@ -1,3 +1,8 @@
+/**
+@file listas.c
+Definição do módulo com operações sobre listas.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

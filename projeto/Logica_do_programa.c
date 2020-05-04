@@ -1,3 +1,8 @@
+/**
+@file Logica_do_programa.c
+Definição da função jogar responsável por alterar o estado do jogo.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

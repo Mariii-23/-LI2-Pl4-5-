@@ -1,3 +1,8 @@
+/**
+@file Interface.c
+Definição do intrepretador do jogo.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

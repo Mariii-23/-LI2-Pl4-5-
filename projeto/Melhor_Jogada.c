@@ -1,3 +1,8 @@
+/**
+@file Melhor_jogada.c
+Definição do módulo com funções para determinar a melhor jogada a ser executada.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

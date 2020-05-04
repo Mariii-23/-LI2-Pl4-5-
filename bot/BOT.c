@@ -1,12 +1,37 @@
+/**
+@file BOT.c
+Definição do módulo para o BOT.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+
+/**
+\brief Definido BUF_SIZE a 1024
+*/
 #define BUF_SIZE 1024
+
+/**
+\brief Definido n_casas_ocupadas com valor 15
+*/
 #define n_casas_ocupadas 15 //  30
+
+/**
+\brief Definido n_vitoria_casa com valor 80
+*/
 #define n_vitoria_casa 80     // 100
+
+/**
+\brief Definido n_vitoria_encurralado com valor 120
+*/
 #define n_vitoria_encurralado 120  // 200
-#define n_vitoria_casaEencurralado 150 //    250
+
+/**
+\brief Definido n_vitoria_casaEencurralado a com valor 150
+*/
+#define n_vitoria_casaEencurralado 150 //  250
 
 /// DADOS ///
 /**

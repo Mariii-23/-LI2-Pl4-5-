@@ -6,8 +6,9 @@ Definição da função jogar responsável por alterar o estado do jogo.
 #ifndef ___LOGICA_DO_PROGRAMA___
 #define ___LOGICA_DO_PROGRAMA___
 
-#include "Camada_de_Dados.h"
-#include "Interface.h"
+/**
+\brief Tipos de dados usados.
+*/
 #include "dados.h"
 
 /**

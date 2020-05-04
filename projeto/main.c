@@ -1,3 +1,8 @@
+/**
+@file main.c
+Definição da função principal MAIN.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

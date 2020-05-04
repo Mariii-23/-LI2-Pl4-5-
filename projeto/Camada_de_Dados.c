@@ -1,13 +1,14 @@
+/**
+@file Camadas_de_Dados.c
+Definição da camada de dados do jogo.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "Logica_do_programa.h"
 #include "Interface.h"
 #include "dados.h"
-#define n_casas_ocupadas 15 //  30
-#define n_vitoria_casa 80     // 100
-#define n_vitoria_encurralado 120  // 200
-#define n_vitoria_casaEencurralado 150 //    250
 
 /// ESTADO INICIAL ///
 void casas_inicial(ESTADO *estado)
