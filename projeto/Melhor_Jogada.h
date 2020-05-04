@@ -1,5 +1,5 @@
 /**
-@file Melhor_jogada.h
+@file Melhor_Jogada.h
 Definição do módulo com funções para determinar a melhor jogada a ser executada.
 */
 
